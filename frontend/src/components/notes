@@ -1,0 +1,20 @@
+  <div class="Element">
+
+    <div class="Prompt_Box">
+      I'm Going to show what content to select
+    </div>
+
+    <div class="Content_And_Suggestions" v-if="viewable_content === 'content'">
+      <SuggestionList v-bind:suggestion_list="real_suggestions" ></SuggestionList>
+      <Content v-bind="real_content"></Content>
+    </div>
+    <div class="Example_And_Suggestions" v-if="viewable_content === 'example'">
+       <SuggestionList v-bind:suggestion_list="example_suggestions" ></SuggestionList>
+       <Content v-bind="example_content"></Content>
+    </div>
+    <div class="Explanation_And_Suggestions" v-if="viewable_content === 'explanation'">
+         <SuggestionList v-bind:suggestion_list="sample_suggestions_explained" ></SuggestionList>
+        <Content v-bind="explanatory_content"></Content>
+    </div>
+
+  </div>
