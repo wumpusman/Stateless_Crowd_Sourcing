@@ -1,0 +1,75 @@
+
+
+'''
+Create Task_Parameters - Current World State
+
+Create Content To Be Worked on - What Do I want to change inititally
+
+Create Root Process
+
+Manager_Send_Out_Content
+    Get_User
+    Get_Content
+    Get_Task
+
+Task()
+    Input_To_Manipulate - content
+    Instruction - content
+    Prompt - content
+    Suggestions - Content
+
+
+Content
+    Process_Comes_From
+
+Process_Result
+    Is_Locked
+    Is_Completed
+
+
+
+
+    Create_Results()
+
+
+    Result_List()
+
+Process_Factory(input=process_1.result,context=process_2.result,prompt=prompt_text)
+
+Insantiate Process_Rewrite(Content, Task)
+
+GetAllProcesses()
+    Is_It_Locked
+        If Content_To_Be_Processed Is Completed, then not locked, if doesn't have that then it's null
+    Is_It_Complete
+        If 3 Users Have Provided Content Then Yes
+
+RunProcess -> If Not Locked And Not Complete
+    Generate_User_Assignments() - Create a set of user tasks
+        Create User_Task, Create Associated Process (Whatever is defined by the task)
+
+    Return_Results()
+        If Process_Rating
+            Return Average_Score, Return Content
+        If Process_Rewrite
+            Return (All Subtask.Complete()) Return Best
+
+ManageResults()
+    Manager (Results, CurrentProcess, ProcessThatFollows)
+        CurrentProcess.DecideLock()
+            If Is_It_Complete
+            CurrentProcess.Lock()
+        If CurrentProcess.IsCompleted, IsLocked
+
+        List-CurrentProcess.GetResults()
+            Content (Task,Results)
+
+        List-CurrentProcess.Children
+
+        ForEach Child That has No Task Or Content
+            Create A New Task (Merge Previous Task_With_Content)
+            Assign Content
+
+
+
+'''

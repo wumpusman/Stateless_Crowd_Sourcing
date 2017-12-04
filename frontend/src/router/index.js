@@ -3,8 +3,10 @@ import Router from 'vue-router'
 
 const routerOptions = [
   { path: '/Home', component: 'Home' },
+  { path: '/Project_Container', component: 'Project_Container' },
   { path: '/Task', component: 'Task' },
-  { path: '/Prompt', component: 'Prompt' }
+  { path: '/Instruction', component: 'Instruction' },
+  {path:'/Login',component:"Login"}
 ]
 
 const routes = routerOptions.map(route => {

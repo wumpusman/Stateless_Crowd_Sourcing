@@ -1,0 +1,50 @@
+User
+    Current_Content_ID #What are they currently involved with
+    Name
+    Password
+
+
+Project
+    Project_ID
+    Arry TaskTypes -#what kind of tasks are involved
+    Project Name
+
+
+Task #A specific task someone can being
+        This will be code used to generate the prompt structure as oppsoed to an sql obejct due its simplicity
+
+Content:
+    Project_ID
+    Task_ID #What task did this come
+    Content_Type
+    Parent_Content_ID #what content did this come from, more of a short cut
+    User_ID
+    Timestamp_Completed
+    Is_Accessible #can this be used by users
+    Is_Chosen  #Has this been upvoted as a good piece of content
+    IS_Finished #This this been completed
+    Content - Text or Info Being accesd
+    Rating  - Self Rate or Self
+    Comments - Any thoughts or opnions or notes, misc basically
+
+Task_Instruction:
+    Task_Type
+    Explanation
+
+
+Initialize first 'content'
+    Generate Example Content For Examples of Diff Type
+
+
+Front Page Loads
+    Enter Login
+        'Being' - Sends Creates Fake login credentials
+
+    On Begin or Next
+        Select Task
+        Select Introduction page
+        Select Explanation
+
+        Send As One Big Ass Block
+
+    
