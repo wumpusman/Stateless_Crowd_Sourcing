@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 import datetime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from enum import Enum
+
 from sqlalchemy.orm import backref
 from sqlalchemy import func
 import pandas as pd
@@ -585,7 +585,7 @@ class Content_Result(Content): #like content but is specifically when it is the 
         self.results=value
 
 
-class Content_Types(Enum):
+class Content_Types(Object):
     Rate="Rate"
     Summarize="Summarize"
     Rewrite="Rewrite"
