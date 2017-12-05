@@ -1,6 +1,7 @@
 from db_connection2 import *
 class Manager:
     def __init__(self,session,max_time=7):
+        # type: (object, object) -> object
         self.session=session
         self._session_time=max_time*60
 

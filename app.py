@@ -15,7 +15,10 @@ app = Flask(__name__,
 
 
 manager =None
-
+conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
+#meta.drop_all(bind=conn)  # clear everything
+#Base.metadata.create_all(conn)
+manager = Manager(session,max_time=7) #in minutes
 
 @app.route('/')
 def index():
@@ -101,9 +104,6 @@ def login(): #For logging in
 
 
 if __name__ == '__main__':
-    conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
-    #meta.drop_all(bind=conn)  # clear everything
-    #Base.metadata.create_all(conn)
-    manager = Manager(session,max_time=7) #in minutes
+
     run_example.setup_example(session)
     app.run()
