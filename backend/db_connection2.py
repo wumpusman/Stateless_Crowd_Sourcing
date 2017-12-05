@@ -585,7 +585,7 @@ class Content_Result(Content): #like content but is specifically when it is the 
         self.results=value
 
 
-class Content_Types(Object):
+class Content_Types(object):
     Rate="Rate"
     Summarize="Summarize"
     Rewrite="Rewrite"
