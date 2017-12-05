@@ -75,10 +75,9 @@ export default {
     user_input: { //if this is accessible and stored globally - not super clean tbh
       get(){
 
-        if (this.compute_is_modifiable) {
+
           return this.$root.$data.stored_state.state.current_result;
-        }
-        return ""
+
       },
       set(value){
 

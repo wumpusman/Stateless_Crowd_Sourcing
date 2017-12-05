@@ -1,12 +1,11 @@
 <template>
 
     <div id="Login_Section">
-        <div id="explanation_location"><span class="explanation">If you already have a name/id/code enter it, and press login,
-          otherwise either enter your own or use this code for name and password (Please remember it)</span>
+        <div id="explanation_location"><span class="explanation">Use this code for name and password (Please remember it) and click submit</span>
 
           </div>
 
-          <div><b>Optional Code: {{random_code}}</b></div>
+          <div><b>Code: {{random_code}}</b></div>
 
             <div >
                 <div>
@@ -56,6 +55,13 @@ export default {
   },
 
   methods:{
+    logic:function(name,password,response){
+      this.$root.$data.stored_state.setNameAndPassword(name,password);
+      this.$root.$data.stored_state.setProjectState(response);
+      this.$root.$data.stored_state.setTask(response);
+      this.$root.$data.stored_state.setInstructions(response);
+      this.$root.$data.stored_state.initialize_session_time_and_start_time(response);
+    },
     logout: function(){
       this.$data.logged_in=false;
 
@@ -97,7 +103,7 @@ export default {
                 type: 'POST',
                 success: function (response) {
                   var response= JSON.parse(response);
-                  console.log(response);
+
                   if (response["task"] =="failure") {
 
                     this.name="Wrong Code";
@@ -105,9 +111,9 @@ export default {
                     this.logged_in=false;
                   }
                   else {
-                    this._show_everything_but_login();
-                    this.$root.$data.stored_state.setNameAndPassword(this.name,this.password);
-                    this.$root.$data.stored_state.setTask(response);
+
+                    this.logic(this.name,this.password,response);
+
                   }
                 }.bind(this)
 

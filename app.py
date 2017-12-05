@@ -28,9 +28,10 @@ def submit():
     name=userData['name']
     password=userData['password']
     result=userData["results"]
+    session_expired=False
 
-    print "RESULTS ARE FOR SUBMIT"
-    print result
+    if "session_expired" in userData:
+        session_expired = userData["session_expired"]
 
     user = manager.select_user(userData["name"], userData["password"])
 
@@ -41,16 +42,19 @@ def submit():
         print assigned_content.origin_process.task_parameters_obj.body_of_task.id
         print assigned_content.origin_process.task_parameters_obj.body_of_task.results
 
-    if user==None: return json.dumps({})
+    if user==None: return json.dumps(manager.prepare_view(None))
+    manager.update_global_state(user, {"value": result}) #This is where the magic happens
 
-    manager.update_global_state(user,{"value":result})
+    if session_expired == False:
+        assigned_content = manager.assign_new_content(user)
+        new_view = manager.prepare_view(assigned_content)  # update the view
+        return json.dumps({"task": new_view})
 
-    assigned_content= manager.assign_new_content(user)
+    else:
+        return json.dumps({"task":manager.prepare_view(None)})
 
 
 
-    new_view=manager.prepare_view(assigned_content) #update the view
-    return json.dumps({"task":new_view})
 
 
 @app.route('/api/login',methods=['POST'])
@@ -91,76 +95,15 @@ def login(): #For logging in
 
 
 
-    #Hand shake to db
-    #  Provide a name, or use the following code, this will be linked to your results
-    #   task that was just completed
-    #
-    '''
-        Start Page - GenerateAlias Or Enter Name And Password
-
-        OnKeyBoardPress Or switch button, send state
-
-         State {
-            Name
-            Password
-            Is_Finished
-            Rating:
-            Content:
-         }
-
-         Name Exists:
-            If Does Not Exist - Create Account
-
-        AssignContent
-            Logic=Naive()
-            UpdateLockedContent()
-
-            Logic
-                Update_User_Content_With_New_State_Information (Do Nothing If NO content)
-
-                Check If Use Has Content:
-                  If User_Is_Unfinished:
-                    return User.Content
-                Else:
-                    return SelectNewContent()
-
-            SelectNewContent()
-
-
-        UpdateLockedContent():
-            For AllContent That IsUnlocked, And Is Chosen
-                If AllContent.Children that are not rating are Chosen, Lock this
-
-
-            Select AllContent That Is not locked and Is_Finished nad is_chosen and type is not Rating
-                For Each Content in AllContent.Children - The Possible Inhereitators
-                    If Content isRating Locked It Ratings can't have children
-                    Else
-                        DetermineLock - Naive, if it's been scored 3 times, then it cannot be used
-                            If Content Is Not Locked
-                                    If Content Select Ratings > 3
-                                        Lock It
-
-        Project1Logic Extends Naive
 
 
 
 
-
-
-    '''
-    #On Key entered - update information
-    #Take random token name Or Provide
-
-    response = {
-        'randomNumber': randint(1, 100)
-    }
-    return json.dumps(response)
 
 if __name__ == '__main__':
     conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
-    meta.drop_all(bind=conn)  # clear everything
-    Base.metadata.create_all(conn)
-    manager = Manager(session)
+    #meta.drop_all(bind=conn)  # clear everything
+    #Base.metadata.create_all(conn)
+    manager = Manager(session,max_time=7) #in minutes
     run_example.setup_example(session)
     app.run()

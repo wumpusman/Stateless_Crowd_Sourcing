@@ -6,7 +6,8 @@ const routerOptions = [
   { path: '/Project_Container', component: 'Project_Container' },
   { path: '/Task', component: 'Task' },
   { path: '/Instruction', component: 'Instruction' },
-  {path:'/Login',component:"Login"}
+  {path:'/Login',component:"Login"},
+  {path:'/Finished',component:"Finished"}
 ]
 
 const routes = routerOptions.map(route => {

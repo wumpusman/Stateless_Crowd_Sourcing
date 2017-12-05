@@ -1,8 +1,8 @@
 from db_connection2 import *
 class Manager:
-    def __init__(self,session):
+    def __init__(self,session,max_time=7):
         self.session=session
-
+        self._session_time=max_time*60
 
 
 
@@ -60,10 +60,13 @@ class Manager:
             return self.session.query(User).filter(User.name==name).filter(User.password==password).all()[0]
         except:
             return None
+
+
     def create_user(self,name,password):
         user=User(name)
         user.password=password
         self.session.add(user)
+        self.session.commit()
 
     def assign_new_content(self,user):
         if len(user.associated_content)>0:
@@ -74,15 +77,18 @@ class Manager:
         chosen=optional_content[0]
         chosen.associated_user=user
         self.session.add(chosen)
+        self.session.commit()
         return chosen
 
     def prepare_view(self,content): #calls content that created it, view state
         if type(content)==type(None):
-            return "exit"
-        print content.origin_process.prepare_view()
-        return content.origin_process.prepare_view()
+            return {"Project_State":"Finished"}
 
+        view= content.origin_process.prepare_view()
+        view["Project_State"]="Project" #we are still working on the proejct
+        view["Session_Time"]=self._session_time
 
+        return view
     def update_global_state(self,user,results):
         session=self.session
         current=user.associated_content[-1]
@@ -105,3 +111,5 @@ class Manager:
             if current.origin_process.parent_process != None:
                 if current.origin_process.parent_process.is_complete(session):
                     current.origin_process.parent_process.lock_process()
+
+        self.session.commit()

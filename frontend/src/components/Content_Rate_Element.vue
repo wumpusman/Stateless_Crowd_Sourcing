@@ -27,7 +27,7 @@
 
 
 
-          <div v-bind:class="background_border_and_red()" > <span> WTFFFFFF <p>   {{Content}} </p>  </span></div>
+          <div v-bind:class="background_border_and_red()" >  <p>   {{Content}} </p>  </span></div>
 
           <div id="rating" > <b> Rate <u> Above </u> On Quality Of Achieving Prompt: </b>
                 <radio_list :Is_Modifiable="Is_Modifiable"></radio_list>
@@ -82,7 +82,7 @@ export default {
         return ""
       },
       set(value){
-        console.log("PLEASE UPDATE AT SOMEPOINT")
+
          if (this.compute_is_modifiable) {
             this.$root.$data.stored_state.set_result(value);
         }

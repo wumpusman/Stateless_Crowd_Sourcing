@@ -147,6 +147,7 @@ class Process_Object(Base):
 
 
 
+
     #is the task found stuff
     def is_complete(self,session):
        final_results= self.get_final_results_complete(session).all()
@@ -161,8 +162,13 @@ class Process_Object(Base):
             for sp in self.sub_process:
                 sp.is_locked=True
 
+
+
     def __init__(self,body_of_task,prompt=None,suggestion=None,context=None, displayed_result=None, expected_results=1, content_to_be_requested=3, subprocess_tuple=None):
         #displayed result is only for rating tasks, where user is reviewing a result
+
+
+
         self.is_locked=False
         self.is_completed=False
 
@@ -238,7 +244,27 @@ class Process_Object(Base):
     def prepare_view(self):
        task_view=self.task_parameters_obj.prepare_view()
        task_view["Type"]=str(type(self))
+
+       instructions=self.prepare_instructions()
+
+       task_view["instructions"]=instructions
        return task_view
+
+
+
+    def prepare_instructions(self):
+        prepped_instructions={}
+        explanation=" You will be shown a small amount of text and be asked to modify it the best of your ability based on a prompt. " \
+                    "Make changes as best you can, but do not overthink it. This is only meant to take a few minutes. You may be asked to rewrite, modify or summarize " \
+                    "text. You will also be potentially provided some contextual information as well as suggestions to help aid you.  "
+        exampe_rewrite="<p><u>More suspenseful</u>: The man walked to the store' <b>-></b> 'The man frantically hurried to the shop'</p>"
+        exampe_rewrite1="<p><u>Write as though the story was about a boy </u> : The man entered the bar' <b>-></b> 'The boy entered the game shop'</p>"
+        example_summary="'<p><u>Summarize </u>: The man walked to the store to buy some ice cream' <b>-></b> 'A man got some ice cream'</p>"
+        example_suggestion="<p><u>Suggest ways you might rewrite the text to talk about medical issues:</u> 'Boy can teach you to bottle charisma, brew glory, even put a stopper in death <b>-></b> Maybe talk about actual conditions, like bottle ingestion, or brew a cure for diabetes  </p>"
+
+
+        prepped_instructions={"Explanation":explanation,"Examples":[exampe_rewrite,exampe_rewrite1,example_summary,example_suggestion]}
+        return prepped_instructions
 
     def get_final_results(self):
         return self.final_results
@@ -422,6 +448,20 @@ class Process_Rate(Process_Object):
         prep_view["Type"] = "Rate" #Process is going to be doing rating
         return prep_view
 
+    def prepare_instructions(self):
+        prepped_instructions = {}
+        explanation = "You will be shown text and asked to compare or evaluate it. You must then rate it from a 1 to a 5 based on the requirements of a prompt. If you notice an issue or problem" \
+                      "delineate it by clicking issue. Try to account for the prompt as well as the overall quality of the text to be evaluated"
+
+        exampe_rate1 = "<p><u>Rate how well the later text makes the former more suspenseful</u>: The man walked to the store' <b>vs</b> 'The man frantically hurried to the shop' Rating:5"
+        example_summary_rate = "<p><u>Rate how well the later summarizes the former </u>: The man walked to the store to buy some ice cream' <b>vs</b>  'A man walked to a place' Rating:2"
+        example_suggestion_rate = "<p><u>Rate how well the later suggestions may aid in rewriting the text to discuss medical issues</u>: 'I can teach you to bottle charisma, brew glory, even put a stopper in death <b>vs</b>  Maybe talk about actual conditions, like bottle ingestion, or brew a cure for diabetes' Rating:4 "
+
+        prepped_instructions = {"Explanation": explanation,
+                                "Examples": [exampe_rate1, example_summary_rate, example_suggestion_rate]}
+        return prepped_instructions
+
+
 class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some rating, it's really basic selection scoring scheme
     __mapper_args__ = {'polymorphic_identity': 'process_text_manipulation'}
 
@@ -527,6 +567,9 @@ class Content(Base):
         self.is_completed = False
         self.is_locked = False
         self.results=""
+
+    def __repr__(self):
+        return "<Content Values {}, isCompleted {}, isLocked>".format(self.name,self.is_completed,self.is_locked)
 
 class Content_Result(Content): #like content but is specifically when it is the results of a system
     __mapper_args__ = {'polymorphic_identity': 'content_result'}

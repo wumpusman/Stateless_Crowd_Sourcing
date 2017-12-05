@@ -2,10 +2,13 @@
   <div id="instruction_section">
       <div class="instruction_body">
 
-        <div id="type"> <u> Instructions for <span v-html="computed_task_type"> </span></u></div>
+        <div id="type"> <u> Instructions </u></div>
         <div id="instruction"> <p class="align_left"> {{computed_instructions}} </p></div>
-        <div></div>
-        <div id="supplemental" v-html="computed_supplemental"></div>
+        <div>Examples</div>
+        <div v-for="item in Supplemental">
+            <div v-html="item"></div>
+            <div></div>
+        </div>
 
        </div>
   </div>
@@ -13,11 +16,12 @@
 </template>
 
 
-
 <script>
   //Header
 export default {
-  props: ["Instruction","Task_Type","Supplemental"],
+  //<div id="supplemental" v-html="computed_supplemental"></div>
+  //v-for="item in items">
+  props: ["Instructions","Supplemental"],
 
   data:function(){
       return {
@@ -37,12 +41,13 @@ export default {
       return this.Task_Type;
     },
     computed_instructions:function(){
+
       if (typeof this.Instructions =='undefined')
         return this.example_instructions;
       return this.Instructions ;
     },
     computed_supplemental:function(){
-      if (typeof this.Instructions =='undefined') //Supplemntal is optional, but if instructions are not seen
+      if (typeof this.Supplemental =='undefined') //Supplemntal is optional, but if instructions are not seen
         return this.example_supplemental;
       return this.Supplemental  ;
     }

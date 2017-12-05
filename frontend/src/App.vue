@@ -2,13 +2,10 @@
   <div id="app">
     <div id="user_name_box">{{computed_name}}</div>
 
+    <Login v-if="which_page('Login')"></Login>
+    <Project v-if="which_page('Project')" :Has_Session_Expired="has_session_expired_function"></Project>
+    <Finished v-if="which_page('Finished')"></Finished>
 
-    <form> Fake Result
-      <input  v-model="fake_result" type="text" >
-    </form>
-      <button v-on:click="submit_response">Fake Result Submit {{fake_result}}</button>
-    <Login></Login>
-    <Project></Project>
     <router-view/>
   </div>
 </template>
@@ -20,6 +17,7 @@
   import Prompt from './components/Task.vue'
   import Project from './components/Project_Container.vue'
   import Login from './components/Login.vue'
+  import Finished from './components/Finished.vue'
 
 
 
@@ -28,10 +26,11 @@
 export default {
   name: 'app',
   components: {
-    Content_Element, SuggestionList, Prompt, Project,Login
+    Content_Element, SuggestionList, Prompt, Project,Login, Finished
   },
   data:function() {
     return {
+
       fake_result:"",
       how_are_you: "hello how are you tryfwefefewin",
       default_statement: "Write Text Here",
@@ -46,35 +45,30 @@ export default {
 
   methods: {
 
-    submit_response: function () {
-            var name=this.$root.$data.stored_state.state.name;
-            var password=this.$root.$data.stored_state.state.password;
+    which_page:function(value){
 
-            //Pass in the select of name and password specified by the user
-            console.log(this.fake_result);
-            jquery.ajax({
-                url: '/api/submit',
-                data: "jsonData=" + JSON.stringify({"name":name,"password":password,"results":this.fake_result}),
-                type: 'POST',
-                success: function (response) {
-                  console.log(response );
-                  var response= JSON.parse(response);
-                  this.$root.$data.stored_state.setTask(response);
-                }.bind(this)
+      if((value)==this.computed_project_state)return true;
+      return false;
+    },
 
-            });
-        }
+    has_session_expired_function:function(){
+      console.log("WHEN IS HTIS CHANGED");
+      return this.$root.$data.stored_state.has_session_expired()
+    }
 
     },
   computed:{
-    task:function(){
-      return this.$root.$data.stored_state.state.current_task
+
+    computed_task:function(){
+      return this.$root.$data.stored_state.state.current_task;
     },
-
+    computed_project_state:function(){
+      return this.$root.$data.stored_state.state.current_project_state;
+    },
     computed_name:function(){
-
-        return "User_Name/ID: "+this.$root.$data.stored_state.state.name
-
+      if(this.$root.$data.stored_state.state.name !="")
+        return "User_Name/ID: "+this.$root.$data.stored_state.state.name;
+      return "";
     }
   }
 
