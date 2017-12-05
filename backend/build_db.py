@@ -9,7 +9,7 @@ from sqlalchemy import func
 import pandas as pd
 Base=declarative_base()
 if type(os.environ.get('DATABASE_URL')) != type(None):
-     url = urlparse.urlparse(os.environ.get('DATABASE_URL'))
+     url = os.environ.get('DATABASE_URL')#urlparse.urlparse(os.environ.get('DATABASE_URL'))
 
      print "great"
      print "URL FOUND"
