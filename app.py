@@ -105,5 +105,5 @@ def login(): #For logging in
 
 if __name__ == '__main__':
 
-    run_example.setup_example(session)
+    #run_example.setup_example(session)
     app.run()
