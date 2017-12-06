@@ -23,9 +23,9 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      Session = sessionmaker(bind=con)
 
      the_session=Session()
-     
-     meta.drop_all(bind=conn)  # clear everything
-     Base.metadata.create_all(conn)
+
+     meta.drop_all(bind=con)  # clear everything
+     Base.metadata.create_all(con)
      run_example.setup_example(the_session)
      the_session.commit()
      print the_session.query(Content).all()
