@@ -8,6 +8,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import backref
 from sqlalchemy import func
 import pandas as pd
+import os
+
 Base=declarative_base()
 
 def connect(user, password, db, host='localhost', port=5432):
@@ -27,7 +29,7 @@ def connect(user, password, db, host='localhost', port=5432):
         Session = sessionmaker(bind=con)
 
         the_session = Session()
-        return con,meta,Session()
+        return con,meta,the_session
     else:
         url = 'postgresql://{}:{}@{}:{}/{}'
         url = url.format(user, password, host, port, db)
