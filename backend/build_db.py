@@ -9,7 +9,7 @@ from sqlalchemy.orm import backref
 from sqlalchemy import func
 import pandas as pd
 import run_example
-Base=declarative_base()
+
 if type(os.environ.get('DATABASE_URL')) != type(None):
      url = os.environ.get('DATABASE_URL')#urlparse.urlparse(os.environ.get('DATABASE_URL'))
 
@@ -26,6 +26,23 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
 
      meta.drop_all(bind=con)  # clear everything
      Base.metadata.create_all(con)
+     the_session.commit()
+
+
      run_example.setup_example(the_session)
      the_session.commit()
      print the_session.query(Content).all()
+
+else:
+     conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
+
+     meta.drop_all(bind=conn)  # clear everything
+     Base.metadata.create_all(conn)
+
+
+     session.commit()
+
+
+
+     run_example.setup_example(session)
+     session.commit()

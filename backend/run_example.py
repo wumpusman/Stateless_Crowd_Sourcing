@@ -68,3 +68,4 @@ if __name__ == '__main__':
     Base.metadata.create_all(conn)
 
     setup_example(session )
+    session.commit()
