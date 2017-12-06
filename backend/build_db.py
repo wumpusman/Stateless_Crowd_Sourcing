@@ -4,9 +4,11 @@ print os.environ.get('DATABASE_URL')
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import sqlalchemy
+from db_connection2 import *
 from sqlalchemy.orm import backref
 from sqlalchemy import func
 import pandas as pd
+import run_example
 Base=declarative_base()
 if type(os.environ.get('DATABASE_URL')) != type(None):
      url = os.environ.get('DATABASE_URL')#urlparse.urlparse(os.environ.get('DATABASE_URL'))
@@ -22,3 +24,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
 
      the_session=Session()
      print "GREAT"
+     print the_session.query(Content).all()
+     run_example.setup_example(the_session)
+     the_session.commit()
+     print the_session.query(Content).all()
