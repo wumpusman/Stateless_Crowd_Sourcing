@@ -2,6 +2,9 @@ from db_connection2 import *
 from manager import Manager
 
 
+
+
+
 def setup_example(session):
     body_of_task = Content_Result("I love going skiiing", is_completed=True)
     prompt = Content_Result("Write the following sentences to make them sound more negative", is_completed=True)

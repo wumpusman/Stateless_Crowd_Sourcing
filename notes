@@ -21,6 +21,10 @@ Show Ratings Instruction
 
 
 
-
+call heroku creat postgres command
+then commit
+then do heroku push commit thing
+then build_db (which sets up the experiment)
+then call main code
 
 

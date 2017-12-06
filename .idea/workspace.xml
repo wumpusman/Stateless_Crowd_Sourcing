@@ -85,7 +85,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run_example.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/run_example.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="814">
+              <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+                <marker date="1512530588154" expanded="true" signature="59:62" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/build_db.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="352">
@@ -193,6 +206,7 @@
         <option value="$PROJECT_DIR$/backend/db_connection.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/backend/build_db.py" />
+        <option value="$PROJECT_DIR$/backend/run_example.py" />
       </list>
     </option>
   </component>
@@ -203,10 +217,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1547" />
-    <option name="y" value="366" />
-    <option name="width" value="2318" />
-    <option name="height" value="1310" />
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="2326" />
+    <option name="height" value="1258" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -626,10 +640,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1547" y="366" width="2318" height="1310" extended-state="0" />
-    <editor active="false" />
+    <frame x="-11" y="-11" width="2326" height="1258" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.258079" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25715563" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -667,26 +681,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../vue_with_flask/model/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1510094531930" expanded="true" signature="1748:1814" placeholder="select * fro... gif_ratings" />
-            <marker date="1510094531930" expanded="true" signature="2081:2157" placeholder="select * fro... gif_ratings_temporary" />
-            <marker date="1510094531930" expanded="true" signature="2509:2578" placeholder="select * fro... user_account" />
-            <marker date="1510094531930" expanded="true" signature="2928:2973" placeholder="Select * fro... user_account" />
-            <marker date="1510094531930" expanded="true" signature="3144:3260" placeholder="insert into user_account... " />
-            <marker date="1510094531930" expanded="true" signature="4003:4025" placeholder="Select * Fro... gif_info" />
-            <marker date="1510094531930" expanded="true" signature="4104:4142" placeholder="Select * Fro... gif_info" />
-            <marker date="1510094531930" expanded="true" signature="4684:4793" placeholder="insert into gif_ratings_temporary... " />
-            <marker date="1510094531930" expanded="true" signature="5048:5157" placeholder="insert into gif_ratings... " />
-            <marker date="1510094531930" expanded="true" signature="5309:5355" placeholder="select * fro... gif_ratings" />
-            <marker date="1510094531930" expanded="true" signature="5775:5888" placeholder="CREATE TABLE... user_account" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notes">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -1065,6 +1059,17 @@
           <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/run_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1512530588154" expanded="true" signature="59:62" placeholder="..." />
           </folding>
         </state>
       </provider>

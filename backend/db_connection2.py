@@ -467,8 +467,8 @@ class Process_Rate(Process_Object):
 
     def prepare_instructions(self):
         prepped_instructions = {}
-        explanation = "You will be shown text and asked to compare or evaluate it. You must then rate it from a 1 to a 5 based on the requirements of a prompt. If you notice an issue or problem" \
-                      "delineate it by clicking issue. Try to account for the prompt as well as the overall quality of the text to be evaluated"
+        explanation = "You will be shown text and asked to compare or evaluate it. You must then rate it from a 1 to a 5 (5 being the highest) based on the requirements of a prompt. If you notice an issue or problem" \
+                      " delineate it by clicking issue. Try to account for the prompt as well as the overall quality of the text to be evaluated"
 
         exampe_rate1 = "<p><u>Rate how well the later text makes the former more suspenseful</u>: The man walked to the store' <b>vs</b> 'The man frantically hurried to the shop' Rating:5"
         example_summary_rate = "<p><u>Rate how well the later summarizes the former </u>: The man walked to the store to buy some ice cream' <b>vs</b>  'A man walked to a place' Rating:2"
