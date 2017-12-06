@@ -167,7 +167,7 @@ class Test_Queries(unittest.TestCase):
 
 
         #Calculating a score for one of one of the subprocesses, and updating resutls accordingly
-        self.assertEqual(type(self.basic_process.sub_process[1].get_final_results()[0].results),type(None))
+        self.assertEqual(self.basic_process.sub_process[1].get_final_results()[0].results,"")
         self.basic_process.sub_process[1].assign_result(session)
         self.assertLess(float(self.basic_process.sub_process[1].get_final_results()[0].results)-4.66,.01, msg="was a score properly assigned")
 

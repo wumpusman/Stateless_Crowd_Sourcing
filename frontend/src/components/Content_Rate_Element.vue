@@ -3,7 +3,7 @@
   <div>
 
     <div id="prev_content" >  <span><b>{{computed_example_text}} Original Content </b></span>
-          <div v-bind:class="lower_opacity_if_example()">
+          <div id="body_of_prev_content" v-bind:class="lower_opacity_if_example()">
           {{Body_Of_Task}}
             </div>
         </div>

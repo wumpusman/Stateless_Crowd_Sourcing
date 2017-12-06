@@ -56,6 +56,7 @@ export default {
 
   methods:{
     logic:function(name,password,response){
+      this.$root.$data.stored_state.clear_user_feedback();
       this.$root.$data.stored_state.setNameAndPassword(name,password);
       this.$root.$data.stored_state.setProjectState(response);
       this.$root.$data.stored_state.setTask(response);

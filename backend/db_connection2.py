@@ -428,7 +428,7 @@ class Process_Rate(Process_Object):
         except:
             return False
 
-        if count_score.sum() < self.minimum_amount_of_content_being_requested:
+        if count_score.sum() < self.minimum_amount_of_content_being_requested: #count how many people created content
             return False
         return True
 
@@ -504,11 +504,11 @@ class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some ratin
             data=self.select_data_for_analysis(session)
 
 
-            data.sort(key=lambda x: float(x[1].results),reverse=True)
+            data.sort(key=lambda x: float(x[1].results),reverse=True) #best go first
 
             best_results=[]
             for item in data:
-                if float(item[1].results)>3:
+                if float(item[1].results)>=3:
                     best_results.append(item[0]) #store the actual value, not the score
 
             for counter in xrange(len(best_results)):

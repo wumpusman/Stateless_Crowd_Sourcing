@@ -98,6 +98,14 @@ class Manager:
             return Exception("Content completed when it shouldn't be completed already")
 
         current.results= results["value"]
+        #This is a hack :/\/\
+        #TODO: This should be chagned and embedded, also the defualt for ratings should be different
+        if isinstance(current.origin_process,Process_Rate):
+              if current.results=="" or current.results=="Enter Response Here":
+
+                current.results="3"
+                current.comments="User wrote nothing"
+
         current.is_completed=True
 
         #Update the process and if it has a parent any parent process
