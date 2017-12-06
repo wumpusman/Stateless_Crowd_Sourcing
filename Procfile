@@ -1,1 +1,1 @@
-web: gunicorn app:app --worker-connections 1
+web: gunicorn app:app --worker-connections 5
