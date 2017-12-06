@@ -569,7 +569,7 @@ class Content(Base):
         self.results=""
 
     def __repr__(self):
-        return "<Content Values {}, isCompleted {}, isLocked>".format(self.name,self.is_completed,self.is_locked)
+        return "<ID {} Values {} isCompleted {}>".format(self.id,self.results,self.is_completed)
 
 class Content_Result(Content): #like content but is specifically when it is the results of a system
     __mapper_args__ = {'polymorphic_identity': 'content_result'}

@@ -46,3 +46,4 @@ else:
 
      run_example.setup_example(session)
      session.commit()
+     print session.query(Content).all()
