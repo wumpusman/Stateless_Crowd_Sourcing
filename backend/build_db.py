@@ -29,7 +29,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      the_session.commit()
 
 
-     run_example.setup_meta(the_session)
+     run_example.setup_example2(the_session)
      the_session.commit()
      print the_session.query(Content).all()
 
@@ -44,6 +44,6 @@ else:
 
 
 
-     run_example.setup_meta(session)
+     run_example.setup_example2(session)
      session.commit()
      print session.query(Content).all()
