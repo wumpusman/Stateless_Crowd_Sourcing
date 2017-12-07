@@ -238,6 +238,11 @@ class Test_Queries(unittest.TestCase):
         result = t.get_all_processes_where_user_was_uninvolved(session).all()
         self.assertEqual(len(result), 1, msg="should have one processes i haven't engaged with")
 
+        associated_content=t.associated_content[-1]
+        associated_content.associated_user=None
+        result = t.get_all_processes_where_user_was_uninvolved(session).all()
+        self.assertEqual(len(result), 2, msg="should have unassigned one of the tasks")
+        self.assertEqual(type(associated_content.associated_user),type(None))
         session.rollback()
 
 

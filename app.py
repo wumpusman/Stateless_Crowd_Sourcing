@@ -24,6 +24,21 @@ manager = Manager(session,max_time=5) #in minutes
 def index():
     return render_template("index.html")
 
+@app.route('/api/disconnect',methods=['POST'])
+def disconnect():
+    userData = request.form['jsonData'];
+    userData = json.loads(userData)
+    user = manager.select_user(userData["name"], userData["password"])
+    if user!= None:
+        if len(user.associated_content) > 0:
+            assigned_content = user.associated_content[-1]
+            if assigned_content != None:
+                manager.unassign_content(assigned_content)
+            #this is used to handle users who are either refreshing the page , or exiting without finishing
+
+    print "disconnect!"
+    return json.dumps({"refresh":True})
+
 @app.route('/api/submit',methods=['POST'])
 def submit():
     userData = request.form['jsonData'];

@@ -42,8 +42,22 @@ export default {
 
     }
   },
+  created:function(){
+    console.log("WTF kfwefeillfefwew mfewfwee");
+
+    window.beforeunload  =this.disconnect_user;
+    document.beforeunload=this.disconnect_user;
+    document.addEventListener('beforeunload', this.disconnect_user);
+    window.onbeforeunload  =this.disconnect_user;
+    window.onblur = this.refresh_page;
+   // window.onmouseout = this.handler;  //window.addEventListener('beforeunload', this.handler);
+
+  },
 
   methods: {
+    refresh_page:function(event){
+      window.location.reload(true)
+    },
 
     which_page:function(value){
 
@@ -54,7 +68,31 @@ export default {
     has_session_expired_function:function(){
       console.log("WHEN IS HTIS CHANGED");
       return this.$root.$data.stored_state.has_session_expired()
-    }
+    },
+
+
+    disconnect_user: function (event)  {
+          console.log(event);
+          //return "WAIT COLLOBARATE AND LISTEN";
+          var name=this.$root.$data.stored_state.state.name;
+          var password=this.$root.$data.stored_state.state.password;
+
+
+          jquery.ajax({
+              url: '/api/disconnect',
+              data: "jsonData=" + JSON.stringify({"name":name,"password":password}),
+              type: 'POST',
+              async:false,
+              success: function (response) {
+
+                var response= JSON.parse(response);
+                console.log("WE ARE STOPPED");
+                window.location.reload();
+
+              }.bind(this)
+
+          });
+      }
 
     },
   computed:{

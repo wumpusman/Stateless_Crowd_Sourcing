@@ -98,7 +98,7 @@ export default {
 
     submit_response: function ()  {
 
-          console.log(this.Has_Session_Expired());
+
           var name=this.$root.$data.stored_state.state.name;
           var password=this.$root.$data.stored_state.state.password;
           var results=this.$root.$data.stored_state.state.current_result;

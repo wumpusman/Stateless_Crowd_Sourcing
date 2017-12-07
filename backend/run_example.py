@@ -2,6 +2,66 @@ from db_connection2 import *
 from manager import Manager
 
 
+def setup_meta(session):
+
+    prompt_meta=Content_Result("Try to the best of your ability to summarize the following text as a concise statement", is_completed=True)
+    body_of_task=Content_Result()
+
+
+    body_of_task = Content_Result("miss you dude. need to fly me there Asap!!! Saw this card and thought of you. How's"
+                                  "life there now it's getting colder? not that you hate cold like I do...anyway see you soon!!!"
+                                  "Love, your most beautiful, cool, smart, outstanding, smart, sibling",
+                                  is_completed=True)
+
+
+    prompt = Content_Result(
+        "Please try to provide some ideas or suggestions on how to make this text sound like it is coming from an older"
+        " grandfather figure. The goal is to think of what are some possible ways of framing the text or concepts"
+        " discussed in the text. The context provides info as to what this text was originally about. You may also provide an explanation as to "
+        "why you think those changes would help",
+        is_completed=True)
+    context = Content_Result(
+        "This is a letter from one sibling who hasn't seen the other one in awhile. The sibling misses the other one alot. They come from a warm climate",
+        is_completed=True)
+    suggestions = Content_Result("", is_completed=True)
+
+    sub_process1_info = {"prompt": Content_Result(
+        "Rate how well you feel the SUGGESTIONS provided below could help inform someone trying to rewrite the text to sound like an older grandfather figure",
+        is_completed=True),
+        "context": context,
+        "content_to_be_requested": 3,
+        "expected_results": 1
+    }
+
+    sub_process2 = {
+        "prompt": Content_Result(
+            "Rate how well you feel the rewrite of the text sounds more like the text is coming from an older grandfather figure ",
+            is_completed=True),
+        "context": context,
+        "content_to_be_requested": 3,
+        "expected_results": 1
+    }
+
+    prompt2 = Content_Result(
+        "Rewrite the text so it sounds more like the text is coming from an older grandfather figure. This is both in terms of either the style of text "
+        " or information and facts discussed in the text. Use the context and suggestions as aid. ",
+        is_completed=True)
+    # suggestions
+    first = Process_Rewrite(body_of_task, prompt=prompt, context=context, suggestion=suggestions, expected_results=1,
+                            content_to_be_requested=3,
+                            subprocess_tuple=(Process_Rate, sub_process1_info))
+
+    # rewrite one
+    second = Process_Rewrite(body_of_task, prompt=prompt2, context=context, suggestion=first.get_final_results()[0]
+                             , expected_results=1,
+                             content_to_be_requested=3, subprocess_tuple=(Process_Rate, sub_process2))
+
+    session.add(first)
+    session.add(second)
+
+    return second
+
+
 def setup_example2(session):
     body_of_task = Content_Result("miss you dude. need to fly me there Asap!!! Saw this card and thought of you. How's"
                                   "life there now it's getting colder? not that you hate cold like I do...anyway see you soon!!!"
@@ -33,7 +93,7 @@ def setup_example2(session):
     prompt2=Content_Result("Rewrite the text so it sounds more like the text is coming from an older grandfather figure. Use the context and suggestions as aid. ",is_completed=True)
     #suggestions
     first = Process_Rewrite(body_of_task, prompt=prompt, context=context, suggestion=suggestions, expected_results=1,
-                            content_to_be_requested=3,
+                            content_to_be_requested=1,
                             subprocess_tuple=(Process_Rate, sub_process1_info))
 
 

@@ -6,6 +6,11 @@ class Manager:
         self._session_time=max_time*60
 
 
+    def unassign_content(self,relevant_content):
+        if relevant_content.is_completed==False:
+            relevant_content.associated_user = None #that user will no longer have that content associated with them
+        self.session.commit();
+
 
     def request_current_task(self,name,password):
         password = str(password)
