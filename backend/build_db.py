@@ -12,7 +12,7 @@ import run_example
 #pg_restore -h localhost -U username -W -F t -d new_database_name database_dump_file.tar
 if type(os.environ.get('DATABASE_URL')) != type(None):
      url = os.environ.get('DATABASE_URL')#urlparse.urlparse(os.environ.get('DATABASE_URL'))
-
+          #s
      print "great"
      print "URL FOUND"
      con = sqlalchemy.create_engine(url, client_encoding='utf8')
