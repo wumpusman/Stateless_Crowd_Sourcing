@@ -93,14 +93,14 @@ def setup_example2(session):
     prompt2=Content_Result("Rewrite the text so it sounds more like the text is coming from an older grandfather figure. Use the context and suggestions as aid. ",is_completed=True)
     #suggestions
     first = Process_Rewrite(body_of_task, prompt=prompt, context=context, suggestion=suggestions, expected_results=1,
-                            content_to_be_requested=1,
+                            content_to_be_requested=5,
                             subprocess_tuple=(Process_Rate, sub_process1_info))
 
 
     #rewrite one
     second = Process_Rewrite(body_of_task, prompt=prompt2, context=context, suggestion=first.get_final_results()[0]
                              , expected_results=1,
-                             content_to_be_requested=3, subprocess_tuple=(Process_Rate, sub_process2))
+                             content_to_be_requested=5, subprocess_tuple=(Process_Rate, sub_process2))
 
 
     session.add(first)
