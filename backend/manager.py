@@ -5,10 +5,25 @@ class Manager:
         self.session=session
         self._session_time=max_time*60
 
+    #I hate that i have to make this function each time someone queries the db :(
+
+    def unassign_timeout_content(self,default_timeout=10):
+        #session.query where content user_id !=None and is not completed
+        #currentTime-10 minutes
+        #
+        current_time_minus_X=datetime.timedelta(minutes=default_timeout)
+        current_time_minus_X = datetime.datetime.now() - current_time_minus_X
+
+        r=self.session.query(Content).filter(Content.user_id!=None).filter(Content.is_completed==False)
+
+        froze_process=r.filter(Content.assigned_date<current_time_minus_X).all()
+        for unused_process in froze_process:
+            self.unassign_content(unused_process)
 
     def unassign_content(self,relevant_content):
         if relevant_content.is_completed==False:
             relevant_content.associated_user = None #that user will no longer have that content associated with them
+            relevant_content.is_completed=False
         self.session.commit();
 
 
@@ -50,7 +65,6 @@ class Manager:
 
 
         content=self.assign_new_content(current_user)
-
         view_dictionary=self.prepare_view(content)
 
         return view_dictionary
@@ -75,13 +89,40 @@ class Manager:
         self.session.commit()
 
     def assign_new_content(self,user):
+
+
+        self.unassign_timeout_content()
+        ##total_seconds()
         if len(user.associated_content)>0:
             if user.associated_content[-1].is_completed==False:
                 return Exception("assigning new content when current content is not complete")
         optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
+        results= self.session.query(Process_Object).all()
+
+        result=self.session.query(Process_Rate).all()
+
+        '''
+        print len(results)
+        for i in results:
+            print i._can_assign_result(self.session)
+            if  i.parent_process == None:
+                print i._can_assign_result(self.session)
+                print i.task_parameters_obj.body_of_task.results
+                print i.task_parameters_obj.suggestion.results
+                print i.get_content_produced_by_this_process()
+                print i.is_completed
+                print i.is_locked
+                print i.get_final_results_complete(self.session).all()
+        print "GREAT"
+        '''
+        #print self.session.query(Content).filter(Content.user_id!=None).filter(Content.is_completed==False).all()
+
         if len(optional_content)==0: return None
         chosen=optional_content[0]
         chosen.associated_user=user
+        chosen.assigned_date=datetime.datetime.now()
+
+        print "YOU WERE ASSIGNED HERE!"
         self.session.add(chosen)
         self.session.commit()
         return chosen
@@ -97,7 +138,16 @@ class Manager:
         return view
     def update_global_state(self,user,results):
         session=self.session
+
+
         current=user.associated_content[-1]
+        if isinstance(current.origin_process, Process_Rewrite):
+
+            if (datetime.datetime.now() - current.assigned_date).total_seconds() < 15:
+
+                self.unassign_content(current)
+                return
+        # total_seconds()
 
         if(current.is_completed==True):
             return Exception("Content completed when it shouldn't be completed already")
@@ -105,13 +155,17 @@ class Manager:
         current.results= results["value"]
         #This is a hack :/\/\
         #TODO: This should be chagned and embedded, also the defualt for ratings should be different
+
         if isinstance(current.origin_process,Process_Rate):
+              if current.origin_process.task_parameters_obj.result.results=="":
+                  current.results="-2"
               if current.results=="" or current.results=="Enter Response Here":
 
-                current.results="3"
+                current.results="-2"
                 current.comments="User wrote nothing"
 
         current.is_completed=True
+        current.completed_date=datetime.datetime.now()
 
         #Update the process and if it has a parent any parent process
         if current.origin_process._can_assign_result(self.session):

@@ -78,7 +78,7 @@ def setup_example2(session):
         "Rate how well you feel the SUGGESTIONS provided below could help inform someone trying to rewrite the text to sound like an older grandfather figure",
         is_completed=True),
         "context": context,
-        "content_to_be_requested": 2,
+        "content_to_be_requested": 3,
         "expected_results": 1
     }
 
@@ -87,7 +87,7 @@ def setup_example2(session):
             "Rate how well you feel the rewrite of the text sounds more like the text is coming from an older grandfather figure ",
             is_completed=True),
         "context": context,
-        "content_to_be_requested": 2,
+        "content_to_be_requested": 3,
         "expected_results": 1
     }
 

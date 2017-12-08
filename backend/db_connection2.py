@@ -460,7 +460,7 @@ class Process_Rate(Process_Object):
             assume_first_one.results=str(score)
             assume_first_one.is_completed=True
             assume_first_one.is_locked=True
-            assume_first_one.completed_date=datetime.datetime.utcnow()
+            assume_first_one.completed_date=datetime.datetime.now()
 
     def prepare_view(self):
         prep_view=super(Process_Rate, self).prepare_view()
@@ -602,7 +602,7 @@ class Content(Base):
     comments=Column('comments', String) # any notes
     results=Column('results',String) #the actual content the user entered
 
-    created_date = Column(DateTime, default=datetime.datetime.utcnow)  # base this function to evaluate at run time
+    created_date = Column(DateTime, default=datetime.datetime.now)  # base this function to evaluate at run time
     assigned_date = Column(DateTime) #when was data actually assigned ot the user
     completed_date = Column(DateTime)
 
