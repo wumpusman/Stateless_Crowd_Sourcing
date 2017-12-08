@@ -38,7 +38,8 @@ else:
 
      meta.drop_all(bind=conn)  # clear everything
      Base.metadata.create_all(conn)
-
+     #
+     #
 
      session.commit()
 
