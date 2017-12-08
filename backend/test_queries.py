@@ -385,7 +385,7 @@ class Test_Queries(unittest.TestCase):
                             }
 
 
-        first=Process_Rewrite(body_of_task,prompt,context,suggestions,expected_results=1,content_to_be_requested=3,subprocess_tuple=(Process_Rate,sub_process1_info))
+        first=Process_Rewrite(body_of_task,prompt,context,suggestions,expected_results=1,content_to_be_requested=2,subprocess_tuple=(Process_Rate,sub_process1_info))
 
 
 
@@ -404,7 +404,7 @@ class Test_Queries(unittest.TestCase):
             }
 
 
-        third=Process_Text_Manipulation(second.get_final_results()[0],prompt_suggestion,context,suggestions,expected_results=1,
+        third=Process_Rewrite(second.get_final_results()[0],prompt_suggestion,context,suggestions,expected_results=1,
                                         content_to_be_requested=2,subprocess_tuple=(Process_Rate,sub_process_suggestion_info))
 
 
@@ -414,7 +414,7 @@ class Test_Queries(unittest.TestCase):
 
         import random
 
-        suggestion_mapping={User1:("I think America is great",""),User2:("I think my life isn't great tbh",5),User3:("I think things are fucking awful atm",4)}
+        suggestion_mapping={User1:("I think America is great",2),User2:("I think my life isn't great tbh",1),User3:("I think things are fucking awful atm",1)}
 
         userList=[User1,User2,User3]
         for counter in xrange(10):
@@ -427,9 +427,11 @@ class Test_Queries(unittest.TestCase):
                 chosen=optional_content[0]
                 chosen.associated_user=user
                 self.lazyAssign(chosen,suggestion_mapping[user][0],suggestion_mapping[user][1])
+
                 chosen.origin_process.assign_result(session)
 
                 if chosen.origin_process.parent_process!=None:
+
                     chosen.origin_process.parent_process.assign_result(session)
 
 

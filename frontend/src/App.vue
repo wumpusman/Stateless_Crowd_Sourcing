@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <div id="user_name_box">{{computed_name}}</div>
+
 
     <Login v-if="which_page('Login')"></Login>
     <Project v-if="which_page('Project')" :Has_Session_Expired="has_session_expired_function"></Project>
-    <Finished v-if="which_page('Finished')"></Finished>
+    <Finished v-if="which_page('Finished')" :Tasks_Completed="compute_submission_count" :Code="computed_name" ></Finished>
 
     <router-view/>
   </div>
 </template>
 
 <script>
+  //<div id="user_name_box">{{computed_name}}</div>
   import jquery from 'jquery'
   import Content_Element from './components/Content_Element.vue'
   import SuggestionList from './components/SuggestionList.vue'
@@ -105,8 +106,12 @@ export default {
     },
     computed_name:function(){
       if(this.$root.$data.stored_state.state.name !="")
-        return "User_Name/ID: "+this.$root.$data.stored_state.state.name;
+        return this.$root.$data.stored_state.state.name;
       return "";
+    },
+    compute_submission_count:function(){
+
+      return this.$root.$data.stored_state.state.amount_of_content_submitted;
     }
   }
 

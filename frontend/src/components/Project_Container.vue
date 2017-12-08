@@ -70,7 +70,7 @@ export default {
       this.$root.$data.stored_state.setTask(json_response);
       this.$root.$data.stored_state.setProjectState(json_response);
       this.$root.$data.stored_state.setInstructions(json_response);
-
+      this.$root.$data.stored_state.increment_submissions();
     },
 
 

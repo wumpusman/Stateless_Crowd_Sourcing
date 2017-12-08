@@ -66,8 +66,9 @@ def setup_example2(session):
     body_of_task = Content_Result("miss you dude. need to fly me there Asap!!! Saw this card and thought of you. How's"
                                   "life there now it's getting colder? not that you hate cold like I do...anyway see you soon!!!"
                                   "Love, your most beautiful, cool, smart, outstanding, smart, sibling", is_completed=True)
-    prompt = Content_Result("provide SUGGESTIONS on what you would change or add so the text sounded like it was coming from an older grandfather figure", is_completed=True)
-    context = Content_Result("This is a letter from one sibling who hasn't seen the other one in awhile. The sibling misses the other one alot. They come from a warm climate", is_completed=True)
+    prompt = Content_Result("What are some ways you would modify the text to make it sound like it was coming from an older Grandfather figure? For example"
+                            "ways you would change the text, or reference certain material. List your ideas below.", is_completed=True)
+    context = Content_Result("This is a letter from a grandfather who hasn't seen their child in a while. The grandfather misses the other one alot. They come from a warm climate", is_completed=True)
     suggestions = Content_Result("", is_completed=True)
 
 
@@ -90,7 +91,7 @@ def setup_example2(session):
         "expected_results": 1
     }
 
-    prompt2=Content_Result("Rewrite the text so it sounds more like the text is coming from an older grandfather figure. Use the context and suggestions as aid. ",is_completed=True)
+    prompt2=Content_Result("Rewrite the text so it sounds more like the text is coming from an older grandfather figure. Use the context and suggestions as aid in informing what you write. ",is_completed=True)
     #suggestions
     first = Process_Rewrite(body_of_task, prompt=prompt, context=context, suggestion=suggestions, expected_results=1,
                             content_to_be_requested=5,

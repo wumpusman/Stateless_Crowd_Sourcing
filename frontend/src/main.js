@@ -52,6 +52,7 @@ new Vue({
       state: {
         name: "",
         password: "",
+        amount_of_content_submitted:0,
         current_project_state: "Login",
         current_result: "Enter Response Here", //the content being entered
         current_rating: "", //the rating for the current content
@@ -89,7 +90,7 @@ new Vue({
 
             this.state.current_project_state = info["task"]["Project_State"];
 
-            
+
           }
         }
       },
@@ -115,6 +116,10 @@ new Vue({
       clear_user_feedback(){
         this.state.current_result = "";
         this.state.current_rating = "";
+      },
+      increment_submissions(){
+        var prev=this.state.amount_of_content_submitted
+        this.state.amount_of_content_submitted=prev+1;
       },
 
       has_session_expired(){ //Check if the session should be stopped

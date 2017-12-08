@@ -439,6 +439,8 @@ class Process_Rate(Process_Object):
         for j in results.index:
             occurrences = results[j]
             amount = j
+            if j=="Issue":
+                amount="-2"
             if j == 'issue':
                 amount = "-2"
 
@@ -543,6 +545,47 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
         super(Process_Rewrite, self).initialize_user_content(amount,type_of_subprocess)
 
 
+    def _can_assign_result(self, session):
+
+        tuples_of_results=self.select_data_for_analysis(session) #data associated with whatever I have available to make a decision
+
+        if len(self.get_final_results())==len(self.get_final_results_complete(session).all()): return False
+
+        if len(tuples_of_results)>=len(self.get_content_produced_by_this_process()): #do i have ALL THE data to make a decision
+            return True
+        return False
+
+    def assign_result(self, session):
+
+        if self._can_assign_result(session):
+            data = self.select_data_for_analysis(session)
+
+            data.sort(key=lambda x: float(x[1].results), reverse=True)  # best go first
+
+            best_results = []
+            for item in data:
+
+                    best_results.append(item[0])  # store the actual value, not the score
+
+            for counter in xrange(len(best_results)):
+
+                item = best_results[counter]
+
+                available_result_slots = self.get_final_results_incomplete(
+                    session).all()  # get results that are incomplete
+
+                if len(available_result_slots) == 0: break
+
+                chosen_result = available_result_slots[0]
+
+                item.is_locked = True  # Can't use anymore
+                # We foudn a result!
+                chosen_result.is_locked = True
+                chosen_result.is_completed = True
+
+                # assign the content result a value
+                chosen_result.linked_content = item
+                chosen_result.results = item.results
 
 
 class Content(Base):
