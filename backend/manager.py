@@ -15,7 +15,8 @@ class Manager:
         current_time_minus_X = datetime.datetime.now() - current_time_minus_X
 
         r=self.session.query(Content).filter(Content.user_id!=None).filter(Content.is_completed==False)
-
+        print r
+        print "YARR"
         froze_process=r.filter(Content.assigned_date<current_time_minus_X).all()
         for unused_process in froze_process:
             self.unassign_content(unused_process)
@@ -89,6 +90,8 @@ class Manager:
         self.session.commit()
 
     def assign_new_content(self,user):
+        session = self.session
+
 
 
         self.unassign_timeout_content()
