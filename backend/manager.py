@@ -15,9 +15,11 @@ class Manager:
         current_time_minus_X = datetime.datetime.now() - current_time_minus_X
 
         r=self.session.query(Content).filter(Content.user_id!=None).filter(Content.is_completed==False)
-        print r
-        print "YARR"
+
         froze_process=r.filter(Content.assigned_date<current_time_minus_X).all()
+        print current_time_minus_X
+        print froze_process
+        print "YARR"
         for unused_process in froze_process:
             self.unassign_content(unused_process)
 
