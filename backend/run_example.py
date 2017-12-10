@@ -11,7 +11,7 @@ def setup_meta(session):
                    "it tells will outlast it a million years. An awkward, feeble, leaky lie is a thing which you ought to make it your unceasing study to avoid; such a lie as that " \
                    "has no more real permanence than an average truth."
 
-    root_prompt = "Rewrite this as though it were written in modern times. You should try to keep the same number of sentences, as well " \
+    root_prompt = "Rewrite this as though it were written in contemporary english. You should try to keep the same number of sentences, as well " \
                   "as the general placement of nouns, adjectives and other parts of speech. "
 
     follow_up_prompt_suggestions = "What are some interesting contemporary issues and examples that you can think of where lying has impacted society, or you personally"
