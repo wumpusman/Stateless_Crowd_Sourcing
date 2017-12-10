@@ -414,7 +414,7 @@ class Test_Queries(unittest.TestCase):
 
         import random
 
-        suggestion_mapping={User1:("I think America is great",2),User2:("I think my life isn't great tbh",1),User3:("I think things are fucking awful atm",1)}
+        suggestion_mapping={User1:("I think America is great",4),User2:("I think my life isn't great tbh",4),User3:("I think things are fucking awful atm",4)}
 
         userList=[User1,User2,User3]
         for counter in xrange(10):

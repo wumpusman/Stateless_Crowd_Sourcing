@@ -4,62 +4,83 @@ from manager import Manager
 
 def setup_meta(session):
 
-    prompt_meta=Content_Result("Try to the best of your ability to summarize the following text as a concise statement", is_completed=True)
-    body_of_task=Content_Result()
+    root_sentence= "There is in Boston a monument of the man who discovered anesthesia; many people are aware, in these latter days, " \
+                   "that that man didn't discover it at all, but " \
+                   "stole the discovery from another man. Is this truth mighty, " \
+                   "and will it prevail? Ah no, my hearers, the monument is made of hardy material, but the lie " \
+                   "it tells will outlast it a million years. An awkward, feeble, leaky lie is a thing which you ought to make it your unceasing study to avoid; such a lie as that " \
+                   "has no more real permanence than an average truth."
+
+    root_prompt = "Rewrite this as though it were written in modern times. You should try to keep the same number of sentences, as well " \
+                  "as the general placement of nouns, adjectives and other parts of speech. "
+
+    follow_up_prompt_suggestions = "What are some interesting contemporary issues and examples that you can think of where lying has impacted society, or you personally"
 
 
-    body_of_task = Content_Result("miss you dude. need to fly me there Asap!!! Saw this card and thought of you. How's"
-                                  "life there now it's getting colder? not that you hate cold like I do...anyway see you soon!!!"
-                                  "Love, your most beautiful, cool, smart, outstanding, smart, sibling",
-                                  is_completed=True)
+    root_prompt_rate = "How well does this text sound like it was written more like in modern times, as well as the overall quality"
+
+    follow_up_prompt_suggestions_rate="Rate how well you feel the examples and issues provided are interesting?"
 
 
-    prompt = Content_Result(
-        "Please try to provide some ideas or suggestions on how to make this text sound like it is coming from an older"
-        " grandfather figure. The goal is to think of what are some possible ways of framing the text or concepts"
-        " discussed in the text. The context provides info as to what this text was originally about. You may also provide an explanation as to "
-        "why you think those changes would help",
-        is_completed=True)
-    context = Content_Result(
-        "This is a letter from one sibling who hasn't seen the other one in awhile. The sibling misses the other one alot. They come from a warm climate",
-        is_completed=True)
-    suggestions = Content_Result("", is_completed=True)
+    end_prompt="Try to rewrite the text below to make it sound better as well as incorporate the suggestions and ideas discussed on the left. Attempt to maintain " \
+               "the number of sentences, and general placement of nouns adjectives and other parts of speech.  " #do this twice
+    end_prompt_rate="Rate how well the overall text sounds as well as how well it incorporated the suggestions and ideas on the left"
 
-    sub_process1_info = {"prompt": Content_Result(
-        "Rate how well you feel the SUGGESTIONS provided below could help inform someone trying to rewrite the text to sound like an older grandfather figure",
-        is_completed=True),
-        "context": context,
-        "content_to_be_requested": 3,
-        "expected_results": 1
-    }
 
-    sub_process2 = {
-        "prompt": Content_Result(
-            "Rate how well you feel the rewrite of the text sounds more like the text is coming from an older grandfather figure ",
-            is_completed=True),
-        "context": context,
-        "content_to_be_requested": 3,
-        "expected_results": 1
-    }
 
-    prompt2 = Content_Result(
-        "Rewrite the text so it sounds more like the text is coming from an older grandfather figure. This is both in terms of either the style of text "
-        " or information and facts discussed in the text. Use the context and suggestions as aid. ",
-        is_completed=True)
-    # suggestions
-    first = Process_Rewrite(body_of_task, prompt=prompt, context=context, suggestion=suggestions, expected_results=1,
-                            content_to_be_requested=3,
-                            subprocess_tuple=(Process_Rate, sub_process1_info))
+    body_of_task=Content_Result(root_sentence,is_completed=True)
+    prompt=Content_Result(root_prompt,is_completed=True)
 
-    # rewrite one
-    second = Process_Rewrite(body_of_task, prompt=prompt2, context=context, suggestion=first.get_final_results()[0]
-                             , expected_results=1,
-                             content_to_be_requested=3, subprocess_tuple=(Process_Rate, sub_process2))
+    sub_process1_setting={"prompt":Content_Result(root_prompt_rate,is_completed=True),
+                          "expected_results":1,
+                          "content_to_be_requested":3
+                          }
 
-    session.add(first)
-    session.add(second)
+    root_process=Process_Rewrite(body_of_task=body_of_task,prompt=prompt,expected_results=1,content_to_be_requested=4,
+                                 subprocess_tuple=(Process_Rate,sub_process1_setting))
+    session.add(root_process)
 
-    return second
+    #second task
+    contemporary_issues_prompt=Content_Result(follow_up_prompt_suggestions,is_completed=True)
+    sub_process2_setting = {"prompt": Content_Result(follow_up_prompt_suggestions_rate, is_completed=True),
+                            "expected_results": 2,
+                            "content_to_be_requested": 1
+                            }
+
+
+    contemporary_issues=Process_Rewrite(prompt=contemporary_issues_prompt,expected_results=1,content_to_be_requested=4,
+                                        subprocess_tuple=(Process_Rate,sub_process2_setting))
+
+
+    final_output_prompt=Content_Result(end_prompt,is_completed=True)
+    sub_process3_setting = {"prompt": Content_Result(end_prompt_rate, is_completed=True),
+                            "expected_results": 1,
+                            "content_to_be_requested": 3,
+                            "context":contemporary_issues.get_final_results()[0]
+                            }
+
+    final_outcome_1=Process_Rewrite(prompt=final_output_prompt,body_of_task=root_process.get_final_results()[0],
+                                    context=contemporary_issues.get_final_results()[0],expected_results=1,content_to_be_requested=6,
+                                    subprocess_tuple=(Process_Rate,sub_process3_setting)
+                                    )
+
+    sub_process4_setting = {"prompt": Content_Result(end_prompt_rate, is_completed=True),
+                            "expected_results": 1,
+                            "content_to_be_requested": 3,
+                            "context": contemporary_issues.get_final_results()[0]
+                            }
+    final_outcome_2 = Process_Rewrite(prompt=final_output_prompt, body_of_task=final_outcome_1.get_final_results()[0],
+                                      context=contemporary_issues.get_final_results()[0], expected_results=4,
+                                      content_to_be_requested=1,
+                                      subprocess_tuple=(Process_Rate, sub_process4_setting)
+                                      )
+
+
+    session.add(contemporary_issues)
+    session.add(final_outcome_1)
+    session.add(final_outcome_2)
+    return final_outcome_2
+
 
 
 def setup_example2(session):
@@ -171,10 +192,11 @@ def setup_example(session):
     print manager.update_after_submitting_content(users[0][0], users[0][1], results={"value": "fuck you"})
     '''
 if __name__ == '__main__':
+
     conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
 
     meta.drop_all(bind=conn)  # clear everything
     Base.metadata.create_all(conn)
 
-    setup_example(session )
+    setup_meta(session )
     session.commit()

@@ -181,7 +181,7 @@ class Process_Object(Base):
 
 
 
-    def __init__(self,body_of_task,prompt=None,suggestion=None,context=None, displayed_result=None, expected_results=1, content_to_be_requested=3, subprocess_tuple=None):
+    def __init__(self,body_of_task=None,prompt=None,suggestion=None,context=None, displayed_result=None, expected_results=1, content_to_be_requested=3, subprocess_tuple=None):
         #displayed result is only for rating tasks, where user is reviewing a result
 
 
@@ -189,7 +189,7 @@ class Process_Object(Base):
         self.is_locked=False
         self.is_completed=False
 
-        self.task_parameters_obj=Task_Parameters(body_of_task,prompt=prompt,result=displayed_result,suggestion=suggestion,context=context,parent_process=self )
+        self.task_parameters_obj=Task_Parameters(body_of_task=body_of_task,prompt=prompt,result=displayed_result,suggestion=suggestion,context=context,parent_process=self )
         self.minimum_amount_of_content_being_requested=content_to_be_requested
 
         for i in xrange(expected_results):
@@ -379,7 +379,9 @@ class Task_Parameters(Base): #contains all the information pertinent to what a u
         if result==None:
             result=Content()
             result.is_completed=True
-
+        if body_of_task == None:
+            body_of_task = Content()
+            body_of_task.is_completed = True
 
         self.body_of_task=body_of_task
         self.prompt=prompt
@@ -549,7 +551,7 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
 
         tuples_of_results=self.select_data_for_analysis(session) #data associated with whatever I have available to make a decision
 
-        if len(self.get_final_results())==len(self.get_final_results_complete(session).all()): return False
+        if len(self.get_final_results())==len(self.get_final_results_complete(session).all()): return True
 
         if len(tuples_of_results)>=len(self.get_content_produced_by_this_process()): #do i have ALL THE data to make a decision
             return True
@@ -564,9 +566,10 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
 
             best_results = []
             for item in data:
-
+                if float(item[1].results) > 4:
                     best_results.append(item[0])  # store the actual value, not the score
-
+                elif len(data)>=len(self.get_content_produced_by_this_process()): #if we have completely filled out results
+                    best_results.append(item[0])
             for counter in xrange(len(best_results)):
 
                 item = best_results[counter]

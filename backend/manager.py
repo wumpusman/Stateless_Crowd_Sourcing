@@ -8,20 +8,16 @@ class Manager:
     #I hate that i have to make this function each time someone queries the db :(
 
     def unassign_timeout_content(self,default_timeout=10):
-        #session.query where content user_id !=None and is not completed
-        #currentTime-10 minutes
-        #
+
         current_time_minus_X=datetime.timedelta(minutes=default_timeout)
         current_time_minus_X = datetime.datetime.now() - current_time_minus_X
 
         r=self.session.query(Content).filter(Content.user_id!=None).filter(Content.is_completed==False)
 
-        froze_process=r.filter(Content.assigned_date<current_time_minus_X).all()
-        print current_time_minus_X
-        print froze_process
-        print "YARR"
-        for unused_process in froze_process:
-            self.unassign_content(unused_process)
+        content_not_completed_yet=r.filter(Content.assigned_date<current_time_minus_X).all()
+
+        for non_completed in content_not_completed_yet:
+            self.unassign_content(non_completed)
 
     def unassign_content(self,relevant_content):
         if relevant_content.is_completed==False:
@@ -95,6 +91,8 @@ class Manager:
         session = self.session
 
 
+        all_rating=session.query(Process_Rate).all()
+
 
         self.unassign_timeout_content()
         ##total_seconds()
@@ -127,7 +125,6 @@ class Manager:
         chosen.associated_user=user
         chosen.assigned_date=datetime.datetime.now()
 
-        print "YOU WERE ASSIGNED HERE!"
         self.session.add(chosen)
         self.session.commit()
         return chosen
@@ -149,7 +146,7 @@ class Manager:
         if isinstance(current.origin_process, Process_Rewrite):
 
             if (datetime.datetime.now() - current.assigned_date).total_seconds() < 15:
-
+                print "THIS SHOULD NEVER BE CALLED"
                 self.unassign_content(current)
                 return
         # total_seconds()
