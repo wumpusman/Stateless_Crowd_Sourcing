@@ -22,15 +22,14 @@
       props:['Is_Modifiable'],
       data: function() {
         return {
-            selectedValue: "None",
-            mapping:this.$root.$data.stored_state.state.current_rating
+            selectedValue: this.$root.$data.stored_state.state.result
         }
       },
       methods: {
         changeValue: function(newValue) {
-            this.selectedValue = newValue; //set it locally and pass it to the store
-               this.$root.$data.stored_state.set_rating(newValue);
-               this.$root.$data.stored_state.set_result(newValue);
+
+           this.$root.$data.stored_state.set_rating(newValue);
+           this.$root.$data.stored_state.set_result(newValue);
 
         }
 

@@ -85,7 +85,10 @@ export default {
     },
 
     set_page_from_server:function(value){
-      if("task" in value){
+      this.current_page="";
+      this.current_page="Instruction";
+
+      /*if("task" in value){
         if("Type" in value["task"]){
           var new_task_type=value["task"]["Type"];
           if (new_task_type!=this.last_task_type){
@@ -93,7 +96,7 @@ export default {
             this.last_task_type=new_task_type;
           }
         }
-      }
+      } */
     },
 
     submit_response: function ()  {

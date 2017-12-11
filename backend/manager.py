@@ -3,7 +3,7 @@ class Manager:
     def __init__(self,session,max_time=7):
         # type: (object, object) -> object
         self.session=session
-        self._session_time=max_time*60
+        self._session_time=max_time*60 #convert from minutes to seconds
 
     #I hate that i have to make this function each time someone queries the db :(
 
@@ -158,7 +158,7 @@ class Manager:
         current=user.associated_content[-1]
         if isinstance(current.origin_process, Process_Rewrite):
 
-            if (datetime.datetime.now() - current.assigned_date).total_seconds() < .001:
+            if (datetime.datetime.now() - current.assigned_date).total_seconds() < 15:
                 print "THIS SHOULD NEVER BE CALLED"
                 self.unassign_content(current)
                 return

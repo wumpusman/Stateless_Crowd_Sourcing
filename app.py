@@ -53,6 +53,8 @@ def submit():
     result=userData["results"]
     session_expired=False
 
+    print result
+    print "THE RESULT IS HERE"
     if "session_expired" in userData:
         session_expired = userData["session_expired"]
 
@@ -60,6 +62,7 @@ def submit():
     user = manager.select_user(userData["name"], userData["password"])
 
     assigned_content = user.associated_content[-1]
+
     if assigned_content != None:
         print assigned_content.origin_process
         print assigned_content.origin_process.id

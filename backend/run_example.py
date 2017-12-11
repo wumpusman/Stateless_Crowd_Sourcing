@@ -17,7 +17,7 @@ def setup_loop_again(session):
         body_of_task = Content_Result(root_sentence, is_completed=True)
         prompt = Content_Result(root_prompt, is_completed=True)
         context=Content_Result(root_context,is_completed=True)
-        sub_process1_setting = {"prompt":prompt, "context":context,
+        sub_process1_setting = {"prompt":Content_Result(root_prompt_rate,is_completed=True), "context":context,
                                 "expected_results": 1,
                                 "content_to_be_requested": 3
                                 }

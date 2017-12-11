@@ -116,6 +116,8 @@ new Vue({
       clear_user_feedback(){
         this.state.current_result = "";
         this.state.current_rating = "";
+        console.log("THE USER INPUT HAS CHANGE IT SHOULD BE UPDATED EVERYWHERE")
+        console.log(this.state.current_result);
       },
       increment_submissions(){
         var prev=this.state.amount_of_content_submitted
