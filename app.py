@@ -56,6 +56,7 @@ def submit():
     if "session_expired" in userData:
         session_expired = userData["session_expired"]
 
+
     user = manager.select_user(userData["name"], userData["password"])
 
     assigned_content = user.associated_content[-1]

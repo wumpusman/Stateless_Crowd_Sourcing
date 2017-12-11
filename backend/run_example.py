@@ -1,6 +1,34 @@
 from db_connection2 import *
 from manager import Manager
 
+def setup_loop_again(session):
+        root_sentence= "In Boston, there's a monument for the man who was the owner of one of the largest film production companies ever. In truth, " \
+                       "he wasn't really the most amazing producer at all. He stole innocence and virtue from many women. While the man's monument still " \
+                       "stands, how many people today know that these women were traumatized? Unfortunately, the monument is made from materials that last, " \
+                       "and the lie has stood the test of time. This example shows you have to be vigilant with regards to the truth, especially when the lie " \
+                       "itself is weak. These weak lies won't last more than the average truths"
+
+        root_prompt="Rewrite this text to improve the general flow and feel of text as though it were a speech. Make sure that to incorporate the ideas on the bottom left." \
+                    "Try to maintain the general structure, and sentence length"
+
+        root_prompt_rate="Rate how well does the text below sound better than it's source material above. Also account for how well it incorporates the ideas and suggestions on the left"
+        root_context="Men in power sexually assaulting women"
+
+        body_of_task = Content_Result(root_sentence, is_completed=True)
+        prompt = Content_Result(root_prompt, is_completed=True)
+        context=Content_Result(root_context,is_completed=True)
+        sub_process1_setting = {"prompt":prompt, "context":context,
+                                "expected_results": 1,
+                                "content_to_be_requested": 3
+                                }
+
+        root_process = Process_Rewrite(body_of_task=body_of_task, prompt=prompt, context=context,expected_results=1,
+                                       content_to_be_requested=4,
+                                       subprocess_tuple=(Process_Rate, sub_process1_setting))
+
+
+        session.add(root_process)
+
 
 def setup_meta(session):
 

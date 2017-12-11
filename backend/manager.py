@@ -94,28 +94,41 @@ class Manager:
         all_rating=session.query(Process_Rate).all()
 
 
-        self.unassign_timeout_content()
+        #self.unassign_timeout_content()
         ##total_seconds()
         if len(user.associated_content)>0:
             if user.associated_content[-1].is_completed==False:
                 return Exception("assigning new content when current content is not complete")
         optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
+
+
         results= self.session.query(Process_Object).all()
 
-        result=self.session.query(Process_Rate).all()
+        #result=self.session.query(Process_Rate).all()
 
         '''
         print len(results)
         for i in results:
-            print i._can_assign_result(self.session)
+
             if  i.parent_process == None:
                 print i._can_assign_result(self.session)
+                print i.task_parameters_obj.prompt.results
                 print i.task_parameters_obj.body_of_task.results
-                print i.task_parameters_obj.suggestion.results
-                print i.get_content_produced_by_this_process()
-                print i.is_completed
-                print i.is_locked
-                print i.get_final_results_complete(self.session).all()
+                print str(i.get_content_produced_by_this_process()) + "CONTENT GENERATED FROM THIS PROCESS"
+                print str(i.is_completed) + "is completed"
+                print str(i.is_locked) + "is locked"
+                print str(i.get_final_results_complete(self.session).all()[0]) + " Chosen element"
+
+                chosen_one=i.get_final_results_complete(self.session).all()[0].linked_content_id
+
+
+            else:
+                print "score of a given result associated with the given prompt"
+                print i.parent_process.task_parameters_obj.prompt.results
+                print i.task_parameters_obj.result.results
+                print str(i.get_content_produced_by_this_process())
+                print str(i.get_final_results_complete(self.session).all()[0]) + " Chosen element"
+
         print "GREAT"
         '''
         #print self.session.query(Content).filter(Content.user_id!=None).filter(Content.is_completed==False).all()
@@ -145,7 +158,7 @@ class Manager:
         current=user.associated_content[-1]
         if isinstance(current.origin_process, Process_Rewrite):
 
-            if (datetime.datetime.now() - current.assigned_date).total_seconds() < 15:
+            if (datetime.datetime.now() - current.assigned_date).total_seconds() < .001:
                 print "THIS SHOULD NEVER BE CALLED"
                 self.unassign_content(current)
                 return
