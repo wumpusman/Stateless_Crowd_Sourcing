@@ -28,7 +28,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      Base.metadata.create_all(con)
      the_session.commit()
 
-
+          #
      run_example.setup_multiple_tasks(the_session)
      the_session.commit()
      print the_session.query(Content).all()
