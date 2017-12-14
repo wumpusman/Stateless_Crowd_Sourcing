@@ -8,7 +8,10 @@ const routerOptions = [
   { path: '/Instruction', component: 'Instruction' },
   {path:'/Login',component:"Login"},
   {path:'/Finished',component:"Finished"},
-  {path:'/Content_Element',component:"Content_Element"}
+  {path:'/Content_Element',component:"Content_Element"},
+  {path:'/Show_Results',component:"Show_Results"},
+  {path:'/System_Container',component:"System_Container"}
+   //#console.log(window.location.href);
 ]
 
 const routes = routerOptions.map(route => {

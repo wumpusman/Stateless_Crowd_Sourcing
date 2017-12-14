@@ -63,6 +63,18 @@ class User (Base):
 
     associated_content =relationship("Content", backref="associated_user",foreign_keys="Content.user_id")
 
+
+    def get_current_content_in_progress(self,session):
+
+       query=self.get_all_user_assigned_content(session)
+       query=query.filter(Content.is_completed==False).all()
+       if len(query)>1:
+           raise Exception("Get Current Content Have multiple incomplete content associated with this elemtn ")
+       elif len(query)==0:
+           return None
+       else:
+           return query[0]
+
     def get_all_user_assigned_content(self,session):
         return session.query(Content).filter(Content.user_id  == self.name)
 
@@ -540,6 +552,7 @@ class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some ratin
         task_view=super(Process_Text_Manipulation, self).prepare_view()
         task_view["Type"] = "Rewrite"
         return task_view
+
 class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the subprocesses
     __mapper_args__ = {'polymorphic_identity': 'process_rewrite'}
 

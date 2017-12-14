@@ -1,10 +1,11 @@
 from db_connection2 import *
-class Manager:
+class Manager(object):
     def __init__(self,session,max_time=7):
         # type: (object, object) -> object
         self.session=session
         self._session_time=max_time*60 #convert from minutes to seconds
-
+        self._minimum_work_time=20 #seconds
+        self._task_timeout_max=10 #This is in MINUTES
     #I hate that i have to make this function each time someone queries the db :(
 
     def unassign_timeout_content(self,default_timeout=10):
@@ -35,7 +36,7 @@ class Manager:
 
         if len(current_user.associated_content)==0: return self.prepare_view(None)
 
-        return self.prepare_view(current_user.associated_content[-1])
+        return self.prepare_view(current_user.get_current_content_in_progress(session))
 
     def update_model(self,name,password,results):
         password=str(password)
@@ -94,53 +95,77 @@ class Manager:
         all_rating=session.query(Process_Rate).all()
 
 
-        #self.unassign_timeout_content()
+        self.unassign_timeout_content(self._task_timeout_max)
         ##total_seconds()
         if len(user.associated_content)>0:
-            if user.associated_content[-1].is_completed==False:
+            if user.get_current_content_in_progress(session)!=None:
                 return Exception("assigning new content when current content is not complete")
         optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
 
 
         results= self.session.query(Process_Object).all()
 
-        #result=self.session.query(Process_Rate).all()
 
-        '''
-        print len(results)
-        for i in results:
-
-            if  i.parent_process == None:
-                print i._can_assign_result(self.session)
-                print i.task_parameters_obj.prompt.results
-                print i.task_parameters_obj.body_of_task.results
-                print str(i.get_content_produced_by_this_process()) + "CONTENT GENERATED FROM THIS PROCESS"
-                print str(i.is_completed) + "is completed"
-                print str(i.is_locked) + "is locked"
-                print str(i.get_final_results_complete(self.session).all()[0]) + " Chosen element"
-
-                chosen_one=i.get_final_results_complete(self.session).all()[0].linked_content_id
-
-
-            else:
-                print "score of a given result associated with the given prompt"
-                print i.parent_process.task_parameters_obj.prompt.results
-                print i.task_parameters_obj.result.results
-                print str(i.get_content_produced_by_this_process())
-                print str(i.get_final_results_complete(self.session).all()[0]) + " Chosen element"
-
-        print "GREAT"
-        '''
-        #print self.session.query(Content).filter(Content.user_id!=None).filter(Content.is_completed==False).all()
 
         if len(optional_content)==0: return None
         chosen=optional_content[0]
         chosen.associated_user=user
         chosen.assigned_date=datetime.datetime.now()
 
+
         self.session.add(chosen)
+
         self.session.commit()
+
+        print user.name
+        print user.associated_content
+        print "THIS IS LINKED TO THIS USER"
         return chosen
+
+    def prepare_results(self,id):
+
+        session = self.session
+        if id ==-1:
+            id = session.query(Process_Text_Manipulation.id).all()[0][0]
+
+
+
+        main_query=session.query (Process_Text_Manipulation).filter(Process_Text_Manipulation.id==id)
+        single_process=main_query.all()[0]
+
+
+        id=single_process.id
+        user_input=[c.results for c in single_process.get_content_produced_by_this_process()]
+        prompt=single_process.task_parameters_obj.prompt.results
+        body=single_process.task_parameters_obj.body_of_task.results
+        is_finished=single_process.is_locked;
+        result_text = single_process.get_final_results()[0].results
+
+        get_all_processes=session.query(Process_Text_Manipulation).all()
+
+        processes_and_state=[{"is_locked":process.is_locked,"process_id":process.id } for process in get_all_processes]
+
+        #Select All Rewrite processes
+        #select All processes where ID > Previous
+        #select first
+        ''''
+                  this.prompt=data["prompt"];
+              this.result=data["result"];
+              this.body=data["body"];
+              this.user_inputs=data["user_input"];
+              this.is_finished=data["is_finished"];
+              this.process_id=data["process_id"];
+
+        '''
+        results={}
+        results["processes_state"]=processes_and_state
+        results["prompt"]=prompt
+        results["user_input"]=user_input
+        results["is_finished"]=is_finished
+        results["process_id"]=id
+        results["body"]=body
+        results["result"]=result_text
+        return results
 
     def prepare_view(self,content): #calls content that created it, view state
         if type(content)==type(None):
@@ -154,16 +179,19 @@ class Manager:
     def update_global_state(self,user,results):
         session=self.session
 
+        current=user.get_current_content_in_progress(session)
+        #Todo: This is sort of telling the system if person barely wrote anything to ignore it, need a better place to hold this code
+        print current.origin_process
 
-        current=user.associated_content[-1]
         if isinstance(current.origin_process, Process_Rewrite):
 
-            if (datetime.datetime.now() - current.assigned_date).total_seconds() < 15:
-                print "THIS SHOULD NEVER BE CALLED"
+            print (datetime.datetime.now() - current.assigned_date).total_seconds()
+            if (datetime.datetime.now() - current.assigned_date).total_seconds() < self._minimum_work_time:
+
                 self.unassign_content(current)
                 return
         # total_seconds()
-
+        print "MADE IT HERE AS WELL!!"
         if(current.is_completed==True):
             return Exception("Content completed when it shouldn't be completed already")
 
@@ -179,10 +207,17 @@ class Manager:
                 current.results="-2"
                 current.comments="User wrote nothing"
 
+        print "AND HERE"
+        #ToDO:ANother HACK
+        if current.results.replace(" ","") =="": #If user wrote nothign
+
+            self.unassign_content(current)
+            return
+
         current.is_completed=True
         current.completed_date=datetime.datetime.now()
 
-        #Update the process and if it has a parent any parent process
+        #Update the process and if it has a parent  process
         if current.origin_process._can_assign_result(self.session):
             current.origin_process.assign_result(session)
             if current.origin_process.parent_process!=None and  current.origin_process.parent_process._can_assign_result(self.session):

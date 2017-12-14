@@ -6,7 +6,7 @@
     <div class="Prompt_Box">
 
 
-         <b>Prompt: </b> <i> {{computed_prompt}}. </u> </i>
+         <h3>Prompt:  {{computed_prompt}}  </h3>
 
     </div>
 
@@ -64,10 +64,11 @@ export default {
     },
 
     computed_prompt:function(){
+
       if (typeof this.Prompt =='undefined') {
         return this.example_prompt;
       }
-        return this.Prompt
+        return this.Prompt;
     },
 
     computed_task_type:function(){
@@ -110,6 +111,9 @@ export default {
 <style>
   .Prompt_Box {
     margin-bottom: 10px;
+    padding-top: 30px ;
+    text-underline-position:under;
+    text-decoration:underline;
   }
 
 </style>

@@ -18,17 +18,31 @@ manager =None
 conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #temp2
 #meta.drop_all(bind=conn)  # clear everything
 #Base.metadata.create_all(conn)
-manager = Manager(session,max_time=5) #in minutes
+manager = Manager(session,max_time=6.5) #in minutes
 
-@app.route('/')
-def index():
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
     return render_template("index.html")
 
 
 
-@app.route('/Dashboard')
+
+@app.route('/api/get_results',methods=["POST"])
 def dashboard():
-    return render_template("dashboard.html")
+    '''
+
+
+    :return:
+    '''
+    userData = request.form['jsonData'];
+    userData = json.loads(userData)
+    print userData
+
+    results= manager.prepare_results(userData["id"])
+    return json.dumps({"results":results})
+
+
 @app.route('/api/disconnect',methods=['POST'])
 def disconnect():
     userData = request.form['jsonData'];
@@ -57,19 +71,15 @@ def submit():
     print "THE RESULT IS HERE"
     if "session_expired" in userData:
         session_expired = userData["session_expired"]
-
+        print "IS THIS CALLED"
 
     user = manager.select_user(userData["name"], userData["password"])
 
     assigned_content = user.associated_content[-1]
 
-    if assigned_content != None:
-        print assigned_content.origin_process
-        print assigned_content.origin_process.id
-        print assigned_content.origin_process.task_parameters_obj.body_of_task.id
-        print assigned_content.origin_process.task_parameters_obj.body_of_task.results
 
     if user==None: return json.dumps(manager.prepare_view(None))
+    print "MADE IT HERE AS WELL"
     manager.update_global_state(user, {"value": result}) #This is where the magic happens
 
     if session_expired == False:

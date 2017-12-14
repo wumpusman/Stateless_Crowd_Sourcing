@@ -50,7 +50,9 @@ export default {
     }
   },
   mounted:function(){
-     this._show_everything_but_login();
+
+
+    this._show_everything_but_login();
     this.password=this.random_code;
     this.name=this.random_code;
     this.submit();

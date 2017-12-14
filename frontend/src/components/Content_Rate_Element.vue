@@ -23,7 +23,7 @@
 
       </div>
       <div id="user_input"    >
-          <div><b><u>{{computed_example_text}} Content To Be Evaluated Below</u></b></div>
+          <div><b><u>{{computed_example_text}} Content To Be Evaluated </u></b></div>
 
 
 

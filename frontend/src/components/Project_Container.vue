@@ -140,7 +140,6 @@ export default {
 
       computed_task:function(){
 
-
         return this.$root.$data.stored_state.state.current_task['task'];
       },
 
@@ -149,7 +148,7 @@ export default {
           console.log(all_info);
 
           if (prompt in all_info["task"]){
-            return all_info["task"]["prompt"];
+            return all_info["task"]["Prompt"];
           }
           return null;
 

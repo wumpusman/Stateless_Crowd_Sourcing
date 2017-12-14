@@ -1,6 +1,263 @@
 from db_connection2 import *
 from manager import Manager
 
+
+def setup_business_advice(session):
+
+
+    default_rewrite_amount = 1
+    default_sub_process_amount = 3
+
+    root_body="I work for a small business that provides home health care. As you can imagine, I depend on my vehicle to get to my clients' homes." \
+              "My care recently broke down and is goign to cost me about $600. I've turned everywhere. The bank, credit cards, installment loans, family" \
+              "friends, etc. all have been denied. I have nowhere else to turn and I'm running out of options and money. I'm depending on my friend's" \
+              "car to get to work but that option is running low as well. Am I in a position to ask my manager (owner of the company) for an advance to help" \
+              "me pay for the repairs"
+    root_prompt = "To the best of your ability summarize what the situation and problem this person is having."
+
+    followup_prompt = "Write some advice with a bit of detail for what the person should do"
+
+    followup_prompt2="Rewrite the the following text to incorporate the ideas and content shown in the 'context' bar. Try to keep the style and flow of the text as best, but it should sound coherent and use the information in 'context'"
+    followup_body2="if you're the one person with a job that signals that you start with , then you should be able to do all done well"
+
+
+    root_prompt_rate = "Rate how well the meaning of the text was captured"
+    prompt_followup_rate = "Rate how well the text handles the issue or question"
+    prompt_followup2_rate = "Rate how well the the text incorporates the style of the text below and the content of 'context'"
+
+
+
+
+
+    cr_root_prompt = Content_Result(root_prompt, is_completed=True)
+    cr_root_body = Content_Result(root_body, is_completed=True)
+
+    cr_followup_prompt = Content_Result(followup_prompt, is_completed=True)
+    cr_followup_prompt2 = Content_Result(followup_prompt2, is_completed=True)
+    cr_followup_body2=Content_Result(followup_body2,is_completed=True)
+
+    sub_root_process = {"prompt": Content_Result(root_prompt_rate, is_completed=True),
+                        "expected_results": 1,
+                        "content_to_be_requested": default_sub_process_amount}
+
+
+    root_process = Process_Rewrite(body_of_task=cr_root_body, prompt=cr_root_prompt,
+                                   expected_results=1,
+                                   content_to_be_requested=4,
+                                   subprocess_tuple=(Process_Rate, sub_root_process)
+                                   )
+
+    sub_f_process = {"prompt": Content_Result(prompt_followup_rate, is_completed=True),
+                     "expected_results": 1,
+                     "content_to_be_requested": default_sub_process_amount}
+
+    followup_process = Process_Rewrite(body_of_task=root_process.get_final_results()[0],
+                                       prompt=cr_followup_prompt,
+                                       expected_results=1,
+                                       content_to_be_requested=4,
+                                       subprocess_tuple=(Process_Rate, sub_f_process))
+
+    sub_f2_process = {"prompt": Content_Result(prompt_followup2_rate, is_completed=True),
+                      "expected_results": 1,
+                      "context": followup_process.get_final_results()[0],
+                      "content_to_be_requested": default_sub_process_amount}
+
+    followup_process2 = Process_Rewrite(body_of_task=cr_followup_body2,
+                                        context=followup_process.get_final_results()[0], prompt=cr_followup_prompt2,
+                                        expected_results=1,
+                                        content_to_be_requested=4,
+                                        subprocess_tuple=(Process_Rate, sub_f2_process)
+                                        )
+
+    session.add(root_process)
+    session.add(followup_process)
+    session.add(followup_process2)
+
+def setup_life_advice(session):
+    '''
+      My 'adult' 23-year-old son is home for the holidays. He leads a more liberal lifestyle than my husband and me, and suffice it to say not only do our politics not match up, but neither do our hygiene practices. To be blunt, his body order is killing us! I didn't raise him this way and I absolutely can't stand it. I just can't embrace not showering daily and not using a daily dose of antiperspirant. How do you address an awkward and difficult topic with a person who is also awkward and difficult?
+
+      List a couple (3-4 ideas) as to how handle answering this question in a way that is considerate and sensitive, but also deals with the problem. Provide an explanation as to how they would help.
+
+     Using the suggestions and ideas on the left, write a response to the problem above attempting to be sensitive and sincere to the issue.
+
+     Try to keep the style (but not the content), and incorporate the ideas and content described on the left to the best of your ability.
+     '''
+
+    root_prompt = "List a couple (3-4 ideas) as to how to answer this in a way that is also considerate and sensitive, provide a brief explanation as to how they would help."
+
+
+    root_body = "My 'adult' 23-year-old son is home for the holidays. He leads a more liberal lifestyle than my husband and me, and suffice it to say not only do our politics not match up, but neither do our hygiene practices. " \
+                "To be blunt, his body order is killing us! " \
+                "I didn't raise him this way and I absolutely can't stand it. " \
+                "I just can't embrace not showering daily and not using a daily dose of antiperspirant. " \
+                "How do you address an awkward and difficult topic with a person who is also awkward, sensitive and difficult?"
+
+    followup_prompt = "Using the suggestions and ideas on the left, write a response to the problem above attempting to be sensitive and sincere to the issue."
+
+    followup_prompt2 = "Using the suggestions and context on the left, rewrite the text below to incorporate that content (keep the style of this letter but make the content fit the suggestions and CONTEXT on the left)"
+    followup_body2="This year, you grew to be taller than me. I didn't know that would happen so soon. " \
+                   "I have such mixed feelings about the man you are becoming. I am so proud of you for being smart and loving and courageous. " \
+                   "But I'm not ready for you to be so grown up already." \
+                   " I see the little boys wearing clothes that you wore not so long ago and I remember you as a small child. "
+
+    default_rewrite_amount = 1
+    default_sub_process_amount =3
+
+    cr_root_prompt = Content_Result(root_prompt, is_completed=True)
+    cr_root_body = Content_Result(root_body, is_completed=True)
+
+    cr_followup_prompt = Content_Result(followup_prompt, is_completed=True)
+    cr_followup_prompt2 = Content_Result(followup_prompt2, is_completed=True)
+    cr_followup_body2=Content_Result(followup_body2,is_completed=True)
+    # body_of_task=None,prompt=None,suggestion=None,context=None, displayed_result=None, expected_results=1, content_to_be_requested=3, subprocess_tuple=None
+
+    root_prompt_rate = "Rate how well the ideas listed below would improve the content"
+    prompt_followup_rate = "Rate how well the text below improves and expands the content. Uses the suggestions and context to help inform you"
+    prompt_followup2_rate = "Rate how well the the text below better matches the suggestions and concepts written and described on the left"
+
+
+
+
+
+    sub_root_process = {"prompt": Content_Result(root_prompt_rate, is_completed=True),
+                        "expected_results": 1,
+                        "content_to_be_requested": default_sub_process_amount}
+    root_process = Process_Rewrite(body_of_task=cr_root_body, prompt=cr_root_prompt,
+                                   expected_results=1,
+                                   content_to_be_requested=4,
+                                   subprocess_tuple=(Process_Rate, sub_root_process)
+                                   )
+
+    sub_f_process = {"prompt": Content_Result(prompt_followup_rate, is_completed=True),
+                     "expected_results": 1,
+                     "suggestion":root_process.get_final_results()[0],
+                     "content_to_be_requested": default_sub_process_amount}
+    followup_process = Process_Rewrite(body_of_task=cr_root_body, suggestion=root_process.get_final_results()[0],
+                                       prompt=cr_followup_prompt,
+                                       expected_results=1,
+                                       content_to_be_requested=4,
+                                       subprocess_tuple=(Process_Rate, sub_f_process))
+
+
+    sub_f2_process = {"prompt": Content_Result(prompt_followup2_rate, is_completed=True),
+                      "expected_results": 1,
+                      "context":followup_process.get_final_results()[0],
+                      "suggestion":root_process.get_final_results()[0],
+                      "content_to_be_requested": default_sub_process_amount}
+
+    followup_process2 = Process_Rewrite(body_of_task=cr_followup_body2,suggestion=root_process.get_final_results()[0], context=followup_process.get_final_results()[0], prompt=cr_followup_prompt2,
+                                        expected_results=1,
+                                        content_to_be_requested=4,
+                                        subprocess_tuple=(Process_Rate, sub_f2_process)
+                                        )
+
+
+    session.add(root_process)
+    session.add(followup_process)
+    session.add(followup_process2)
+    session.commit()
+def setup_multiple_tasks(session):
+        setup_business_advice(session)
+        setup_life_advice(session)
+
+
+        root_prompt="List 3 or 4 ideas and suggestions that one could add, edit or change to make this a better happy birthday letter. My dad wrote an incredibly short disheartening " \
+                    "letter and I was wondering of any ideas how he could have improved it "
+        root_body="sorry about that so Happy 30th. No longer a millennial and what does it make you. love, dad "
+        root_context="I just turned 30 and was feeling pretty existential, in response my dad forgot my birthday and wrote this incredibly short letter/card."
+
+        followup_prompt="Using the ideas on the left, try to extend and improve this  birthday letter. Basically use the ideas on the left to help make this a longer, better " \
+                        "and sweeter card. My dad wrote a very meh birthday letter "
+
+        followup_prompt2="List 3 or 4 ideas and suggestions to improve, edit, and expand this birthday card my dad wrote to make it sound better "
+
+        followup_prompt3=""+followup_prompt
+
+        default_rewrite_amount = 1
+        default_sub_process_amount = 3
+
+        cr_root_prompt = Content_Result(root_prompt, is_completed=True)
+        cr_root_body=Content_Result(root_body,is_completed=True)
+        cr_root_context= Content_Result(root_context, is_completed=True)
+        cr_followup_prompt = Content_Result(followup_prompt, is_completed=True)
+        cr_followup_prompt2= Content_Result(followup_prompt2, is_completed=True)
+        cr_followup_prompt3 = Content_Result(followup_prompt3, is_completed=True)
+        #body_of_task=None,prompt=None,suggestion=None,context=None, displayed_result=None, expected_results=1, content_to_be_requested=3, subprocess_tuple=None
+
+        root_prompt_rate="Rate how well the ideas listed below would improve the content"
+        prompt_followup_rate="Rate how well the text below improves and expands the content. Uses the suggestions and context to help inform you"
+        prompt_followup2_rate="Rate how well the ideas listed below would improve the content"
+        prompt_followup3_rate="Rate how well the text below improves and expands the content. Uses the suggestions and context to help inform you"
+
+        sub_root_process={"prompt":Content_Result(root_prompt_rate,is_completed=True),
+                          "context":cr_root_context,
+                          "expected_results":1,
+                          "content_to_be_requested":default_sub_process_amount}
+        sub_f_process={"prompt":Content_Result(prompt_followup_rate,is_completed=True),
+                          "context":cr_root_context,
+                          "expected_results":1,
+                          "content_to_be_requested":default_sub_process_amount}
+        sub_f2_process={"prompt":Content_Result(prompt_followup2_rate,is_completed=True),
+                          "context":cr_root_context,
+                          "expected_results":1,
+                          "content_to_be_requested":default_sub_process_amount}
+        sub_f3_process={"prompt":Content_Result(prompt_followup3_rate,is_completed=True),
+                          "context":cr_root_context,
+                          "expected_results":1,
+                          "content_to_be_requested":default_sub_process_amount}
+
+
+        root_process=Process_Rewrite(body_of_task=cr_root_body,context=cr_root_context,prompt=cr_root_prompt,expected_results=1,
+                                     content_to_be_requested=1,
+                                     subprocess_tuple=(Process_Rate,sub_root_process)
+                                     )
+        followup_process=Process_Rewrite(body_of_task=cr_root_body,suggestion=root_process.get_final_results()[0],context=cr_root_context,prompt=cr_followup_prompt,
+                                         expected_results=1,
+                                         content_to_be_requested=4,
+                                         subprocess_tuple=(Process_Rate,sub_f_process))
+
+        followup_process2=Process_Rewrite(body_of_task=followup_process.get_final_results()[0],prompt=cr_followup_prompt2,
+                                          expected_results=1,
+                                          content_to_be_requested=4,
+                                          subprocess_tuple=(Process_Rate,sub_f2_process)
+                                          )
+        followup_process3=Process_Rewrite(body_of_task=followup_process.get_final_results()[0],suggestion=followup_process2.get_final_results()[0],prompt=cr_followup_prompt3,
+                                          expected_results=1,
+                                          content_to_be_requested=4,
+                                          subprocess_tuple=(Process_Rate, sub_f3_process)
+                                          )
+
+
+
+
+        #OTher TASK
+        '''
+         My 'adult' 23-year-old son is home for the holidays. He leads a more liberal lifestyle than my husband and me, and suffice it to say not only do our politics not match up, but neither do our hygiene practices. To be blunt, his body order is killing us! I didn't raise him this way and I absolutely can't stand it. I just can't embrace not showering daily and not using a daily dose of antiperspirant. How do you address an awkward and difficult topic with a person who is also awkward and difficult?
+
+         List a couple (3-4 ideas) as to how handle answering this question in a way that is considerate and sensitive, but also deals with the problem. Provide an explanation as to how they would help.
+
+        Using the suggestions and ideas on the left, write a response to the problem above attempting to be sensitive and sincere to the issue.
+
+        Try to keep the style (but not the content), and incorporate the ideas and content described on the left to the best of your ability.
+        '''
+
+
+
+        #Tell your son, "We love having you home. But you've got to wash yourself --
+        #  and your clothes -- while you're here. Let me show you how to use the washer, and let's put in a load."
+
+
+
+
+
+
+        session.add(root_process)
+        session.add(followup_process)
+        session.add(followup_process2)
+        session.add(followup_process3)
+
+
 def setup_loop_again(session):
         root_sentence= "In Boston, there's a monument for the man who was the owner of one of the largest film production companies ever. In truth, " \
                        "he wasn't really the most amazing producer at all. He stole innocence and virtue from many women. While the man's monument still " \
@@ -54,6 +311,8 @@ def setup_meta(session):
                "the number of sentences, and general placement of nouns adjectives and other parts of speech.  " #do this twice
     end_prompt_rate="Rate how well the overall text sounds as well as how well it incorporated the suggestions and ideas on the left"
 
+    default_rewrite_amount=1
+    default_sub_process_amount=1
 
 
     body_of_task=Content_Result(root_sentence,is_completed=True)
@@ -61,45 +320,45 @@ def setup_meta(session):
 
     sub_process1_setting={"prompt":Content_Result(root_prompt_rate,is_completed=True),
                           "expected_results":1,
-                          "content_to_be_requested":3
+                          "content_to_be_requested":default_sub_process_amount
                           }
 
-    root_process=Process_Rewrite(body_of_task=body_of_task,prompt=prompt,expected_results=1,content_to_be_requested=4,
+    root_process=Process_Rewrite(body_of_task=body_of_task,prompt=prompt,expected_results=1,content_to_be_requested=1,
                                  subprocess_tuple=(Process_Rate,sub_process1_setting))
     session.add(root_process)
 
     #second task
     contemporary_issues_prompt=Content_Result(follow_up_prompt_suggestions,is_completed=True)
     sub_process2_setting = {"prompt": Content_Result(follow_up_prompt_suggestions_rate, is_completed=True),
-                            "expected_results": 2,
-                            "content_to_be_requested": 1
+                            "expected_results": 1,
+                            "content_to_be_requested": default_sub_process_amount
                             }
 
 
-    contemporary_issues=Process_Rewrite(prompt=contemporary_issues_prompt,expected_results=1,content_to_be_requested=4,
+    contemporary_issues=Process_Rewrite(prompt=contemporary_issues_prompt,expected_results=1,content_to_be_requested=1,
                                         subprocess_tuple=(Process_Rate,sub_process2_setting))
 
 
     final_output_prompt=Content_Result(end_prompt,is_completed=True)
     sub_process3_setting = {"prompt": Content_Result(end_prompt_rate, is_completed=True),
                             "expected_results": 1,
-                            "content_to_be_requested": 3,
+                            "content_to_be_requested": default_sub_process_amount,
                             "context":contemporary_issues.get_final_results()[0]
                             }
 
     final_outcome_1=Process_Rewrite(prompt=final_output_prompt,body_of_task=root_process.get_final_results()[0],
-                                    context=contemporary_issues.get_final_results()[0],expected_results=1,content_to_be_requested=6,
+                                    context=contemporary_issues.get_final_results()[0],expected_results=1,content_to_be_requested=1,
                                     subprocess_tuple=(Process_Rate,sub_process3_setting)
                                     )
 
     sub_process4_setting = {"prompt": Content_Result(end_prompt_rate, is_completed=True),
                             "expected_results": 1,
-                            "content_to_be_requested": 3,
+                            "content_to_be_requested": default_sub_process_amount,
                             "context": contemporary_issues.get_final_results()[0]
                             }
     final_outcome_2 = Process_Rewrite(prompt=final_output_prompt, body_of_task=final_outcome_1.get_final_results()[0],
-                                      context=contemporary_issues.get_final_results()[0], expected_results=4,
-                                      content_to_be_requested=1,
+                                      context=contemporary_issues.get_final_results()[0], expected_results=1,
+                                      content_to_be_requested=default_sub_process_amount,
                                       subprocess_tuple=(Process_Rate, sub_process4_setting)
                                       )
 
@@ -226,5 +485,5 @@ if __name__ == '__main__':
     meta.drop_all(bind=conn)  # clear everything
     Base.metadata.create_all(conn)
 
-    setup_meta(session )
+    setup_multiple_tasks(session )
     session.commit()
