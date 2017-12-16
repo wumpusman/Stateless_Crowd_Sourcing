@@ -1,5 +1,12 @@
+https://codeburst.io/full-stack-single-page-application-with-vue-js-and-flask-b1e036315532
 nodemon run dev
-
+npm run build
+heroku pg:backups:capture
+heroku pg:backups:download
+git push heroku master
+heroku run bash
+heroku run python backend/build_db.py
+npm run build
 Show Instructions
 
 Click Next

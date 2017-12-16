@@ -6,7 +6,7 @@ from manager import Manager
 def setup_narrative_plot(session):
 
     default_rewrite_amount = 1
-    default_sub_process_amount = 1
+    default_sub_process_amount = 3
 
     root_body="The two detectives arrived backstage and saw the actor's body lying on the floor."
     root_prompt="Looking at the brief description of this scene what are some questions you would ask " \
@@ -39,7 +39,7 @@ def setup_narrative_plot(session):
 
     root_process=Process_Rewrite(body_of_task=cr_root_body, prompt=cr_root_prompt,
                                    expected_results=1,
-                                   content_to_be_requested=1,
+                                   content_to_be_requested=5,
                                    subprocess_tuple=(Process_Rate, sub_root_process)
                                    )
     ####
@@ -51,7 +51,7 @@ def setup_narrative_plot(session):
     answer_process=Process_Rewrite(body_of_task=root_process.get_final_results()[0], prompt=cr_plot_answer_prompt,
                                    context=cr_root_body,
                                    expected_results=1,
-                                   content_to_be_requested=1,
+                                   content_to_be_requested=5,
                                    subprocess_tuple=(Process_Rate, sub_answer_process)
                                    )
 
@@ -64,7 +64,7 @@ def setup_narrative_plot(session):
     merge_process = Process_Rewrite(body_of_task=cr_root_body, prompt=cr_merge_plot_prompt,
                                  context=answer_process.get_final_results()[0] ,
                                  expected_results=1,
-                                 content_to_be_requested=1,
+                                 content_to_be_requested=4,
                                  subprocess_tuple=(Process_Rate, sub_merge_process)
                                  )
 
@@ -79,7 +79,7 @@ def setup_narrative_plot(session):
 
     root_loop_process=Process_Rewrite(body_of_task=merge_process.get_final_results()[0], prompt=cr_root_prompt,
                                    expected_results=1,
-                                   content_to_be_requested=1,
+                                   content_to_be_requested=5,
                                    subprocess_tuple=(Process_Rate, sub_loop_process)
                                    )
     ####
@@ -91,7 +91,7 @@ def setup_narrative_plot(session):
     answer_process2=Process_Rewrite(body_of_task=root_loop_process.get_final_results()[0], prompt=cr_plot_answer_prompt,
                                    context=merge_process.get_final_results()[0],
                                    expected_results=1,
-                                   content_to_be_requested=1,
+                                   content_to_be_requested=5,
                                    subprocess_tuple=(Process_Rate, sub_answer_process2)
                                    )
 
@@ -104,7 +104,7 @@ def setup_narrative_plot(session):
     merge_process2 = Process_Rewrite(body_of_task=merge_process.get_final_results()[0], prompt=cr_merge_plot_prompt,
                                  context=answer_process2.get_final_results()[0] ,
                                  expected_results=1,
-                                 content_to_be_requested=1,
+                                 content_to_be_requested=5,
                                  subprocess_tuple=(Process_Rate, sub_merge_process2)
                                  )
 
