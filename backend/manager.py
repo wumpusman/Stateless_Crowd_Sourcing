@@ -4,7 +4,7 @@ class Manager(object):
         # type: (object, object) -> object
         self.session=session
         self._session_time=max_time*60 #convert from minutes to seconds
-        self._minimum_work_time=.001 #seconds
+        self._minimum_work_time=20 #seconds
         self._task_timeout_max=10 #This is in MINUTES
     #I hate that i have to make this function each time someone queries the db :(
 
