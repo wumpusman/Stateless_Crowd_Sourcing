@@ -2,6 +2,122 @@ from db_connection2 import *
 from manager import Manager
 
 
+
+def setup_narrative_plot(session):
+
+    default_rewrite_amount = 1
+    default_sub_process_amount = 1
+
+    root_body="The two detectives arrived backstage and saw the actor's body lying on the floor."
+    root_prompt="Looking at the brief description of this scene what are some questions you would ask " \
+                "the writer to have a better sense of what the story is about"
+
+    answer_followup="Looking at the brief description of the story, try to provide an answer to the question that you " \
+                  "think would make the story more interesting. Briefly explain why"
+
+    merge_answer_to_body="Incorporate the information described on the left into the description of the scene below"
+
+    next_step = "given the description of the plot below, what should happen next"
+
+    rate_root="Rate how well the questions listed below would help clarify what the story is about"
+    rate_answer_followup="Rate how well you feel the answer would address the question and make the 'context' for the story below" \
+                         " more engaging"
+    rate_merge_answer_to_body="Rate how well you feel the text below is incorporated into the content "
+    rate_next_step="Given the background of the story, rate how well the text below would aid the story"
+
+    cr_root_prompt = Content_Result(root_prompt, is_completed=True)
+    cr_root_body = Content_Result(root_body, is_completed=True)
+    cr_plot_answer_prompt = Content_Result(answer_followup, is_completed=True)
+    cr_merge_plot_prompt = Content_Result(merge_answer_to_body, is_completed=True)
+
+
+    ####
+    sub_root_process = {"prompt": Content_Result(rate_root, is_completed=True),
+                        "expected_results": 1,
+                        "context":cr_root_body,
+                        "content_to_be_requested": default_sub_process_amount}
+
+    root_process=Process_Rewrite(body_of_task=cr_root_body, prompt=cr_root_prompt,
+                                   expected_results=1,
+                                   content_to_be_requested=1,
+                                   subprocess_tuple=(Process_Rate, sub_root_process)
+                                   )
+    ####
+    sub_answer_process={"prompt": Content_Result(rate_answer_followup, is_completed=True),
+                        "expected_results": 1,
+
+                        "content_to_be_requested": default_sub_process_amount}
+
+    answer_process=Process_Rewrite(body_of_task=root_process.get_final_results()[0], prompt=cr_plot_answer_prompt,
+                                   context=cr_root_body,
+                                   expected_results=1,
+                                   content_to_be_requested=1,
+                                   subprocess_tuple=(Process_Rate, sub_answer_process)
+                                   )
+
+    #rate_merge_answer_to_body
+    sub_merge_process = {"prompt": Content_Result(rate_merge_answer_to_body, is_completed=True),
+                          "expected_results": 1,
+                          "content_to_be_requested": default_sub_process_amount}
+
+
+    merge_process = Process_Rewrite(body_of_task=cr_root_body, prompt=cr_merge_plot_prompt,
+                                 context=answer_process.get_final_results()[0] ,
+                                 expected_results=1,
+                                 content_to_be_requested=1,
+                                 subprocess_tuple=(Process_Rate, sub_merge_process)
+                                 )
+
+
+
+
+    ####
+    sub_loop_process = {"prompt": Content_Result(rate_root, is_completed=True),
+                        "expected_results": 1,
+
+                        "content_to_be_requested": default_sub_process_amount}
+
+    root_loop_process=Process_Rewrite(body_of_task=merge_process.get_final_results()[0], prompt=cr_root_prompt,
+                                   expected_results=1,
+                                   content_to_be_requested=1,
+                                   subprocess_tuple=(Process_Rate, sub_loop_process)
+                                   )
+    ####
+    sub_answer_process2={"prompt": Content_Result(rate_answer_followup, is_completed=True),
+                        "expected_results": 1,
+                        "context":merge_process.get_final_results()[0],
+                        "content_to_be_requested": default_sub_process_amount}
+
+    answer_process2=Process_Rewrite(body_of_task=root_loop_process.get_final_results()[0], prompt=cr_plot_answer_prompt,
+                                   context=merge_process.get_final_results()[0],
+                                   expected_results=1,
+                                   content_to_be_requested=1,
+                                   subprocess_tuple=(Process_Rate, sub_answer_process2)
+                                   )
+
+    sub_merge_process2 = {"prompt": Content_Result(rate_merge_answer_to_body, is_completed=True),
+                          "expected_results": 1,
+
+                          "content_to_be_requested": default_sub_process_amount}
+
+
+    merge_process2 = Process_Rewrite(body_of_task=merge_process.get_final_results()[0], prompt=cr_merge_plot_prompt,
+                                 context=answer_process2.get_final_results()[0] ,
+                                 expected_results=1,
+                                 content_to_be_requested=1,
+                                 subprocess_tuple=(Process_Rate, sub_merge_process2)
+                                 )
+
+
+
+    session.add(root_process)
+    session.add(answer_process)
+    session.add(merge_process)
+    session.add(root_loop_process)
+    session.add(answer_process2)
+    session.add(merge_process2)
+
+
 def setup_business_advice(session):
 
 

@@ -24,9 +24,9 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
 
      the_session=Session()
 
-     meta.drop_all(bind=con)  # clear everything
-     Base.metadata.create_all(con)
-     the_session.commit()
+     #meta.drop_all(bind=con)  # clear everything
+     #Base.metadata.create_all(con)
+     #the_session.commit()
 
           #
      run_example.setup_multiple_tasks(the_session)
@@ -45,6 +45,6 @@ else:
 
 
 
-     run_example.setup_multiple_tasks(session)
+     run_example.setup_narrative_plot(session)
      session.commit()
      print session.query(Content).all()
