@@ -29,7 +29,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      the_session.commit()
 
           #
-     run_example.setup_narrative_plot(the_session)
+     run_example.setup_summary(the_session)
      the_session.commit()
      print the_session.query(Content).all()
 
@@ -45,6 +45,6 @@ else:
 
 
 
-     run_example.setup_narrative_plot(session)
+     run_example.setup_summary(session)
      session.commit()
      print session.query(Content).all()

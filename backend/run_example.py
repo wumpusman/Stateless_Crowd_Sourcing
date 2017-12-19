@@ -1,6 +1,104 @@
 from db_connection2 import *
 from manager import Manager
+import re
 
+def setup_summary(session):
+    little_match_girl = open("little_match_girl","rb")
+    little_match_girl_text=little_match_girl.read()
+    little_match_girl.close()
+    little_match_girl=little_match_girl_text
+
+    as_arry=re.split("[.;?]", little_match_girl)
+    #as_arry=as_arry[0:len(as_arry)/2]
+    match_girl_batch_size_5=[]
+    for i in xrange(0,len(as_arry),5):
+        match_girl_batch_size_5.append(".".join(as_arry[i:i+5]))
+
+    recurse_summary(session,match_girl_batch_size_5,0)
+
+def _merge_step(session,left_content_result,right_content_result):
+    default_sub_process_amount = 5
+    default_process_amount = 4
+
+    merge_prompt="The text below and the text to left are two related parts of a story. Please combine them into a single summary."
+
+    merge_rate="Looking at the text BELOW and the text on the LEFT, please rate how well 'content to be evaluate' incorporates them both " \
+               "into a single summary"
+
+    cr_prompt=Content_Result(merge_prompt,is_completed=True)
+    cr_prompt_rate=Content_Result(merge_rate,is_completed=True)
+
+    sub_process = {"prompt": cr_prompt_rate,
+                   "expected_results": 1,
+                   "context":right_content_result,
+                   "content_to_be_requested": default_sub_process_amount}
+
+    merge_process = Process_Rewrite(body_of_task=left_content_result, context=right_content_result, prompt=cr_prompt,
+                                      expected_results=1, content_to_be_requested=default_process_amount,
+                                    subprocess_tuple=(Process_Rate,sub_process))
+    session.add(merge_process)
+    session.commit()
+    return merge_process
+
+def _summary_step(session,content):
+    default_sub_process_amount=1
+    default_process_amount=1
+    summary_prompt="For the text below, to the best to your ability, " \
+                   "please write a concise summary that incorporates the keys points and events of the text below"
+
+    summary_rate_prompt="The 'content to be evaluated' is intended to be a summary of the text below. " \
+                        "Rate how well you feel it accurately captures the full meaning and key events. "
+
+    cr_prompt=Content_Result(summary_prompt,is_completed=True)
+    cr_prompt_rate=Content_Result(summary_rate_prompt,is_completed=True)
+
+    body_content = None
+    if type(content) == type(""):
+        body_content=Content_Result(content,is_completed=True)
+    else:
+        body_content=content
+
+    sub_process = {"prompt": cr_prompt_rate,
+                        "expected_results": 1,
+                        "content_to_be_requested": default_sub_process_amount}
+
+    summary_process=Process_Rewrite(body_of_task=body_content,prompt=cr_prompt,
+                                    expected_results=1,content_to_be_requested=default_process_amount,
+                                    subprocess_tuple=(Process_Rate, sub_process))
+    session.add(summary_process)
+    session.commit()
+    return summary_process
+
+
+def recurse_summary(session,text_block_ary, depth):
+   # print len(text_block_ary)
+    sub_group_len=len(text_block_ary)/2
+
+    if sub_group_len==0:
+
+        return _summary_step(session,text_block_ary[0])
+
+
+    left= text_block_ary[:sub_group_len]
+    right= text_block_ary[sub_group_len:]
+
+    left_process=recurse_summary(session,left,depth+1)
+    right_process=recurse_summary(session,right,depth+1)
+
+    merge_process=_merge_step(session,left_process.get_final_results()[0],right_process.get_final_results()[0])
+    #if right Node is empty  just return left Node (summariazation)
+    #create B =(merge process of left and right)
+    #create C = summaziation (B)
+    #return C
+    #print left_node+right_node
+    return merge_process
+
+    '''
+    recurse left, recurse right
+
+    if sub_group_len/2 ==0 return
+
+    '''
 
 
 def setup_narrative_plot(session):
@@ -601,5 +699,5 @@ if __name__ == '__main__':
     meta.drop_all(bind=conn)  # clear everything
     Base.metadata.create_all(conn)
 
-    setup_multiple_tasks(session )
+    setup_summary(session )
     session.commit()
