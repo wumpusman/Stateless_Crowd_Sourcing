@@ -4,7 +4,7 @@ import re
 import os
 def setup_summary(session):
     dir_path = os.path.dirname(os.path.realpath('__file__'))
-    dir_path = os.path.join(dir_path, "little_match_girl")
+    dir_path = os.path.join(dir_path, "backend/little_match_girl")
     little_match_girl = open(dir_path,"rb")
     little_match_girl_text=little_match_girl.read()
     little_match_girl.close()
