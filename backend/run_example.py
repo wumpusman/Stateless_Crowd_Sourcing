@@ -1,9 +1,11 @@
 from db_connection2 import *
 from manager import Manager
 import re
-
+import os
 def setup_summary(session):
-    little_match_girl = open("little_match_girl","rb")
+    dir_path = os.path.dirname(os.path.realpath('__file__'))
+    dir_path = os.path.join(dir_path, "little_match_girl")
+    little_match_girl = open(dir_path,"rb")
     little_match_girl_text=little_match_girl.read()
     little_match_girl.close()
     little_match_girl=little_match_girl_text
