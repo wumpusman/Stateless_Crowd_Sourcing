@@ -22,7 +22,7 @@ def _merge_step(session,left_content_result,right_content_result):
     default_sub_process_amount = 5
     default_process_amount = 4
 
-    merge_prompt="The text below and the text to left are two related parts of a story. Please combine them into a single summary."
+    merge_prompt="The text below and the text to left are two related parts of a story. Please combine them into a single summary that accounts for the keys points and events in both of them."
 
     merge_rate="Looking at the text BELOW and the text on the LEFT, please rate how well 'content to be evaluate' incorporates them both " \
                "into a single summary"
