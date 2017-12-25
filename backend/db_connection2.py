@@ -200,7 +200,7 @@ class Process_Object(Base):
        return False
 
     def get_expected_completion_read_ratio(self,content_obj):
-        completion_time = content_object.get_completion_time()
+        completion_time = content_obj.get_completion_time()
         read_time = self.task_parameters_obj.estimate_read_time()
 
         ratio =float ( completion_time) / float(read_time)
@@ -284,8 +284,12 @@ class Process_Object(Base):
             "get_content_stemming_from_this_process")
 
 
+
         tasks_associated_with_this_content = session.query(Task_Parameters).filter(Task_Parameters.result_id == get_content_stemming_from_this_process.c.id).\
             subquery("tasks_associated_with_this_content")
+
+
+
 
         processes_associated_with_this_task = session.query(Process_Object).filter(Process_Object.task_parameters_id == tasks_associated_with_this_content.c.id).subquery(
             "processes_associated_with_this_task")  # suprocesses
@@ -473,6 +477,7 @@ class Process_Rate(Process_Object):
         #All results stemming from this data, assumes numerical, and was not empty
         current_content=session.query(Content).filter((self.id==Content.origin_process_id) & (Content.is_completed==True) & (Content.results!="")).subquery()
 
+        print "WTF"
         result= session.query(current_content).all()
 
         alt=pd.DataFrame(result)
@@ -484,6 +489,7 @@ class Process_Rate(Process_Object):
     def _can_assign_result(self,session):
         #can have more complex rules account for more variance and such
         count_score=None
+
         try:
             count_score=self._get_content_completed_counts(session)
         except:
@@ -515,6 +521,7 @@ class Process_Rate(Process_Object):
         if self._can_assign_result(session):
 
             score=self._calculate_score(session)
+
             empty_results=self.get_final_results_incomplete(session).all()
 
             assume_first_one=empty_results[0]
@@ -623,11 +630,13 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
         content_object=data_to_evaluate[0]
         score=float(data_to_evaluate[1].results)
 
-        ratio=self.get_expected_completion_read_ratio(content_obj)
+        ratio=self.get_expected_completion_read_ratio(content_object)
 
         if ratio < 1.3:
                 if score > 3:
                     score =3
+                print ratio
+                print score
                 return score * ratio #make it slightly worse than 3
 
         return score
@@ -642,13 +651,15 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
                 if  (self.is_using_ml == False):
                     alt.append((item[0],item[1].results))
                 else:
-                    alt.append((item[0],self.get_rating_ml_model_result("",float(item[0],item[1].results)))) #modify score based on a metric
+                    alt.append((item[0],self.get_rating_ml_model_result("",(item[0],item[1])))) #modify score based on a metric
 
             data=alt
             data.sort(key=lambda x: float(x[1]), reverse=True)  # best go first
 
             best_results = []
             for item in data:
+                print 'here is the score'
+                print item[1]
                 if float(item[1]) > 4:
                     best_results.append(item[0])  # store the actual value, not the score
                 elif len(data)>=len(self.get_content_produced_by_this_process()): #if we have completely filled out results
@@ -678,15 +689,14 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
 
 
 class Process_Merge(Process_Rewrite):
-
+    __mapper_args__ = {'polymorphic_identity': 'process_merge'}
     def prepare_view(self):
         task_view = super(Process_Merge, self).prepare_view()
 
         n_minus_one=task_view["Context"]
         task_view["Context"]=""
-        task_view["Body_Of_Task"]=n_minus_one+".  "+task_view["Body_Of_Task"]
-        #            "Context":self.context.results,
-        #   "Body_Of_Task":self.body_of_task.results,
+        task_view["Body_Of_Task"]=task_view["Body_Of_Task"]+" _SECOND PART_ "+n_minus_one+" ."
+
 
         return task_view
 
@@ -728,7 +738,7 @@ class Content(Base):
 
     def get_completion_time(self):
 
-        time_to_complete = (self.completed_date - self.assigned_date).total_seconds()
+        time_to_complete = (datetime.datetime.now() - self.assigned_date).total_seconds()
         return time_to_complete
 
     def __init__(self):

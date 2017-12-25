@@ -370,6 +370,71 @@ class Test_Queries(unittest.TestCase):
 
 
 
+    def test_ml_model(self):
+        session = self.session
+        session.rollback()  # ERase everything
+
+        User1 = User("Michael")
+        body_of_task = Content_Result("I love going skiiing", is_completed=True)
+        prompt = Content_Result("Write the following sentences to make them sound more negative", is_completed=True)
+        context = Content_Result("I love my life in america", is_completed=True)
+        suggestions = Content_Result("", is_completed=True)
+
+        session.add(body_of_task)
+        session.add(prompt)
+        session.add(context)
+        session.add(suggestions)
+
+        sub_process1_info = {"prompt": Content_Result(
+            "Rate how well the revised content sounds more negative, as well as overall better than the original",
+            is_completed=True),
+            "context": body_of_task,
+            "content_to_be_requested": 1,
+            "expected_results": 1
+        }
+
+        first = Process_Rewrite(body_of_task, prompt, context, suggestions, expected_results=1,
+                                content_to_be_requested=2, subprocess_tuple=(Process_Rate, sub_process1_info))
+
+        print "AND HERE"
+        session.add(first)
+
+
+
+        first.is_using_ml=True
+
+        first.get_content_produced_by_this_process()[0].results="This is a test element"
+        first.get_content_produced_by_this_process()[0].is_completed=True
+        first.get_content_produced_by_this_process()[0].assigned_date=datetime.datetime.now()
+        first.get_content_produced_by_this_process()[0].completed_date =datetime.datetime.now()   + datetime.timedelta(minutes=1)
+
+
+        first.get_content_produced_by_this_process()[1].results="This is a second test element"
+        first.get_content_produced_by_this_process()[1].is_completed=True
+        first.get_content_produced_by_this_process()[1].assigned_date=datetime.datetime.now()
+        first.get_content_produced_by_this_process()[1].completed_date =datetime.datetime.now()+ datetime.timedelta(minutes=.04)
+
+
+
+        content_sub= first.sub_process[0].get_content_produced_by_this_process()[0]
+        content_sub.assigned_date=datetime.datetime.now()
+        #content_sub.completed_date=datetime.datetime.now()
+        content_sub.is_completed=True
+        content_sub.results="3"
+        session.add(content_sub)
+
+        content_sub = first.sub_process[1].get_content_produced_by_this_process()[0]
+        content_sub.assigned_date = datetime.datetime.now()
+        # content_sub.completed_date=datetime.datetime.now()
+        content_sub.is_completed = True
+        content_sub.results = "5"
+
+        first.sub_process[0].assign_result(session)
+        first.sub_process[1].assign_result(session)
+
+        first.assign_result(session)
+        self.assertEqual(first.get_final_results_complete(session).all()[0].results,"This is a test element", msg="lower scored element that took correct amount of time shoudl go through")
+        #first.assign_result(session)
 
     def test_full_iteration(self):
 

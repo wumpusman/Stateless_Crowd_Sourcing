@@ -5,7 +5,11 @@ import os
 def setup_summary(session):
     dir_path = os.path.dirname(os.path.realpath('__file__'))
     dir_path = os.path.join(dir_path, "backend/little_match_girl")
-    little_match_girl = open(dir_path,"rb")
+    little_match_girl=None
+    try:
+        little_match_girl=open("little_match_girl","rb")
+    except:
+        little_match_girl = open(dir_path,"rb")
     little_match_girl_text=little_match_girl.read()
     little_match_girl.close()
     little_match_girl=little_match_girl_text
@@ -19,13 +23,13 @@ def setup_summary(session):
     recurse_summary(session,match_girl_batch_size_5,0)
 
 def _merge_step(session,left_content_result,right_content_result):
-    default_sub_process_amount = 5
-    default_process_amount = 4
+    default_sub_process_amount = 1
+    default_process_amount = 1
 
-    merge_prompt="The text below and the text to left are two related parts of a story. Please combine them into a single summary that accounts for the keys points and events in both of them."
+    merge_prompt="The text below contains two related parts of a story. Please combine them into a single summary that accounts for the keys points and events in both of them."
 
-    merge_rate="Looking at the text BELOW and the text on the LEFT, please rate how well 'content to be evaluate' incorporates them both " \
-               "into a single summary"
+    merge_rate="The text below and the left describes two related scenes of a story, please rate how well 'content to be evaluate' incorporates the information into summary that accounts for the key points " \
+               "of both of them"
 
     cr_prompt=Content_Result(merge_prompt,is_completed=True)
     cr_prompt_rate=Content_Result(merge_rate,is_completed=True)
@@ -35,9 +39,12 @@ def _merge_step(session,left_content_result,right_content_result):
                    "context":right_content_result,
                    "content_to_be_requested": default_sub_process_amount}
 
-    merge_process = Process_Rewrite(body_of_task=left_content_result, context=right_content_result, prompt=cr_prompt,
+    merge_process = Process_Merge(body_of_task=left_content_result, context=right_content_result, prompt=cr_prompt,
                                       expected_results=1, content_to_be_requested=default_process_amount,
                                     subprocess_tuple=(Process_Rate,sub_process))
+
+    merge_process.is_using_ml=True
+
     session.add(merge_process)
     session.commit()
     return merge_process
@@ -67,6 +74,8 @@ def _summary_step(session,content):
     summary_process=Process_Rewrite(body_of_task=body_content,prompt=cr_prompt,
                                     expected_results=1,content_to_be_requested=default_process_amount,
                                     subprocess_tuple=(Process_Rate, sub_process))
+    summary_process.is_using_ml=True
+
     session.add(summary_process)
     session.commit()
     return summary_process

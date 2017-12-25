@@ -1,10 +1,11 @@
 from db_connection2 import *
+import random
 class Manager(object):
     def __init__(self,session,max_time=7):
         # type: (object, object) -> object
         self.session=session
         self._session_time=max_time*60 #convert from minutes to seconds
-        self._minimum_work_time=15 #seconds
+        self._minimum_work_time=20 #seconds
         self._task_timeout_max=10 #This is in MINUTES
     #I hate that i have to make this function each time someone queries the db :(
 
@@ -18,6 +19,7 @@ class Manager(object):
         content_not_completed_yet=r.filter(Content.assigned_date<current_time_minus_X).all()
 
         for non_completed in content_not_completed_yet:
+
             self.unassign_content(non_completed)
 
     def unassign_content(self,relevant_content):
@@ -108,7 +110,11 @@ class Manager(object):
 
 
         if len(optional_content)==0: return None
-        chosen=optional_content[0]
+
+        chosen=random.choice(optional_content) #pick one of them but make the order inconsistent it's a fuck you to slackers, they'll be stuck in
+        #an endless loop of dealing with bs
+
+
         chosen.associated_user=user
         chosen.assigned_date=datetime.datetime.now()
 
@@ -203,16 +209,15 @@ class Manager(object):
 
         if isinstance(current.origin_process,Process_Rate):
               if current.origin_process.task_parameters_obj.result.results=="":
-                  current.results="-2"
-              if current.results=="" or current.results=="Enter Response Here":
+                  self.unassign_content(current)
+                  return
 
-                current.results="-2"
-                current.comments="User wrote nothing"
+              #if float(current.results)>=3:
+              effective_effort=current.origin_process.get_expected_completion_read_ratio(current)
 
+              if effective_effort<1:
 
-              if float(current.results)>=3:
-                  effective_effort=current.origin_process.get_expected_completion_read_ratio(current)
-                  if effective_effort<1:
+                      print "LAZY MAN"
                       self.unassign_content(current)
                       return
 

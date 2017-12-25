@@ -14,8 +14,8 @@ app = Flask(__name__,
 
 
 
-manager =None
-conn, meta, session = connect("postgres", "1234", db="match_stick_girl") #temp2
+
+conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #temp2
 #meta.drop_all(bind=conn)  # clear everything
 #Base.metadata.create_all(conn)
 manager = Manager(session,max_time=7) #in minutes
