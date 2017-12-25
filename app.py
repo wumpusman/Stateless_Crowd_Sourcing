@@ -15,10 +15,10 @@ app = Flask(__name__,
 
 
 manager =None
-conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #temp2
+conn, meta, session = connect("postgres", "1234", db="match_stick_girl") #temp2
 #meta.drop_all(bind=conn)  # clear everything
 #Base.metadata.create_all(conn)
-manager = Manager(session,max_time=6.5) #in minutes
+manager = Manager(session,max_time=7) #in minutes
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -50,7 +50,7 @@ def disconnect():
     user = manager.select_user(userData["name"], userData["password"])
     if user!= None:
         if len(user.associated_content) > 0:
-            assigned_content = user.associated_content[-1]
+            assigned_content = user.get_current_content_in_progress(session)
             if assigned_content != None:
                 manager.unassign_content(assigned_content)
             #this is used to handle users who are either refreshing the page , or exiting without finishing
@@ -75,11 +75,11 @@ def submit():
 
     user = manager.select_user(userData["name"], userData["password"])
 
-    assigned_content = user.associated_content[-1]
+    assigned_content = user.get_current_content_in_progress(session)
 
 
     if user==None: return json.dumps(manager.prepare_view(None))
-    print "MADE IT HERE AS WELL"
+
     manager.update_global_state(user, {"value": result}) #This is where the magic happens
 
     if session_expired == False:
@@ -119,10 +119,9 @@ def login(): #For logging in
     new_content=None
     if len(user.associated_content)==0:
         new_content= manager.assign_new_content(user)
-    elif user.associated_content[-1].is_completed:
-        new_content= manager.assign_new_content(user)
     else:
-        new_content=user.associated_content[-1]
+        new_content= user.get_current_content_in_progress(session)
+
 
 
     #htis is redundnant

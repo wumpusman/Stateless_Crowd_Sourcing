@@ -64,17 +64,28 @@ class User (Base):
     associated_content =relationship("Content", backref="associated_user",foreign_keys="Content.user_id")
 
 
+
     def get_current_content_in_progress(self,session):
 
        query=self.get_all_user_assigned_content(session)
-       query=query.filter(Content.is_completed==False).all()
+       query=query.filter(Content.is_completed==False)
+
+       alt=Process_Object.get_processes_that_are_ready(session)
+       alt=alt.filter(Process_Object.is_locked==False).subquery()
+       query=query.filter(Content.origin_process_id==alt.c.id ).all()
+
+       '''
        if len(query)>1:
            raise Exception("Get Current Content Have multiple incomplete content associated with this elemtn ")
        elif len(query)==0:
            return None
        else:
            return query[0]
-
+        '''
+       if len(query)==0: return None
+       if len(query) >1: raise Exception("Multiple content assigned  to this user, this forces an error since this should not be "
+                                         "the normal case. I need to refactor so specific processes are designated to particular users")
+       return query[0]
     def get_all_user_assigned_content(self,session):
         return session.query(Content).filter(Content.user_id  == self.name)
 
@@ -163,6 +174,8 @@ class Process_Object(Base):
 
     is_locked=Column('is_locked', Boolean, default=False) #can this be used/is it accesible
     is_completed=Column('is_completed', Boolean, default=False) #can this be used/is it accesible
+    is_using_ml=Column("is_using_ml",Boolean,default=False)
+
 
     created_date = Column(DateTime, default=datetime.datetime.utcnow)  # base this function to evaluate at run time
     completed_date = Column(DateTime)
@@ -174,7 +187,9 @@ class Process_Object(Base):
     discriminator = Column('type', String(50))
     __mapper_args__ = {'polymorphic_on': discriminator}
 
-
+    #am i going to use some sort of ml model to rate ocntent or weight rating
+    def get_rating_ml_model_result(self,path,data_to_evaluate):
+        pass
 
 
     #is the task found stuff
@@ -184,6 +199,12 @@ class Process_Object(Base):
            return True
        return False
 
+    def get_expected_completion_read_ratio(self,content_obj):
+        completion_time = content_object.get_completion_time()
+        read_time = self.task_parameters_obj.estimate_read_time()
+
+        ratio =float ( completion_time) / float(read_time)
+        return ratio
 
     def lock_process(self):
         self.is_locked=True
@@ -191,13 +212,25 @@ class Process_Object(Base):
             for sp in self.sub_process:
                 sp.is_locked=True
 
+    def assign_user(self,user_obj):
+        #Assign this process and all sub problems to a specific user
+        associated_content=self.get_content_produced_by_this_process()
+        for i in associated_content:
+            if i.user_id !=None:
+                raise Exception("User already assigned!")
+            i.associated_user = user_obj
 
+        for i in self.sub_process:
+            for j in i.get_content_produced_by_this_process():
+                if j.user_id != None:
+                    raise Exception("User already assigned!")
+                j.associated_user = user_obj
 
     def __init__(self,body_of_task=None,prompt=None,suggestion=None,context=None, displayed_result=None, expected_results=1, content_to_be_requested=3, subprocess_tuple=None):
         #displayed result is only for rating tasks, where user is reviewing a result
 
-
-
+        self.ml_model=None #
+        self.is_using_ml=False
         self.is_locked=False
         self.is_completed=False
 
@@ -402,6 +435,20 @@ class Task_Parameters(Base): #contains all the information pertinent to what a u
         self.parent_process=parent_process
         self.result=result
 
+    def estimate_read_time(self):
+
+            total_text = ""
+            total_text += " " + self.body_of_task.results
+            total_text += " " + self.prompt.results
+            total_text += " " + self.result.results
+            total_text += " " + self.suggestion.results
+            total_text += " " + self.context.results
+            words = len(total_text.split(" "))
+            time = words / 5.5
+
+            return time
+
+
     def prepare_view(self):
         print "THIS VIEW"
         print self.parent_process.id
@@ -553,6 +600,7 @@ class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some ratin
         task_view["Type"] = "Rewrite"
         return task_view
 
+
 class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the subprocesses
     __mapper_args__ = {'polymorphic_identity': 'process_rewrite'}
 
@@ -570,19 +618,43 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
             return True
         return False
 
+
+    def get_rating_ml_model_result(self,path,data_to_evaluate):
+        content_object=data_to_evaluate[0]
+        score=float(data_to_evaluate[1].results)
+
+        ratio=self.get_expected_completion_read_ratio(content_obj)
+
+        if ratio < 1.3:
+                if score > 3:
+                    score =3
+                return score * ratio #make it slightly worse than 3
+
+        return score
+
     def assign_result(self, session):
 
         if self._can_assign_result(session):
             data = self.select_data_for_analysis(session)
 
-            data.sort(key=lambda x: float(x[1].results), reverse=True)  # best go first
+            alt=[]
+            for item in data:
+                if  (self.is_using_ml == False):
+                    alt.append((item[0],item[1].results))
+                else:
+                    alt.append((item[0],self.get_rating_ml_model_result("",float(item[0],item[1].results)))) #modify score based on a metric
+
+            data=alt
+            data.sort(key=lambda x: float(x[1]), reverse=True)  # best go first
 
             best_results = []
             for item in data:
-                if float(item[1].results) > 4:
+                if float(item[1]) > 4:
                     best_results.append(item[0])  # store the actual value, not the score
                 elif len(data)>=len(self.get_content_produced_by_this_process()): #if we have completely filled out results
                     best_results.append(item[0])
+
+
             for counter in xrange(len(best_results)):
 
                 item = best_results[counter]
@@ -602,6 +674,21 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
                 # assign the content result a value
                 chosen_result.linked_content = item
                 chosen_result.results = item.results
+
+
+
+class Process_Merge(Process_Rewrite):
+
+    def prepare_view(self):
+        task_view = super(Process_Merge, self).prepare_view()
+
+        n_minus_one=task_view["Context"]
+        task_view["Context"]=""
+        task_view["Body_Of_Task"]=n_minus_one+".  "+task_view["Body_Of_Task"]
+        #            "Context":self.context.results,
+        #   "Body_Of_Task":self.body_of_task.results,
+
+        return task_view
 
 
 class Content(Base):
@@ -639,6 +726,11 @@ class Content(Base):
     discriminator = Column('type', String(50))
     __mapper_args__ = {'polymorphic_on': discriminator}
 
+    def get_completion_time(self):
+
+        time_to_complete = (self.completed_date - self.assigned_date).total_seconds()
+        return time_to_complete
+
     def __init__(self):
         self.is_completed = False
         self.is_locked = False
@@ -667,8 +759,6 @@ class Content_Types(object):
     Rewrite="Rewrite"
     Merge="Merge"
     Sugeest="Suggest"
-
-
 
 if __name__ == '__main__':
 

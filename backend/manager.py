@@ -190,13 +190,15 @@ class Manager(object):
 
                 self.unassign_content(current)
                 return
+
+
         # total_seconds()
         print "MADE IT HERE AS WELL!!"
         if(current.is_completed==True):
             return Exception("Content completed when it shouldn't be completed already")
 
         current.results= results["value"]
-        #This is a hack :/\/\
+        #This is a hack :/\/\/\:
         #TODO: This should be chagned and embedded, also the defualt for ratings should be different
 
         if isinstance(current.origin_process,Process_Rate):
@@ -206,6 +208,14 @@ class Manager(object):
 
                 current.results="-2"
                 current.comments="User wrote nothing"
+
+
+              if float(current.results)>=3:
+                  effective_effort=current.origin_process.get_expected_completion_read_ratio(current)
+                  if effective_effort<1:
+                      self.unassign_content(current)
+                      return
+
 
         print "AND HERE"
         #ToDO:ANother HACK

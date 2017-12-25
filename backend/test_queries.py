@@ -341,7 +341,23 @@ class Test_Queries(unittest.TestCase):
 
 
 
+        new_rewrite_process = Process_Rewrite(body_of_task, prompt, context, suggestions, content_to_be_requested=1,
+                                              subprocess_tuple=(Process_Rate, sub_process_info))
+        new_rewrite_process.is_using_ml=True
+
+
+
+        #ensure that users can request content
+        self.assertEqual(type(user1.get_current_content_in_progress(session)),type(None))
+        new_rewrite_process.assign_user(user1)
+        self.assertEqual(type(user1.get_current_content_in_progress(session)),Content)
+
         session.rollback()
+
+
+
+
+
     @staticmethod
     def lazyAssign(element,text_resp,num):
 
@@ -351,6 +367,7 @@ class Test_Queries(unittest.TestCase):
             element.results=text_resp
 
         element.is_completed=True
+
 
 
 
