@@ -2,7 +2,7 @@
   <div id="app">
 
 
-    <System_Container v-if="compute_is_main_page"></System_Container>
+    <System_Container :should_auto_login="should_create_auto_login" v-if="compute_is_main_page"></System_Container>
 
     <router-view/>
   </div>
@@ -27,6 +27,12 @@ export default {
   name: 'app',
   components: {
     System_Container
+  },
+  data: function(){
+    return {
+      should_create_auto_login:true
+
+    }
   },
   mounted:function(){
 

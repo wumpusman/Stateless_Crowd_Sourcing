@@ -2,6 +2,150 @@ from db_connection2 import *
 from manager import Manager
 import re
 import os
+
+def date_plan(session):
+    pass
+    #Friend is trying to figure out what to do on a date, what are some questions you would ask him to help flesh out what he should do
+    #ANSWEr them kEENAN
+    #Given the answers, what is the first thing this person should do on a date
+    #Given the following activity for a date, what are some questions to help them flesh out what would make this interesting
+    #Answer them keenan
+    #Given the answers, flesh out what he should do for this activity
+
+def math_plan(session):
+    pass
+    #Trying to solve a critical thinking problem abotu the following. To help solve this problem, what is the first thing you would do
+    #Goal + Y what is the next thing you would do
+
+def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub):
+    sub_process = {"prompt": prompts_ary[1],
+                   "expected_results": 1,
+                   "content_to_be_requested": amount_to_be_requested_sub}
+
+    if context!=None: #technically unneccesary tbh
+        sub_process["context"]=context
+    if suggestions!=None:
+        sub_process["suggestions"]=suggestions
+
+
+    generated_process=Process_Type(body_of_task=body,prompt=prompts_ary[0],suggestion=suggestions,context=context,content_to_be_requested=amount_to_be_request_main,
+                   subprocess_tuple=(Process_Rate,sub_process)
+                   )
+
+    generated_process.is_using_ml=True
+
+
+    session.add(generated_process)
+    return generated_process
+
+def question_answer_profile_generation(session):
+    keenan=User("Keenan")
+    password="123abc"
+    keenan.password=password
+    produce_pairs=lambda a,b: [Content_Result(a, is_completed=True),Content_Result(b,is_completed=True)]
+    default_sub_process_amount = 1
+    default_process_amount = 1
+
+
+    body="I like pussy and hot cars, I ride hard I play hard ;)"
+    One_body=Content_Result(body,is_completed=True)
+
+    date_prompt1="A person is trying to create an about me for a dating profile. Given their profile what are some questions or suggestion you would ask them to help flesh out and improve their profile"
+    date_rate1="Rate how well you feel the content and questions would help a user think about and improve the dating profile listed below."
+
+
+    One_date_p_r1=produce_pairs(date_prompt1,date_rate1)
+
+    #KEENAN TASK
+    answer_prompt2="Given the profile on the left and your own personal knowledge, Answer the following questions to the best of your ability."
+    answer_rate2="Rate how well you feel the content on the right answers the questions listed below"
+    Two_answer_p_r2=produce_pairs(answer_prompt2,answer_rate2)
+
+
+
+    incorporate_prompt3="The text below is an about me for a dating profile. THe information on the left describes additional information about the person. To the best of your ability " \
+                        "try " \
+                        "to incorporate that information into the profile below"
+    incorporate_rate3="Rate how well the content synthesizes the information on left with the profile description listed below"
+
+    Three_incorp_p_r_3=produce_pairs(incorporate_prompt3,incorporate_rate3)
+
+
+
+
+    suggestion_prompt4="The text below is an about me of a dating profile, provide specific suggestions of what you would remove, add or change to make this profile more engaging"
+    suggestion_rate4="Rate how well you feel the content would help to improve the text listed below"
+    Four_suggest_p_r4=produce_pairs(suggestion_prompt4,suggestion_rate4)
+
+    #KEENAN TASK
+    incorporate_prompt5="The text below is an about me of a dating profile, using the suggestions on the left, try to rewrite the profile to be more engaging"
+    incorporate_rate5="Rate how well you feel the content improves the dating profile listed below"
+
+    Five_incorporate_p_r4=produce_pairs(incorporate_prompt5,incorporate_rate5)
+
+    date_process = build_process(Process_Rewrite, One_date_p_r1, One_body, None, None, default_process_amount,
+                                 default_sub_process_amount)
+
+    answer_process = build_process(Process_Rewrite, Two_answer_p_r2, date_process.get_final_results()[0], One_body,
+                                   None, default_process_amount, default_sub_process_amount)
+    answer_process.assign_user(keenan)
+
+    incorporate_process1=build_process(Process_Rewrite,Three_incorp_p_r_3,One_body,answer_process.get_final_results()[0],
+                                       None,default_process_amount,default_sub_process_amount)
+
+
+
+    session.add(answer_process)
+
+    session.commit()
+
+    '''
+    sub_process = {"prompt": cr_prompt_rate,
+                   "expected_results": 1,
+                   "context":right_content_result,
+                   "content_to_be_requested": default_sub_process_amount}
+
+    merge_process = Process_Merge(body_of_task=left_content_result, context=right_content_result, prompt=cr_prompt,
+                                      expected_results=1, content_to_be_requested=default_process_amount,
+                                    subprocess_tuple=(Process_Rate,sub_process))
+
+    merge_process.is_using_ml=True
+
+    session.add(merge_process)
+    session.commit()
+    return merge_process
+    '''
+    #A person is trying to create an about me for a dating profile
+    #listed below is the current state of it
+    #Given their profile What are some questions or suggestion you would ask them to help flesh out and improve their profile
+
+
+    #Given the profile on the right and your own personal knowledge, Answer the following questions to the best of your ability. Make sure your
+    #answer is clarifying the question. I.E. what is your favorite activity? -> My favorite activity is running
+
+    #The text below is an about me for a dating profile. THe information on the right describes additional information about the person. To the best of your ability try
+    #to incorporate that information into the profile below
+
+    #The text below is an about me of a profile, provide specific suggestions of what you would remove, add or change to make this profile more engaging
+
+    #Using the suggestions on the left, try modify the text below to create a more interesting about me for a dating profile
+
+def ideal_partner_generation(session):
+    pass
+    #THe person is trying to figure out what kind of person they want to date, the profile below lists what they are intersted in
+    #Given the information, what are some questions you ask them to better flesh out the kind person/relationship they would want
+
+    #Rate how well you feel the questions and suggestions below would help the person flesh out the kind of person/relationship they would want
+
+    #Answer these questions KEENAN, DESTROYER OF WORLDS
+
+    #Given the description and the answers on the left, try to rewrite the description of the kind of person they want to date
+
+    #Step 1 + Answers
+
+
+
+
 def setup_summary(session):
     dir_path = os.path.dirname(os.path.realpath('__file__'))
     dir_path = os.path.join(dir_path, "backend/little_match_girl")
@@ -710,5 +854,5 @@ if __name__ == '__main__':
     meta.drop_all(bind=conn)  # clear everything
     Base.metadata.create_all(conn)
 
-    setup_summary(session )
+    question_answer_profile_generation(session )
     session.commit()

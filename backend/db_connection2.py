@@ -200,6 +200,8 @@ class Process_Object(Base):
        return False
 
     def get_expected_completion_read_ratio(self,content_obj):
+        print content_obj
+        print "this is whose date it being evaluated"
         completion_time = content_obj.get_completion_time()
         read_time = self.task_parameters_obj.estimate_read_time()
 
@@ -219,12 +221,15 @@ class Process_Object(Base):
             if i.user_id !=None:
                 raise Exception("User already assigned!")
             i.associated_user = user_obj
+            i.user_id=user_obj.name
 
         for i in self.sub_process:
             for j in i.get_content_produced_by_this_process():
                 if j.user_id != None:
                     raise Exception("User already assigned!")
                 j.associated_user = user_obj
+                j.user_id=user_obj.name
+
 
     def __init__(self,body_of_task=None,prompt=None,suggestion=None,context=None, displayed_result=None, expected_results=1, content_to_be_requested=3, subprocess_tuple=None):
         #displayed result is only for rating tasks, where user is reviewing a result

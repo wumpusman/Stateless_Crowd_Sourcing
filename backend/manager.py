@@ -5,7 +5,7 @@ class Manager(object):
         # type: (object, object) -> object
         self.session=session
         self._session_time=max_time*60 #convert from minutes to seconds
-        self._minimum_work_time=20 #seconds
+        self._minimum_work_time=0 #seconds
         self._task_timeout_max=10 #This is in MINUTES
     #I hate that i have to make this function each time someone queries the db :(
 
@@ -101,7 +101,9 @@ class Manager(object):
         ##total_seconds()
         if len(user.associated_content)>0:
             if user.get_current_content_in_progress(session)!=None:
-                return Exception("assigning new content when current content is not complete")
+                raise Exception("assigning new content when current content is not complete")
+
+
         optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
 
 
@@ -177,25 +179,29 @@ class Manager(object):
         if type(content)==type(None):
             return {"Project_State":"Finished"}
 
+        print "WTF"
+        print content
+        print content.origin_process
+
         view= content.origin_process.prepare_view()
         view["Project_State"]="Project" #we are still working on the proejct
         view["Session_Time"]=self._session_time
-
+#
         return view
     def update_global_state(self,user,results):
         session=self.session
 
         current=user.get_current_content_in_progress(session)
         #Todo: This is sort of telling the system if person barely wrote anything to ignore it, need a better place to hold this code
-        print current.origin_process
 
-        if isinstance(current.origin_process, Process_Rewrite):
 
-            print (datetime.datetime.now() - current.assigned_date).total_seconds()
-            if (datetime.datetime.now() - current.assigned_date).total_seconds() < self._minimum_work_time:
-
-                self.unassign_content(current)
-                return
+        if isinstance(current.origin_process, Process_Rewrite): #
+            if current.assigned_date !=None: #todo change this so that all values have an assigned date!
+                print (datetime.datetime.now() - current.assigned_date).total_seconds()
+                if (datetime.datetime.now() - current.assigned_date).total_seconds() < self._minimum_work_time:
+    #
+                    self.unassign_content(current)
+                    return
 
 
         # total_seconds()

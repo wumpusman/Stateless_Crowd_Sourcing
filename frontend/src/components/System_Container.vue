@@ -2,7 +2,7 @@
   <div id="container">
 
 
-    <Login v-if="which_page('Login')"></Login>
+    <Login :should_auto_login="should_auto_login" v-if="which_page('Login')"></Login>
     <Project v-if="which_page('Project')" :Has_Session_Expired="has_session_expired_function"></Project>
     <Finished v-if="which_page('Finished')" :Tasks_Completed="compute_submission_count" :Code="computed_name" ></Finished>
 
@@ -27,9 +27,11 @@
 
 export default {
   name: 'container',
+
   components: {
     Content_Element, SuggestionList, Prompt, Project,Login, Finished, Show_Results
   },
+  props:["should_auto_login"],
   data:function() {
     return {
 
@@ -45,13 +47,13 @@ export default {
     }
   },
   created:function(){
-    console.log("WTF kfwefeillfefwew mfewfwee");
+    console.log("WTF is this wwhy are you not compiling :(");
 
     window.beforeunload  =this.disconnect_user;
     document.beforeunload=this.disconnect_user;
     document.addEventListener('beforeunload', this.disconnect_user);
     window.onbeforeunload  =this.disconnect_user;
-    window.onblur = this.refresh_page;
+    //window.onblur = this.refresh_page;
    // window.onmouseout = this.handler;  //window.addEventListener('beforeunload', this.handler);
 
   },

@@ -41,6 +41,7 @@ import jquery from 'jquery'
 
 export default {
   name: 'Login',
+  props:{should_auto_login:{default:false}},
   data:function(){
     return {
       random_code:Math.round(Math.random()*1000000)+"C" +Math.round(Math.random()*10000000)+"LX",
@@ -50,13 +51,28 @@ export default {
     }
   },
   mounted:function(){
+    window.onload = function () {
+      console.log("GREAT stuff yee");
+      console.log(this.is_auto_login);
+      console.log("wtf this should log in huh");
+      console.log(this.is_auto_login);
+      if (this.is_auto_login == true) {
+        this._show_everything_but_login();
+
+        this.password = this.random_code;
+        this.name = this.random_code;
+        this.submit();
+      }
+
+    }.bind(this);
 
 
-    this._show_everything_but_login();
-    this.password=this.random_code;
-    this.name=this.random_code;
-    this.submit();
+  },
+  computed:{
+    is_auto_login:function(){
+      return this.should_auto_login;
 
+    }
   },
 
   methods:{
