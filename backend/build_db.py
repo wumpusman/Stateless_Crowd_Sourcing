@@ -32,7 +32,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
                "For now I'm focusing on my job in linguistics and software, " \
                "but I'd like to make some advances in AI. I'm fortunate to have many friends who live nearby, and I'm enjoying spending time with them."
 
-     run_example.question_answer_profile_generation(session,text_body=text_body)
+     run_example.question_answer_profile_generation(the_session,text_body=text_body)
      the_session.commit()
      print the_session.query(Content).all()
 
