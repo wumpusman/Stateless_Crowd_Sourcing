@@ -32,7 +32,22 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
                "For now I'm focusing on my job in linguistics and software, " \
                "but I'd like to make some advances in AI. I'm fortunate to have many friends who live nearby, and I'm enjoying spending time with them."
 
-     run_example.question_answer_profile_generation(the_session,text_body=text_body)
+     run_example.question_answer_profile_generation(session,text_body=text_body,assign_user=True)
+
+
+
+     text_body= "I enjoy long walks, and I meditate to reduce anxiety, which constantly bubbles up to the surface if I stay still for too long. " \
+                "I identify as a feminist, a Unitarian Universalist, a pragmatist, an effective altruist, and a left libertarian."
+
+     run_example.question_answer_profile_generation(session,text_body=text_body, assign_user=False)
+
+
+
+     text_body="I'm an introvert who enjoys reading and going for long, contemplative walks. I enjoy playing dungeons and dragons and videogaming, " \
+               "but I also enjoy cooking and going to the gym. I'm looking for a smart, curious woman who enjoys conversation and science."
+
+     run_example.question_answer_profile_generation(session, text_body=text_body, assign_user=False)
+
      the_session.commit()
      print the_session.query(Content).all()
 
@@ -49,13 +64,21 @@ else:
                "For now I'm focusing on my job in linguistics and software, " \
                "but I'd like to make some advances in AI. I'm fortunate to have many friends who live nearby, and I'm enjoying spending time with them."
 
-     run_example.question_answer_profile_generation(session,text_body=text_body)
+     run_example.question_answer_profile_generation(session,text_body=text_body,assign_user=True)
 
 
-     #text_body= "I enjoy long walks, and I meditate to reduce anxiety, which constantly bubbles up to the surface if I stay still for too long. " \
-               # "I identify as a feminist, a Unitarian Universalist, a pragmatist, an effective altruist, and a left libertarian."
 
-     #run_example.question_answer_profile_generation(session,text_body=text_body)
+     text_body= "I enjoy long walks, and I meditate to reduce anxiety, which constantly bubbles up to the surface if I stay still for too long. " \
+                "I identify as a feminist, a Unitarian Universalist, a pragmatist, an effective altruist, and a left libertarian."
+
+     run_example.question_answer_profile_generation(session,text_body=text_body, assign_user=False)
+
+
+
+     text_body="I'm an introvert who enjoys reading and going for long, contemplative walks. I enjoy playing dungeons and dragons and videogaming, " \
+               "but I also enjoy cooking and going to the gym. I'm looking for a smart, curious woman who enjoys conversation and science."
+
+     run_example.question_answer_profile_generation(session, text_body=text_body, assign_user=False)
 
 
      #run_example.setup_summary(session)

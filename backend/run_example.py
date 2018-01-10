@@ -140,8 +140,8 @@ def question_answer_profile_generation(session, assign_user=True,text_body=""):
 
 
     produce_pairs=lambda a,b: [Content_Result(a, is_completed=True),Content_Result(b,is_completed=True)]
-    default_sub_process_amount = 1
-    default_process_amount = 1
+    default_sub_process_amount = 3
+    default_process_amount = 3
 
 
     body=text_body
@@ -154,7 +154,7 @@ def question_answer_profile_generation(session, assign_user=True,text_body=""):
     One_date_p_r1=produce_pairs(date_prompt1,date_rate1)
 
     #KEENAN TASK
-    answer_prompt2="Given the profile on the left and your own personal knowledge, Answer the following questions to the best of your ability."
+    answer_prompt2="Pretend the profile on the left was your own, given your own personal knowledge, answer the following questions to the best of your ability."
     answer_rate2="Rate how well you feel the content on the right answers the questions listed below"
     Two_answer_p_r2=produce_pairs(answer_prompt2,answer_rate2)
 

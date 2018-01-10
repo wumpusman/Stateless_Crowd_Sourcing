@@ -53,7 +53,7 @@ export default {
     document.beforeunload=this.disconnect_user;
     document.addEventListener('beforeunload', this.disconnect_user);
     window.onbeforeunload  =this.disconnect_user;
-    //window.onblur = this.refresh_page;
+    window.onblur = this.refresh_page;
    // window.onmouseout = this.handler;  //window.addEventListener('beforeunload', this.handler);
 
   },

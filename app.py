@@ -19,6 +19,9 @@ conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #
 #meta.drop_all(bind=conn)  # clear everything
 #Base.metadata.create_all(conn)
 manager = Manager(session,max_time=7) #in minutes
+if type(os.environ.get('DATABASE_URL')) != type(None):
+    manager._minimum_work_time=30
+    manager._effort_ratio=1
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
