@@ -82,9 +82,14 @@ class User (Base):
        else:
            return query[0]
         '''
+
        if len(query)==0: return None
-       if len(query) >1: raise Exception("Multiple content assigned  to this user, this forces an error since this should not be "
-                                         "the normal case. I need to refactor so specific processes are designated to particular users")
+       if len(query) >1:
+           query.sort(key=lambda x: x.id, reverse=True)
+           print query[0]
+           print query[1]
+           #raise Exception("Multiple content assigned  to this user, this forces an error since this should not be "
+            #                             "the normal case. I need to refactor so specific processes are designated to particular users")
        return query[0]
     def get_all_user_assigned_content(self,session):
         return session.query(Content).filter(Content.user_id  == self.name)

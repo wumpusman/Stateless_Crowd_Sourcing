@@ -13,8 +13,7 @@ import run_example
 if type(os.environ.get('DATABASE_URL')) != type(None):
      url = os.environ.get('DATABASE_URL')#urlparse.urlparse(os.environ.get('DATABASE_URL'))
           #s
-     print "great"
-     print "URL FOUND"
+
      con = sqlalchemy.create_engine(url, client_encoding='utf8')
 
      # We then bind the connection to MetaData()
@@ -29,7 +28,11 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      the_session.commit()
 
           #
-     run_example.setup_summary(the_session)
+     text_body="I read a lot about cognition, math, brains, and the social sciences, because I wonder a lot about how people work. " \
+               "For now I'm focusing on my job in linguistics and software, " \
+               "but I'd like to make some advances in AI. I'm fortunate to have many friends who live nearby, and I'm enjoying spending time with them."
+
+     run_example.question_answer_profile_generation(session,text_body=text_body)
      the_session.commit()
      print the_session.query(Content).all()
 
@@ -42,9 +45,19 @@ else:
      #
 
      session.commit()
+     text_body="I read a lot about cognition, math, brains, and the social sciences, because I wonder a lot about how people work. " \
+               "For now I'm focusing on my job in linguistics and software, " \
+               "but I'd like to make some advances in AI. I'm fortunate to have many friends who live nearby, and I'm enjoying spending time with them."
+
+     run_example.question_answer_profile_generation(session,text_body=text_body)
 
 
+     #text_body= "I enjoy long walks, and I meditate to reduce anxiety, which constantly bubbles up to the surface if I stay still for too long. " \
+               # "I identify as a feminist, a Unitarian Universalist, a pragmatist, an effective altruist, and a left libertarian."
 
-     run_example.setup_summary(session)
+     #run_example.question_answer_profile_generation(session,text_body=text_body)
+
+
+     #run_example.setup_summary(session)
      session.commit()
      print session.query(Content).all()

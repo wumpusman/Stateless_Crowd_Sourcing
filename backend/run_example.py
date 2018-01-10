@@ -3,6 +3,8 @@ from manager import Manager
 import re
 import os
 
+
+sess=None
 def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub):
     sub_process = {"prompt": prompts_ary[1],
                    "expected_results": 1,
@@ -21,12 +23,13 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
     generated_process.is_using_ml=True
 
 
-    session.add(generated_process)
+    sess.add(generated_process)
     return generated_process
 
 
 def date_plan(session):
-    pass
+    global sess
+    sess=session
     # Friend is trying to figure out what to do on a date, what are some questions you would ask him to help flesh out what he should do
     # ANSWEr them kEENAN
     # Given the answers, what is the first thing this person should do on a date
@@ -122,7 +125,8 @@ def math_plan(session):
 
 
 def question_answer_profile_generation(session, assign_user=True,text_body=""):
-
+    global sess
+    sess = session
     keenan =None
 
     keenan_list=session.query(User).filter(User.name == "Keenan").all()
@@ -136,11 +140,11 @@ def question_answer_profile_generation(session, assign_user=True,text_body=""):
 
 
     produce_pairs=lambda a,b: [Content_Result(a, is_completed=True),Content_Result(b,is_completed=True)]
-    default_sub_process_amount = 3
-    default_process_amount = 3
+    default_sub_process_amount = 1
+    default_process_amount = 1
 
 
-    body="I like pussy and hot cars, I ride hard I play hard ;)"
+    body=text_body
     One_body=Content_Result(body,is_completed=True)
 
     date_prompt1="A person is trying to create an about me for a dating profile. Given their profile what are some questions or suggestion you would ask them to help flesh out and improve their profile"
@@ -186,10 +190,11 @@ def question_answer_profile_generation(session, assign_user=True,text_body=""):
             answer_process = build_process(Process_Rewrite, Two_answer_p_r2, date_process.get_final_results()[0], One_body,
                                            None, default_process_amount, default_sub_process_amount)
         else:
-            answer_process.assign_user(keenan)
+
             answer_process = build_process(Process_Rewrite, Two_answer_p_r2, date_process.get_final_results()[0],
                                            One_body,
                                            None, 1, 1)
+            answer_process.assign_user(keenan)
 
 
         incorporate_process1=build_process(Process_Rewrite,Three_incorp_p_r_3,One_body,answer_process.get_final_results()[0],
