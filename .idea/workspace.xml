@@ -59,7 +59,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/build_db.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
@@ -100,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notes" pinned="false" current-in-tab="false">
+      <file leaf-file-name="notes" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notes">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -162,7 +162,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/frontend/src/components/Transform_Text_Box.vue" />
-        <option value="$PROJECT_DIR$/notes" />
         <option value="$PROJECT_DIR$/frontend/src/router/index.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/Test.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/Prompt.vue" />
@@ -186,6 +185,7 @@
         <option value="$PROJECT_DIR$/backend/run_example.py" />
         <option value="$PROJECT_DIR$/backend/db_connection2.py" />
         <option value="$PROJECT_DIR$/backend/build_db.py" />
+        <option value="$PROJECT_DIR$/notes" />
       </list>
     </option>
   </component>
@@ -1020,10 +1020,10 @@ while True:
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
+    <entry file="file://$PROJECT_DIR$/backend/build_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="390">
+          <caret line="34" column="63" lean-forward="false" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -1036,10 +1036,10 @@ while True:
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/build_db.py">
+    <entry file="file://$PROJECT_DIR$/notes">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="34" column="63" lean-forward="false" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
+        <state relative-caret-position="180">
+          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
           <folding />
         </state>
       </provider>
