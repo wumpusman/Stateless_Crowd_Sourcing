@@ -3,20 +3,6 @@ from manager import Manager
 import re
 import os
 
-def date_plan(session):
-    pass
-    #Friend is trying to figure out what to do on a date, what are some questions you would ask him to help flesh out what he should do
-    #ANSWEr them kEENAN
-    #Given the answers, what is the first thing this person should do on a date
-    #Given the following activity for a date, what are some questions to help them flesh out what would make this interesting
-    #Answer them keenan
-    #Given the answers, flesh out what he should do for this activity
-
-def math_plan(session):
-    pass
-    #Trying to solve a critical thinking problem abotu the following. To help solve this problem, what is the first thing you would do
-    #Goal + Y what is the next thing you would do
-
 def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub):
     sub_process = {"prompt": prompts_ary[1],
                    "expected_results": 1,
@@ -25,7 +11,7 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
     if context!=None: #technically unneccesary tbh
         sub_process["context"]=context
     if suggestions!=None:
-        sub_process["suggestions"]=suggestions
+        sub_process["suggestion"]=suggestions
 
 
     generated_process=Process_Type(body_of_task=body,prompt=prompts_ary[0],suggestion=suggestions,context=context,content_to_be_requested=amount_to_be_request_main,
@@ -38,13 +24,120 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
     session.add(generated_process)
     return generated_process
 
-def question_answer_profile_generation(session):
-    keenan=User("Keenan")
-    password="123abc"
-    keenan.password=password
+
+def date_plan(session):
+    pass
+    # Friend is trying to figure out what to do on a date, what are some questions you would ask him to help flesh out what he should do
+    # ANSWEr them kEENAN
+    # Given the answers, what is the first thing this person should do on a date
+    # Given the following activity for a date, and the answers listed, what are some questions to help them flesh out what would make this date/activity interesting
+    # Answer them keenan
+    # Given the answers, flesh out what he should do for this activity
     produce_pairs=lambda a,b: [Content_Result(a, is_completed=True),Content_Result(b,is_completed=True)]
     default_sub_process_amount = 1
     default_process_amount = 1
+
+    date_plan_prompt1="A friend is trying to figure out what to do next on a date, what are some questions you would ask him to help flesh out what he should do. Any information on the " \
+                      "left is meant to provide context about their date and background information"
+    date_plan_rate1="Rate how well you feel the content would help a person flesh out what to do on a date."
+    One_pr=produce_pairs(date_plan_prompt1,date_plan_rate1)
+
+    #KEENAN TASK
+    answer_prompt2="Using full sentences, answer the following questions to the best of your ability. The answers are helping to inform a date decision"
+    answer_rate2="Rate how well you feel the content on the right answers the questions listed below"
+    Two_answer_p_r2=produce_pairs(answer_prompt2,answer_rate2)
+
+    suggestion_prompt3="A friend is trying to figure out an ideal date. THe information on the left describes additional information about the person and their previous plans. To the best of your ability " \
+                        "what should they do next on the date"
+    suggestion_rate3="Rate how well you feel the suggestion would be for a good date"
+    Three_sugg_pr3=produce_pairs(suggestion_prompt3,suggestion_rate3)
+
+
+    date_sub_plan_prompt="A friend is trying to figure out what would engage a date during the activity listed below. What are some questions you would ask him to help flesh out" \
+                  "what he should do."
+    date_sub_plan_rate="Rate how well you feel the questions below would help a person flesh out what to do during the date activity below."
+    date_sub_plan_p_r=produce_pairs(date_sub_plan_prompt,date_sub_plan_rate)
+
+
+    answer_sub_prompt="Using full sentences, answer the following questions to the best of your ability. The answers are helping to inform the structure of a date activity"
+    answer_sub_rate="Rate how well you feel the answer's address address the questions listed below"
+    answer_sub_p_r=produce_pairs(answer_sub_prompt,answer_sub_rate)
+
+    incorporate_sub_prompt="Using the description of the date activity, and the answers below, describe what you would do during the date activity"
+    incorporate_sub_rate="Rate how well you feel the content below fleshes out what you would during the date activity"
+    incorporate_sub_p_r=produce_pairs(incorporate_sub_prompt,incorporate_sub_rate)
+
+    summary_so_far_prompt="Reading the information below, and the information on the left, more concisely describe what the date plan is so far"
+    summary_so_far_rate="Rate how well the content below describes the current date plan"
+    summary_so_far_pr=produce_pairs(summary_so_far_prompt,summary_so_far_rate)
+
+
+    body_current=Content_Result("",is_completed=True)
+
+
+
+    #######################################
+    for i in xrange(2):
+        date_process = build_process(Process_Rewrite, One_pr, body_current, None, None, default_process_amount,
+                                     default_sub_process_amount)
+
+        answer_process =build_process(Process_Rewrite,Two_answer_p_r2,date_process.get_final_results()[0],
+                                      body_current,
+                                      None,default_process_amount,default_sub_process_amount)
+
+
+        suggestion_process = build_process(Process_Rewrite, Three_sugg_pr3, body_current, None,
+                                        answer_process.get_final_results()[0],
+                                        default_process_amount,default_sub_process_amount
+                                           )
+
+
+        sub_date_process=build_process(Process_Rewrite,date_sub_plan_p_r,suggestion_process.get_final_results()[0],answer_process.get_final_results()[0],
+                               None, default_process_amount,default_sub_process_amount
+                               )
+
+
+        sub_answer_process=build_process(Process_Rewrite,answer_sub_p_r,sub_date_process.get_final_results()[0],suggestion_process.get_final_results()[0],None,
+                                         default_process_amount,default_sub_process_amount)
+
+
+        sub_incorporate_process=build_process(Process_Rewrite,incorporate_sub_p_r,sub_answer_process.get_final_results()[0],suggestion_process.get_final_results()[0],None,
+                                              default_process_amount,default_sub_process_amount)
+
+
+        summary_process=build_process(Process_Merge,summary_so_far_pr, body_current,suggestion_process.get_final_results()[0],answer_process.get_final_results()[0],
+                                      default_process_amount,default_sub_process_amount
+                                      )
+
+        body_current=summary_process.get_final_results()[0]
+
+
+    session.commit()
+
+
+def math_plan(session):
+    pass
+    # Trying to solve a critical thinking problem abotu the following. To help solve this problem, what is the first thing you would do
+    # Goal + Y what is the next thing you would do
+
+
+def question_answer_profile_generation(session, assign_user=True,text_body=""):
+
+    keenan =None
+
+    keenan_list=session.query(User).filter(User.name == "Keenan").all()
+    if len(keenan_list) ==0:
+        keenan=User("Keenan")
+        password="123abc"
+        keenan.password=password
+    else:
+        keenan=keenan_list[0]
+
+
+
+    produce_pairs=lambda a,b: [Content_Result(a, is_completed=True),Content_Result(b,is_completed=True)]
+    default_sub_process_amount = 3
+    default_process_amount = 3
 
 
     body="I like pussy and hot cars, I ride hard I play hard ;)"
@@ -66,14 +159,14 @@ def question_answer_profile_generation(session):
     incorporate_prompt3="The text below is an about me for a dating profile. THe information on the left describes additional information about the person. To the best of your ability " \
                         "try " \
                         "to incorporate that information into the profile below"
-    incorporate_rate3="Rate how well the content synthesizes the information on left with the profile description listed below"
+    incorporate_rate3="Rate how well the content synthesizes the information on the left with the profile description listed below"
 
     Three_incorp_p_r_3=produce_pairs(incorporate_prompt3,incorporate_rate3)
 
 
 
 
-    suggestion_prompt4="The text below is an about me of a dating profile, provide specific suggestions of what you would remove, add or change to make this profile more engaging"
+    suggestion_prompt4="The text below is a part of a dating profile, provide specific suggestions of what you would remove, add or change to make this profile more engaging"
     suggestion_rate4="Rate how well you feel the content would help to improve the text listed below"
     Four_suggest_p_r4=produce_pairs(suggestion_prompt4,suggestion_rate4)
 
@@ -83,19 +176,32 @@ def question_answer_profile_generation(session):
 
     Five_incorporate_p_r4=produce_pairs(incorporate_prompt5,incorporate_rate5)
 
-    date_process = build_process(Process_Rewrite, One_date_p_r1, One_body, None, None, default_process_amount,
-                                 default_sub_process_amount)
 
-    answer_process = build_process(Process_Rewrite, Two_answer_p_r2, date_process.get_final_results()[0], One_body,
-                                   None, default_process_amount, default_sub_process_amount)
-    answer_process.assign_user(keenan)
+    for i in xrange(3):
+        date_process = build_process(Process_Rewrite, One_date_p_r1, One_body, None, None, default_process_amount,
+                                     default_sub_process_amount)
 
-    incorporate_process1=build_process(Process_Rewrite,Three_incorp_p_r_3,One_body,answer_process.get_final_results()[0],
-                                       None,default_process_amount,default_sub_process_amount)
+        answer_process= None
+        if assign_user == False:
+            answer_process = build_process(Process_Rewrite, Two_answer_p_r2, date_process.get_final_results()[0], One_body,
+                                           None, default_process_amount, default_sub_process_amount)
+        else:
+            answer_process.assign_user(keenan)
+            answer_process = build_process(Process_Rewrite, Two_answer_p_r2, date_process.get_final_results()[0],
+                                           One_body,
+                                           None, 1, 1)
 
 
+        incorporate_process1=build_process(Process_Rewrite,Three_incorp_p_r_3,One_body,answer_process.get_final_results()[0],
+                                           None,default_process_amount,default_sub_process_amount)
 
-    session.add(answer_process)
+        suggestion_process=build_process(Process_Rewrite,Four_suggest_p_r4,incorporate_process1.get_final_results()[0],None,None,default_process_amount,default_sub_process_amount)
+
+        incorporate_process2=build_process(Process_Rewrite,Five_incorporate_p_r4,incorporate_process1.get_final_results()[0],
+                                           None,suggestion_process.get_final_results()[0],default_process_amount,default_sub_process_amount)
+
+        One_body=incorporate_process2.get_final_results()[0]
+
 
     session.commit()
 
@@ -854,5 +960,6 @@ if __name__ == '__main__':
     meta.drop_all(bind=conn)  # clear everything
     Base.metadata.create_all(conn)
 
-    question_answer_profile_generation(session )
+    #question_answer_profile_generation(session )
+    date_plan(session)
     session.commit()

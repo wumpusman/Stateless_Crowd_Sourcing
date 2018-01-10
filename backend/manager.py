@@ -7,6 +7,7 @@ class Manager(object):
         self._session_time=max_time*60 #convert from minutes to seconds
         self._minimum_work_time=0 #seconds
         self._task_timeout_max=10 #This is in MINUTES
+        self._effort_ratio=0
     #I hate that i have to make this function each time someone queries the db :(
 
     def unassign_timeout_content(self,default_timeout=10):
@@ -221,7 +222,7 @@ class Manager(object):
               #if float(current.results)>=3:
               effective_effort=current.origin_process.get_expected_completion_read_ratio(current)
 
-              if effective_effort<1:
+              if effective_effort<self._effort_ratio:
 
                       print "LAZY MAN"
                       self.unassign_content(current)
