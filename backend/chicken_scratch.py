@@ -46,3 +46,8 @@ def connect(user, password, db, host='localhost', port=5432):
 
 
         return con, meta,Session()
+
+import os
+import re
+print "OK"
+

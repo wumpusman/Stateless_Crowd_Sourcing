@@ -33,8 +33,8 @@ export default {
     },
 
     computed_header:function(){
-      if(this.computed_suggestions.length==0) return ""
-      return "Suggestions"
+      if(this.computed_suggestions.length==0) return "";
+      return "Info";
     }
 
   }

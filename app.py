@@ -57,6 +57,7 @@ def disconnect():
                 manager.unassign_content(assigned_content)
             #this is used to handle users who are either refreshing the page , or exiting without finishing
 
+    session.close()
 
     return json.dumps({"refresh":True})
 
@@ -115,6 +116,11 @@ def submit():
 
 @app.route('/api/login',methods=['POST'])
 def login(): #For logging in
+    #poor taste
+
+    conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
+    manager.session=session
+
     userData = request.form['jsonData'];
     userData = json.loads(userData)
 

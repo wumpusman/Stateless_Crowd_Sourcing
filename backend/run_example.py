@@ -22,9 +22,28 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
 
     generated_process.is_using_ml=True
 
-
     sess.add(generated_process)
     return generated_process
+
+
+def speech_rewrite_linear(session):
+    sess=session
+    #to the best of your ability in a few sentences summarize what is being said. The information on the right (if available) describes the context
+    #The information on the left describes an ongoing piece of writting. The text below is a continuation of it. To the best of your ability summarize, the text below.
+    #Take the root of the speech
+    #what are some issues that are relevant to you
+    #Rewrite this speech to best account for these issues
+
+    #The information on the left describes a summary piece of writing. The below is meant to be a piece from that original writing,
+    # Modify the text below under "REWRITE BELOW" to better match the ideas and message of the summary on the left
+    #
+
+def travel_plan(session):
+    #You're trying to design an interesting and unique vacation plan to visit NYC.
+    #To achieve this goal, what's the first thing you would do to reseach/plan this trip. Given an example, and explain why.
+    #You're planning to go to nyc, and you're currently doing the following: '' To achieve this goal, what would you need to do,  why, give example
+    #66 tg yg4i
+    pass
 
 
 def date_plan(session):
@@ -255,7 +274,81 @@ def ideal_partner_generation(session):
     #Step 1 + Answers
 
 
+def rewrite_continuously(session,text):
+    global sess
+    sess=session
 
+    root_body="The young girl sat wearily under the beautiful Christmas tree and tried vainly to ignore the cold and wet. One foot was damp because one " \
+              "slipper had been stolen by her irritating brother, and having run from her house to escape from her violent Father, she had not had time to " \
+              "but her boots on.  Trying to take comfort from the memories of her loving Grandmother and the stories she told of stars she lit the last of" \
+              " her matches in a futile effort to stay warm.  Before the match goes out she sees the beauty of the tree and stars, a vision of her beloved " \
+              "Grandmother appears welcoming her soul to heaven as her body freezes and dies."
+
+    root_prompt = "Rewrite this as though it were written in contemporary english and modern times. You should try to keep the same number of sentences, as well " \
+                  "as the general placement of nouns, adjectives and other parts of speech. "
+
+    #What ideas, details concepts would make this story feel more like this was taking place in modern days.4
+
+    #Rewrite the text below using the ideas and concepts suggested on the left. You should try to keep the same number of sentences as well as
+    #well as the general placement of nouns, adjcetives and other parts of speech.
+
+    #Root_Prompt.
+
+    #Rewrite the text listed under "Second Part" to better fit the ideas and concepts listed in info. You should try to keep the same number of sentences ....
+    #The text above second part describes the preceding narrative/text.
+
+def setup_general_summary(session,file_name):
+    dir_path = os.path.dirname(os.path.realpath('__file__'))
+    dir_path = os.path.join(dir_path, "backend/"+str(file_name))
+    file = None
+    file_text=None
+    try:
+        file = open(file_name, "rb")
+    except:
+        file = open(dir_path, "rb")
+    file_text = file.read()
+    file_text = file_text.replace("\n", "")
+    file.close()
+    file = file_text
+
+    #re.sub(r"[^u0000-u007F]+","c","abZ1 \x00.!")
+    as_arry = re.split("[.;?]", file)
+    # as_arry=as_arry[0:len(as_arry)/2]
+    file_batch_size_5 = []
+    for i in xrange(0, len(as_arry), 5):
+        file_batch_size_5.append(".".join(as_arry[i:i + 5]))
+    print len(file_batch_size_5)
+    # print malcom_batch_size_5[1]
+    recurse_summary(session, file_batch_size_5, 0, None, file_batch_size_5)
+
+
+def setup_luther(session):
+    setup_general_summary(session,"luther_speech")
+
+def setup_malcom_summary(session):
+    setup_general_summary(session,"malcom_speech")
+    '''
+    dir_path = os.path.dirname(os.path.realpath('__file__'))
+    dir_path = os.path.join(dir_path, "backend/malcom_speech")
+    malcom_speech = None
+    try:
+        malcom_speech = open("malcom_speech", "rb")
+    except:
+        malcom_speech = open(dir_path, "rb")
+    malcom_speech_text = malcom_speech.read()
+    malcom_speech_text=malcom_speech_text.replace("\n","")
+    malcom_speech.close()
+    malcom_speech = malcom_speech_text
+
+    as_arry = re.split("[.;?]", malcom_speech)
+    # as_arry=as_arry[0:len(as_arry)/2]
+    malcom_batch_size_5 = []
+    for i in xrange(0, len(as_arry), 5):
+        malcom_batch_size_5.append(".".join(as_arry[i:i + 5]))
+    print len(malcom_batch_size_5)
+    #print malcom_batch_size_5[1]
+    recurse_summary(session, malcom_batch_size_5, 0, None, malcom_batch_size_5)
+    '''
 
 def setup_summary(session):
     dir_path = os.path.dirname(os.path.realpath('__file__'))
@@ -275,13 +368,13 @@ def setup_summary(session):
     for i in xrange(0,len(as_arry),5):
         match_girl_batch_size_5.append(".".join(as_arry[i:i+5]))
 
-    recurse_summary(session,match_girl_batch_size_5,0)
+    recurse_summary(session,match_girl_batch_size_5,0,None,match_girl_batch_size_5)
 
-def _merge_step(session,left_content_result,right_content_result):
-    default_sub_process_amount = 1
-    default_process_amount = 1
+def _merge_step(session,left_content_result,right_content_result,context_result=None):
+    default_sub_process_amount = 3
+    default_process_amount = 2
 
-    merge_prompt="The text below contains two related parts of a story. Please combine them into a single summary that accounts for the keys points and events in both of them."
+    merge_prompt="The text below contains two related parts of a story. Please combine them into a single summary that accounts for the keys points and events in both of them. The context on the left describes what happened before"
 
     merge_rate="The text below and the left describes two related scenes of a story, please rate how well 'content to be evaluate' incorporates the information into summary that accounts for the key points " \
                "of both of them"
@@ -289,12 +382,14 @@ def _merge_step(session,left_content_result,right_content_result):
     cr_prompt=Content_Result(merge_prompt,is_completed=True)
     cr_prompt_rate=Content_Result(merge_rate,is_completed=True)
 
+
+
     sub_process = {"prompt": cr_prompt_rate,
                    "expected_results": 1,
                    "context":right_content_result,
                    "content_to_be_requested": default_sub_process_amount}
 
-    merge_process = Process_Merge(body_of_task=left_content_result, context=right_content_result, prompt=cr_prompt,
+    merge_process = Process_Merge(body_of_task=left_content_result, context=right_content_result,suggestion=context_result, prompt=cr_prompt,
                                       expected_results=1, content_to_be_requested=default_process_amount,
                                     subprocess_tuple=(Process_Rate,sub_process))
 
@@ -304,11 +399,13 @@ def _merge_step(session,left_content_result,right_content_result):
     session.commit()
     return merge_process
 
-def _summary_step(session,content):
-    default_sub_process_amount=1
-    default_process_amount=1
+
+
+def _summary_step(session,content,context=None):
+    default_sub_process_amount=2
+    default_process_amount=2
     summary_prompt="For the text below, to the best to your ability, " \
-                   "please write a concise summary that incorporates the keys points and events of the text below"
+                   "please write a concise summary that incorporates the keys points and events of the text below. Any text on the left is meant to provide context"
 
     summary_rate_prompt="The 'content to be evaluated' is intended to be a summary of the text below. " \
                         "Rate how well you feel it accurately captures the full meaning and key events. "
@@ -322,12 +419,15 @@ def _summary_step(session,content):
     else:
         body_content=content
 
+    if type("") == type(context):
+        context=Content_Result(context,is_completed=True)
+
     sub_process = {"prompt": cr_prompt_rate,
                         "expected_results": 1,
                         "content_to_be_requested": default_sub_process_amount}
 
     summary_process=Process_Rewrite(body_of_task=body_content,prompt=cr_prompt,
-                                    expected_results=1,content_to_be_requested=default_process_amount,
+                                    expected_results=1,context=context,content_to_be_requested=default_process_amount,
                                     subprocess_tuple=(Process_Rate, sub_process))
     summary_process.is_using_ml=True
 
@@ -336,22 +436,33 @@ def _summary_step(session,content):
     return summary_process
 
 
-def recurse_summary(session,text_block_ary, depth):
+def recurse_summary(session,text_block_ary, depth,left_adjacent_process=None,entire_text_ary=[]): #So I can get the left node
    # print len(text_block_ary)
     sub_group_len=len(text_block_ary)/2
 
     if sub_group_len==0:
 
-        return _summary_step(session,text_block_ary[0])
+        relevant_text_block=text_block_ary[0]
+
+        index=entire_text_ary.index(relevant_text_block)
+        left_text_element=None
+
+        if index > 0:
+            left_text_element=entire_text_ary[index-1]
+        return _summary_step(session,text_block_ary[0],left_text_element)
 
 
     left= text_block_ary[:sub_group_len]
     right= text_block_ary[sub_group_len:]
 
-    left_process=recurse_summary(session,left,depth+1)
-    right_process=recurse_summary(session,right,depth+1)
+    left_process=recurse_summary(session,left,depth+1,left_adjacent_process,entire_text_ary)
+    right_process=recurse_summary(session,right,depth+1,left_process,entire_text_ary)
 
-    merge_process=_merge_step(session,left_process.get_final_results()[0],right_process.get_final_results()[0])
+    left_adjacent_results=None
+    if left_adjacent_process!=None:
+
+        left_adjacent_results=left_adjacent_process.get_final_results()[0]
+    merge_process=_merge_step(session,left_process.get_final_results()[0],right_process.get_final_results()[0],context_result=left_adjacent_results)
     #if right Node is empty  just return left Node (summariazation)
     #create B =(merge process of left and right)
     #create C = summaziation (B)
