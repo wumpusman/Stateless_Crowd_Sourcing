@@ -311,12 +311,14 @@ def setup_general_summary(session,file_name):
     file.close()
     file = file_text
 
-    #re.sub(r"[^u0000-u007F]+","c","abZ1 \x00.!")
+
     as_arry = re.split("[.;?]", file)
     # as_arry=as_arry[0:len(as_arry)/2]
     file_batch_size_5 = []
     for i in xrange(0, len(as_arry), 5):
-        file_batch_size_5.append(".".join(as_arry[i:i + 5]))
+        batch=".".join(as_arry[i:i + 5])
+        #batch=re.sub(r"[^u0000-u007F]+"," ",batch)
+        file_batch_size_5.append(batch)
     print len(file_batch_size_5)
     # print malcom_batch_size_5[1]
     recurse_summary(session, file_batch_size_5, 0, None, file_batch_size_5)
