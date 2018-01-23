@@ -49,7 +49,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      run_example.question_answer_profile_generation(the_session, text_body=text_body, assign_user=False)
      '''
 
-     run_example.setup_luther(session)
+     run_example.setup_luther(the_session)
 
      the_session.commit()
      print the_session.query(Content).all()
