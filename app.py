@@ -45,6 +45,14 @@ def dashboard():
     return json.dumps({"results":results})
 
 
+def commit_close_session(session):
+    import time
+    time.sleep(.1)
+
+    session.commit()
+    session.close()
+    pass
+
 @app.route('/api/disconnect',methods=['POST'])
 def disconnect():
     userData = request.form['jsonData'];
@@ -53,11 +61,15 @@ def disconnect():
     if user!= None:
         if len(user.associated_content) > 0:
             assigned_content = user.get_current_content_in_progress(session)
+            print assigned_content
+            print "WHAT THE HELL"
             if assigned_content != None:
                 manager.unassign_content(assigned_content)
+
+    commit_close_session(session) #THIS IS FUCKING TERRIBLE PRACTICE :/
             #this is used to handle users who are either refreshing the page , or exiting without finishing
 
-    session.close()
+
 
     return json.dumps({"refresh":True})
 

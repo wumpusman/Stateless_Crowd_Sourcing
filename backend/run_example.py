@@ -274,18 +274,59 @@ def ideal_partner_generation(session):
     #Step 1 + Answers
 
 
-def rewrite_continuously(session,text):
+def rewrite_continuously(session,text_name):
     global sess
     sess=session
-
+    default_process_amount=3
+    default_sub_process_amount=3
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
     root_body="The young girl sat wearily under the beautiful Christmas tree and tried vainly to ignore the cold and wet. One foot was damp because one " \
               "slipper had been stolen by her irritating brother, and having run from her house to escape from her violent Father, she had not had time to " \
-              "but her boots on.  Trying to take comfort from the memories of her loving Grandmother and the stories she told of stars she lit the last of" \
+              "put her boots on.  Trying to take comfort from the memories of her loving Grandmother and the stories she told of stars she lit the last of" \
               " her matches in a futile effort to stay warm.  Before the match goes out she sees the beauty of the tree and stars, a vision of her beloved " \
               "Grandmother appears welcoming her soul to heaven as her body freezes and dies."
+    cr_root_body=Content_Result(root_body,is_completed=True)
+    #root_prompt1 = "Rewrite this as though it were written in contemporary english and modern times. You should try to keep the same number of sentences, as well " \
+     #             "as the general placement of nouns, adjectives and other parts of speech. "
+    #KEENAN TASK
+    root_prompt1="What ideas, details and concepts would make this story feel more like this was taking place in modern times. Briefly explain why."
+    root_rate1="Rate how well you feel the ideas and conepts suggested would make the story below feel more modern and engaging."
+    root_p_r1=produce_pairs(root_prompt1,root_rate1)
+    root_process1=build_process(Process_Rewrite, root_p_r1, cr_root_body, None, None, default_process_amount,
+                  default_sub_process_amount)
 
-    root_prompt = "Rewrite this as though it were written in contemporary english and modern times. You should try to keep the same number of sentences, as well " \
-                  "as the general placement of nouns, adjectives and other parts of speech. "
+    rewrite_prompt2="Rewrite the text below using the ideas and concepts suggested on the left. You should try to keep the same number of sentences as well as " \
+                    "well as the general placement of nouns, adjcetives and other parts of speech."
+    rewrite_rate2="Rate how well you feel the rewrite of the text captures the ideas and concepts suggested in context. "
+    rewrite_p_r2=produce_pairs(rewrite_prompt2,rewrite_rate2)
+    rewrite_process2=build_process(Process_Rewrite, rewrite_p_r2, cr_root_body, root_process1.get_final_results()[0], None, default_process_amount,
+                  default_sub_process_amount)
+
+    relevant_text=break_up_text(text_name,5)
+
+    rewrite_segment_prompt_N="Rewrite the text listed in  'CURRENT PART' to better fit the ideas and concepts listed in INFO. " \
+            "You should try to keep the same number of sentences as well as well as the general placement of nouns, adjectives and other parts of speech in " \
+                             "'CURRENT PART'. " \
+                    "The text in 'Preceeding Text' describes what happened right before "
+    rewrite_segment_rate_N="Rate how well you feel the text betters captures the concepts and ideas from the text on the left. The text should still have a similar flow to the " \
+                           "version listed below" \
+                     ""
+    rewrite_p_rN=produce_pairs(rewrite_segment_prompt_N,rewrite_segment_rate_N)
+
+    previous_time_step=Content_Result("",True)
+    for text_block in relevant_text:
+        relevant_block=Content_Result(text_block,True)
+        rewrite_segments_process=build_process(Process_Merge_Alt_View,rewrite_p_rN,relevant_block,previous_time_step,rewrite_process2.get_final_results()[0],
+                                           default_process_amount,default_sub_process_amount
+         )
+
+        previous_time_step=rewrite_segments_process.get_final_results()[0]
+
+    session.commit()
+    #The text above second part describes the preceding narrative/text."
+
+
+
 
     #What ideas, details concepts would make this story feel more like this was taking place in modern days.4
 
@@ -294,14 +335,15 @@ def rewrite_continuously(session,text):
 
     #Root_Prompt.
 
-    #Rewrite the text listed under "Second Part" to better fit the ideas and concepts listed in info. You should try to keep the same number of sentences ....
+    #Rewrite the text listed below "Second Part" to better fit the ideas and concepts listed in info. You should try to keep the same number of sentences ....
     #The text above second part describes the preceding narrative/text.
 
-def setup_general_summary(session,file_name):
+
+def break_up_text(file_name, batch_size=5):
     dir_path = os.path.dirname(os.path.realpath('__file__'))
-    dir_path = os.path.join(dir_path, "backend/"+str(file_name))
+    dir_path = os.path.join(dir_path, "backend/" + str(file_name))
     file = None
-    file_text=None
+    file_text = None
     try:
         file = open(file_name, "rb")
     except:
@@ -311,16 +353,19 @@ def setup_general_summary(session,file_name):
     file.close()
     file = file_text
 
-
     as_arry = re.split("[.;?]", file)
     # as_arry=as_arry[0:len(as_arry)/2]
     file_batch_size_5 = []
-    for i in xrange(0, len(as_arry), 5):
-        batch=".".join(as_arry[i:i + 5])
-        #batch=re.sub(r"[^u0000-u007F]+"," ",batch)
+    for i in xrange(0, len(as_arry), batch_size):
+        batch = ".".join(as_arry[i:i + batch_size])
+        # batch=re.sub(r"[^u0000-u007F]+"," ",batch)
         file_batch_size_5.append(batch)
-    print len(file_batch_size_5)
+
+    return file_batch_size_5
     # print malcom_batch_size_5[1]
+
+def setup_general_summary(session,file_name):
+    file_batch_size_5=break_up_text(file_name)
     recurse_summary(session, file_batch_size_5, 0, None, file_batch_size_5)
 
 
@@ -404,7 +449,7 @@ def _merge_step(session,left_content_result,right_content_result,context_result=
 
 
 def _summary_step(session,content,context=None):
-    default_sub_process_amount=2
+    default_sub_process_amount=3
     default_process_amount=2
     summary_prompt="For the text below, to the best to your ability, " \
                    "please write a concise summary that incorporates the keys points and events of the text below. Any text on the left is meant to provide context"

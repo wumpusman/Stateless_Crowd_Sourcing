@@ -705,11 +705,26 @@ class Process_Merge(Process_Rewrite):
 
         n_minus_one=task_view["Context"]
         task_view["Context"]=""
-        task_view["Body_Of_Task"]=task_view["Body_Of_Task"]+" _SECOND PART_ "+n_minus_one+" ."
+        task_view["Body_Of_Task"]="_PREVIOUS PART_ " + task_view["Body_Of_Task"]+"" \
+                                                                                 "                     _CURRENT PART_               " \
+                                                                                 ""+n_minus_one+" ."
 
 
         return task_view
 
+class Process_Merge_Alt_View(Process_Rewrite):
+    __mapper_args__ = {'polymorphic_identity': 'process_merge_alt_view'}
+    def prepare_view(self):
+        task_view = super(Process_Merge_Alt_View, self).prepare_view()
+
+        n_minus_one=task_view["Context"]
+        task_view["Context"]=""
+        task_view["Body_Of_Task"]="____________PREVIOUS PART__________ " + n_minus_one+"" \
+                                                                                 " ________________CURRENT PART_________" \
+                                                                                 ""+task_view["Body_Of_Task"]+" ."
+
+
+        return task_view
 
 class Content(Base):
     __tablename__ = 'content'
