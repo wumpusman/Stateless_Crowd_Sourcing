@@ -137,6 +137,8 @@ class Manager(object):
 
         self.unassign_timeout_content(self._task_timeout_max)
         ##total_seconds()
+
+        print "how about here now?"
         if len(user.associated_content)>0:
             if user.get_current_content_in_progress(session)!=None:
                 raise Exception("assigning new content when current content is not complete")
@@ -144,6 +146,7 @@ class Manager(object):
 
         optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
 
+        print "and wahats this whats this"
 
         results= self.session.query(Process_Object).all()
 
@@ -154,7 +157,7 @@ class Manager(object):
         chosen=random.choice(optional_content) #pick one of them but make the order inconsistent it's a fuck you to slackers, they'll be stuck in
         #an endless loop of dealing with bs
 
-
+        print "how this?"
         chosen.associated_user=user
         chosen.assigned_date=datetime.datetime.now()
 
