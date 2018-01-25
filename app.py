@@ -173,7 +173,7 @@ def login(): #For logging in
         return json.dumps(response)
 
     new_content=None
-
+    print "how about this spot"
     if len(user.associated_content)==0:
         new_content= manager.assign_new_content(user)
     else:
@@ -183,6 +183,7 @@ def login(): #For logging in
         session.add(new_content)
         session.commit()
     #htis is redundnant
+    print "did i make ith ere htouhg?"
     if len(user.associated_content)==0:
         return json.dumps({"task":manager.prepare_view(None)})
     print "MADE I HERE????"
