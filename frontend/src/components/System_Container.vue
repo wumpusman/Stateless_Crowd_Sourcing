@@ -47,7 +47,7 @@ export default {
     }
   },
   created:function(){
-    console.log("WTF is this wwhy are you not compiling :(");
+
 
     window.beforeunload  =this.disconnect_user;
     document.beforeunload=this.disconnect_user;

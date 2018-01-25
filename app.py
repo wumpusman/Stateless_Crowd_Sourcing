@@ -139,16 +139,18 @@ def edit():
     #session.query(Content).filter(Content.id==id).all()[0].originating_process_id
     #manager.edit_process(process,content,transformation_msg)
     return json.dumps({"results":result})
+
+
 @app.route('/api/login',methods=['POST'])
 def login(): #For logging in
     #poor taste
 
     #conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
     #manager.session=session
-
+    print "BUT WE MAKE IT HERE???"
     userData = request.form['jsonData'];
     userData = json.loads(userData)
-
+    print "WTF DO WE MAKE IT HERE"
     if manager.does_user_exist(userData["name"])==False:
         manager.create_user(userData["name"],userData["password"])
         user = manager.select_user(userData["name"], userData["password"])
