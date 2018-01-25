@@ -152,9 +152,11 @@ def login(): #For logging in
     userData = json.loads(userData)
     print "WTF DO WE MAKE IT HERE"
     if manager.does_user_exist(userData["name"])==False:
+        print "huh"
         manager.create_user(userData["name"],userData["password"])
+        print "khan?"
         user = manager.select_user(userData["name"], userData["password"])
-
+        print "no khantext"
         manager.assign_new_content(user)
 
 
@@ -183,7 +185,7 @@ def login(): #For logging in
     #htis is redundnant
     if len(user.associated_content)==0:
         return json.dumps({"task":manager.prepare_view(None)})
-
+    print "MADE I HERE????"
     return json.dumps({"task":manager.prepare_view(new_content)})
 
 
