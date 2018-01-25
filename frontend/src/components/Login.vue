@@ -125,7 +125,8 @@ export default {
                 type: 'POST',
                 success: function (response) {
                   var response= JSON.parse(response);
-
+                  console.log("login request");
+                  console.log(response);
                   if (response["task"] =="failure") {
 
                     this.name="Wrong Code";
