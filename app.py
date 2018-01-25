@@ -66,7 +66,7 @@ def disconnect():
             if assigned_content != None:
                 manager.unassign_content(assigned_content)
 
-    commit_close_session(session) #THIS IS FUCKING TERRIBLE PRACTICE :/
+    #commit_close_session(session) #THIS IS FUCKING TERRIBLE PRACTICE :/
             #this is used to handle users who are either refreshing the page , or exiting without finishing
 
 
@@ -123,15 +123,28 @@ def submit():
         return json.dumps({"task":manager.prepare_view(None)})
 
 
-
-
-
+@app.route ('/api/edit',methods=['Post'])
+def edit():
+    userData = request.form['jsonData'];
+    userData = json.loads(userData)
+    #id=userData['content_id']
+    #transformation_msg=userData['edit_msg']
+    #get associated content
+    #get associated
+    process_obj=session.query(Process_Object).filter(Process_Object.id==1).all()[0]
+    content=process_obj.get_content_produced_by_this_process()[0]
+    print content
+    print process_obj # ##15051daybr3@k
+    result=manager.edit_process(process_obj,content,Manager.remove_enum)
+    #session.query(Content).filter(Content.id==id).all()[0].originating_process_id
+    #manager.edit_process(process,content,transformation_msg)
+    return json.dumps({"results":result})
 @app.route('/api/login',methods=['POST'])
 def login(): #For logging in
     #poor taste
 
-    conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
-    manager.session=session
+    #conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
+    #manager.session=session
 
     userData = request.form['jsonData'];
     userData = json.loads(userData)

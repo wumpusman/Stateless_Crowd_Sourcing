@@ -10,7 +10,8 @@ const routerOptions = [
   {path:'/Finished',component:"Finished"},
   {path:'/Content_Element',component:"Content_Element"},
   {path:'/Show_Results',component:"Show_Results"},
-  {path:'/System_Container',component:"System_Container"}
+  {path:'/System_Container',component:"System_Container"},
+  {path:'/text_block',component:"text_block"}
    //#console.log(window.location.href);
 ]
 

@@ -277,8 +277,8 @@ def ideal_partner_generation(session):
 def rewrite_continuously(session,text_name):
     global sess
     sess=session
-    default_process_amount=3
-    default_sub_process_amount=3
+    default_process_amount=1
+    default_sub_process_amount=1
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
     root_body="The young girl sat wearily under the beautiful Christmas tree and tried vainly to ignore the cold and wet. One foot was damp because one " \
               "slipper had been stolen by her irritating brother, and having run from her house to escape from her violent Father, she had not had time to " \

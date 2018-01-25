@@ -1,6 +1,8 @@
 from db_connection2 import *
 import random
 class Manager(object):
+    remove_enum="remove"
+    promote_enum="promote"
     def __init__(self,session,max_time=7):
         # type: (object, object) -> object
         self.session=session
@@ -29,6 +31,41 @@ class Manager(object):
             relevant_content.is_completed=False
         self.session.commit();
 
+
+    def edit_process(self,process,content,edit_msg):
+        was_effective=True
+        if process.is_locked == False: #if the process can still be modified
+            if edit_msg==Manager.remove_enum: #if we want to clear the work of one person because it sucked so hard
+                self.unassign_content(content)
+                content.results=""
+                sub_task_param=self.session.query(Task_Parameters).filter(Task_Parameters.result_id==content.id).all() #if this content was being evaluated in someway
+                if len(sub_task_param) >0: #clear any ratings from it, this is garbage
+                    rating_process=sub_task_param[0].parent_process
+                    rating_process.is_locked=False
+                    rating_stuff=rating_process.get_content_produced_by_this_process()
+                    for rated_content in rating_stuff:
+                        self.unassign_content(rated_content)
+            #available_result_slots = self.get_final_results_incomplete(session).all()  # get results that are incomplete
+            elif edit_msg==Manager.promote_enum: #this value will get assigned to whatever open final results that haven't been assigned, assuming there is one
+                main_final_results=process.get_final_results_incomplete()
+                if len(main_final_results)>0:
+                   chosen_result= main_final_results[0]
+                   chosen_result.linked_content=content
+                   chosen_result.is_locked = True
+                   chosen_result.is_completed = True
+                   chosen_result.results=content.results
+                if len(main_final_results) ==1: #only one remained
+                    process.is_locked=True
+                #just lock this particular content's associated subprocess
+                sub_task_param = self.session.query(Task_Parameters).filter(Task_Parameters.result_id == content.id).all()
+                if len(sub_task_param) >0:
+                    rating_process = sub_task_param[0].parent_process
+                    rating_process.lock_process()
+
+        else:
+            was_effective=False
+
+        return was_effective
 
     def request_current_task(self,name,password):
         password = str(password)

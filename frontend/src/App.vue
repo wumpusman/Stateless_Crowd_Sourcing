@@ -18,6 +18,8 @@
   import Finished from './components/Finished.vue'
   import Show_Results from './components/Show_Results.vue'
 
+  import text_block from './components/text_block.vue'
+
   import System_Container from './components/System_Container.vue'
 
 
