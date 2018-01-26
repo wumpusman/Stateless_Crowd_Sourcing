@@ -126,6 +126,9 @@ class User (Base):
             filter(Process_Object.is_locked==False).\
             filter(Process_Object.is_completed==False)
 
+        uncompleted_and_unlocked_processes.all()
+        print time.time()-start
+        start=time.time()
         uncompleted_and_unlocked_processes = session.query(Process_Object).filter(and_(
 
             (Process_Object.id == uninvolved_processes.c.id),
@@ -134,8 +137,8 @@ class User (Base):
             (Process_Object.is_completed == False)))
 
         print "AND THIS?"
-        uncompleted_and_unlocked_processes.all()
-
+        #uncompleted_and_unlocked_processes.all()
+        print time.time()-start
         available_content_to_edit=session.query(Content).filter(Content.origin_process_id==uncompleted_and_unlocked_processes.subquery().c.id).filter((Content.user_id==None) & (Content.is_completed==False) & (Content.is_locked==False))
         print "I AM SUTTER CANE"
         return available_content_to_edit
