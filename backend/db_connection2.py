@@ -126,7 +126,9 @@ class User (Base):
             filter(Process_Object.is_locked==False).\
             filter(Process_Object.is_completed==False)
 
-        uncompleted_and_unlocked_processes.all()
+        session.query(Process_Object).filter(Process_Object.is_locked==False).all()
+
+        #uncompleted_and_unlocked_processes.all()
         print time.time()-start
         start=time.time()
         uncompleted_and_unlocked_processes = session.query(Process_Object).filter(and_(
