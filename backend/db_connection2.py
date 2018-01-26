@@ -139,7 +139,7 @@ class User (Base):
                 session.query(Content).filter(available_content_to_edit.subquery().c.id == Content.id).filter(
                     ~(Content.origin_process_id.in_(get_rate_processes)))
             return available_content_to_edit_minus_where_user_created_content_that_is_being_rated
-
+        print "what abotu his point"
         return available_content_to_edit
     def __repr__(self):
         return "<Table User {}>".format(self.name)
