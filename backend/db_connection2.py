@@ -107,7 +107,7 @@ class User (Base):
         return third
 
     def get_all_unassigned_and_available_content_where_user_was_uninvolved(self,session):
-
+        from sqlalchemy import and_ as and_
 
         legal_processes=Process_Object.get_processes_that_are_ready(session).subquery("legal_processes") # I REALLY NEED TO MODIFY THIS
 
@@ -118,8 +118,20 @@ class User (Base):
         self.get_all_processes_where_user_was_uninvolved(session).all()
 
        # print self.get_all_processes_where_user_was_uninvolved(session).all()
+        import time
+        start=time.time()
+        uncompleted_and_unlocked_processes= session.query(Process_Object).\
+            filter(Process_Object.id==uninvolved_processes.c.id).\
+            filter(Process_Object.id==legal_processes.c.id).\
+            filter(Process_Object.is_locked==False).\
+            filter(Process_Object.is_completed==False)
 
-        uncompleted_and_unlocked_processes= session.query(Process_Object).filter(Process_Object.id==uninvolved_processes.c.id).filter(Process_Object.id==legal_processes.c.id).filter(Process_Object.is_locked==False).filter(Process_Object.is_completed==False)
+        uncompleted_and_unlocked_processes = session.query(Process_Object).filter(and_(
+
+            (Process_Object.id == uninvolved_processes.c.id),
+            (Process_Object.id == legal_processes.c.id),
+            (Process_Object.is_locked == False),
+            (Process_Object.is_completed == False)))
 
         print "AND THIS?"
         uncompleted_and_unlocked_processes.all()
