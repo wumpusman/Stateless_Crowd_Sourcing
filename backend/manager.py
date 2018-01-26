@@ -139,7 +139,7 @@ class Manager(object):
         self.unassign_timeout_content(self._task_timeout_max)
         ##total_seconds()
 
-        print "how about here now?"
+        print "how about here now??"
         if len(user.associated_content)>0:
             print "PRoblem"
             print "alt problem :("
@@ -149,7 +149,7 @@ class Manager(object):
 
                 raise Exception("assigning new content when current content is not complete")
 
-
+        print "get content where user was involved"
         optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
 
         print "and wahats this whats this"

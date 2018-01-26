@@ -112,6 +112,7 @@ class User (Base):
         legal_processes=Process_Object.get_processes_that_are_ready(session).subquery("legal_processes") # I REALLY NEED TO MODIFY THIS
 
         #print Process_Object.get_processes_that_are_ready(session).all()
+        print "ARE YOU SUTTER CANE"
         uninvolved_processes=self.get_all_processes_where_user_was_uninvolved(session).subquery("uninvolved_processes")
 
 
@@ -120,7 +121,7 @@ class User (Base):
         uncompleted_and_unlocked_processes= session.query(Process_Object).filter(Process_Object.id==uninvolved_processes.c.id).filter(Process_Object.id==legal_processes.c.id).filter(Process_Object.is_locked==False).filter(Process_Object.is_completed==False)
 
         available_content_to_edit=session.query(Content).filter(Content.origin_process_id==uncompleted_and_unlocked_processes.subquery().c.id).filter((Content.user_id==None) & (Content.is_completed==False) & (Content.is_locked==False))
-
+        print "I AM SUTTER CANE"
         return available_content_to_edit
 
     def get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self,session):
