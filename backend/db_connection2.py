@@ -115,10 +115,14 @@ class User (Base):
         print "ARE YOU SUTTER CANE"
         uninvolved_processes=self.get_all_processes_where_user_was_uninvolved(session).subquery("uninvolved_processes")
 
+        uninvolved_processes.all()
 
        # print self.get_all_processes_where_user_was_uninvolved(session).all()
 
         uncompleted_and_unlocked_processes= session.query(Process_Object).filter(Process_Object.id==uninvolved_processes.c.id).filter(Process_Object.id==legal_processes.c.id).filter(Process_Object.is_locked==False).filter(Process_Object.is_completed==False)
+
+        print "AND THIS?"
+        uncompleted_and_unlocked_processes.all()
 
         available_content_to_edit=session.query(Content).filter(Content.origin_process_id==uncompleted_and_unlocked_processes.subquery().c.id).filter((Content.user_id==None) & (Content.is_completed==False) & (Content.is_locked==False))
         print "I AM SUTTER CANE"
