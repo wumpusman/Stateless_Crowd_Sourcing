@@ -93,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="406">
-              <caret line="128" column="8" lean-forward="false" selection-start-line="128" selection-start-column="8" selection-end-line="128" selection-end-column="8" />
+              <caret line="128" column="89" lean-forward="true" selection-start-line="128" selection-start-column="89" selection-end-line="128" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -1134,7 +1134,7 @@ while True:
     <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
-          <caret line="128" column="8" lean-forward="false" selection-start-line="128" selection-start-column="8" selection-end-line="128" selection-end-column="8" />
+          <caret line="128" column="89" lean-forward="true" selection-start-line="128" selection-start-column="89" selection-end-line="128" selection-end-column="89" />
           <folding />
         </state>
       </provider>
