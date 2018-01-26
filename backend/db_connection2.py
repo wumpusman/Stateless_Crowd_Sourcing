@@ -289,6 +289,10 @@ class Process_Object(Base):
         #This will return processes regardless of type
         all_available_tasks=Task_Parameters.get_tasks_that_are_ready(session).subquery()
 
+        Task_Parameters.get_tasks_that_are_ready(session).all()
+        print "END BRINGER"
+
+
         result=session.query(Process_Object).filter((Process_Object.task_parameters_id==all_available_tasks.c.id)
                                                 ).filter(Process_Object.is_locked==False)
 
