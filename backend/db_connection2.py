@@ -115,7 +115,7 @@ class User (Base):
         print "ARE YOU SUTTER CANE"
         uninvolved_processes=self.get_all_processes_where_user_was_uninvolved(session).subquery("uninvolved_processes")
 
-        uninvolved_processes.all()
+        self.get_all_processes_where_user_was_uninvolved(session).all()
 
        # print self.get_all_processes_where_user_was_uninvolved(session).all()
 
