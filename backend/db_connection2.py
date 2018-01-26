@@ -427,12 +427,38 @@ class Task_Parameters(Base): #contains all the information pertinent to what a u
     @staticmethod
     def get_tasks_that_are_ready(session):
 
-        body_of_task_query=session.query(Content).filter((Content.id==Task_Parameters.body_of_task_id  )& (Content.is_completed==True)).subquery()
-        suggestion_query = session.query(Content).filter((Content.id == Task_Parameters.suggestion_id  )& (Content.is_completed==True)).subquery()
-        context_query = session.query(Content).filter((Content.id == Task_Parameters.context_id  )& (Content.is_completed==True)).subquery()
-        prompt_query = session.query(Content).filter((Content.id == Task_Parameters.prompt_id ) & (Content.is_completed==True)).subquery()
-        result_query = session.query(Content).filter((Content.id == Task_Parameters.result_id ) & (Content.is_completed==True)).subquery()
 
+        completed_content=session.query(Content).filter(Content.is_completed==True).subquery()
+
+
+        body_of_task_query=session.query(completed_content).filter((completed_content.c.id==Task_Parameters.body_of_task_id  )).subquery()
+
+        task_params_with_finished_X=session.query(Task_Parameters).filter(body_of_task_query.c.id==Task_Parameters.body_of_task_id ).subquery()
+
+
+        suggestion_query = session.query(completed_content).filter((completed_content.c.id==task_params_with_finished_X.c.suggestion_id)).subquery()
+
+        #task_params_with_finished_X = session.query(task_params_with_finished_X).filter(
+         #   suggestion_query.c.id == task_params_with_finished_X.c.suggestion_id).subquery()
+
+
+        context_query = session.query(completed_content).filter((completed_content.c.id == Task_Parameters.context_id  )).subquery()
+        prompt_query = session.query(completed_content).filter((completed_content.c.id== Task_Parameters.prompt_id ) ).subquery()
+        result_query = session.query(completed_content).filter((completed_content.c.id == Task_Parameters.result_id ) ).subquery()
+        '''
+
+        body_of_task_query = session.query(Content).filter(
+            (Content.id == Task_Parameters.body_of_task_id)& Content.is_completed==True).subquery()
+        suggestion_query = session.query(Content).filter(
+            (Content.id == Task_Parameters.suggestion_id)& Content.is_completed==True).subquery()
+        context_query = session.query(Content).filter(
+            (Content.id  == Task_Parameters.context_id)& Content.is_completed==True).subquery()
+        prompt_query = session.query(Content).filter(
+            (Content.id == Task_Parameters.prompt_id)& Content.is_completed==True).subquery()
+        result_query = session.query(Content).filter(
+            (Content.id  == Task_Parameters.result_id) & Content.is_completed==True).subquery()
+        print body_of_task_query
+        '''
         task_query = session.query(Task_Parameters).subquery()
         #Gets all tasks that have their content ready to process
         #Series of nested calls, get all content that has a body of task that is completed, and then filter that again to look at that subset, and only return when all constraints are good
