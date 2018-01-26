@@ -141,7 +141,12 @@ class Manager(object):
 
         print "how about here now?"
         if len(user.associated_content)>0:
+            print "PRoblem"
+            print "alt problem :("
+            print user.associated_content[0]
             if user.get_current_content_in_progress(session)!=None:
+
+
                 raise Exception("assigning new content when current content is not complete")
 
 
