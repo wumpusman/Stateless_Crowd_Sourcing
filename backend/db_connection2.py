@@ -133,8 +133,9 @@ class User (Base):
         get_rate_processes = session.query(Process_Rate.id).filter(
             get_tasks.c.id == Process_Rate.task_parameters_id).all()
 
-
+        print "content where user is uninvolved and is fine???"
         if len(get_rate_processes) > 0:
+            print "INSIDE HERE?"
             available_content_to_edit_minus_where_user_created_content_that_is_being_rated = \
                 session.query(Content).filter(available_content_to_edit.subquery().c.id == Content.id).filter(
                     ~(Content.origin_process_id.in_(get_rate_processes)))
