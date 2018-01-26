@@ -131,6 +131,7 @@ class Manager(object):
     def assign_new_content(self,user):
         session = self.session
 
+        print "wtf????? assign_new content"
 
         all_rating=session.query(Process_Rate).all()
 
