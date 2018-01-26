@@ -289,8 +289,7 @@ class Process_Object(Base):
         #This will return processes regardless of type
         all_available_tasks=Task_Parameters.get_tasks_that_are_ready(session).subquery()
 
-        Task_Parameters.get_tasks_that_are_ready(session).all()
-        print "END BRINGER"
+
 
 
         result=session.query(Process_Object).filter((Process_Object.task_parameters_id==all_available_tasks.c.id)
@@ -431,47 +430,45 @@ class Task_Parameters(Base): #contains all the information pertinent to what a u
         completed_content=session.query(Content).filter(Content.is_completed==True).subquery()
 
 
-        body_of_task_query=session.query(completed_content).filter((completed_content.c.id==Task_Parameters.body_of_task_id  )).subquery()
+        body_of_task_query = session.query(completed_content).filter(
+            (completed_content.c.id == Task_Parameters.body_of_task_id)).subquery()
+        task_params_with_finished_X = session.query(Task_Parameters).filter(
+            body_of_task_query.c.id == Task_Parameters.body_of_task_id).subquery()
 
-        task_params_with_finished_X=session.query(Task_Parameters).filter(body_of_task_query.c.id==Task_Parameters.body_of_task_id ).subquery()
+        suggestion_query = session.query(completed_content).filter(
+            (completed_content.c.id == Task_Parameters.suggestion_id)).subquery()
+        task_params_with_finished_Y = session.query(Task_Parameters).filter(
+            suggestion_query.c.id == Task_Parameters.suggestion_id).subquery()
 
-
-        suggestion_query = session.query(completed_content).filter((completed_content.c.id==task_params_with_finished_X.c.suggestion_id)).subquery()
-
-        #task_params_with_finished_X = session.query(task_params_with_finished_X).filter(
-         #   suggestion_query.c.id == task_params_with_finished_X.c.suggestion_id).subquery()
-
-
-        context_query = session.query(completed_content).filter((completed_content.c.id == Task_Parameters.context_id  )).subquery()
-        prompt_query = session.query(completed_content).filter((completed_content.c.id== Task_Parameters.prompt_id ) ).subquery()
-        result_query = session.query(completed_content).filter((completed_content.c.id == Task_Parameters.result_id ) ).subquery()
-        '''
-
-        body_of_task_query = session.query(Content).filter(
-            (Content.id == Task_Parameters.body_of_task_id)& Content.is_completed==True).subquery()
-        suggestion_query = session.query(Content).filter(
-            (Content.id == Task_Parameters.suggestion_id)& Content.is_completed==True).subquery()
-        context_query = session.query(Content).filter(
-            (Content.id  == Task_Parameters.context_id)& Content.is_completed==True).subquery()
-        prompt_query = session.query(Content).filter(
-            (Content.id == Task_Parameters.prompt_id)& Content.is_completed==True).subquery()
-        result_query = session.query(Content).filter(
-            (Content.id  == Task_Parameters.result_id) & Content.is_completed==True).subquery()
-        print body_of_task_query
-        '''
-        task_query = session.query(Task_Parameters).subquery()
-        #Gets all tasks that have their content ready to process
-        #Series of nested calls, get all content that has a body of task that is completed, and then filter that again to look at that subset, and only return when all constraints are good
-        tasks_that_are_ready=session.query(Task_Parameters).\
-            filter(Task_Parameters.body_of_task_id == body_of_task_query.c.id).\
-            filter(Task_Parameters.suggestion_id == suggestion_query.c.id).\
-            filter(Task_Parameters.context_id == context_query.c.id).\
-            filter(Task_Parameters.prompt_id == prompt_query.c.id). \
-            filter(Task_Parameters.result_id == result_query.c.id)
+        context_query = session.query(completed_content).filter(
+            (completed_content.c.id == Task_Parameters.context_id)).subquery()
+        task_params_with_finished_Z = session.query(Task_Parameters).filter(
+            context_query.c.id == Task_Parameters.context_id).subquery()
 
 
-        #temp=session.query(Content).filter((Content.id==Task_Parameters.body_of_task_id  )& (Content.is_completed==True)).all()
+        prompt_query = session.query(completed_content).filter(
+            (completed_content.c.id == Task_Parameters.prompt_id)).subquery()
+        task_params_with_finished_ZZ = session.query(Task_Parameters).filter(
+            prompt_query.c.id == Task_Parameters.prompt_id).subquery()
 
+        result_query = session.query(completed_content).filter(
+            (completed_content.c.id == Task_Parameters.result_id)).subquery()
+        task_params_with_finished_ZZZ = session.query(Task_Parameters).filter(
+            result_query.c.id == Task_Parameters.result_id).subquery()
+
+
+        ok=session.query(task_params_with_finished_X).join(task_params_with_finished_Y,task_params_with_finished_X.c.id==task_params_with_finished_Y.c.id).distinct().subquery()
+        ok=session.query(ok).join(task_params_with_finished_Z,ok.c.id==task_params_with_finished_Z.c.id).distinct().subquery()
+        ok = session.query(ok).join(task_params_with_finished_ZZ,
+                                    ok.c.id == task_params_with_finished_ZZ.c.id).distinct().subquery()
+        ok = session.query(ok).join(task_params_with_finished_ZZZ,
+                                    ok.c.id == task_params_with_finished_ZZZ.c.id).distinct().subquery()
+
+
+        tasks_that_are_ready = session.query(ok)
+        #task_query = session.query(task_params_with_finished_X).filter(Task_Parameters.id==task_params_with_finished_X.c.id)
+        print "READY HERE??"
+        print len(tasks_that_are_ready.all())
         return tasks_that_are_ready #
 
 
