@@ -58,27 +58,27 @@ def date_plan(session):
     # Answer them keenan
     # Given the answers, flesh out what he should do for this activity
     produce_pairs=lambda a,b: [Content_Result(a, is_completed=True),Content_Result(b,is_completed=True)]
-    default_sub_process_amount = 1
-    default_process_amount = 1
+    default_sub_process_amount = 2
+    default_process_amount = 3
 
     date_plan_prompt1="A friend is trying to figure out what to do next on a date, what are some questions you would ask him to help flesh out what he should do. Any information on the " \
-                      "left is meant to provide context about their date and background information"
+                      "left or below is meant to provide context about their date so far and background information"
     date_plan_rate1="Rate how well you feel the content would help a person flesh out what to do on a date."
     One_pr=produce_pairs(date_plan_prompt1,date_plan_rate1)
 
     #KEENAN TASK
-    answer_prompt2="Using full sentences, answer the following questions to the best of your ability. The answers are helping to inform a date decision"
-    answer_rate2="Rate how well you feel the content on the right answers the questions listed below"
+    answer_prompt2="Using full sentences, answer the following questions to the best of your ability in those circumstances. The answers are helping to inform a date decision"
+    answer_rate2="Rate how well you feel the content answers the questions listed below"
     Two_answer_p_r2=produce_pairs(answer_prompt2,answer_rate2)
 
     suggestion_prompt3="A friend is trying to figure out an ideal date. THe information on the left describes additional information about the person and their previous plans. To the best of your ability " \
                         "what should they do next on the date"
-    suggestion_rate3="Rate how well you feel the suggestion would be for a good date"
+    suggestion_rate3="Rate how well you feel the suggestion would make for a good date"
     Three_sugg_pr3=produce_pairs(suggestion_prompt3,suggestion_rate3)
 
 
-    date_sub_plan_prompt="A friend is trying to figure out what would engage a date during the activity listed below. What are some questions you would ask him to help flesh out" \
-                  "what he should do."
+    date_sub_plan_prompt="A friend is trying to figure out what would engage a date during one of the activities listed below. What are some questions you would ask him to help flesh out" \
+                  "what they should do during that activity to make it more fun."
     date_sub_plan_rate="Rate how well you feel the questions below would help a person flesh out what to do during the date activity below."
     date_sub_plan_p_r=produce_pairs(date_sub_plan_prompt,date_sub_plan_rate)
 
@@ -87,7 +87,7 @@ def date_plan(session):
     answer_sub_rate="Rate how well you feel the answer's address address the questions listed below"
     answer_sub_p_r=produce_pairs(answer_sub_prompt,answer_sub_rate)
 
-    incorporate_sub_prompt="Using the description of the date activity, and the answers below, describe what you would do during the date activity"
+    incorporate_sub_prompt="Using the description of the date activity, and the answers below, describe what you would do during the date activity to make it fun"
     incorporate_sub_rate="Rate how well you feel the content below fleshes out what you would during the date activity"
     incorporate_sub_p_r=produce_pairs(incorporate_sub_prompt,incorporate_sub_rate)
 
@@ -102,7 +102,7 @@ def date_plan(session):
 
     #######################################
     for i in xrange(2):
-        date_process = build_process(Process_Rewrite, One_pr, body_current, None, None, default_process_amount,
+        date_process = build_process(Process_Rewrite, One_pr, None , body_current, None, default_process_amount,
                                      default_sub_process_amount)
 
         answer_process =build_process(Process_Rewrite,Two_answer_p_r2,date_process.get_final_results()[0],
@@ -116,7 +116,7 @@ def date_plan(session):
                                            )
 
 
-        sub_date_process=build_process(Process_Rewrite,date_sub_plan_p_r,suggestion_process.get_final_results()[0],answer_process.get_final_results()[0],
+        sub_date_process=build_process(Process_Rewrite,date_sub_plan_p_r,suggestion_process.get_final_results()[0],None,
                                None, default_process_amount,default_sub_process_amount
                                )
 
@@ -527,12 +527,12 @@ def recurse_summary(session,text_block_ary, depth,left_adjacent_process=None,ent
     '''
 
 
-def setup_narrative_plot(session):
+def setup_narrative_plot(session, text="Two men stand above a grave"):
 
-    default_rewrite_amount = 1
-    default_sub_process_amount = 3
+    default_rewrite_amount = 3
+    default_sub_process_amount = 2
 
-    root_body="The two detectives arrived backstage and saw the actor's body lying on the floor."
+    root_body="Two men stand above a grave."
     root_prompt="Looking at the brief description of this scene what are some questions you would ask " \
                 "the writer to have a better sense of what the story is about"
 

@@ -48,9 +48,10 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
                "but I also enjoy cooking and going to the gym. I'm looking for a smart, curious woman who enjoys conversation and science."
      run_example.question_answer_profile_generation(the_session, text_body=text_body, assign_user=False)
      '''
-     run_example.rewrite_continuously(the_session,"little_match_girl")
+     #run_example.rewrite_continuously(the_session,"little_match_girl")
      #run_example.setup_luther(the_session)
-
+     run_example.setup_narrative_plot(the_session)
+     run_example.date_plan(the_session)
      the_session.commit()
      print the_session.query(Content).all()
 
@@ -63,8 +64,8 @@ else:
      #
 
      session.commit()
-     run_example.rewrite_continuously(session,"little_match_girl")
-     run_example.setup_luther(session)
+     run_example.date_plan(session)
+     #run_example.setup_luther(session)
      #run_example.setup_luther(session)
 
      #run_example.setup_summary(session)
