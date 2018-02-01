@@ -1,8 +1,8 @@
 from db_connection2 import *
 import random
 class Manager(object):
-    remove_enum="remove"
-    promote_enum="promote"
+    remove_enum="remove" #corresponding enum  must be changed in frontend
+    promote_enum="promote" #corresponding enum must be changed in frontend
     def __init__(self,session,max_time=7):
         # type: (object, object) -> object
         self.session=session
@@ -27,33 +27,46 @@ class Manager(object):
 
     def unassign_content(self,relevant_content):
         if relevant_content.is_completed==False:
-            relevant_content.associated_user = None #that user will no longer have that content associated with them
-            relevant_content.is_completed=False
+            self._unassign_content(relevant_content)
+
+
         self.session.commit();
 
+    def _unassign_content(self,relevant_content):
+        relevant_content.associated_user = None  # that user will no longer have that content associated with them
+        relevant_content.is_completed = False
+        relevant_content.results=""
 
-    def edit_process(self,process,content,edit_msg):
+    def edit_process(self,process,content,edit_msg,result_msg):
+        '''
+
+        :param process: associated process
+        :param content: content from taht process
+        :param edit_msg: type of edit to be done
+        :param result_msg: the corresponding result of that content - it can be edited
+        :return:
+        '''
         was_effective=True
         if process.is_locked == False: #if the process can still be modified
             if edit_msg==Manager.remove_enum: #if we want to clear the work of one person because it sucked so hard
-                self.unassign_content(content)
-                content.results=""
+                self._unassign_content(content)
+
                 sub_task_param=self.session.query(Task_Parameters).filter(Task_Parameters.result_id==content.id).all() #if this content was being evaluated in someway
                 if len(sub_task_param) >0: #clear any ratings from it, this is garbage
                     rating_process=sub_task_param[0].parent_process
                     rating_process.is_locked=False
                     rating_stuff=rating_process.get_content_produced_by_this_process()
                     for rated_content in rating_stuff:
-                        self.unassign_content(rated_content)
+                        self._unassign_content(rated_content)
             #available_result_slots = self.get_final_results_incomplete(session).all()  # get results that are incomplete
             elif edit_msg==Manager.promote_enum: #this value will get assigned to whatever open final results that haven't been assigned, assuming there is one
-                main_final_results=process.get_final_results_incomplete()
+                main_final_results=process.get_final_results_incomplete(self.session).all()
                 if len(main_final_results)>0:
                    chosen_result= main_final_results[0]
                    chosen_result.linked_content=content
                    chosen_result.is_locked = True
                    chosen_result.is_completed = True
-                   chosen_result.results=content.results
+                   chosen_result.results=result_msg #if you choose to override the message with an alternate message
                 if len(main_final_results) ==1: #only one remained
                     process.is_locked=True
                 #just lock this particular content's associated subprocess
@@ -64,7 +77,10 @@ class Manager(object):
 
         else:
             was_effective=False
+        print "should not be completed"
+        print content.is_completed
 
+        self.session.commit()
         return was_effective
 
     def request_current_task(self,name,password):
@@ -131,7 +147,6 @@ class Manager(object):
     def assign_new_content(self,user):
         session = self.session
 
-        print "wtf????? assign_new content"
 
         all_rating=session.query(Process_Rate).all()
 
@@ -139,20 +154,19 @@ class Manager(object):
         self.unassign_timeout_content(self._task_timeout_max)
         ##total_seconds()
 
-        print "how about here now??"
+
         if len(user.associated_content)>0:
-            print "PRoblem"
-            print "alt problem :("
-            print user.associated_content[0]
+
+
             if user.get_current_content_in_progress(session)!=None:
 
 
                 raise Exception("assigning new content when current content is not complete")
 
-        print "get content where user was involved"
+
         optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
 
-        print "and wahats this whats this"
+
 
         results= self.session.query(Process_Object).all()
 
@@ -163,7 +177,7 @@ class Manager(object):
         chosen=random.choice(optional_content) #pick one of them but make the order inconsistent it's a fuck you to slackers, they'll be stuck in
         #an endless loop of dealing with bs
 
-        print "how this?"
+
         chosen.associated_user=user
         chosen.assigned_date=datetime.datetime.now()
 
@@ -191,6 +205,7 @@ class Manager(object):
 
         id=single_process.id
         user_input=[c.results for c in single_process.get_content_produced_by_this_process()]
+        user_input_and_id=[(c.id,c.results) for c in single_process.get_content_produced_by_this_process()]
         prompt=single_process.task_parameters_obj.prompt.results
         body=single_process.task_parameters_obj.body_of_task.results
         is_finished=single_process.is_locked;
@@ -198,8 +213,15 @@ class Manager(object):
 
         get_all_processes=session.query(Process_Text_Manipulation).all()
 
-        processes_and_state=[{"is_locked":process.is_locked,"process_id":process.id } for process in get_all_processes]
+        get_all_processes=sorted(get_all_processes, key=lambda x: x.id) #sort by number
 
+        is_in_progress=lambda p,session: len(p.get_content_produced_by_this_process_that_is_complete(session).all())>0
+
+        processes_and_state=[{"is_locked":process.is_locked,"process_id":process.id,"is_ready":process.task_parameters_obj.is_task_ready(),"in_progress":
+                              is_in_progress(process,session)
+                              } for process in get_all_processes]
+
+        processes_and_state = sorted(processes_and_state, key=lambda x: x["is_ready"],reverse=True)  # sort by number
         #Select All Rewrite processes
         #select All processes where ID > Previous
         #select first
@@ -215,7 +237,8 @@ class Manager(object):
         results={}
         results["processes_state"]=processes_and_state
         results["prompt"]=prompt
-        results["user_input"]=user_input
+        #results["user_input"]=user_input
+        results["content"]=user_input_and_id
         results["is_finished"]=is_finished
         results["process_id"]=id
         results["body"]=body
@@ -226,7 +249,7 @@ class Manager(object):
         if type(content)==type(None):
             return {"Project_State":"Finished"}
 
-        print "WTF"
+
         print content
         print content.origin_process
 

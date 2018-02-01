@@ -1,10 +1,18 @@
 <template>
   <div class="flex_box_row ui container">
 
-    <div class="ui pointing menu">
+    <div class="ui pointing menu add_wrap">
     <span  v-for="item in all_processes">
 
-        <a class="item" id="process-item.process_id"  v-on:click="get_results(item.process_id)">{{item.process_id}}</a>
+        <a class="item"  v-on:click="get_results(item.process_id)">
+
+          <i v-if="item.is_locked" class="green check icon"></i>
+          <i v-else-if="item.in_progress" class="yellow circle check outline icon"></i>
+          <i v-else-if="item.is_ready" class="yellow  circle outline icon"></i>
+          <i v-else-if="item.is_ready==false" class="red minus square outline icon"></i>
+
+
+          {{item.process_id}}</a>
     </span>
 </div>
     <div class="ui segment">
@@ -13,8 +21,9 @@
       <div id="result"><b>{{result}} </b></div>
 
       <div id="user_inputs">
-        <div v-for="item in user_inputs">
-           <p> <i> {{item}} </i></p>
+        <div v-for="item in content">
+             <text_block :Text="item[1]" :Associated_Content_ID="item[0]" :Associated_Process_ID="process_id" ></text_block>
+           <p> <i> {{item}} wh</i></p>
         </div>
 
        </div>
@@ -26,7 +35,11 @@
 
 <script>
   import jquery from 'jquery'
+  import text_block from './text_block.vue'
+  import Text_block from "./text_block";
+
 export default {
+  components: {Text_block},
   name:"Show_Results",
   data:function(){
     return {
@@ -34,13 +47,11 @@ export default {
       prompt : "",
       result : "",
       body:"",
-      user_inputs:[],
       is_finished : false,
       process_id:-1,
+      content:[] //Identical to user_inputs, but in addition, has
 
-    json_one : {"process_id":1,"is_finished":true,"prompt":"Show me what you got let me see what you got","body":"","result":"I got riggity wrecked","user_input":["I like chewie", "fuck the police","I got riggity wrecked"]},
-    json_two : {"process_id":2,"is_finished":false,"prompt":"Explain what you got","body":"I got riggity wrecked","result":"so muc ennui","user_input":["","I like me" +
-    "fawefeffffffffffffffffffffffffff fffffffffffffffffff   fffffffffffffffff", "fuck the po po like rick would","so muc ennui","blaz blue"]}
+
   }
   },
   mounted:function(){
@@ -51,13 +62,19 @@ export default {
       this.prompt=data["prompt"];
       this.result=data["result"];
       this.body=data["body"];
-      this.user_inputs=data["user_input"];
+
       this.is_finished=data["is_finished"];
       this.process_id=data["process_id"];
       this.all_processes=data["processes_state"];
+      this.content=data["content"]
 
     },
 
+    copy_value:function(val) { //just a test
+      console.log(val);
+      console.log("WTF");
+      return val;
+    },
 
     get_results: function (id) {
 
@@ -85,7 +102,9 @@ export default {
 
   },
 
+
   computed:{
+
 
   }
 
@@ -98,10 +117,15 @@ export default {
    justify-content: space-between;
    padding-right: 40px;
    padding-left:40px;
+
  }
  .flex_box_row{
    display:flex;
    flex-direction:row ;
  }
+.add_wrap{
+  display:flex;
+  flex-wrap:wrap;
+}
 
 </style>

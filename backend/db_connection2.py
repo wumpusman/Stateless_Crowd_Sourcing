@@ -379,6 +379,12 @@ class Process_Object(Base):
 
         return session.query(Content_Result).filter((Content_Result.process_that_selected_this_content_id == self.id) & (Content_Result.is_completed == True))
 
+
+    def get_content_produced_by_this_process_that_is_complete(self,session):
+
+        return session.query(Content).filter(
+            (Content.origin_process_id == self.id) & (Content.is_completed == True))
+
     def get_content_produced_by_this_process(self):
         return self.user_content_being_generated_from_this_process
 
@@ -422,6 +428,15 @@ class Task_Parameters(Base): #contains all the information pertinent to what a u
     result=relationship('Content',foreign_keys=[result_id]) #The result from a different task for rating purposes
 
     parent_process=relationship("Process_Object",back_populates="task_parameters_obj",uselist=False) #who am i associated iwth, what process created me
+
+    def is_task_ready(self):
+        is_ready=True
+
+        components=[self.prompt,self.result,self.context,self.body_of_task,self.suggestion]
+        for component in components:
+            if component.is_completed==False:
+                return False
+        return True
 
     @staticmethod
     def get_tasks_that_are_ready(session):
@@ -467,8 +482,7 @@ class Task_Parameters(Base): #contains all the information pertinent to what a u
 
         tasks_that_are_ready = session.query(ok)
         #task_query = session.query(task_params_with_finished_X).filter(Task_Parameters.id==task_params_with_finished_X.c.id)
-        print "READY HERE??"
-        print len(tasks_that_are_ready.all())
+
         return tasks_that_are_ready #
 
 

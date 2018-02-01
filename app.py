@@ -61,8 +61,7 @@ def disconnect():
     if user!= None:
         if len(user.associated_content) > 0:
             assigned_content = user.get_current_content_in_progress(session)
-            print assigned_content
-            print "WHAT THE HELL"
+
             if assigned_content != None:
                 manager.unassign_content(assigned_content)
 
@@ -85,7 +84,7 @@ def submit():
 
     if "session_expired" in userData:
         session_expired = userData["session_expired"]
-        print "IS THIS CALLED"
+
 
     user = manager.select_user(userData["name"], userData["password"])
 
@@ -109,9 +108,6 @@ def submit():
             session.add(assigned_content)
             session.commit()
 
-            print "WHATS GOING ON"
-            print assigned_content
-            print assigned_content.assigned_date
         else:
             assigned_content = manager.assign_new_content(user)
 
@@ -127,15 +123,19 @@ def submit():
 def edit():
     userData = request.form['jsonData'];
     userData = json.loads(userData)
-    #id=userData['content_id']
-    #transformation_msg=userData['edit_msg']
+    print userData
+    id=userData['content_id']
+    p_id=userData['process_id']
+    transformation_msg=userData['edit_type']
+    result_value=userData["result"]
     #get associated content
     #get associated
-    process_obj=session.query(Process_Object).filter(Process_Object.id==1).all()[0]
-    content=process_obj.get_content_produced_by_this_process()[0]
-    print content
-    print process_obj # ##15051daybr3@k
-    result=manager.edit_process(process_obj,content,Manager.remove_enum)
+    process_obj=session.query(Process_Object).filter(Process_Object.id==p_id).all()[0]
+    content=session.query(Content).filter(Content.id==id).all()[0]
+    result=False #if for some reason there is a mismatch
+
+    if(content.origin_process_id==p_id):
+        result=manager.edit_process(process_obj,content,transformation_msg,result_value)
     #session.query(Content).filter(Content.id==id).all()[0].originating_process_id
     #manager.edit_process(process,content,transformation_msg)
     return json.dumps({"results":result})
@@ -152,7 +152,7 @@ def login(): #For logging in
     userData = json.loads(userData)
     print "WTF DO WE MAKE IT HERE"
     if manager.does_user_exist(userData["name"])==False:
-        print "huh"
+
         manager.create_user(userData["name"],userData["password"])
         print "khan?"
         user = manager.select_user(userData["name"], userData["password"])
@@ -162,7 +162,7 @@ def login(): #For logging in
 
     user=manager.select_user(userData["name"], userData["password"])
 
-    print "WTF"
+
     print session.query(Content).filter(Content.user_id==user.name).all()
 
     #No password
@@ -173,11 +173,11 @@ def login(): #For logging in
         return json.dumps(response)
 
     new_content=None
-    print "how about this spot"
+
     if len(user.associated_content)==0:
         new_content= manager.assign_new_content(user)
     else:
-        print "ok do i go here?"
+
         new_content= user.get_current_content_in_progress(session)
         #reset the time, since they are coming back to it, this should be changed though
         new_content.assigned_date=datetime.datetime.now()

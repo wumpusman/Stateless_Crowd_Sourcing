@@ -64,6 +64,7 @@ else:
 
      session.commit()
      run_example.rewrite_continuously(session,"little_match_girl")
+     run_example.setup_luther(session)
      #run_example.setup_luther(session)
 
      #run_example.setup_summary(session)
