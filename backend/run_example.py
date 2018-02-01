@@ -40,8 +40,10 @@ def speech_rewrite_linear(session):
 
 def travel_plan(session):
     #You're trying to design an interesting and unique vacation plan to visit NYC.
-    #To achieve this goal, what's the first thing you would do to reseach/plan this trip. Given an example, and explain why.
+    #To achieve this goal, what's the first thing you would do to reseach/plan this trip. Given an example of what you would do first to plan, and explain why.
     #You're planning to go to nyc, and you're currently doing the following: '' To achieve this goal, what would you need to do,  why, give example
+
+
     #66 tg yg4i
     pass
 

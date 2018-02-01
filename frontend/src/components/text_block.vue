@@ -4,7 +4,7 @@
   <div class="ui segment">
    <div class="ui top attached label">
     <a class="item">
-      View Item
+      Result
     </a>
 
 
@@ -16,7 +16,7 @@
          <textarea id="Text_Result" ref="Text_Result" class="ui segment focus input_box" :value="computed_text"  ></textarea>
       </div>
         <div class="ui segment">
-         {{this.Text}}<br>content_id {{Associated_Content_ID}}  process_id {{Associated_Process_ID}}
+         <br>content_id {{Associated_Content_ID}}  process_id {{Associated_Process_ID}}
 
       </div>
        <div class="ui divider"></div>
