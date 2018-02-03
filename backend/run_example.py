@@ -5,7 +5,8 @@ import os
 
 
 sess=None
-def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub):
+def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub, expected_results=1):
+
     sub_process = {"prompt": prompts_ary[1],
                    "expected_results": 1,
                    "content_to_be_requested": amount_to_be_requested_sub}
@@ -17,6 +18,7 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
 
 
     generated_process=Process_Type(body_of_task=body,prompt=prompts_ary[0],suggestion=suggestions,context=context,content_to_be_requested=amount_to_be_request_main,
+                   expected_results=expected_results,
                    subprocess_tuple=(Process_Rate,sub_process)
                    )
 
@@ -24,6 +26,8 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
 
     sess.add(generated_process)
     return generated_process
+
+
 
 
 def speech_rewrite_linear(session):
@@ -37,14 +41,64 @@ def speech_rewrite_linear(session):
     #The information on the left describes a summary piece of writing. The below is meant to be a piece from that original writing,
     # Modify the text below under "REWRITE BELOW" to better match the ideas and message of the summary on the left
     #
+    pass
+
+def stories_of_power_dynamics(session):
+    global sess
+    sess=session
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    default_process_amount=3
+    default_sub_process_amount=3
+
+    situation_prompt="In several sentences (more detail is preferable) describe a personal experience or of someone you know where a women in power abused her authority over " \
+                     "another women (i.e. humilates, harrasses, hurts, etc). If you cannot think of one you can also describe a story you have heard about "
+    situation_rate="Rate how well you feel the text below describes an realistic but significant life experience where a women in power abused her authority over " \
+                     "another women (i.e. humilates, harrasses, hurts, etc) "
+    sit_pr = produce_pairs(situation_prompt, situation_rate)
+
+    follow_up_prompt="For the situation described what are some questions that you would ask the author to be better flesh out the scene and the relationship of the characters."
+    follow_up_rate="Rate how well the questions below would help flesh out the scene and make a more grounded realistic scene"
+    follow_pr = produce_pairs(follow_up_prompt, follow_up_rate)
+
+    suggestion_prompt="Using the situation described as background (about abuse of power of authority between two women), try to answer the questions below. Try to find answers that would make more for a more realistic scene  "
+    suggestion_rate="Rate how well the answers belows answer the question to help make the scene on the left sound more realistic"
+    suggestion_pr=produce_pairs(suggestion_prompt,suggestion_rate)
+
+    reconciliation_prompt="Reading the scene and background information on the left, propose a few realistic ways (be it an event, experience, discussion) the two could reconcile and find common ground with one another"
+    reconciliation_suggestion="Reading the scene and background information on the left, rate how well the ideas would realistically help the characters reconcile "
+    reconcile_pr=produce_pairs(reconciliation_prompt,reconciliation_suggestion)
+
+    situation_process = build_process(Process_Rewrite, sit_pr, None, None, None, 8,
+                                 default_sub_process_amount,3)
+
+    for i in xrange(0,3):
+        print "here is I"
+        print i
+        follow_up_process = build_process(Process_Rewrite,follow_pr,situation_process.get_final_results()[i],None,None,default_process_amount,default_sub_process_amount)
+
+
+        suggestion_process=build_process(Process_Rewrite,suggestion_pr,follow_up_process.get_final_results()[0],situation_process.get_final_results()[i],None,
+                                          default_process_amount,default_sub_process_amount)
+
+        reconcile_process=build_process(Process_Rewrite,reconcile_pr,None,suggestion_process.get_final_results()[0],situation_process.get_final_results()[i],
+                                          default_process_amount,default_sub_process_amount)
+
 
 def travel_plan(session):
     #You're trying to design an interesting and unique vacation plan to visit NYC.
     #To achieve this goal, what's the first thing you would do to reseach/plan this trip. Given an example of what you would do first to plan, and explain why.
     #You're planning to go to nyc, and you're currently doing the following: '' To achieve this goal, what would you need to do,  why, give example
+    #make this a descending treee
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    default_sub_process_amount = 2
+    default_process_amount = 3
+
+    nyc_trip_prompt = "You're trying to think up an interesting and unique vacation plan to visit NYC. In a few sentences, what's the most immediate thing you would you" \
+               "do to plan/reserach for it"
+    nyc_trip_rate = "Rate how well you feel the idea listed would be helpful in planning/researching an interesting and unique vacation."
 
 
-    #66 tg yg4i
+    One_pr = produce_pairs(date_plan_prompt1, date_plan_rate1)
     pass
 
 
