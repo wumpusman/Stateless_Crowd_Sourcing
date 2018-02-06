@@ -64,7 +64,7 @@ else:
      #
 
      session.commit()
-     run_example.stories_of_power_dynamics(session)
+     run_example.rewrite_through_analogy(session,"","")
      #run_example.date_plan(session)
      session.commit()
      #run_example.setup_luther(session)

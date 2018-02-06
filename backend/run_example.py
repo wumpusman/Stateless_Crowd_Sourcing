@@ -43,6 +43,192 @@ def speech_rewrite_linear(session):
     #
     pass
 
+
+def rewrite_through_analogy(session,sum_text,full_text):
+    global sess
+    sess=session
+
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    default_process_amount = 1
+    default_sub_process_amount = 1
+
+    body_of_sum=sum_text
+    if full_text=="":
+        full_text="I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.  " \
+                  "  Five score years ago, a great American, in whose symbolic shadow we stand today, signed the Emancipation Proclamation. " \
+                  "This momentous decree came as a great beacon light of hope to millions of Negro slaves who had been seared in the flames of withering injustice." \
+                  " It came as a joyous daybreak to end the long night of their captivity.    But one hundred years later, the Negro still is not free"
+    if body_of_sum == "":
+        body_of_sum="One hundred years ago the Emancipation Proclamation was signed by Abraham Lincoln. This decree was insturmental" \
+                " in freeing the slaves and giving them hope for a productive life free from chains. " \
+                "Yet, even today, the negro is not completly free from oppression"
+
+
+
+
+    body_of_sum_cr=Content_Result(body_of_sum,True)
+    body_of_full_text_cr=Content_Result(full_text,True)
+
+
+    rewrite_sum_prompt="The text below describes part of speech about racism. Try to rewrite this to incorporate and discuss sexism. Use" \
+                       "the roughly same number of sentences and general structure. However, try to change the context and examples to be " \
+                       "more appropriate to the topic of sexism."
+
+    rewrite_sum_rate ="Rate how well the text on the right feels it incorporates the theme of sexism but keeps the structure and style of the text below"
+    rewrite_sum_pr1=produce_pairs(rewrite_sum_prompt,rewrite_sum_rate)
+
+
+
+    #TWO VARIATIONS
+
+    rewrite_analogous_text_prompt="The text below is an expansion of the summary written in Info on the left. Try to rewrite the "\
+                                "  text below to instead better match the ideas and context of the summary written in Context on the left. Try to use the general structure (i.e." \
+                                  " sentence number, length, structure) " \
+                                  " of the text below, but try to incorporate and match the themes and content of the text in Context. "
+
+    rewrite_analogous_text_rate="Rate how well the text on the right feels like it incorporates the themes of the text in Context but keeps the structure and style " \
+                                "of the text below (word structure, flow, quality of writing) "
+    rewrite_anag_pr=produce_pairs(rewrite_analogous_text_prompt,rewrite_analogous_text_rate)
+
+
+
+
+    rewrite_analogous_text_prompt_alt="The text on the left in Context consists of an elaboration/expansion of a summary written in Info. In the same way" \
+                                        " try to expand/elaborate on the text written below. To inform the general structure (i.e. number sentence, length, structure, general grammar) use" \
+                                      " the text in Context but match the themes and content written below"
+
+    rewrite_analogous_rate_prompt_alt="Rate how well the text to be rated expands on the ideas and themes written below, AND keeps the structure and style of the text " \
+                                      " listed in Context . "
+
+    rewrite_alt_pr=produce_pairs(rewrite_analogous_text_prompt_alt,rewrite_analogous_rate_prompt_alt)
+    ''' 
+    rewrite_sum1_process = build_process(Process_Rewrite, rewrite_sum_pr1, body_of_sum_cr, None, None,
+                                      default_process_amount, default_sub_process_amount)
+
+
+    rewrite_anag_process=build_process(Process_Rewrite, rewrite_anag_pr,body_of_full_text_cr, rewrite_sum1_process.get_final_results()[0],
+                                        body_of_sum_cr, default_process_amount, default_sub_process_amount)
+
+
+    rewrite_anag_process_alt=build_process(Process_Rewrite,rewrite_alt_pr,rewrite_sum1_process.get_final_results()[0],body_of_full_text_cr,body_of_sum_cr,
+                                           default_process_amount, default_sub_process_amount
+                                           )
+
+    '''
+
+    Ver21_rewrite_analogous_idea_prompt="If someone were trying to create an analogous/similar text about sexism, what are  suggestions you would propose for new appropriate  " \
+                                       "examples and references that would better match the theme of sexism (try to make suggestions for each sentence). I.E. relevant events, analogies, ideas, wording that relate to topic" \
+                                        "of sexism instead of racism"
+
+    Ver21_rewrite_analogous_idea_rate="Rate how well you feel the ideas would be useful in rewriting the text to be about a different subject such as sexism"
+    rewrite21_idea_pr1 = produce_pairs(Ver21_rewrite_analogous_idea_prompt, Ver21_rewrite_analogous_idea_rate)
+
+    Ver22_convert_prompt="The text below describes part of speech about racism. Try to rewrite this to incorporate and discuss sexism. Use" \
+                       " the roughly same number of sentences and general structure. However, try to change the context and examples to be " \
+                       " more appropriate to the topic of sexism. You may use the ideas listed in INFO to help edit and rewrite the text"
+
+    Ver22_convert_rate=rewrite_sum_rate
+    rewrite22_convert_pr1 = produce_pairs(Ver22_convert_prompt, Ver22_convert_rate)
+
+
+    Ver23_convert_full_body_idea_prompt="Looking at the text below, if someone were trying to create an analogous/similar text that better matched the themes and content of " \
+                                        " the summary listed in Context, what are suggestions you would propose for new appropriate examples and references (try to make suggestions for each " \
+                                        " sentence). I.e. making more topical references" \
+                                        " examples, references and wording so that the text was more themetically linked to the summary in Context "
+
+    Ver23_convert_full_body_idea_rate="Rate how well you feel the ideas would be useful in rewriting the text below to fit the topics and themes listed in Context"
+    rewrite23_convert_pr1 = produce_pairs(Ver23_convert_full_body_idea_prompt, Ver23_convert_full_body_idea_rate)
+
+
+
+    Ver24_convert_full_body_incorporate_prompt="Try to rewrite the text below to incorporate and match the themes and content of the summary written in Context. I.e. Keep the general structure (i.e." \
+                                  " sentence number, length, structure) " \
+                                  " of the text below, but try to incorporate and match the themes and content of the text in Context. You may use the ideas listed in INFO" \
+                                               " to help edit and rewrite the text below "
+    Ver24_convert_full_body_incorporate_rate = "Rate how well the text on the right feels like it incorporates the themes of the text on the left but keeps the structure and style " \
+                                " of the text below (word structure, flow, quality of writing) "
+
+    rewrite24_convert_pr1 = produce_pairs(Ver24_convert_full_body_incorporate_prompt, Ver24_convert_full_body_incorporate_rate)
+
+    '''
+    #Processses
+    ver21_process_idea=build_process(Process_Rewrite,rewrite21_idea_pr1,body_of_sum_cr,None,None,
+                                           default_process_amount, default_sub_process_amount
+                                           )
+
+    rewrite22_convert_process=build_process(Process_Rewrite,rewrite22_convert_pr1,body_of_sum_cr,None,ver21_process_idea.get_final_results()[0], default_process_amount, default_sub_process_amount
+                                           )
+
+    rewrite23_full_idea_process = build_process(Process_Rewrite, rewrite23_convert_pr1, body_of_full_text_cr, rewrite22_convert_process.get_final_results()[0],
+                                          None, default_process_amount,
+                                          default_sub_process_amount
+                                          )
+    rewrite24_full_process = build_process(Process_Rewrite, rewrite24_convert_pr1, body_of_full_text_cr,
+                                                rewrite22_convert_process.get_final_results()[0],
+                                           rewrite23_full_idea_process.get_final_results()[0], default_process_amount,
+                                                default_sub_process_amount
+                                                )
+
+    '''
+
+    #alt Deconstruct
+
+    Ver31_rewrite_analogous_idea_prompt = "The text below describes a synoposis of a speech. For each sentence, describe at a high level what " \
+                                          "each sentence is doing/serving. For instance, these are examples of higher level 'making a claim to grab listener', 'giving an example to emphasize a point', 'reiteration of a previous statement" \
+                                          " with more emotion'," \
+                                          " 'follow up on what was said earlier', 'elaboration of idea to clarify claim', 'personal self disclosure to connect to listener','seguing to new idea' "
+
+    Ver31_rewrite_analogous_idea_rate = "Rate how well you feel the high level descriptions capture what is happening on each line of text. "
+    rewrite31_idea_pr1 = produce_pairs(Ver31_rewrite_analogous_idea_prompt, Ver31_rewrite_analogous_idea_rate)
+
+    Ver32_convert_prompt = "The text below describes part of speech about racism. Try to rewrite this to incorporate and discuss sexism. Use" \
+                           " the roughly same number of sentences and general structure. However, try to change the context and examples to be " \
+                           " more appropriate to the topic of sexism. You may use the structure listed in INFO to help frame what is written "
+
+    Ver32_convert_rate = rewrite_sum_rate
+    rewrite32_convert_pr1 = produce_pairs(Ver32_convert_prompt, Ver32_convert_rate)
+
+    Ver33_convert_full_body_idea_prompt = "Looking at the text below, for each sentence, describe at a high level what each sentence is doing/serves. " \
+                                          " For instance, these are examples of higher level 'making a claim to grab listener', 'giving an example to emphasize a point', 'reiteration of a previous statement" \
+                                          " with more emotion'," \
+                                          " 'follow up on what was said earlier', 'elaboration of idea to clarify claim', 'personal self disclosure to connect to listener','seguing to new idea' "
+
+
+    Ver33_convert_full_body_idea_rate = "Rate how well you feel the text captures at a high level what each sentence is conceptually describing"
+    rewrite33_convert_pr1 = produce_pairs(Ver33_convert_full_body_idea_prompt, Ver33_convert_full_body_idea_rate)
+
+    Ver34_convert_full_body_incorporate_prompt = "Try to rewrite the text below to incorporate and match the themes and content of the summary written in Context. I.e. Keep the general structure (i.e." \
+                                                 " sentence number, length, structure) " \
+                                                 " of the text below, but try to incorporate and match the themes and content of the text in Context. You may use the high level structure listed in INFO" \
+                                                 " to help frame how you are going to rewrite the text below "
+    Ver34_convert_full_body_incorporate_rate = "Rate how well the text on the right feels like it incorporates the themes of the text in Context but keeps the structure and style " \
+                                               " of the text below (word structure, flow, quality of writing) "
+
+    rewrite34_convert_pr1 = produce_pairs(Ver34_convert_full_body_incorporate_prompt,
+                                          Ver34_convert_full_body_incorporate_rate)
+
+    # Processses
+    ver31_process_idea = build_process(Process_Rewrite, rewrite31_idea_pr1, body_of_sum_cr, None, None,
+                                       default_process_amount, default_sub_process_amount
+                                       )
+
+    rewrite32_convert_process = build_process(Process_Rewrite, rewrite32_convert_pr1, body_of_sum_cr, None,
+                                              ver31_process_idea.get_final_results()[0], default_process_amount,
+                                              default_sub_process_amount
+                                              )
+
+    rewrite33_full_idea_process = build_process(Process_Rewrite, rewrite33_convert_pr1, body_of_full_text_cr,
+                                                None,
+                                                None, default_process_amount,
+                                                default_sub_process_amount
+                                                )
+    rewrite34_full_process = build_process(Process_Rewrite, rewrite34_convert_pr1, body_of_full_text_cr,
+                                           rewrite32_convert_process.get_final_results()[0],
+                                           rewrite33_full_idea_process.get_final_results()[0], default_process_amount,
+                                           default_sub_process_amount
+                                           )
+
+
 def stories_of_power_dynamics(session):
     global sess
     sess=session

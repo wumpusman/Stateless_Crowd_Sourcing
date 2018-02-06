@@ -40,6 +40,22 @@ while len(current_case)>0:
     current_case=new_list
 
 
+def left_recurse(process,list):
+
+    left_process = process.task_parameters_obj.body_of_task.process_that_selected_this_content
+    if left_process !=None:
+        list.append(left_process)
+        left_recurse(left_process,list)
+    else:
+        return
+
+list= [top_level]
+left_recurse(top_level,list)
+
+print list
+
+for i in list:
+    print i.task_parameters_obj.body_of_task.results
 print "OK"
 #get children Context and Other
 
@@ -58,11 +74,12 @@ while len(current_case) >0:
     current_case=new_list
     
 '''
+'''
 print "ready"
 for level in all_levels:
     print "Next Level"
     for process in level:
         print process.get_final_results()[0].results
-
+'''
 #For each element in list
 #add children to list
