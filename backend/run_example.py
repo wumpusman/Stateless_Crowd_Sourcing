@@ -49,8 +49,8 @@ def rewrite_through_analogy(session,sum_text,full_text):
     sess=session
 
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
-    default_process_amount = 1
-    default_sub_process_amount = 1
+    default_process_amount = 3
+    default_sub_process_amount = 3
 
     body_of_sum=sum_text
     if full_text=="":
@@ -101,7 +101,7 @@ def rewrite_through_analogy(session,sum_text,full_text):
                                       " listed in Context . "
 
     rewrite_alt_pr=produce_pairs(rewrite_analogous_text_prompt_alt,rewrite_analogous_rate_prompt_alt)
-    ''' 
+
     rewrite_sum1_process = build_process(Process_Rewrite, rewrite_sum_pr1, body_of_sum_cr, None, None,
                                       default_process_amount, default_sub_process_amount)
 
@@ -111,10 +111,10 @@ def rewrite_through_analogy(session,sum_text,full_text):
 
 
     rewrite_anag_process_alt=build_process(Process_Rewrite,rewrite_alt_pr,rewrite_sum1_process.get_final_results()[0],body_of_full_text_cr,body_of_sum_cr,
-                                           default_process_amount, default_sub_process_amount
+                                           7, default_sub_process_amount
                                            )
 
-    '''
+
 
     Ver21_rewrite_analogous_idea_prompt="If someone were trying to create an analogous/similar text about sexism, what are  suggestions you would propose for new appropriate  " \
                                        "examples and references that would better match the theme of sexism (try to make suggestions for each sentence). I.E. relevant events, analogies, ideas, wording that relate to topic" \
@@ -150,7 +150,6 @@ def rewrite_through_analogy(session,sum_text,full_text):
 
     rewrite24_convert_pr1 = produce_pairs(Ver24_convert_full_body_incorporate_prompt, Ver24_convert_full_body_incorporate_rate)
 
-    '''
     #Processses
     ver21_process_idea=build_process(Process_Rewrite,rewrite21_idea_pr1,body_of_sum_cr,None,None,
                                            default_process_amount, default_sub_process_amount
@@ -165,11 +164,11 @@ def rewrite_through_analogy(session,sum_text,full_text):
                                           )
     rewrite24_full_process = build_process(Process_Rewrite, rewrite24_convert_pr1, body_of_full_text_cr,
                                                 rewrite22_convert_process.get_final_results()[0],
-                                           rewrite23_full_idea_process.get_final_results()[0], default_process_amount,
+                                           rewrite23_full_idea_process.get_final_results()[0], 7,
                                                 default_sub_process_amount
                                                 )
 
-    '''
+
 
     #alt Deconstruct
 
@@ -224,7 +223,7 @@ def rewrite_through_analogy(session,sum_text,full_text):
                                                 )
     rewrite34_full_process = build_process(Process_Rewrite, rewrite34_convert_pr1, body_of_full_text_cr,
                                            rewrite32_convert_process.get_final_results()[0],
-                                           rewrite33_full_idea_process.get_final_results()[0], default_process_amount,
+                                           rewrite33_full_idea_process.get_final_results()[0], 7,
                                            default_sub_process_amount
                                            )
 
