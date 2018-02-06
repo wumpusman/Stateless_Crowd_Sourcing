@@ -51,7 +51,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      #run_example.rewrite_continuously(the_session,"little_match_girl")
      #run_example.setup_luther(the_session)
     # run_example.setup_narrative_plot(the_session)
-     run_example.stories_of_power_dynamics(the_session)
+     run_example.rewrite_through_analogy(the_session, "", "")
      the_session.commit()
      print the_session.query(Content).all()
 
