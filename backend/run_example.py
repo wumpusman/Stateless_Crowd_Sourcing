@@ -111,7 +111,7 @@ def rewrite_through_analogy(session,sum_text,full_text):
 
 
     rewrite_anag_process_alt=build_process(Process_Rewrite,rewrite_alt_pr,rewrite_sum1_process.get_final_results()[0],body_of_full_text_cr,body_of_sum_cr,
-                                           7, default_sub_process_amount
+                                           7, 1
                                            )
 
 
@@ -165,7 +165,7 @@ def rewrite_through_analogy(session,sum_text,full_text):
     rewrite24_full_process = build_process(Process_Rewrite, rewrite24_convert_pr1, body_of_full_text_cr,
                                                 rewrite22_convert_process.get_final_results()[0],
                                            rewrite23_full_idea_process.get_final_results()[0], 7,
-                                                default_sub_process_amount
+                                                1
                                                 )
 
 
@@ -224,7 +224,7 @@ def rewrite_through_analogy(session,sum_text,full_text):
     rewrite34_full_process = build_process(Process_Rewrite, rewrite34_convert_pr1, body_of_full_text_cr,
                                            rewrite32_convert_process.get_final_results()[0],
                                            rewrite33_full_idea_process.get_final_results()[0], 7,
-                                           default_sub_process_amount
+                                           1
                                            )
 
 
