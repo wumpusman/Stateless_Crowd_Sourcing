@@ -205,7 +205,10 @@ class Manager(object):
 
         id=single_process.id
         user_input=[c.results for c in single_process.get_content_produced_by_this_process()]
-        user_input_and_id=[(c.id,c.results) for c in single_process.get_content_produced_by_this_process()]
+
+        get_user=lambda cont: str(cont.user_id)
+
+        user_input_and_id_and_associated_user=[(c.id,c.results,get_user(c)) for c in single_process.get_content_produced_by_this_process()]
         prompt=single_process.task_parameters_obj.prompt.results
         body=single_process.task_parameters_obj.body_of_task.results
         is_finished=single_process.is_locked;
@@ -238,7 +241,7 @@ class Manager(object):
         results["processes_state"]=processes_and_state
         results["prompt"]=prompt
         #results["user_input"]=user_input
-        results["content"]=user_input_and_id
+        results["content"]=user_input_and_id_and_associated_user
         results["is_finished"]=is_finished
         results["process_id"]=id
         results["body"]=body

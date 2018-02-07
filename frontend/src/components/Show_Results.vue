@@ -22,7 +22,7 @@
 
       <div id="user_inputs" class="add_wrap">
         <div  v-for="item in content">
-             <text_block :Text="item[1]" :Associated_Content_ID="item[0]" :Associated_Process_ID="process_id" ></text_block>
+             <text_block :Text="item[1]" :Associated_Content_ID="item[0]" :Associated_User_ID="item[2]" :Associated_Process_ID="process_id" ></text_block>
            <p> <i></i></p>
         </div>
 
