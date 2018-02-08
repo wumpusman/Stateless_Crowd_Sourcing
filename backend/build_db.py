@@ -51,8 +51,21 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      #run_example.rewrite_continuously(the_session,"little_match_girl")
      #run_example.setup_luther(the_session)
     # run_example.setup_narrative_plot(the_session)
-     run_example.rewrite_through_analogy(the_session, "", "")
-     the_session.commit()
+     examples=["I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation",
+              "Five score years ago, a great American, in whose symbolic shadow we stand today, signed the Emancipation Proclamation",
+              "This momentous decree came as a great beacon light of hope to millions of Negro slaves who had been seared in the flames of withering injustice",
+              "It came as a joyous daybreak to end the long night of their captivity",
+              "But one hundred years later, the Negro still is not free "]
+
+     instruct=["[Give personal context to why speaker is present]",
+     "[To contextualize the remarks in a larger historical context]",
+     "[To provide soaring rhetoric to motivate his listeners]",
+     "[Follow up on previous claim] ",
+     "[Clarify that works still needs to be done]"]
+     run_example.line_by_line_rewrite(the_session, None, None)
+     run_example.line_by_line_rewrite(the_session,instruct,examples)
+
+     run_example.iterative(the_session, None, None)
      print the_session.query(Content).all()
 
 else:
@@ -64,7 +77,23 @@ else:
      #
 
      session.commit()
-     run_example.rewrite_through_analogy(session,"","")
+
+     examples=["I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation",
+              "Five score years ago, a great American, in whose symbolic shadow we stand today, signed the Emancipation Proclamation",
+              "This momentous decree came as a great beacon light of hope to millions of Negro slaves who had been seared in the flames of withering injustice",
+              "It came as a joyous daybreak to end the long night of their captivity",
+              "But one hundred years later, the Negro still is not free "]
+
+     instruct=["[Give personal context to why speaker is present]",
+     "[To contextualize the remarks in a larger historical context]",
+     "[To provide soaring rhetoric to motivate his listeners]",
+     "[Follow up on previous claim] ",
+     "[Clarify that works still needs to be done]"]
+
+     run_example.line_by_line_rewrite(session, None, None)
+     run_example.line_by_line_rewrite(session,instruct,examples)
+
+     run_example.iterative(session, None, None)
      #run_example.date_plan(session)
      session.commit()
      #run_example.setup_luther(session)

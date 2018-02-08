@@ -4,6 +4,10 @@ import re
 import os
 
 
+
+
+
+
 sess=None
 def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub, expected_results=1):
 
@@ -21,11 +25,100 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
                    expected_results=expected_results,
                    subprocess_tuple=(Process_Rate,sub_process)
                    )
-
+    print generated_process
     generated_process.is_using_ml=True
 
     sess.add(generated_process)
     return generated_process
+
+
+def iterative(session,general_about,main_text):
+    global sess
+    sess=session
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    default_process_amount = 3
+    default_sub_process_amount = 3
+    if general_about==None:
+        general_about="Much like the Emancipation Proclamation one hundred years ago," \
+                  " women are facing oppression in the workplace, even today. " \
+                  "Women workers face discrimination in pay per worker salaries and hourly wages. "
+    if main_text==None:
+        main_text=" I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation. Five score years ago, a great American, in whose symbolic shadow we stand today, signed the Emancipation Proclamation. This momentous decree came as a great beacon light of hope to millions of African American slaves who had been seared in the " \
+                  "flames of withering injustice. It came as a joyous daybreak to end the long night of their captivity." \
+                  " But one hundred years later, African Americans are still experiencing injustices." \
+                  " For instance, many black women today are still experiencing sexism. "
+
+    gen_about_cr=Content_Result(general_about,True)
+    main_text_cr=Content_Result(main_text,True)
+
+
+    prompt="Try to rewrite this to better emphasize and discuss sexism. Usethe roughly same number of sentences and general structure. " \
+           "However, try to change the context and examples to be more appropriate to the topic of sexism. "
+    rate="Rate how well this text better encapsulates the topic of sexism"
+    pr=produce_pairs(prompt,rate)
+
+    prompt1="Try to rewrite this to better emphasize and discuss sexism. Use roughly same number of sentences and general structure. " \
+           "However, try to change the context and examples to be more appropriate to the topic of sexism. The text on left is meant to give you an idea " \
+            "of what the rewritten should be about"
+    rate1="Rate how well this text better encapsulates the topic of sexism"
+    pr1=produce_pairs(prompt1,rate1)
+
+    process=None
+    for i in xrange(0,2):
+        process=build_process(Process_Rewrite,pr,gen_about_cr,None,None,default_process_amount,default_sub_process_amount)
+        gen_about_cr=process.get_final_results()[0]
+
+    for i in xrange(0,4):
+        process=build_process(Process_Rewrite,pr1,main_text_cr,gen_about_cr,None,default_process_amount,default_sub_process_amount)
+        main_text_cr=process.get_final_results()[0]
+
+
+def line_by_line_rewrite(session,steps1,str1):
+    global sess
+    sess=session
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    default_process_amount = 5
+    default_sub_process_amount = 3
+
+    if steps1==None:
+        steps1=[" [Provide historical context]", " [Elaborate the purpose behind the action]", " [Clarify that action did not fully solve the underlying problem] "]
+    if str1 ==None:
+        str1=["One hundred years ago the Emancipation Proclamation was signed by Abraham Lincoln", "This decree was insturmental in freeing the slaves and giving them hope " \
+         "for a productive life free from chains. ", \
+         "Yet, even today, the negro is not completly free from oppression"]
+    str1_alt=[]
+    for i in xrange(len(str1)):
+        str1_alt.append(". ".join(str1[0:i])+" _EXAMPLE_RESULT_DIFFERENT_DOMAIN_ ["+str1[i:i+1][0]+"]")
+
+    stepsCr=[Content_Result(" _INSTRUCTIONS_ "+stp,True) for stp in steps1]
+    exampleCr=[Content_Result(ex,True) for ex in str1_alt]
+
+    if len(stepsCr)!=len(exampleCr): raise Exception("AHH this can't be happening")
+
+    prompt1="To best of your abilities write about the subject of the treatment of women using the instructions listed below in 'Main Text to Evaluate'. An example " \
+            "in a different subject/domain is shown in INFO "
+    rate1 = "Rate how well the content to be evaluated follows the instruction listed in Context to create a text appropriate to subject of the 'treatment of women' "
+    pr1=produce_pairs(prompt1,rate1)
+
+    prompt2_with_work="Listed below is text about the subject of the treatment of women, as well as instructions listed '[]'. Use those instructions to write the next " \
+                      "sentence. An example of a different domain/subject is shown in INFO "
+    rate2 = "Rate how well the 'content to be evaluated' follows the instruction listed in Context to extend this piece of text in 'Original Content'"
+    pr2=produce_pairs(prompt2_with_work,rate2)
+
+
+
+    rewrite1_full_process = build_process(Process_Modify_Results_And_View, pr1, None,stepsCr[0],exampleCr[0]
+                                           , default_process_amount, default_sub_process_amount)
+
+
+    prev_step_result = rewrite1_full_process.get_final_results()[0]
+    for i in xrange(1,len(exampleCr)):
+
+        rewrite_rest_full_process = build_process(Process_Modify_Results_And_View, pr2,prev_step_result
+                                          , stepsCr[i], exampleCr[i]
+                                          ,default_process_amount, default_sub_process_amount)
+
+        prev_step_result=rewrite_rest_full_process.get_final_results()[0]
 
 
 

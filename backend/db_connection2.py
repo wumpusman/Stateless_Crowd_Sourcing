@@ -761,6 +761,35 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
                 chosen_result.results = item.results
 
 
+class Process_Modify_Results_And_View(Process_Rewrite): #assume i'm gonna rate the subprocesses
+    __mapper_args__ = {'polymorphic_identity': 'process_modify_results'}
+
+
+    def assign_result(self, session):
+        super(Process_Modify_Results_And_View, self).assign_result(session)
+        if len(self.get_final_results()) == len(self.get_final_results_complete(session).all()):
+            actually_done=self.get_final_results_complete(session)
+            for content in actually_done:
+                content.results=self.task_parameters_obj.body_of_task.results+ " " +content.results
+    '''
+       Context Instruction 
+       View
+        Body Of Task View = Body Of Task + Context
+        Context = ""
+       Result:
+        
+       Final Result = Body Of Task + Final Result 
+       
+    '''
+    def prepare_view(self):
+        task_view = super(Process_Modify_Results_And_View, self).prepare_view()
+
+        task_view["Body_Of_Task"]=task_view["Body_Of_Task"] + task_view["Context"]
+        task_view["Context"]=""
+
+        return task_view
+
+
 
 class Process_Merge(Process_Rewrite):
     __mapper_args__ = {'polymorphic_identity': 'process_merge'}
