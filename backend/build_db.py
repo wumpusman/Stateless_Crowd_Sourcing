@@ -67,7 +67,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
 
      run_example.iterative(the_session, None, None)
      print the_session.query(Content).all()
-     session.commit()
+     the_session.commit()
 else:
      conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
 
