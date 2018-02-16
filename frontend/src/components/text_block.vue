@@ -16,7 +16,8 @@
          <textarea id="Text_Result" ref="Text_Result" class="ui segment focus input_box" :value="computed_text"  ></textarea>
       </div>
         <div class="ui segment">
-         <br>content_id {{Associated_Content_ID}}  process_id {{Associated_Process_ID}} <br> user {{Associated_User_ID}}
+         <br>content_id {{Associated_Content_ID}}  process_id {{Associated_Process_ID}} score{{Associated_Score}}
+          <br> user {{Associated_User_ID}}
 
       </div>
        <div class="ui divider"></div>
@@ -38,7 +39,7 @@
    import jquery from 'jquery';
 export default {
   name:"text_block",
-   props: {Text:{default:"Default_Text Placed Here"}, Associated_User_ID:{default:"NA"},
+   props: {Text:{default:"Default_Text Placed Here"}, Associated_User_ID:{default:"NA"}, Associated_Score:{default:-1.0},
      Associated_Content_ID: {default: 39},Associated_Process_ID:{default:1}}, //FOr testing purposes, I'll change this later
    data:function(){
       return {

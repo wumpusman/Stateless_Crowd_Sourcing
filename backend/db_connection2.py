@@ -551,7 +551,7 @@ class Process_Rate(Process_Object):
         #All results stemming from this data, assumes numerical, and was not empty
         current_content=session.query(Content).filter((self.id==Content.origin_process_id) & (Content.is_completed==True) & (Content.results!="")).subquery()
 
-        print "WTF"
+
         result= session.query(current_content).all()
 
         alt=pd.DataFrame(result)

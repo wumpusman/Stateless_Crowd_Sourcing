@@ -15,19 +15,12 @@
                         </form>
                         <label v-else>Logged in as: {{ name }}</label>
                 </div>
-                    <div v-if="!logged_in" class="login_section">
-                        <label class="login">Password:</label>
-                        <form >
-                            <input v-model="password" type="text" name="password">
-                        </form>
-
-                    </div>
 
             </div>
             <div><p></p></div>
             <div class="align_submit_buttons">
 
-                <button v-if="!logged_in" v-on:click="submit">login</button>
+                <button v-if="!logged_in" v-on:click="submit">Submit</button>
 
             </div>
       </div>
@@ -37,7 +30,16 @@
 <script>
 import jquery from 'jquery'
 
+/**
+ <div v-if="!logged_in" class="login_section">
+                        <label class="login">Password:</label>
+                        <form >
+                            <input v-model="password" type="text" name="password">
+                        </form>
 
+                    </div>
+
+**/
 
 export default {
   name: 'Login',

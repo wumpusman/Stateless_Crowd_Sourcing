@@ -77,8 +77,7 @@ class Manager(object):
 
         else:
             was_effective=False
-        print "should not be completed"
-        print content.is_completed
+
 
         self.session.commit()
         return was_effective
@@ -208,7 +207,16 @@ class Manager(object):
 
         get_user=lambda cont: str(cont.user_id)
 
-        user_input_and_id_and_associated_user=[(c.id,c.results,get_user(c)) for c in single_process.get_content_produced_by_this_process()]
+        def get_score(content):
+            try:
+                return  session.query(Task_Parameters).filter(Task_Parameters.result_id == c.id).all()[
+                    0].parent_process._calculate_score(session)
+            except:
+               return -1.0 #not a valid score yet
+
+        user_input_and_id_and_associated_user=[(c.id,c.results,get_user(c),get_score(c)) for c in single_process.get_content_produced_by_this_process()]
+
+
         prompt=single_process.task_parameters_obj.prompt.results
         body=single_process.task_parameters_obj.body_of_task.results
         is_finished=single_process.is_locked;
