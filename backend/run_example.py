@@ -730,6 +730,33 @@ def setup_malcom_summary(session):
     #print malcom_batch_size_5[1]
     recurse_summary(session, malcom_batch_size_5, 0, None, malcom_batch_size_5)
     '''
+def setup_sedaris(session):
+    setup_general_summary(session,'sedaris')
+    to_basic_element_process= session.query(Process_Rewrite).all()
+
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+
+
+
+   # for basic_process in to_basic_element_process:
+      #  basic_process =Process_Rewrite
+
+
+    '''
+    
+    Ver31_rewrite_analogous_idea_prompt = "The text below describes a synoposis of a speech. For each sentence, describe at a high level what " \
+                                          "each sentence is doing/serving. For instance, these are examples of higher level 'making a claim to grab listener', 'giving an example to emphasize a point', 'reiteration of a previous statement" \
+                                          " with more emotion'," \
+                                          " 'follow up on what was said earlier', 'elaboration of idea to clarify claim', 'personal self disclosure to connect to listener','seguing to new idea' "
+
+    Ver31_rewrite_analogous_idea_rate = "Rate how well you feel the high level descriptions capture what is happening on each line of text. "
+    rewrite31_idea_pr1 = produce_pairs(Ver31_rewrite_analogous_idea_prompt, Ver31_rewrite_analogous_idea_rate)
+
+    Ver32_convert_prompt = "The text below describes part of speech about racism. Try to rewrite this to incorporate and discuss sexism. Use" \
+                           " the roughly same number of sentences and general structure. However, try to change the context and examples to be " \
+                           " more appropriate to the topic of sexism. You may use the structure listed in INFO to help frame what is written "
+    
+    '''
 
 def setup_summary(session):
     dir_path = os.path.dirname(os.path.realpath('__file__'))
@@ -750,6 +777,8 @@ def setup_summary(session):
         match_girl_batch_size_5.append(".".join(as_arry[i:i+5]))
 
     recurse_summary(session,match_girl_batch_size_5,0,None,match_girl_batch_size_5)
+
+
 
 def _merge_step(session,left_content_result,right_content_result,context_result=None):
     default_sub_process_amount = 3

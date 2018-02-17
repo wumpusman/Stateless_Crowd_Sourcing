@@ -16,7 +16,7 @@
          <textarea id="Text_Result" ref="Text_Result" class="ui segment focus input_box" :value="computed_text"  ></textarea>
       </div>
         <div class="ui segment">
-         <br>content_id {{Associated_Content_ID}}  process_id {{Associated_Process_ID}} score{{Associated_Score}}
+         <br>content_id {{Associated_Content_ID}}  process_id {{Associated_Process_ID}} score {{Associated_Score}}
           <br> user {{Associated_User_ID}}
 
       </div>

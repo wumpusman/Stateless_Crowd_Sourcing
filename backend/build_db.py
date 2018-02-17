@@ -62,11 +62,12 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      "[To provide soaring rhetoric to motivate his listeners]",
      "[Follow up on previous claim] ",
      "[Clarify that works still needs to be done]"]
-     run_example.line_by_line_rewrite(the_session, None, None)
-     run_example.line_by_line_rewrite(the_session,instruct,examples)
+     #run_example.line_by_line_rewrite(the_session, None, None)
+     #run_example.line_by_line_rewrite(the_session,instruct,examples)
 
-     run_example.iterative(the_session, None, None)
-     print the_session.query(Content).all()
+    # run_example.iterative(the_session, None, None)
+     #print the_session.query(Content).all()
+     run_example.setup_sedaris(the_session)
      the_session.commit()
 else:
      conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
@@ -90,10 +91,10 @@ else:
      "[Follow up on previous claim] ",
      "[Clarify that works still needs to be done]"]
 
-     run_example.line_by_line_rewrite(session, None, None)
-     run_example.line_by_line_rewrite(session,instruct,examples)
-
-     run_example.iterative(session, None, None)
+     #run_example.line_by_line_rewrite(session, None, None)
+     #run_example.line_by_line_rewrite(session,instruct,examples)
+     run_example.setup_sedaris(session)
+     #run_example.iterative(session, None, None)
      #run_example.date_plan(session)
      session.commit()
      #run_example.setup_luther(session)
