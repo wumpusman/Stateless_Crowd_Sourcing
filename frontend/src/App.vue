@@ -32,7 +32,7 @@ export default {
   },
   data: function(){
     return {
-      should_create_auto_login:true
+      should_create_auto_login:false
 
     }
   },

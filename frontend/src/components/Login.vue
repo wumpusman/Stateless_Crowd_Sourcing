@@ -1,19 +1,23 @@
 <template>
 
     <div id="Login_Section">
-        <div id="explanation_location"><span class="explanation">Use this code for name and password (Please remember it) and click submit</span>
+        <div id="explanation_location">
+          <span class="explanation">Enter your Mturk workerID,
+            <br> If you do not, a proper completion token cannot be guaranteed
+
+        </span>
 
           </div>
 
-          <div><b>Code: {{random_code}}</b></div>
+          <div></div>
 
             <div >
                 <div>
-                        <label v-if="!logged_in" class="login"> Name: </label>
+                        <label v-if="!logged_in" class="login"> WorkedID: </label>
                         <form v-if="!logged_in">
                             <input v-model="name" type="text"  name="name">
                         </form>
-                        <label v-else>Logged in as: {{ name }}</label>
+
                 </div>
 
             </div>
@@ -65,6 +69,10 @@ export default {
         this.name = this.random_code;
         this.submit();
       }
+      else {
+        this._show_only_login()
+
+      }
 
     }.bind(this);
 
@@ -113,13 +121,16 @@ export default {
               this.name="Invalid Name";
               return
             }
-            if ( this.password=="" || this.password=="Invalid Password" || this.password=="")
+            if (this.password=="Invalid Password" )
             {
               this.password = "Invalid Password";
               return;
             }
 
+            console.log("password");
+            console.log(this.password);
 
+            console.log("name"+this.name)
 
             jquery.ajax({
                 url: '/api/login',
@@ -136,7 +147,7 @@ export default {
                     this.logged_in=false;
                   }
                   else {
-
+                    this._show_everything_but_login()
                     this.logic(this.name,this.password,response);
 
                   }

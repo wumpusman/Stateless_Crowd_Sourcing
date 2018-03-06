@@ -47,7 +47,7 @@ export default {
     }
   },
   created:function(){
-
+  //t.getTime()+"_"+t.getDate()+t.getDay()+"_"+t.getHours()+"1"
 
     window.beforeunload  =this.disconnect_user;
     document.beforeunload=this.disconnect_user;
@@ -108,8 +108,21 @@ export default {
       return this.$root.$data.stored_state.state.current_project_state;
     },
     computed_name:function(){
-      if(this.$root.$data.stored_state.state.name !="")
-        return this.$root.$data.stored_state.state.name;
+      if(this.$root.$data.stored_state.state.name !="") {
+        //Add month date and other shit
+
+        var first_number = parseInt(Math.random() * 100);
+        var second_number = parseInt(Math.random() * 100);
+
+        var third_number = (100 - first_number) * (100 - second_number);
+        var code = "";
+        if (first_number > 50)
+          code = "X" + first_number + "Y" + second_number + "Z"+third_number;
+        else
+          code = "A" + first_number + "B" + second_number + "C"+third_number;
+        var name=this.$root.$data.stored_state.state.name;
+        return name + "_" + code;
+      }
       return "";
     },
     compute_submission_count:function(){
