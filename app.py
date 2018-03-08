@@ -14,13 +14,13 @@ app = Flask(__name__,
 
 
 
-
+#Task_Crowd_Source_Test
 conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #temp2
 #meta.drop_all(bind=conn)  # clear everything
 #Base.metadata.create_all(conn)
 manager = Manager(session,max_time=7) #in minutes
 if type(os.environ.get('DATABASE_URL')) != type(None):
-    manager._minimum_work_time=30
+    manager._minimum_work_time=10
     manager._effort_ratio=1
 
 @app.route('/', defaults={'path': ''})
@@ -174,7 +174,7 @@ def login(): #For logging in
 
     new_content=None
 
-    if len(user.associated_content)==0:
+    if (user.get_current_content_in_progress(session))==None:
         new_content= manager.assign_new_content(user)
     else:
 

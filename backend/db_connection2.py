@@ -82,7 +82,8 @@ class User (Base):
        else:
            return query[0]
         '''
-
+       print "content length"
+       print len(query)
        if len(query)==0: return None
        if len(query) >1:
            query.sort(key=lambda x: x.id, reverse=True)

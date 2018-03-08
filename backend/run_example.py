@@ -32,6 +32,134 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
     return generated_process
 
 
+
+def generate_shirt_design(session):
+    global sess
+    sess = session
+
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    default_process_amount, default_sub_process_amount = 3,3
+    prompts = [
+        "0. List an animal you find particularly cute or pick one from this list (can be more specific): otters, pigs, kangaroos, koalas, bats, polar bears, hedgehogs etc. ",
+
+        "1. Describe a behavior that the animal listed below does with/to other animals that is unique/distinctive to it's species AND reason for it. You may google \
+        I.E. EXAMPLES Male Birds feathers are used to attract  females. I.E. Birds regurgitate  food to feed young",
+
+        "2. If you were to map the behavior listed below to a human behavior, what would be a close equivalent. I.E. EXAMPLES Bird doing mating call -> A boy trying to pick up a girl.",
+        "3. Where would you see this behavior. I.E. EXAMPLES A boy picking up a girl -> At a bar",
+        "4. What kind of behavior would you imagine in this enviornment. I.E. EXAMPLES A boy picking up a girl -> He might be trying to grind on her on the dance floor",
+        "5. Incorporate the information in main text to evaluate, context, and info into a single sentence. I.E. EXAMPLES A boy picking a girl AND he might be trying to grind on the dance floor -> A boy is grinding with a girl on \
+         the dance floor in order to pick her up",
+        "6. Given the animal listed in context, and the situation below, replace the person with the animal I.E. EXAMPLES Birds and 'A boy picking up a girl at a club \
+         -> A male bird is trying to pick up a female bird at a club and grinding on the dance floor",
+        "7. What other attributes of the following animal would you add to this description to make it feel more animal like. \
+         I.E. Bird, Bird sings to attract females MAPPED to bird is picking up another bird at a club and trying to grind with her on a dance floor -> \
+         The male birds wings are outstretched as it grinds on the dance floor. It's holding a beer glass full of worms",
+
+        "8. How would you anthromorphize the animals described in the scene to give them more humanlike qualities and make the situation more humanlike. I.E bird grinding on dance floor -> \
+         Birds grinding on the dance floor are dressed in colorful suits and dresses. Both birds are holding drinks. Maybe other animals chilling at a bar. ",
+        "9. Incorporate the information in a single description. I.E. bird grinding on dance floor AND birds could be holding drinks. -> Birds are grinding on the dance floor. \
+         They are holding drinks. ",
+        "10. Given the following surreal scene, and the goal to create a mapping behavior described in context, what are some questions, suggestions to flesh out the scene.  \
+         I.E. Mating call of birds maps to Birds are grinding in a bar -> What kind of music, what is the disposition between the two animals, what kind of outfits are the birds wearing, what kind of bar is it (edm versus low key),\
+         what's in the backdrop",
+        "11. Given the surreal scene, and the questions listed below, try to answer them descriptively. I.E. Birds are dancing in a bar And What kind of outfits are they wearing -> The \
+         . male is wearing a very colorful vest and female bird is wearing all black"
+
+    ]
+
+    params=[{}]*len(prompts)
+
+    params[2]={"name":"closest human behavior","context":0} #context is -2
+    params[4]={"body":2,"context":3}
+    params[5]={"body":4,"context":3,"info":2}
+    params[6]={"body":5, "context":0}
+    params[7]={"info":0,"context":1}
+    params[8]={"body":6,"context":7}
+    params[9]={"body":6,"info":8,"context":7}
+    params[10]={"context":1,"info":0}
+    params[11]={"body":9,"context":10}
+
+    #params[8]=
+    rate = "Rate how well the text highlighted below achieves the following instruction: "
+
+    rate_ary=[rate +"[ " +i+ " ]" for i in prompts]
+
+    p_r_content_results=[]
+
+
+    for i in xrange(len(prompts)):
+        p_r_content_results.append(produce_pairs(prompts[i],rate_ary[i]))
+
+    print "OK"
+    get_process_result=lambda param_dict, element_name,process_list,which_result: None if param_dict.get(element_name)==None else process_list[param_dict.get(element_name)][which_result].get_final_results()[which_result]
+
+    process_list=[]
+
+    how_many_versions = 3
+
+    for i in xrange(0,len(prompts)):
+        prompt_rate_pair=p_r_content_results[i]
+        body= None
+        info=None
+        context=None
+
+        process=None
+        if i ==0: #
+            process_list.append([])
+            process = build_process(Process_Rewrite, prompt_rate_pair, body, context, info, default_process_amount,
+                                    default_sub_process_amount, how_many_versions)  # if it's the first one
+
+            for i in xrange(how_many_versions):
+
+                process_list[-1].append(process)
+
+
+        else:
+            process_list.append([])  # add extra section
+
+
+            for j in xrange(how_many_versions):
+                final_result_number=0 #which result to extract - shuold normally be 0 unless 0 is found
+
+                if i-1==0:
+                    final_result_number=j #if it is the 0th element then it should be the particular location
+                    print j
+                    print process_list[i-1]
+
+
+                body = process_list[i - 1][j].get_final_results()[final_result_number] if i > 0 else None  # default for body
+
+                if params[i].get("body") != None:
+                    relevant_number=0
+                    if params[i].get("body")==0:
+                        relevant_number=j
+
+                    body = get_process_result(params[i], "body", process_list, relevant_number)
+                if params[i].get("info") != None:
+                    relevant_number = 0
+                    if params[i].get("info")==0:
+                        relevant_number=j
+                    info = get_process_result(params[i], "info", process_list, relevant_number)
+
+                if params[i].get("context") != None:
+                    relevant_number = 0
+                    if params[i].get("context")==0:
+                        relevant_number=j
+                    context = get_process_result(params[i], "context", process_list, relevant_number)
+
+
+
+                process=build_process(Process_Rewrite,prompt_rate_pair,body,context,info,default_process_amount,default_sub_process_amount,1)
+                process_list[-1].append(process) #add each version of it
+
+
+    return process_list
+
+
+
+
+
 def iterative(session,general_about,main_text):
     global sess
     sess=session
@@ -730,15 +858,61 @@ def setup_malcom_summary(session):
     #print malcom_batch_size_5[1]
     recurse_summary(session, malcom_batch_size_5, 0, None, malcom_batch_size_5)
     '''
-def setup_sedaris(session):
-    setup_general_summary(session,'sedaris')
-    to_basic_element_process= session.query(Process_Rewrite).all()
-
+def setup_sedaris_high_level(session):
+    #setup_general_summary(session,'sedaris')
+    #to_basic_element_process= session.query(Process_Rewrite).all()
+    root=session.query(Process_Text_Manipulation).filter(Process_Text_Manipulation.id == 127).all()[0]
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    global sess
+    sess = session
+
+
+    prompt_for_conceptual_idea="Text below describes a synoposis of text, at a high level what is it trying to say"
+    rate_conceptual_idea="Rate how  well this describes the general ideas of the text"
+    abstract_pair=produce_pairs(prompt_for_conceptual_idea,rate_conceptual_idea)
+
+    prompt_for_rewrite="write the text to better match the ideas expressed on the left. The text on left is an example, and text above it provides some context "
+    rate_rewrite="rate how good rewrite feels"
+    remap_pair=produce_pairs(prompt_for_rewrite,rate_rewrite)
 
 
 
-   # for basic_process in to_basic_element_process:
+    def recurse_down(session,parent_process, el, first_pair,second_pair):
+        global sess
+        sess = session
+
+
+
+        if el == None:
+            return
+
+
+        parent_result=None
+        if parent_process!=None:
+            parent_result=parent_process.get_final_results()[0]
+
+
+        #first method
+        abstracted_process=build_process(Process_Rewrite, first_pair, el.get_final_results()[0],parent_result, None,
+                      1, 1)
+
+        # first method
+        rewrite_process=build_process(Process_Rewrite, second_pair, abstracted_process.get_final_results()[0], parent_result
+                                      , el.get_final_results()[0],
+                      1, 1)
+
+
+        left_process = el.task_parameters_obj.body_of_task.process_that_selected_this_content
+        right_process = el.task_parameters_obj.context.process_that_selected_this_content
+
+        recurse_down(session,rewrite_process,left_process,first_pair,second_pair)
+        recurse_down(session,rewrite_process,right_process,first_pair,second_pair)
+
+
+
+    recurse_down(session,None,root,abstract_pair,remap_pair)
+
+    # for basic_process in to_basic_element_process:
       #  basic_process =Process_Rewrite
 
 
@@ -1450,17 +1624,17 @@ def setup_example(session):
             "Rate how well you feel the suggestions would make this text sound more negative, and better in general",
             is_completed=True),
         "context": second.get_final_results()[0],
-        "content_to_be_requested": 2,
+        "content_to_be_requested": 1,
         "expected_results": 1
     }
 
-    third = Process_Text_Manipulation(second.get_final_results()[0], prompt_suggestion, context=None, suggestion=suggestions,
-                                      expected_results=1,
-                                      content_to_be_requested=2,
-                                      subprocess_tuple=(Process_Rate, sub_process_suggestion_info))
+   # third = Process_Text_Manipulation(second.get_final_results()[0], prompt_suggestion, context=None, suggestion=suggestions,
+    #                                  expected_results=1,
+     #                                 content_to_be_requested=1,
+     #                                 subprocess_tuple=(Process_Rate, sub_process_suggestion_info))
     session.add(first)
     session.add(second)
-    session.add(third)
+    #session.add(third)
 
     return second
     '''
