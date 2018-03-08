@@ -11,7 +11,10 @@ const routerOptions = [
   {path:'/Content_Element',component:"Content_Element"},
   {path:'/Show_Results',component:"Show_Results"},
   {path:'/System_Container',component:"System_Container"},
-  {path:'/text_block',component:"text_block"}
+  {path:'/text_block',component:"text_block"},
+  {path:'/Content_Element_Redux',component:"Content_Element_Redux"},
+  {path:'/Content_Element_Redux_Input_Type',component:"Content_Element_Redux_Input_Type"},
+  {path:'/text_block_redux',component:"text_block_redux"}
    //#console.log(window.location.href);
 ]
 
