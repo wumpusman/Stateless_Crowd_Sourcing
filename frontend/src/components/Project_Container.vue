@@ -1,7 +1,6 @@
 <template>
   <div>
 
-
   <div id="page">
 
     <div id="header">
