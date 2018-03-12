@@ -45,12 +45,12 @@ def generate_shirt_design(session):
         "1. Describe a behavior that the animal listed below does with/to other animals that is unique/distinctive to it's species AND reason for it. You may google \
         I.E. EXAMPLES Male Birds feathers are used to attract  females. I.E. Birds regurgitate  food to feed young",
 
-        "2. If you were to map the behavior listed below to a human behavior, what would be a close equivalent. I.E. EXAMPLES Bird doing mating call -> A boy trying to pick up a girl.",
+        "2. Given the behavior below, what is an analogous human behavior or a close equivalent. Context describes the animal.  I.E. EXAMPLES Bird doing mating call -> A boy trying to pick up a girl.",
         "3. Where would you see this behavior. I.E. EXAMPLES A boy picking up a girl -> At a bar",
-        "4. What kind of behavior would you imagine in this enviornment. I.E. EXAMPLES A boy picking up a girl -> He might be trying to grind on her on the dance floor",
+        "4. Describe the of kind of scenario you imagine this to happen in. Context describes the location. I.E. EXAMPLES A boy picking up a girl -> He might be trying to grind on her on the dance floor",
         "5. Incorporate the information in main text to evaluate, context, and info into a single sentence. I.E. EXAMPLES A boy picking a girl AND he might be trying to grind on the dance floor -> A boy is grinding with a girl on \
          the dance floor in order to pick her up",
-        "6. Given the animal listed in context, and the situation below, replace the person with the animal I.E. EXAMPLES Birds and 'A boy picking up a girl at a club \
+        "6. Given the animal listed in context, and the situation below, remove any mention of people, and replace or add the animal in  I.E. EXAMPLES Birds and 'A boy picking up a girl at a club \
          -> A male bird is trying to pick up a female bird at a club and grinding on the dance floor",
         "7. What other attributes of the following animal would you add to this description to make it feel more animal like. \
          I.E. Bird, Bird sings to attract females MAPPED to bird is picking up another bird at a club and trying to grind with her on a dance floor -> \
@@ -92,7 +92,7 @@ def generate_shirt_design(session):
         p_r_content_results.append(produce_pairs(prompts[i],rate_ary[i]))
 
     print "OK"
-    get_process_result=lambda param_dict, element_name,process_list,which_result: None if param_dict.get(element_name)==None else process_list[param_dict.get(element_name)][which_result].get_final_results()[which_result]
+    get_process_result=lambda param_dict, element_name,process_list,which_version,which_result: None if param_dict.get(element_name)==None else process_list[param_dict.get(element_name)][which_version].get_final_results()[which_result]
 
     process_list=[]
 
@@ -107,7 +107,7 @@ def generate_shirt_design(session):
         process=None
         if i ==0: #
             process_list.append([])
-            process = build_process(Process_Rewrite, prompt_rate_pair, body, context, info, default_process_amount,
+            process = build_process(Process_Rewrite, prompt_rate_pair, body, context, info, how_many_versions,
                                     default_sub_process_amount, how_many_versions)  # if it's the first one
 
             for i in xrange(how_many_versions):
@@ -135,18 +135,18 @@ def generate_shirt_design(session):
                     if params[i].get("body")==0:
                         relevant_number=j
 
-                    body = get_process_result(params[i], "body", process_list, relevant_number)
+                    body = get_process_result(params[i], "body", process_list, j,relevant_number)
                 if params[i].get("info") != None:
                     relevant_number = 0
                     if params[i].get("info")==0:
                         relevant_number=j
-                    info = get_process_result(params[i], "info", process_list, relevant_number)
+                    info = get_process_result(params[i], "info", process_list, j,relevant_number)
 
                 if params[i].get("context") != None:
                     relevant_number = 0
                     if params[i].get("context")==0:
                         relevant_number=j
-                    context = get_process_result(params[i], "context", process_list, relevant_number)
+                    context = get_process_result(params[i], "context", process_list, j,relevant_number)
 
 
 
