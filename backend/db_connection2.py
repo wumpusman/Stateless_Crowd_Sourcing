@@ -281,7 +281,11 @@ class Process_Object(Base):
             user_cont=Content()
             self.get_content_produced_by_this_process().append(user_cont)
             if type(subprocess_tuple)!=type(None): #if there is a subprocess associated iwth this taask
+
                 pr_type=subprocess_tuple[0]
+                if subprocess_tuple[1]['content_to_be_requested']==0: continue #If nothing is expected ot be reviewed than don't review the content
+
+
                 a_sub_process=pr_type(body_of_task=body_of_task,displayed_result=user_cont,**subprocess_tuple[1])
                 self.sub_process.append(a_sub_process)
 
@@ -310,7 +314,7 @@ class Process_Object(Base):
 
         else:
             result=self._select_data(session)
-            result=[(i,i) for i in result ]
+            result=[(i,i) for i in result if i.is_locked==False ]
             return result
 
 
@@ -643,6 +647,8 @@ class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some ratin
             return True
         return False
 
+
+
     def assign_result(self,session):
 
         if self._can_assign_result(session):
@@ -652,9 +658,15 @@ class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some ratin
             data.sort(key=lambda x: float(x[1].results),reverse=True) #best go first
 
             best_results=[]
-            for item in data:
-                if float(item[1].results)>=3:
-                    best_results.append(item[0]) #store the actual value, not the score
+
+            if len(self.sub_process)!=0: #if we have scores
+
+                for item in data:
+                    if float(item[1].results)>=3:
+                        best_results.append(item[0]) #store the actual value, not the score
+
+            else: #if we are just doing the mainstream thing of scoring elements
+                best_results=[item[0] for item in data]
 
             for counter in xrange(len(best_results)):
 
@@ -691,6 +703,7 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
 
 
     def _can_assign_result(self, session):
+        if len(self.sub_process) != 0: return True #if no evalaution just let it run
 
         tuples_of_results=self.select_data_for_analysis(session) #data associated with whatever I have available to make a decision
 
@@ -702,6 +715,8 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
 
 
     def get_rating_ml_model_result(self,path,data_to_evaluate):
+        if data_to_evaluate[0]==data_to_evaluate[1]: return 5
+
         content_object=data_to_evaluate[0]
         score=float(data_to_evaluate[1].results)
 
@@ -722,23 +737,33 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
             data = self.select_data_for_analysis(session)
 
             alt=[]
+            best_results = []
+
+
             for item in data:
-                if  (self.is_using_ml == False):
+                if  (self.is_using_ml == False): #if not using ML
                     alt.append((item[0],item[1].results))
-                else:
+                else: #this implicitely will handle it if no rating scheme
                     alt.append((item[0],self.get_rating_ml_model_result("",(item[0],item[1])))) #modify score based on a metric
+
+
 
             data=alt
             data.sort(key=lambda x: float(x[1]), reverse=True)  # best go first
 
-            best_results = []
-            for item in data:
-                print 'here is the score'
-                print item[1]
-                if float(item[1]) > 4:
-                    best_results.append(item[0])  # store the actual value, not the score
-                elif len(data)>=len(self.get_content_produced_by_this_process()): #if we have completely filled out results
-                    best_results.append(item[0])
+
+
+            if len(self.sub_process)!=0: #if there are ways to rate the content
+                for item in data:
+
+                    print item[1]
+                    if float(item[1]) > 4:
+                        best_results.append(item[0])  # store the actual value, not the score
+                    elif len(data)>=len(self.get_content_produced_by_this_process()): #if we have completely filled out results
+                        best_results.append(item[0])
+
+            else:  # if we are just doing the mainstream thing of taking whatever was passed to us
+                best_results = [item[0] for item in data]
 
 
             for counter in xrange(len(best_results)):

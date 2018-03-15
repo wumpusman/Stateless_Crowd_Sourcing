@@ -33,53 +33,64 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
 
 
 
+
+
+
 def generate_shirt_design(session):
     global sess
     sess = session
+    #Randomly pick an animal from the list you find interesting that has been well studied by humans. Piglets, Puppies, Penguins, Pigeons, Hedgehogs, Horses, Squirrels, Seals, Rats, Cats, Porcupines, Seals, Groundhogs, Lions, Zebras,
+    # pick an emotion/relationship from the following that you could imagine the animal having towards another in its species: attraction/mating behavior, play, fear, happy, love, sadness, affection, seduction/mating behavior, child-parent affection
+    #Given the emotion and the animal, google a social behavior that this animal does to express the emotion/behavior as well physical behavior associated with it. Write it below, and the motivation beyond it.
+    #EX. DO not use these: kangaroos hop when fighting, hodeghods curl in fear,  brids regurgiate food to their young     dogs wag their tail and run when playing with other dogs, hedgehogs curl up when scared, Elephants touch each other snouts when distressed, horses will run with each other, hodeghods curl in fear, brids regurgiate food to their young
 
+        #list name #list animal
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
-    default_process_amount, default_sub_process_amount = 3,3
+    default_process_amount, default_sub_process_amount = 1,0
     prompts = [
-        "0. List an animal you find particularly cute or pick one from this list (can be more specific): otters, pigs, kangaroos, koalas, bats, polar bears, hedgehogs etc. ",
+        "0. Randomly pick an animal from the list you find interesting. Piglets, Puppies, penguins, Hedgehogs, Horses, Elephants, Squirrels, Seals, Rats, Cats, Porcupines, Seals",
+        "1. Pick an emotion/relationship from the following that you could imagine the animal having towards another in its species: attraction/mating behavior, play, fear, happy, love, sadness, affection, seduction/mating behavior, child-parent affection ",
 
-        "1. Describe a behavior that the animal listed below does with/to other animals that is unique/distinctive to it's species AND reason for it. You may google \
-        I.E. EXAMPLES Male Birds feathers are used to attract  females. I.E. Birds regurgitate  food to feed young",
+        "2. Given the emotion and the animal expressed below and in 'Context' quickly google a social behavior that this animal does to express the emotion/behavior as well physical behavior associated with it. Write it below, and the motivation behind it.  \
+        I.E. Kangaroos hop when fighting, hodeghods curl in fear,  brids regurgiate food to their young ",
 
-        "2. Given the behavior below, what is an analogous human behavior or a close equivalent. Context describes the animal.  I.E. EXAMPLES Bird doing mating call -> A boy trying to pick up a girl.",
-        "3. Where would you see this behavior. I.E. EXAMPLES A boy picking up a girl -> At a bar",
-        "4. Describe the of kind of scenario you imagine this to happen in. Context describes the location. I.E. EXAMPLES A boy picking up a girl -> He might be trying to grind on her on the dance floor",
-        "5. Incorporate the information in main text to evaluate, context, and info into a single sentence. I.E. EXAMPLES A boy picking a girl AND he might be trying to grind on the dance floor -> A boy is grinding with a girl on \
+        "3. Given the behavior below and emotion, what is an analogous HUMAN behavior or a close equivalent.  I.E. EXAMPLES Bird doing mating call -> ANSWER: A boy trying to pick up a girl.",
+        "4. Where would you see this behavior. I.E. EXAMPLES A boy picking up a girl -> ANSWER At a bar",
+        "5. Describe the of kind of scenario/setting you imagine this to happen in. Context describes the location. I.E. EXAMPLES A boy picking up a girl -> He might be trying to grind on her on the dance floor",
+        "6. Incorporate the information in main text to evaluate, context, and info into a single sentence. I.E. EXAMPLES A boy picking a girl AND he might be trying to grind on the dance floor -> A boy is grinding with a girl on \
          the dance floor in order to pick her up",
-        "6. Given the animal listed in context, and the situation below, remove any mention of people, and replace or add the animal in  I.E. EXAMPLES Birds and 'A boy picking up a girl at a club \
+        "7. Given the animal listed in info, and the situation below, remove any mention of people, and replace or add the animal in  I.E. EXAMPLES Birds and 'A boy picking up a girl at a club \
          -> A male bird is trying to pick up a female bird at a club and grinding on the dance floor",
-        "7. What other attributes of the following animal would you add to this description to make it feel more animal like. \
+        "8. What other attributes of the following animal would you add to this description to make it feel more animal like. \
          I.E. Bird, Bird sings to attract females MAPPED to bird is picking up another bird at a club and trying to grind with her on a dance floor -> \
          The male birds wings are outstretched as it grinds on the dance floor. It's holding a beer glass full of worms",
 
-        "8. How would you anthromorphize the animals described in the scene to give them more humanlike qualities and make the situation more humanlike. I.E bird grinding on dance floor -> \
+        "9. How would you anthromorphize the animals and situation described in the scene to give them more humanlike qualities and make the situation more humanlike. I.E bird grinding on dance floor -> \
          Birds grinding on the dance floor are dressed in colorful suits and dresses. Both birds are holding drinks. Maybe other animals chilling at a bar. ",
-        "9. Incorporate the information in a single description. I.E. bird grinding on dance floor AND birds could be holding drinks. -> Birds are grinding on the dance floor. \
+        "10. Incorporate the information in a single description. I.E. bird grinding on dance floor AND birds could be holding drinks. -> Birds are grinding on the dance floor. \
          They are holding drinks. ",
-        "10. Given the following surreal scene, and the goal to create a mapping behavior described in context, what are some questions, suggestions to flesh out the scene.  \
+        "11. Given the following surreal scene, and the animal behavior described in context, what are some questions, suggestions to flesh out the scene.  \
          I.E. Mating call of birds maps to Birds are grinding in a bar -> What kind of music, what is the disposition between the two animals, what kind of outfits are the birds wearing, what kind of bar is it (edm versus low key),\
          what's in the backdrop",
-        "11. Given the surreal scene, and the questions listed below, try to answer them descriptively. I.E. Birds are dancing in a bar And What kind of outfits are they wearing -> The \
+        "12. Given the surreal scene, and the questions listed below, try to answer them descriptively. I.E. Birds are dancing in a bar And What kind of outfits are they wearing -> The \
          . male is wearing a very colorful vest and female bird is wearing all black"
 
     ]
 
+    how_many_versions = 19
+
     params=[{}]*len(prompts)
-
+    params[0]={"process_amount":how_many_versions}
     params[2]={"name":"closest human behavior","context":0} #context is -2
-    params[4]={"body":2,"context":3}
-    params[5]={"body":4,"context":3,"info":2}
-    params[6]={"body":5, "context":0}
-    params[7]={"info":0,"context":1}
-    params[8]={"body":6,"context":7}
-    params[9]={"body":6,"info":8,"context":7}
-    params[10]={"context":1,"info":0}
-    params[11]={"body":9,"context":10}
-
+    params[3]={"body":2,"context":0, "info":1, "process_amount":1, "sub_amount":0}
+    params[5]={"body":4,"context":3}
+    params[6]={"body":3, "context":5,"info":4}
+    params[7]={"info":0,"context":2}
+    params[8]={"body":7,"context":0,"info":2}
+    params[9]={"body":7,"info":8,"context":0}
+    params[10]={"context":7,"info":9}
+    params[11]={"body":10,"context":2}
+    params[12]={"body":11,"context":10, "info":1}
     #params[8]=
     rate = "Rate how well the text highlighted below achieves the following instruction: "
 
@@ -96,9 +107,16 @@ def generate_shirt_design(session):
 
     process_list=[]
 
-    how_many_versions = 3
+
 
     for i in xrange(0,len(prompts)):
+
+        process_amount = default_process_amount if params[i].get("process_amount") == None else params[i].get(
+            'process_amount')
+
+        sub_process_amount = default_sub_process_amount if params[i].get("sub_amount") == None else params[i].get(
+            'sub_amount')
+
         prompt_rate_pair=p_r_content_results[i]
         body= None
         info=None
@@ -107,8 +125,9 @@ def generate_shirt_design(session):
         process=None
         if i ==0: #
             process_list.append([])
-            process = build_process(Process_Rewrite, prompt_rate_pair, body, context, info, how_many_versions,
-                                    default_sub_process_amount, how_many_versions)  # if it's the first one
+
+            process = build_process(Process_Rewrite, prompt_rate_pair, body, context, info, process_amount,
+                                    sub_process_amount, how_many_versions)  # if it's the first one
 
             for i in xrange(how_many_versions):
 
@@ -150,7 +169,9 @@ def generate_shirt_design(session):
 
 
 
-                process=build_process(Process_Rewrite,prompt_rate_pair,body,context,info,default_process_amount,default_sub_process_amount,1)
+
+
+                process=build_process(Process_Rewrite,prompt_rate_pair,body,context,info,process_amount,sub_process_amount,1)
                 process_list[-1].append(process) #add each version of it
 
 

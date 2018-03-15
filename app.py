@@ -93,7 +93,7 @@ def submit():
 
     if user==None: return json.dumps(manager.prepare_view(None))
 
-    manager.update_global_state(user, {"value": result}) #This is where the magic happens
+    did_they_do_it=manager.update_global_state(user, {"value": result}) #This is where the magic happens
 
     assigned_content=None
     if session_expired == False:

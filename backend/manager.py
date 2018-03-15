@@ -282,7 +282,7 @@ class Manager(object):
                 if (datetime.datetime.now() - current.assigned_date).total_seconds() < self._minimum_work_time:
     #
                     self.unassign_content(current)
-                    return
+                    return False
 
 
         # total_seconds()
@@ -297,7 +297,7 @@ class Manager(object):
         if isinstance(current.origin_process,Process_Rate):
               if current.origin_process.task_parameters_obj.result.results=="":
                   self.unassign_content(current)
-                  return
+                  return False
 
               #if float(current.results)>=3:
               effective_effort=current.origin_process.get_expected_completion_read_ratio(current)
@@ -306,7 +306,7 @@ class Manager(object):
 
                       print "LAZY MAN"
                       self.unassign_content(current)
-                      return
+                      return False
 
 
         print "AND HERE"
