@@ -77,7 +77,7 @@ def generate_shirt_design(session):
 
     ]
 
-    how_many_versions = 19
+    how_many_versions = 3
 
     params=[{}]*len(prompts)
     params[0]={"process_amount":how_many_versions}

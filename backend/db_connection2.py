@@ -703,7 +703,7 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
 
 
     def _can_assign_result(self, session):
-        if len(self.sub_process) != 0: return True #if no evalaution just let it run
+        if len(self.sub_process) == 0: return True #if no evalaution just assign result
 
         tuples_of_results=self.select_data_for_analysis(session) #data associated with whatever I have available to make a decision
 
