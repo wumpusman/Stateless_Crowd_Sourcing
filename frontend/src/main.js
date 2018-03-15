@@ -41,6 +41,10 @@ function extractInstructions(info){
   return default_instructions;
 }
 
+function keepAscii(value){
+  return value.replace(/[^\x00-\x7F]/g, "");
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -67,6 +71,7 @@ new Vue({
          _start_time: new Date().getTime() / 1000
       },
       setNameAndPassword(value, password){
+
         this.state.name = value;
         this.state.password = password;
       },
@@ -107,6 +112,7 @@ new Vue({
         console.log(this.state.current_instructions);
       },
       set_result(value){
+        value=keepAscii(value);
         console.log("UPDATING" + value)
         this.state.current_result = value;
       },

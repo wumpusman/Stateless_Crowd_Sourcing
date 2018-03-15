@@ -45,6 +45,7 @@ import Login from './Login.vue'
 export default {
   name: 'Project_Container',
   components: {
+
     Content_Element,
     Task,
     Instruction,
