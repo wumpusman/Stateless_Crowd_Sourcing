@@ -192,6 +192,7 @@ class Manager(object):
 
     def prepare_results(self,id):
 
+
         session = self.session
         if id ==-1:
             id = session.query(Process_Text_Manipulation.id).all()[0][0]
@@ -199,6 +200,7 @@ class Manager(object):
 
 
         main_query=session.query (Process_Text_Manipulation).filter(Process_Text_Manipulation.id==id)
+
         single_process=main_query.all()[0]
 
 
@@ -214,37 +216,55 @@ class Manager(object):
             except:
                return -1.0 #not a valid score yet
 
-        user_input_and_id_and_associated_user=[(c.id,c.results,get_user(c),get_score(c)) for c in single_process.get_content_produced_by_this_process()]
 
+        user_input_and_id_and_associated_user=[(c.id,c.results,get_user(c),get_score(c)) for c in single_process.get_content_produced_by_this_process()]
+        print (time.time() - start)
 
         prompt=single_process.task_parameters_obj.prompt.results
         body=single_process.task_parameters_obj.body_of_task.results
         is_finished=single_process.is_locked;
         result_text = single_process.get_final_results()[0].results
 
-        get_all_processes=session.query(Process_Text_Manipulation).all()
 
-        get_all_processes=sorted(get_all_processes, key=lambda x: x.id) #sort by number
+        #get relevant information
+        #processes and state
+        zero=session.query(Task_Parameters).subquery('zero')
+        first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+        second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+        third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+        fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+        fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+        sixth=session.query(fifth,Process_Rewrite.id.label("process_id"),Process_Rewrite.is_completed.label("p_complete"), Process_Rewrite.is_locked.label("p_locked"),
+                            Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
 
-        is_in_progress=lambda p,session: len(p.get_content_produced_by_this_process_that_is_complete(session).all())>0
+        #get the count of associated child element
+        seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
 
-        processes_and_state=[{"is_locked":process.is_locked,"process_id":process.id,"is_ready":process.task_parameters_obj.is_task_ready(),"in_progress":
-                              is_in_progress(process,session)
-                              } for process in get_all_processes]
+        eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).\
+            group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
 
-        processes_and_state = sorted(processes_and_state, key=lambda x: x["is_ready"],reverse=True)  # sort by number
-        #Select All Rewrite processes
-        #select All processes where ID > Previous
-        #select first
-        ''''
-                  this.prompt=data["prompt"];
-              this.result=data["result"];
-              this.body=data["body"];
-              this.user_inputs=data["user_input"];
-              this.is_finished=data["is_finished"];
-              this.process_id=data["process_id"];
 
-        '''
+        nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery("nine")
+
+        col_ids=["process_id","p_complete","p_locked","cont_comp","body_completed","result_completed","context_completed","prompt_completed","suggestion_completed"]
+
+        cols=[nine.c[col_id] for col_id in col_ids]
+        ten=session.query (*cols ).all()
+        is_ready_func = lambda ary: False if (False in ary[4:]) else True
+
+        processes_and_state = []
+        for ary in ten:
+            ready = is_ready_func(ary)
+            in_progress = True if ary[3] > 0 else False
+            is_locked = ary[2]
+            relevant={"is_finished": is_locked,
+             "in_progress": in_progress,
+             "process_id": ary[0],
+             "is_ready":ready
+
+             }
+            processes_and_state.append(relevant)
+
         results={}
         results["processes_state"]=processes_and_state
         results["prompt"]=prompt
@@ -254,6 +274,7 @@ class Manager(object):
         results["process_id"]=id
         results["body"]=body
         results["result"]=result_text
+
         return results
 
     def prepare_view(self,content): #calls content that created it, view state

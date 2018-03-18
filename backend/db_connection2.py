@@ -387,6 +387,8 @@ class Process_Object(Base):
 
     def get_content_produced_by_this_process_that_is_complete(self,session):
 
+
+
         return session.query(Content).filter(
             (Content.origin_process_id == self.id) & (Content.is_completed == True))
 

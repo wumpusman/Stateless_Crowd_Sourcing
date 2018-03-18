@@ -18,12 +18,12 @@
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$chicken_scratch.coverage" NAME="chicken_scratch Coverage Results" MODIFIED="1520201838801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$quick_test_match_stick.coverage" NAME="quick_test_match_stick Coverage Results" MODIFIED="1515470633902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$run_example.coverage" NAME="run_example Coverage Results" MODIFIED="1520736660712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$build_db.coverage" NAME="build_db Coverage Results" MODIFIED="1521088926281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$build_db.coverage" NAME="build_db Coverage Results" MODIFIED="1521130424700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$test_extract_labels.coverage" NAME="test_extract_labels Coverage Results" MODIFIED="1514755382122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$db_connection2.coverage" NAME="db_connection2 Coverage Results" MODIFIED="1516930231371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_for_test_queries_Test_Queries.coverage" NAME="Nosetests for test_queries.Test_Queries Coverage Results" MODIFIED="1518042529633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$luther_out_all_levels_breadth_first.coverage" NAME="luther_out_all_levels_breadth_first Coverage Results" MODIFIED="1519257926056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$app.coverage" NAME="app Coverage Results" MODIFIED="1521088706745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$app.coverage" NAME="app Coverage Results" MODIFIED="1521406530429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -36,8 +36,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="193" column="0" lean-forward="true" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+            <state relative-caret-position="525">
+              <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -46,18 +46,30 @@
       <file leaf-file-name="manager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="324" column="108" lean-forward="false" selection-start-line="324" selection-start-column="108" selection-end-line="324" selection-end-column="108" />
+            <state relative-caret-position="296">
+              <caret line="245" column="0" lean-forward="false" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Show_Results.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/components/Show_Results.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run_example.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run_example.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/run_example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+            <state relative-caret-position="507">
+              <caret line="89" column="45" lean-forward="false" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -66,28 +78,18 @@
       <file leaf-file-name="build_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/build_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+            <state relative-caret-position="1020">
+              <caret line="69" column="30" lean-forward="false" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_connection2.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="db_connection2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
-              <caret line="705" column="87" lean-forward="false" selection-start-line="705" selection-start-column="87" selection-end-line="705" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Project_Container.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/components/Project_Container.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-894">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="820">
+              <caret line="438" column="8" lean-forward="false" selection-start-line="438" selection-start-column="8" selection-end-line="438" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -96,7 +98,7 @@
       <file leaf-file-name="Content_Element.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/Content_Element.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
+            <state relative-caret-position="1230">
               <caret line="83" column="46" lean-forward="false" selection-start-line="83" selection-start-column="46" selection-end-line="83" selection-end-column="46" />
               <folding>
                 <element signature="e#906#965#0" expanded="true" />
@@ -108,7 +110,7 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
+            <state relative-caret-position="2085">
               <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
               <folding>
                 <element signature="e#140#161#0" expanded="true" />
@@ -121,17 +123,7 @@
         <entry file="file://$PROJECT_DIR$/notes">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Content_Rate_Element.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/components/Content_Rate_Element.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-162">
-              <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="26" />
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="22" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -149,15 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>describe</find>
-      <find>produce_pairs</find>
-      <find>session.quer</find>
-      <find>refs</find>
-      <find>should_auto_login</find>
-      <find>random_code</find>
-      <find>should_Crea</find>
-      <find>amy</find>
-      <find>unassign</find>
       <find>computed</find>
       <find>expected</find>
       <find>import</find>
@@ -177,8 +160,17 @@
       <find>update_glo</find>
       <find>effort</find>
       <find>is_complete</find>
-      <find>update</find>
       <find>given the anima</find>
+      <find>is_ready</find>
+      <find>time</find>
+      <find>time.time</find>
+      <find>hi</find>
+      <find>&quot;Hi</find>
+      <find>get_results</find>
+      <find>innerjoin</find>
+      <find>update</find>
+      <find>task_parameter</find>
+      <find>all_processes</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -211,7 +203,6 @@
         <option value="$PROJECT_DIR$/backend/dad_letter" />
         <option value="$PROJECT_DIR$/frontend/src/components/Show_Results.vue" />
         <option value="$PROJECT_DIR$/sedaris" />
-        <option value="$PROJECT_DIR$/notes" />
         <option value="$PROJECT_DIR$/frontend/src/components/text_block.vue" />
         <option value="$PROJECT_DIR$/frontend/src/App.vue" />
         <option value="$PROJECT_DIR$/backend/sedaris" />
@@ -236,10 +227,11 @@
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/container_redux_elements/input_text_block_redux.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/Project_Container.vue" />
         <option value="$PROJECT_DIR$/frontend/src/main.js" />
-        <option value="$PROJECT_DIR$/backend/manager.py" />
         <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/backend/db_connection2.py" />
         <option value="$PROJECT_DIR$/backend/run_example.py" />
+        <option value="$PROJECT_DIR$/backend/db_connection2.py" />
+        <option value="$PROJECT_DIR$/notes" />
+        <option value="$PROJECT_DIR$/backend/manager.py" />
       </list>
     </option>
   </component>
@@ -355,8 +347,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -393,7 +385,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.build_db">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -705,8 +697,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.build_db" />
-        <item index="1" class="java.lang.String" itemvalue="Python.app" />
+        <item index="0" class="java.lang.String" itemvalue="Python.app" />
+        <item index="1" class="java.lang.String" itemvalue="Python.build_db" />
         <item index="2" class="java.lang.String" itemvalue="Python.run_example" />
         <item index="3" class="java.lang.String" itemvalue="Python.chicken_scratch" />
         <item index="4" class="java.lang.String" itemvalue="Python.luther_out_all_levels_breadth_first" />
@@ -763,9 +755,8 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22710623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32548618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25702077" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05799756" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39918116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -773,6 +764,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32548618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -800,7 +792,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/db_connection2.py</url>
-          <line>488</line>
+          <line>490</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -824,100 +816,316 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="21" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>print &quot;ready&quot;
-for process in all_levels[4]:
-    print process.get_final_results()[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>print &quot;ready&quot;
-for process in all_levels[3]:
-    print process.get_final_results()[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>print &quot;ready&quot;
-for process in all_levels[2]:
-    print process.get_final_results()[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>print &quot;ready&quot;
-for process in all_levels[1]:
-    print process.get_final_results()[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>print &quot;ready&quot;
-for process in all_levels[0]:
-    print process.get_final_results()[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>for process in all_levels[1]:
-    print process.get_final_results()[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>for process in all_levels[2]:
-    print process.get_final_results()[0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>all=[]
+        <expression-string>#get relevant information
+#processes and state
+start=time.time()
+session.rollback()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+#get the count of associated child element
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()
+is_ready_func=lambda ary: False if (False in ary[4:]) else True 
 
-level=session.query(db.Process_Text_Manipulation).filter(db.Process_Text_Manipulation.id==90).all()[0]
-while True:
-    print level.id
-    print level.task_parameters_obj.body_of_task
-    result=level.get_final_results()[0]
-    right_node = level.task_parameters_obj.context
-    all.append(result)
-    all.append(right_node)
-    p_id = level.task_parameters_obj.context.process_that_selected_this_content_id
-    level = session.query(db.Process_Text_Manipulation).filter(db.Process_Text_Manipulation.id == p_id).all()[0]</expression-string>
+processes_and_state=[]
+for ary in ten:
+    ready=is_ready_func(ary) 
+    in_progress=True if ary[3]&gt;0 else False
+    is_locked=ary[2]
+    {&quot;is_finished&quot;:is_locked,
+     &quot;in_progress&quot;:in_progress,
+     &quot;process_id&quot;:ary[0]
+      
+     }
+    process_and_state.append(processes_and_state)
+    
+print time.time()-start</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>all=[]
+        <expression-string>#get relevant information
+#processes and state
+start=time.time()
+session.rollback()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+#get the count of associated child element
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()
+is_ready_func=lambda ary: False if (False in ary[4:]) else True 
 
-level=session.query(db.Process_Text_Manipulation).filter(db.Process_Text_Manipulation.id==90).all()[0]
-while True:
-    print level.id
-    result=level.get_final_results()[0]
-    right_node = level.task_parameters_obj.context
-    all.append(result)
-    all.append(right_node)
-    p_id = level.task_parameters_obj.context.process_that_selected_this_content_id
-    level = session.query(db.Process_Text_Manipulation).filter(db.Process_Text_Manipulation.id == p_id).all()[0]</expression-string>
+processes_and_state=[]
+for ary in ten:
+    ready=is_ready_func(ary) 
+    in_progress=True if ary[3]&gt;0 else False
+    is_locked=ary[2]
+    {&quot;is_finished&quot;:is_locked,
+     &quot;in_progress&quot;:in_progress,
+     &quot;process_id&quot;:ary[0]
+      
+     }
+    
+print time.time()-start</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>#get relevant information
+#processes and state
+start=time.time()
+session.rollback()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+#get the count of associated child element
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()
+is_ready_func=lambda ary: False if (False in ary[4:]) else True 
+for ary in ten:
+    ready=is_ready_func(ary) 
+    in_progress=True if ary[3]&gt;0 else False
+    is_locked=ary[2]
+print time.time()-start</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>#get relevant information
+#processes and state
+start=time.time()
+session.rollback()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+#get the count of associated child element
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()
+
+is_ready=lambda ary: False if (False in ary[4:]) else True 
+in_progress=True if ten[3]&gt;0 else False
+is_locked=ten[2]
+print time.time()-start</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>#get relevant information
+#processes and state
+start=time.time()
+session.rollback()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+#get the count of associated child element
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()
+
+in_progress=lambda ary: False if (False in ary[5:]) else True 
+print time.time()-start</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>#get relevant information
+#processes and state
+start=time.time()
+session.rollback()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+#get the count of associated child element
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()
+print time.time()-start</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>#get relevant information
+#processes and state
+session.rollback()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+#get the count of associated child element
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>session.rollback()
+start=time.time()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+
+#get the count of associated child element 
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+
+col_ids=[&quot;process_id&quot;,&quot;cont_comp&quot;,&quot;p_locked&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()
+
+
+#test=session.query(what.c.id, func.Count(
+   # what.c['c_completed']).filter(what.c['c_completed']==True).label('count')).group_by(what.c.id).order_by(what.c.id).all()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>session.rollback()
+start=time.time()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+
+#get the count of associated child element 
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+
+col_ids=[&quot;process_id&quot;,&quot;cont_comp&quot;,&quot;p_locked&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (cols ).all()
+
+
+#test=session.query(what.c.id, func.Count(
+   # what.c['c_completed']).filter(what.c['c_completed']==True).label('count')).group_by(what.c.id).order_by(what.c.id).all()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>session.rollback()
+start=time.time()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+
+#get the count of associated child element 
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
+
+col_ids=[&quot;process_id&quot;,&quot;count_com&quot;,&quot;p_locked&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
+
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (cols ).all()
+
+
+#test=session.query(what.c.id, func.Count(
+   # what.c['c_completed']).filter(what.c['c_completed']==True).label('count')).group_by(what.c.id).order_by(what.c.id).all()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/backend/modify_summary_for_whole">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="528" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/sqlalchemy/orm/mapper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -1103,20 +1311,10 @@ while True:
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/Show_Results.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="61" lean-forward="false" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1124,7 +1322,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="11" lean-forward="true" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,7 +1329,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1140,9 +1336,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding>
-            <element signature="e#290#384#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1150,10 +1343,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#Content_Element_Redux#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#562#621#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1161,7 +1350,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="9" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1169,7 +1357,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,7 +1364,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="348" column="0" lean-forward="false" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1185,7 +1371,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,7 +1386,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1209,7 +1393,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1217,7 +1400,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-695">
           <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +1407,6 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-894">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,13 +1414,12 @@ while True:
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-162">
           <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/Content_Element.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
+        <state relative-caret-position="1230">
           <caret line="83" column="46" lean-forward="false" selection-start-line="83" selection-start-column="46" selection-end-line="83" selection-end-column="46" />
           <folding>
             <element signature="e#906#965#0" expanded="true" />
@@ -1249,7 +1429,7 @@ while True:
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
+        <state relative-caret-position="2085">
           <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
           <folding>
             <element signature="e#140#161#0" expanded="true" />
@@ -1257,50 +1437,67 @@ while True:
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="193" column="0" lean-forward="true" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+        <state relative-caret-position="525">
+          <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/manager.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="324" column="108" lean-forward="false" selection-start-line="324" selection-start-column="108" selection-end-line="324" selection-end-column="108" />
-          <folding />
+        <state relative-caret-position="351">
+          <caret line="238" column="26" lean-forward="true" selection-start-line="238" selection-start-column="26" selection-end-line="238" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/build_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+        <state relative-caret-position="1020">
+          <caret line="69" column="30" lean-forward="false" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
+    <entry file="file://$PROJECT_DIR$/notes">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="705" column="87" lean-forward="false" selection-start-line="705" selection-start-column="87" selection-end-line="705" selection-end-column="87" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="22" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/run_example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+        <state relative-caret-position="507">
+          <caret line="89" column="45" lean-forward="false" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/Show_Results.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="245" column="0" lean-forward="false" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="438" column="8" lean-forward="false" selection-start-line="438" selection-start-column="8" selection-end-line="438" selection-end-column="8" />
           <folding />
         </state>
       </provider>

@@ -1,3 +1,66 @@
+from sqlalchemy import case
+session.rollback()
+
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label("process_id"),Process_Rewrite.is_locked.label("p_locked"),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+
+#get the count of associated child element
+seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+
+eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+
+nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery("nine")
+
+col_ids=["process_id","cont_comp","p_locked","body_completed","result_completed","context_completed","prompt_completed","suggestion_completed"]
+
+cols=[nine.c[col_id] for col_id in col_ids]
+ten=session.query (*cols ).all()
+
+start=time.time()
+zero=session.query(Task_Parameters).subquery('zero')
+first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
+second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
+third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
+fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
+fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
+sixth=session.query(fifth,Process_Rewrite.id.label("process_id"),Process_Rewrite.is_locked.label("p_locked"),
+                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+
+
+what=session.query(sixth,Content.id.label('c_id'),Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==Process_Rewrite.id  ).subquery()
+
+test=session.query(what.c.id, func.Count(
+    what.c['c_completed']).filter(what.c['c_completed']==True).label('count')).group_by(what.c.id).order_by(what.c.id).all()
+
+#fuck=session.query(test).filter(test.c["count"]==1).all()
+
+for i in result:
+    (i[0]==i[1])
+print time.time()-start
+for i in result:
+    (i[0]==i[1])
+print time.time()-start
+c1=al(Content,'c1')
+t1=al(Task_Parameters,"t1")
+c2=al(Content,'c2')
+first=session.query(c1.c.is_completed.label('prompt_ready') , t1.c.prompt_id.label('p_id'),t1.c.body_of_task_id.label('b_id'),t1.c.id.label('t1_id')).join(t1,c1.c.id==t1.c.prompt_id).subquery('first')
+
+second=session.query(first.c['b_id'],first.c['prompt_ready'],Content.is_completed.label('result_ready')).join(Content,first.c['b_id']==Content.id).subquery('second')
+
+#zero
+session.rollback()
+zero=session.query(Task_Parameters.body_of_task_id.label('task_id'),Task_Parameters.result_id.label('result_id')).subquery('zero')
+first=session.query(zero,Content.is_completed.label('locked_task')).join(Content,Content.id==zero.c['task_id']).subquery('first')
+second=session.query(first,Content.is_completed.label('locked_result')).join(Content,Content.id==first.c['result_id']).all()
+
+'''
+
 https://codeburst.io/full-stack-single-page-application-with-vue-js-and-flask-b1e036315532
 nodemon run dev
 npm run build
@@ -28,6 +91,16 @@ Show Ratings Instruction
 
 https://codeburst.io/full-stack-single-page-application-with-vue-js-and-flask-b1e036315532
 
+
+rs_string0=('p_s.p1 as p1')
+rs_string=('(SELECT Process_Object as p1, Process_Object.id as p_id, Task_Parameters.prompt_id as prompt_id FROM Process_Object LEFT JOIN Task_Parameters ON Task_Parameters.id = Process_Object.task_parameters_id) AS p_s')
+
+rs_string2=('Select {0} From {1} where p_s.p_id>0;').format(rs_string0,rs_string)
+print rs_string2
+rs=session.execute(rs_string2)
+result=(rs.fetchall())
+print result[0]
+print time.time()-start
 
 call heroku creat postgres command
 then commit
