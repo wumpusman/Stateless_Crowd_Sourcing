@@ -166,7 +166,7 @@ class Manager(object):
         optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
 
 
-
+        #select all content where it was the top content
         results= self.session.query(Process_Object).all()
 
 
@@ -218,7 +218,6 @@ class Manager(object):
 
 
         user_input_and_id_and_associated_user=[(c.id,c.results,get_user(c),get_score(c)) for c in single_process.get_content_produced_by_this_process()]
-        print (time.time() - start)
 
         prompt=single_process.task_parameters_obj.prompt.results
         body=single_process.task_parameters_obj.body_of_task.results
@@ -340,11 +339,17 @@ class Manager(object):
         current.is_completed=True
         current.completed_date=datetime.datetime.now()
 
-        #Update the process and if it has a parent  process
+
+        # Update the process and if it has a parent  process ASSIGN results I should change this
+        current.origin_process.update_model(self.session) #update own model
         if current.origin_process._can_assign_result(self.session):
+
             current.origin_process.assign_result(session)
-            if current.origin_process.parent_process!=None and  current.origin_process.parent_process._can_assign_result(self.session):
-                current.origin_process.parent_process.assign_result(session)
+
+            if current.origin_process.parent_process != None:
+                current.origin_process.parent_process.update_model(self.session) #update parent model
+                if current.origin_process.parent_process._can_assign_result(self.session):
+                    current.origin_process.parent_process.assign_result(session)
 
         #Do I freeze that component when it is done so don't waste resource s
         if current.origin_process.is_complete(session):
@@ -352,5 +357,8 @@ class Manager(object):
             if current.origin_process.parent_process != None:
                 if current.origin_process.parent_process.is_complete(session):
                     current.origin_process.parent_process.lock_process()
+
+        if current.origin_process.parent_process != None:
+            current.origin_process.parent_process.update_model(self.session)
 
         self.session.commit()

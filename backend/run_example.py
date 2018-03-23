@@ -20,10 +20,16 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
     if suggestions!=None:
         sub_process["suggestion"]=suggestions
 
+    sub_process_type = Process_Rate
+    process_type=Process_Type
+    if(type(Process_Type)==type(())):
+        process_type=Process_Type[0]
+        sub_process_type=Process_Type[1]
 
-    generated_process=Process_Type(body_of_task=body,prompt=prompts_ary[0],suggestion=suggestions,context=context,content_to_be_requested=amount_to_be_request_main,
+
+    generated_process=process_type(body_of_task=body,prompt=prompts_ary[0],suggestion=suggestions,context=context,content_to_be_requested=amount_to_be_request_main,
                    expected_results=expected_results,
-                   subprocess_tuple=(Process_Rate,sub_process)
+                   subprocess_tuple=(sub_process_type,sub_process)
                    )
     print generated_process
     generated_process.is_using_ml=True
@@ -32,8 +38,28 @@ def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be
     return generated_process
 
 
+def build_process_flex(Process_Type,prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub, expected_results=1):
+
+    return build_process((Process_Type,Process_Rate_Flex),prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub, expected_results=expected_results)
 
 
+def test_flex(session):
+    '''
+    Basic idea to test variable changing levels of content
+
+    :param session:
+    :return:
+    '''
+    global sess
+    sess=session
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+
+    prompt,rate="tell me what the meaning of life is","rate how good this idea is"
+    prompt1,rate1="Expand what this ideal means","rate how good this expansion is"
+    context="Humanity is inferior to machines "
+
+    build_process_flex(Process_Rewrite_Flex,produce_pairs(prompt,rate),body=None,suggestions=None,context=Content_Result(context,is_completed=True),
+                       amount_to_be_request_main=2,amount_to_be_requested_sub=6)
 
 
 def generate_shirt_design(session):
@@ -46,13 +72,13 @@ def generate_shirt_design(session):
 
         #list name #list animal
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
-    default_process_amount, default_sub_process_amount = 1,0
+    default_process_amount, default_sub_process_amount = 2,6
     prompts = [
         "0. Randomly pick an animal from the list you find interesting. Piglets, Puppies, penguins, Hedgehogs, Horses, Elephants, Squirrels, Seals, Rats, Cats, Porcupines, Seals",
         "1. Pick an emotion/relationship from the following that you could imagine the animal having towards another in its species: attraction/mating behavior, play, fear, happy, love, sadness, affection, seduction/mating behavior, child-parent affection ",
 
         "2. Given the emotion and the animal expressed below and in 'Context' quickly google a social behavior that this animal does to express the emotion/behavior as well physical behavior associated with it. Write it below, and the motivation behind it.  \
-        I.E. Kangaroos hop when fighting, hodeghods curl in fear,  brids regurgiate food to their young ",
+        I.E. Kangaroos hop when fighting, hedgehogs curl in fear,  brids regurgiate food to their young ",
 
         "3. Given the behavior below and emotion, what is an analogous HUMAN behavior or a close equivalent.  I.E. EXAMPLES Bird doing mating call -> ANSWER: A boy trying to pick up a girl.",
         "4. Where would you see this behavior. I.E. EXAMPLES A boy picking up a girl -> ANSWER At a bar",
@@ -77,7 +103,7 @@ def generate_shirt_design(session):
 
     ]
 
-    how_many_versions = 16
+    how_many_versions = 3
 
     params=[{}]*len(prompts)
     params[0]={"process_amount":how_many_versions}
@@ -126,7 +152,7 @@ def generate_shirt_design(session):
         if i ==0: #
             process_list.append([])
 
-            process = build_process(Process_Rewrite, prompt_rate_pair, body, context, info, process_amount,
+            process = build_process_flex(Process_Rewrite_Flex, prompt_rate_pair, body, context, info, process_amount,
                                     sub_process_amount, how_many_versions)  # if it's the first one
 
             for i in xrange(how_many_versions):
@@ -135,6 +161,7 @@ def generate_shirt_design(session):
 
 
         else:
+
             process_list.append([])  # add extra section
 
 
@@ -143,8 +170,7 @@ def generate_shirt_design(session):
 
                 if i-1==0:
                     final_result_number=j #if it is the 0th element then it should be the particular location
-                    print j
-                    print process_list[i-1]
+
 
 
                 body = process_list[i - 1][j].get_final_results()[final_result_number] if i > 0 else None  # default for body

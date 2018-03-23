@@ -1,5 +1,5 @@
 import sqlalchemy
-from sqlalchemy import Table, Column, Integer, String, ForeignKey, ARRAY, Boolean, DateTime
+from sqlalchemy import Table, Column, Integer, String, ForeignKey, ARRAY, Boolean, DateTime, Numeric
 from sqlalchemy.orm import relationship
 import datetime
 from sqlalchemy.ext.declarative import declarative_base
@@ -82,8 +82,7 @@ class User (Base):
        else:
            return query[0]
         '''
-       print "content length"
-       print len(query)
+
        if len(query)==0: return None
        if len(query) >1:
            query.sort(key=lambda x: x.id, reverse=True)
@@ -113,14 +112,13 @@ class User (Base):
         legal_processes=Process_Object.get_processes_that_are_ready(session).subquery("legal_processes") # I REALLY NEED TO MODIFY THIS
 
         #print Process_Object.get_processes_that_are_ready(session).all()
-        print "ARE YOU SUTTER CANE"
+
         uninvolved_processes=self.get_all_processes_where_user_was_uninvolved(session).subquery("uninvolved_processes")
 
         self.get_all_processes_where_user_was_uninvolved(session).all()
 
        # print self.get_all_processes_where_user_was_uninvolved(session).all()
-        import time
-        start=time.time()
+
         uncompleted_and_unlocked_processes= session.query(Process_Object).\
             filter(Process_Object.id==uninvolved_processes.c.id).\
             filter(Process_Object.id==legal_processes.c.id).\
@@ -130,8 +128,7 @@ class User (Base):
         #session.query(Process_Object).filter(Process_Object.id==uninvolved_processes.c.id).all()
         session.query(Process_Object).filter(Process_Object.id == legal_processes.c.id).all()
         #uncompleted_and_unlocked_processes.all()
-        print time.time()-start
-        start=time.time()
+
         uncompleted_and_unlocked_processes = session.query(Process_Object).filter(and_(
 
             (Process_Object.id == uninvolved_processes.c.id),
@@ -139,11 +136,9 @@ class User (Base):
             (Process_Object.is_locked == False),
             (Process_Object.is_completed == False)))
 
-        print "AND THIS?"
-        #uncompleted_and_unlocked_processes.all()
-        print time.time()-start
+
         available_content_to_edit=session.query(Content).filter(Content.origin_process_id==uncompleted_and_unlocked_processes.subquery().c.id).filter((Content.user_id==None) & (Content.is_completed==False) & (Content.is_locked==False))
-        print "I AM SUTTER CANE"
+
         return available_content_to_edit
 
     def get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self,session):
@@ -155,14 +150,14 @@ class User (Base):
         get_rate_processes = session.query(Process_Rate.id).filter(
             get_tasks.c.id == Process_Rate.task_parameters_id).all()
 
-        print "content where user is uninvolved and is fine???"
+
         if len(get_rate_processes) > 0:
-            print "INSIDE HERE?"
+
             available_content_to_edit_minus_where_user_created_content_that_is_being_rated = \
                 session.query(Content).filter(available_content_to_edit.subquery().c.id == Content.id).filter(
                     ~(Content.origin_process_id.in_(get_rate_processes)))
             return available_content_to_edit_minus_where_user_created_content_that_is_being_rated
-        print "what abotu his point"
+
         return available_content_to_edit
     def __repr__(self):
         return "<Table User {}>".format(self.name)
@@ -218,6 +213,10 @@ class Process_Object(Base):
 
     #am i going to use some sort of ml model to rate ocntent or weight rating
     def get_rating_ml_model_result(self,path,data_to_evaluate):
+        pass
+
+
+    def update_model(self,session):
         pass
 
 
@@ -630,6 +629,60 @@ class Process_Rate(Process_Object):
         return prepped_instructions
 
 
+
+class Process_Rate_Flex(Process_Rate):
+    '''
+    Basically an adjustable class where rating score can cause ending
+    should be based on entropy and std in terms of deciding when to end - wnat consistent scorers
+    '''
+    __mapper_args__ = {'polymorphic_identity': 'process_rate_flex'}
+    #if score > Passes threshold in either direction
+    #Also pick ones that are closest to completion
+    current_score = Column('current_score', Numeric, default=0)
+    current_number_evaluated= Column('current_evaluated', Integer,default=0)
+
+    '''    
+           Max Number 
+           count number of rates 
+           if count >2 and score <= 3 return Finished
+           is count >3 and score < 3.5 return Finished 
+           if count > 4 return Finished 
+    
+    '''
+    def update_model(self,session):
+        self.current_score = self._calculate_score(session)
+        self.current_number_evaluated=len(self.get_content_produced_by_this_process_that_is_complete(session).all())
+
+    def _can_assign_result(self,session):
+        #really simple, but basically an adjustable score
+        count =  self.current_number_evaluated
+        score = self.current_score
+        print "EVALUTAIONT POINT "
+        print count
+        print score
+        print count
+        print score
+        print len(self.get_content_produced_by_this_process() )
+
+        if self.current_number_evaluated>=len(self.get_content_produced_by_this_process()): return True
+        if count >= 2 and score <=3: return True
+        if count > 3 and score <3.5: return True
+        if count > 5 and score >4: return True
+        return False
+    #Basic rule for assigning a score, suepr naive, but i don't care atm, return one result
+    def assign_result(self,session):
+
+        if self._can_assign_result(session):
+
+            score=self.current_score
+
+            empty_results=self.get_final_results_incomplete(session).all()
+            assume_first_one=empty_results[0]
+            assume_first_one.results=str(score)
+            assume_first_one.is_completed=True
+            assume_first_one.is_locked=True
+            assume_first_one.completed_date=datetime.datetime.now()
+
 class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some rating, it's really basic selection scoring scheme
     __mapper_args__ = {'polymorphic_identity': 'process_text_manipulation'}
 
@@ -664,7 +717,7 @@ class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some ratin
             if len(self.sub_process)!=0: #if we have scores
 
                 for item in data:
-                    if float(item[1].results)>=3:
+                    if float(item[1].results)>=3.9:
                         best_results.append(item[0]) #store the actual value, not the score
 
             else: #if we are just doing the mainstream thing of scoring elements
@@ -690,6 +743,7 @@ class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some ratin
                 #assign the content result a value
                 chosen_result.linked_content=item
                 chosen_result.results=item.results
+                item.is_locked=True #item shouldn't be reused once it's been selected
 
     def prepare_view(self):
         task_view=super(Process_Text_Manipulation, self).prepare_view()
@@ -724,7 +778,7 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
 
         ratio=self.get_expected_completion_read_ratio(content_object)
 
-        if ratio < 1.3:
+        if ratio < 1:
                 if score > 3:
                     score =3
                 print ratio
@@ -759,7 +813,7 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
                 for item in data:
 
                     print item[1]
-                    if float(item[1]) > 4:
+                    if float(item[1]) >= 3.9:
                         best_results.append(item[0])  # store the actual value, not the score
                     elif len(data)>=len(self.get_content_produced_by_this_process()): #if we have completely filled out results
                         best_results.append(item[0])
@@ -787,6 +841,72 @@ class Process_Rewrite(Process_Text_Manipulation): #assume i'm gonna rate the sub
                 # assign the content result a value
                 chosen_result.linked_content = item
                 chosen_result.results = item.results
+                item.is_locked = True  # item shouldn't be reused once it's been selected
+
+
+class Process_Rewrite_Flex(Process_Rewrite):
+    __mapper_args__ = {'polymorphic_identity': 'process_rewrite_flex'}
+    '''
+    Similar to Rewrite except greedily tries to find answers that are past a threshold
+    if gets past a threshold stops all eleemnts
+    if does not and content complete, increases size by 1.5
+        #Minimum score
+    '''
+
+
+    minimum_score = Column(Numeric,default=3.5)  # what is the minimum score I will typically accept for expansion
+    maximum_processes= Column(Integer,default=10)
+
+    def _expand_once(self,session):
+        user_cont = Content()
+        self.get_content_produced_by_this_process().append(user_cont)
+        if len(self.sub_process)>0:
+            latest=self.sub_process[-1] #get the structure of the previous eement
+            body_of_task=latest.task_parameters_obj.body_of_task
+            context = latest.task_parameters_obj.context
+            suggestion = latest.task_parameters_obj.suggestion
+
+            content_amount=len(latest .get_content_produced_by_this_process())
+            sub_pr=latest.__class__(body_of_task=body_of_task, displayed_result=user_cont,
+                                   context=context,suggestion=suggestion,content_to_be_requested=content_amount)
+
+            self.sub_process.append(sub_pr)
+
+    def _can_assign_result(self, session):
+
+        tuples_of_results = self.select_data_for_analysis(
+            session)  # data associated with whatever I have available to make a decision
+
+        if(len(tuples_of_results)>0):
+            return True
+
+        return False
+
+    def update_model(self, session):
+        super(Process_Rewrite_Flex, self).update_model(session)
+
+        tuples_of_results = self.select_data_for_analysis(
+            session)  # data associated with whatever I have available to make a decision
+
+        if len(tuples_of_results)>0:
+            min_score=self.minimum_score
+            number_below_standard=0
+            acceptable_or_unknown=0
+            for tuple in tuples_of_results:
+                if float(tuple[1].results) < min_score:
+                    number_below_standard+=1
+
+            #these are the amount that are acceptable atm
+            acceptable_or_unknown=  (len(self.get_content_produced_by_this_process())- number_below_standard)
+
+            expand_by=number_below_standard -acceptable_or_unknown #we must expand
+
+            for i in xrange(expand_by):
+                self._expand_once(session)
+
+        #for each result that is less than corresponding ideal score
+        #the sum of those that are either unknown or great than threshold expand
+        #If amount > Maxium_processes: stop
 
 
 class Process_Modify_Results_And_View(Process_Rewrite): #assume i'm gonna rate the subprocesses

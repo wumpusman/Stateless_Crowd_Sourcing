@@ -4,7 +4,6 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir)  #reference parent directory
 import unittest
-
 from db_connection2 import *
 
 
@@ -93,6 +92,12 @@ class Test_Queries(unittest.TestCase):
         session.query(Task_Parameters).all()
         session.query(Process_Object).all()
 
+
+    def test_flex(self):
+        import run_example
+        session=self.session
+        run_example.sess=session #terrible
+        run_example.test_flex(session)
 
     def test_select_queries(self):
         #self.setUp() #initialize the whole set up

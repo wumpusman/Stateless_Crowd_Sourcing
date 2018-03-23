@@ -78,7 +78,8 @@ else:
      #
 
      session.commit()
-     run_example.generate_shirt_design(session )
+     run_example.generate_shirt_design(session)
+     #run_example.test_flex(session )
      #run_example.setup_general_summary(session,"sedaris_2")
      #run_example.setup_example(session)
      #run_example.setup_sedaris_high_level(session)
