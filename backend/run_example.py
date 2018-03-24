@@ -108,7 +108,7 @@ def generate_shirt_design(session):
     params=[{}]*len(prompts)
     params[0]={"process_amount":how_many_versions}
     params[2]={"name":"closest human behavior","context":0} #context is -2
-    params[3]={"body":2,"context":0, "info":1, "process_amount":1, "sub_amount":0}
+    params[3]={"body":2,"context":0, "info":1} # "process_amount":2, "sub_amount":0
     params[5]={"body":4,"context":3}
     params[6]={"body":3, "context":5,"info":4}
     params[7]={"info":0,"context":2}
@@ -197,7 +197,8 @@ def generate_shirt_design(session):
 
 
 
-                process=build_process(Process_Rewrite,prompt_rate_pair,body,context,info,process_amount,sub_process_amount,1)
+                process=build_process_flex(Process_Rewrite_Flex,prompt_rate_pair,body,context,info,process_amount,sub_process_amount,1)
+
                 process_list[-1].append(process) #add each version of it
 
 
