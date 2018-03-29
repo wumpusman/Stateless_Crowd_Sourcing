@@ -78,9 +78,9 @@ def generate_shirt_design(session):
         "1. Pick an emotion/relationship from the following that you could imagine the animal having towards another in its species: attraction/mating behavior, play, fear, happy, love, sadness, affection, seduction/mating behavior, child-parent affection ",
 
         "2. Given the emotion and the animal expressed below and in 'Context' quickly google a social behavior that this animal does to express the emotion/behavior as well physical behavior associated with it. Write it below, and the motivation behind it.  \
-        I.E. Kangaroos hop when fighting, hedgehogs curl in fear,  brids regurgiate food to their young ",
+        I.E. Kangaroos hop when fighting, hedgehogs curl in fear,  birds regurgiate food to their young ",
 
-        "3. Given the behavior below and emotion, what is an analogous HUMAN behavior or a close equivalent.  I.E. EXAMPLES Bird doing mating call -> ANSWER: A boy trying to pick up a girl.",
+        "3. What is an analogous HUMAN behavior or a close equivalent to the behavior below and emotion, w.  I.E. EXAMPLES Bird doing mating call -> ANSWER: A boy trying to pick up a girl.",
         "4. Where would you see this behavior. I.E. EXAMPLES A boy picking up a girl -> ANSWER At a bar",
         "5. Describe the of kind of scenario/setting you imagine this to happen in. Context describes the location. I.E. EXAMPLES A boy picking up a girl -> He might be trying to grind on her on the dance floor",
         "6. Incorporate the information in main text to evaluate, context, and info into a single sentence. I.E. EXAMPLES A boy picking a girl AND he might be trying to grind on the dance floor -> A boy is grinding with a girl on \
@@ -121,7 +121,8 @@ def generate_shirt_design(session):
     rate = "Rate how well the text highlighted below achieves the following instruction: "
 
     rate_ary=[rate +"[ " +i+ " ]" for i in prompts]
-
+    rate_ary[3]="Rate the highlighted content based on if it describes human behavior and how well it maps to the behavior described below." \
+                " I.E. EXAMPLES Bird doing mating call -> ANSWER: A boy trying to pick up a girl."
     p_r_content_results=[]
 
 
@@ -906,6 +907,45 @@ def setup_malcom_summary(session):
     #print malcom_batch_size_5[1]
     recurse_summary(session, malcom_batch_size_5, 0, None, malcom_batch_size_5)
     '''
+
+def setup_remapped_sedaris(session,text_name):
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    global sess
+    sess = session
+    blocks=break_up_text(text_name)
+
+    prompt1="At a highlevel write out what each sentence is trying to say"
+    prompt2="In simple conceptual blocks write what is happening using the highlevel and original text as examples"
+    prompt3="Rewrite the text to better map to your new one"
+
+    p1,p2,p3=produce_pairs(prompt1,""),produce_pairs(prompt2,""),produce_pairs(prompt3,"")
+    pr_list=[]
+    index=0
+    prev_raw=None
+    prev_gen=None
+    prev_new=None
+
+    past_text=None
+    for i in blocks:
+        if index>0:
+            prev_raw=pr_list[index-1][0].get_final_results()[0]
+            prev_gen=pr_list[index-1][1].get_final_results()[0]
+            prev_new=pr_list[index-1][2].get_final_results()[0]
+            past_text=pr_list[index-1][3]
+
+        current_text=Content_Result(i,is_completed=True)
+        raw=build_process(Process_Rewrite,p1,current_text,
+                    past_text,prev_new,amount_to_be_request_main=1,amount_to_be_requested_sub=0)
+        gen_idea=build_process(Process_Rewrite,p2,raw.get_final_results()[0],context=current_text,
+                               suggestions=prev_gen, amount_to_be_request_main=1, amount_to_be_requested_sub=0)
+
+        new_version=build_process(Process_Rewrite,p3,gen_idea.get_final_results()[0],context=current_text,
+                               suggestions=prev_new, amount_to_be_request_main=1, amount_to_be_requested_sub=0)
+
+        index+=1
+        pr_list.append((raw,gen_idea,new_version,current_text))
+
+
 def setup_sedaris_high_level(session):
     #setup_general_summary(session,'sedaris')
     #to_basic_element_process= session.query(Process_Rewrite).all()

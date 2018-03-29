@@ -717,7 +717,7 @@ class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some ratin
             if len(self.sub_process)!=0: #if we have scores
 
                 for item in data:
-                    if float(item[1].results)>=3.9:
+                    if float(item[1].results)>=3.8:
                         best_results.append(item[0]) #store the actual value, not the score
 
             else: #if we are just doing the mainstream thing of scoring elements
