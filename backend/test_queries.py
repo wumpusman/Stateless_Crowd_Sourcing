@@ -99,6 +99,37 @@ class Test_Queries(unittest.TestCase):
         run_example.sess=session #terrible
         run_example.test_flex(session)
 
+
+    def test_rate_example(self):
+        self.session.rollback()
+
+        prompt=Content_Result("This is arbitrary, you should like it",True)
+        result=Content_Result("Fuck you human",True)
+        Process_Object()
+        pr=Process_Rate_Flex_Test_User(prompt=prompt,displayed_result=result,content_to_be_requested=1)
+        pr.expected_result_min=-3
+        pr.expected_result_max=4
+
+        self.session.add(pr)
+        content=pr.get_content_produced_by_this_process()[0]
+        content.results=666
+        content.is_completed=True
+
+        r1=pr.is_user_content_acceptable(content)
+        self.assertEquals(r1,False)
+        pr.get_content_produced_by_this_process_that_is_complete(self.session).all() #bizarre
+        pr.update_model(self.session)
+        self.assertEquals(len(pr.get_content_produced_by_this_process()),2)
+
+        content=pr.get_content_produced_by_this_process()[1]
+        content.results = 555
+        content.is_completed = True
+
+        pr.get_content_produced_by_this_process_that_is_complete(self.session).all()  # bizarre
+        pr.update_model(self.session)
+        self.assertEquals(len(pr.get_content_produced_by_this_process()), 4)
+
+        pass
     def test_select_queries(self):
         #self.setUp() #initialize the whole set up
 

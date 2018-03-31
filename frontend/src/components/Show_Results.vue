@@ -6,7 +6,7 @@
 
         <a class="item"  v-on:click="get_results(item.process_id)">
 
-          <i v-if="item.is_locked" class="green check icon"></i>
+          <i v-if="item.is_finished" class="green check icon"></i>
           <i v-else-if="item.in_progress" class="yellow circle check outline icon"></i>
           <i v-else-if="item.is_ready" class="yellow  circle outline icon"></i>
           <i v-else-if="item.is_ready==false" class="red minus square outline icon"></i>

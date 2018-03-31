@@ -43,6 +43,18 @@ def build_process_flex(Process_Type,prompts_ary,body,context,suggestions,amount_
     return build_process((Process_Type,Process_Rate_Flex),prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub, expected_results=expected_results)
 
 
+def test_rate_example(session):
+    global sess
+    sess = session
+
+    prompt = Content_Result("This is arbitrary, you should like it", True)
+    result = Content_Result("Fuck you human", True)
+    Process_Object()
+    pr = Process_Rate_Flex_Test_User(prompt=prompt, displayed_result=result, content_to_be_requested=1)
+    pr.expected_result_min = -3
+    pr.expected_result_max = 4
+
+
 def test_flex(session):
     '''
     Basic idea to test variable changing levels of content
@@ -72,7 +84,7 @@ def generate_shirt_design(session):
 
         #list name #list animal
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
-    default_process_amount, default_sub_process_amount = 2,6
+    default_process_amount, default_sub_process_amount = 2,1
     prompts = [
         "0. Randomly pick an animal from the list you find interesting. Piglets, Puppies, penguins, Hedgehogs, Horses, Elephants, Squirrels, Seals, Rats, Cats, Porcupines, Seals",
         "1. Pick an emotion/relationship from the following that you could imagine the animal having towards another in its species: attraction/mating behavior, play, fear, happy, love, sadness, affection, seduction/mating behavior, child-parent affection ",
@@ -103,7 +115,7 @@ def generate_shirt_design(session):
 
     ]
 
-    how_many_versions = 3
+    how_many_versions = 1
 
     params=[{}]*len(prompts)
     params[0]={"process_amount":how_many_versions}
@@ -123,6 +135,8 @@ def generate_shirt_design(session):
     rate_ary=[rate +"[ " +i+ " ]" for i in prompts]
     rate_ary[3]="Rate the highlighted content based on if it describes human behavior and how well it maps to the behavior described below." \
                 " I.E. EXAMPLES Bird doing mating call -> ANSWER: A boy trying to pick up a girl."
+
+    print rate_ary
     p_r_content_results=[]
 
 
@@ -145,6 +159,9 @@ def generate_shirt_design(session):
             'sub_amount')
 
         prompt_rate_pair=p_r_content_results[i]
+
+
+        print prompt_rate_pair
         body= None
         info=None
         context=None

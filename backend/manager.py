@@ -67,8 +67,8 @@ class Manager(object):
                    chosen_result.is_locked = True
                    chosen_result.is_completed = True
                    chosen_result.results=result_msg #if you choose to override the message with an alternate message
-                if len(main_final_results) ==1: #only one remained
-                    process.is_locked=True
+                if len(main_final_results) ==1: #only one remained, then lock everything else
+                    process.lock_process()
                 #just lock this particular content's associated subprocess
                 sub_task_param = self.session.query(Task_Parameters).filter(Task_Parameters.result_id == content.id).all()
                 if len(sub_task_param) >0:
@@ -351,7 +351,15 @@ class Manager(object):
                 if current.origin_process.parent_process._can_assign_result(self.session):
                     current.origin_process.parent_process.assign_result(session)
 
-        #Do I freeze that component when it is done so don't waste resource s
+        #Do I freeze that component and associated processes  when it is done so don't waste resource s
+        self._conditionally_lock_process(current)
+
+        self.session.commit()
+
+
+    def _conditionally_lock_process(self,current_element):
+        current=current_element
+        session=self.session
         if current.origin_process.is_complete(session):
             current.origin_process.lock_process()
             if current.origin_process.parent_process != None:
@@ -360,5 +368,3 @@ class Manager(object):
 
         if current.origin_process.parent_process != None:
             current.origin_process.parent_process.update_model(self.session)
-
-        self.session.commit()

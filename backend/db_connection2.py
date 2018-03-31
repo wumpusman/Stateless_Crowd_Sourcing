@@ -630,6 +630,8 @@ class Process_Rate(Process_Object):
 
 
 
+
+
 class Process_Rate_Flex(Process_Rate):
     '''
     Basically an adjustable class where rating score can cause ending
@@ -682,6 +684,44 @@ class Process_Rate_Flex(Process_Rate):
             assume_first_one.is_completed=True
             assume_first_one.is_locked=True
             assume_first_one.completed_date=datetime.datetime.now()
+
+
+class Process_Rate_Flex_Test_User(Process_Rate_Flex):
+
+    '''
+    Basically process used to help evaluate user's ability
+    '''
+    __mapper_args__ = {'polymorphic_identity': 'Process_Rate_Flex_Test_User'}
+
+
+
+    expected_result_max=Column('high_score', Integer,default=5)
+    expected_result_min=Column('low_score',Integer,default=-2)
+
+    def is_user_content_acceptable(self,content):
+        score= float(content.results)
+        if score > self.expected_result_max:return False
+        if score <self.expected_result_min: return False
+        return True
+
+    def update_model(self,session):
+        #will never be finished
+
+
+        self.current_number_evaluated=len(self.get_content_produced_by_this_process_that_is_complete(session).all())
+
+        cont_produced_here=self.get_content_produced_by_this_process()
+        if self.current_number_evaluated==len(cont_produced_here): #double size
+           for i in xrange(self.current_number_evaluated):
+
+                new_content= Content()
+                cont_produced_here.append(new_content) #add new content to evaluate
+
+
+
+
+    def assign_result(self,session):
+        return False
 
 class Process_Text_Manipulation(Process_Object): #Assumes i'm getting some rating, it's really basic selection scoring scheme
     __mapper_args__ = {'polymorphic_identity': 'process_text_manipulation'}
@@ -865,9 +905,9 @@ class Process_Rewrite_Flex(Process_Rewrite):
             body_of_task=latest.task_parameters_obj.body_of_task
             context = latest.task_parameters_obj.context
             suggestion = latest.task_parameters_obj.suggestion
-
+            prompt = latest.task_parameters_obj.prompt
             content_amount=len(latest .get_content_produced_by_this_process())
-            sub_pr=latest.__class__(body_of_task=body_of_task, displayed_result=user_cont,
+            sub_pr=latest.__class__(body_of_task=body_of_task, prompt=prompt, displayed_result=user_cont,
                                    context=context,suggestion=suggestion,content_to_be_requested=content_amount)
 
             self.sub_process.append(sub_pr)
@@ -881,6 +921,13 @@ class Process_Rewrite_Flex(Process_Rewrite):
             return True
 
         return False
+
+    #is the task found stuff
+    def is_complete(self,session):
+       final_results= self.get_final_results_complete(session).all()
+       if len(final_results) == len(self.get_final_results()):
+           return True
+       return False
 
     def update_model(self, session):
         super(Process_Rewrite_Flex, self).update_model(session)
