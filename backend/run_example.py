@@ -84,7 +84,7 @@ def generate_shirt_design(session):
 
         #list name #list animal
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
-    default_process_amount, default_sub_process_amount = 2,1
+    default_process_amount, default_sub_process_amount = 2,5
     prompts = [
         "0. Randomly pick an animal from the list you find interesting. Piglets, Puppies, penguins, Hedgehogs, Horses, Elephants, Squirrels, Seals, Rats, Cats, Porcupines, Seals",
         "1. Pick an emotion/relationship from the following that you could imagine the animal having towards another in its species: attraction/mating behavior, play, fear, happy, love, sadness, affection, seduction/mating behavior, child-parent affection ",
@@ -115,7 +115,7 @@ def generate_shirt_design(session):
 
     ]
 
-    how_many_versions = 1
+    how_many_versions = 3
 
     params=[{}]*len(prompts)
     params[0]={"process_amount":how_many_versions}
@@ -170,7 +170,7 @@ def generate_shirt_design(session):
         if i ==0: #
             process_list.append([])
 
-            process = build_process_flex(Process_Rewrite_Flex, prompt_rate_pair, body, context, info, process_amount,
+            process = build_process_flex(Process_Rewrite_Flex, prompt_rate_pair, body, context, info, how_many_versions,
                                     sub_process_amount, how_many_versions)  # if it's the first one
 
             for i in xrange(how_many_versions):
