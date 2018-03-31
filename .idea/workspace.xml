@@ -19,14 +19,14 @@
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_in_test_data_py.coverage" NAME="Nosetests in test_data.py Coverage Results" MODIFIED="1521652559395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$test_queries.coverage" NAME="test_queries Coverage Results" MODIFIED="1521655333103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Unittests_for_test_queries2_Test_Queries.coverage" NAME="Unittests for test_queries.Test_Queries.test_flex Coverage Results" MODIFIED="1521655584810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$app.coverage" NAME="app Coverage Results" MODIFIED="1522449799699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$app.coverage" NAME="app Coverage Results" MODIFIED="1522522478668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Story_Basic_Attempt_4$db_connection.coverage" NAME="db_connection Coverage Results" MODIFIED="1510612843137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Unnitest_test_queries_Test_Queries_test_rate_example.coverage" NAME="Unnitest test_queries.Test_Queries.test_rate_example Coverage Results" MODIFIED="1522372374529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_in_test_queries_py.coverage" NAME="Nosetests in test_queries.py Coverage Results" MODIFIED="1518042506489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$chicken_scratch.coverage" NAME="chicken_scratch Coverage Results" MODIFIED="1520201838801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_for_test_queries_Test_Queries_test_flex.coverage" NAME="Nosetests for test_queries.Test_Queries.test_flex Coverage Results" MODIFIED="1521654690000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$run_example.coverage" NAME="run_example Coverage Results" MODIFIED="1522439248295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$build_db.coverage" NAME="build_db Coverage Results" MODIFIED="1522449796386" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$build_db.coverage" NAME="build_db Coverage Results" MODIFIED="1522521436991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_for_test_queries_Test_Queries.coverage" NAME="Nosetests for test_queries.Test_Queries Coverage Results" MODIFIED="1518042529633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$luther_out_all_levels_breadth_first.coverage" NAME="luther_out_all_levels_breadth_first Coverage Results" MODIFIED="1519257926056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
   </component>
@@ -38,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="manager.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+            <state relative-caret-position="280">
+              <caret line="72" column="11" lean-forward="true" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -93,8 +93,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,11 +132,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notes" pinned="false" current-in-tab="false">
+      <file leaf-file-name="notes" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notes">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+            <state relative-caret-position="315">
+              <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -154,7 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>given the anima</find>
       <find>is_ready</find>
       <find>time</find>
       <find>time.time</find>
@@ -184,6 +183,7 @@
       <find>ini</find>
       <find>assign_</find>
       <find>rate_ary</find>
+      <find>edit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -238,8 +238,6 @@
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/container_redux_elements/input_text_block_redux.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/Project_Container.vue" />
         <option value="$PROJECT_DIR$/frontend/src/main.js" />
-        <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/notes" />
         <option value="$PROJECT_DIR$/backend/test_wtf.py" />
         <option value="$PROJECT_DIR$/backend/test_queries2.py" />
         <option value="$PROJECT_DIR$/backend/build_db.py" />
@@ -248,6 +246,8 @@
         <option value="$PROJECT_DIR$/frontend/src/components/Show_Results.vue" />
         <option value="$PROJECT_DIR$/backend/run_example.py" />
         <option value="$PROJECT_DIR$/backend/manager.py" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/notes" />
       </list>
     </option>
   </component>
@@ -1534,14 +1534,6 @@ ten=session.query (cols ).all()
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1568,14 +1560,6 @@ ten=session.query (cols ).all()
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/run_example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="77">
@@ -1586,11 +1570,27 @@ ten=session.query (cols ).all()
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+        <state relative-caret-position="280">
+          <caret line="72" column="11" lean-forward="true" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
