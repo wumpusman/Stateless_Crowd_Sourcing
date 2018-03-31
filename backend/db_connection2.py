@@ -693,7 +693,9 @@ class Process_Rate_Flex_Test_User(Process_Rate_Flex):
     '''
     __mapper_args__ = {'polymorphic_identity': 'Process_Rate_Flex_Test_User'}
 
-
+    '''
+     accept user 
+    '''
 
     expected_result_max=Column('high_score', Integer,default=5)
     expected_result_min=Column('low_score',Integer,default=-2)
@@ -705,7 +707,7 @@ class Process_Rate_Flex_Test_User(Process_Rate_Flex):
         return True
 
     def update_model(self,session):
-        #will never be finished
+        #will never be finished which is the point
 
 
         self.current_number_evaluated=len(self.get_content_produced_by_this_process_that_is_complete(session).all())
