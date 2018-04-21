@@ -51,31 +51,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run_example.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run_example.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/run_example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="384" column="30" lean-forward="false" selection-start-line="384" selection-start-column="30" selection-end-line="384" selection-end-column="30" />
+            <state relative-caret-position="411">
+              <caret line="436" column="50" lean-forward="true" selection-start-line="436" selection-start-column="50" selection-end-line="436" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Project_Container.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/components/Project_Container.vue">
+      <file leaf-file-name="notes" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1515">
-              <caret line="106" column="60" lean-forward="false" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
+            <state relative-caret-position="300">
+              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/build_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="91" column="30" lean-forward="true" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+            <state relative-caret-position="262">
+              <caret line="90" column="50" lean-forward="false" selection-start-line="90" selection-start-column="50" selection-end-line="90" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -245,8 +245,8 @@
         <option value="$PROJECT_DIR$/backend/rec_template_1" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/backend/manager.py" />
-        <option value="$PROJECT_DIR$/backend/build_db.py" />
         <option value="$PROJECT_DIR$/backend/run_example.py" />
+        <option value="$PROJECT_DIR$/backend/build_db.py" />
       </list>
     </option>
   </component>
@@ -1318,13 +1318,6 @@ print session.query(Content).filter(Content.id==rewrite_options.c.id).all()</exp
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/test_queries.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1965">
@@ -1441,18 +1434,26 @@ print session.query(Content).filter(Content.id==rewrite_options.c.id).all()</exp
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/build_db.py">
+    <entry file="file://$PROJECT_DIR$/backend/run_example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="91" column="30" lean-forward="true" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+        <state relative-caret-position="411">
+          <caret line="436" column="50" lean-forward="true" selection-start-line="436" selection-start-column="50" selection-end-line="436" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/run_example.py">
+    <entry file="file://$PROJECT_DIR$/notes">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="384" column="30" lean-forward="false" selection-start-line="384" selection-start-column="30" selection-end-line="384" selection-end-column="30" />
+        <state relative-caret-position="300">
+          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/build_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="90" column="50" lean-forward="false" selection-start-line="90" selection-start-column="50" selection-end-line="90" selection-end-column="50" />
           <folding />
         </state>
       </provider>

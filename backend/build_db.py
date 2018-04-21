@@ -88,7 +88,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      "[To provide soaring rhetoric to motivate his listeners]",
      "[Follow up on previous claim] ",
      "[Clarify that works still needs to be done]"]
-     run_example.initial_test_criteria(session)
+     run_example.initial_test_criteria(the_session)
      run_example.line_by_line_rewrite(the_session, None, None)
      run_example.line_by_line_rewrite(the_session,instruct,examples)
 
