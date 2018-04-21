@@ -382,7 +382,7 @@ def line_by_line_rewrite(session,steps1,str1):
     global sess
     sess=session
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
-    default_process_amount = 5
+    default_process_amount = 2
     default_sub_process_amount = 3
 
     if steps1==None:
