@@ -94,7 +94,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
 
     # run_example.iterative(the_session, None, None)
      #print the_session.query(Content).all()
-     run_example.generate_shirt_design(the_session)
+     #run_example.generate_shirt_design(the_session)
      the_session.commit()
      the_session.close()
 else:
