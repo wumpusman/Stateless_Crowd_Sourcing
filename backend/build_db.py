@@ -89,8 +89,8 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      "[Follow up on previous claim] ",
      "[Clarify that works still needs to be done]"]
      run_example.initial_test_criteria(the_session)
-     run_example.line_by_line_rewrite(the_session, None, None)
-     run_example.line_by_line_rewrite(the_session,instruct,examples)
+     run_example.line_by_line_rewrite_with_flex_and_testing(the_session, None, None)
+     run_example.line_by_line_rewrite_with_flex_and_testing(the_session,instruct,examples)
 
     # run_example.iterative(the_session, None, None)
      #print the_session.query(Content).all()
