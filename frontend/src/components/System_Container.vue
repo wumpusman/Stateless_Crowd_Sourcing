@@ -5,7 +5,7 @@
     <Login :should_auto_login="should_auto_login" v-if="which_page('Login')"></Login>
     <Project v-if="which_page('Project')" :Has_Session_Expired="has_session_expired_function"></Project>
     <Finished v-if="which_page('Finished')" :Tasks_Completed="compute_submission_count" :Code="computed_name" ></Finished>
-
+    <Finished v-if="which_page('Flagged')" :Tasks_Completed="compute_submission_count" Code="Flagged" ></Finished>
 
   </div>
 </template>

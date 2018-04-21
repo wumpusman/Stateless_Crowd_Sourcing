@@ -215,6 +215,13 @@ class Process_Object(Base):
     def get_rating_ml_model_result(self,path,data_to_evaluate):
         pass
 
+    def is_user_content_acceptable(self, content):
+        '''
+        in relation to what this process views as acceptable, is the content fine?
+        :param content:
+        :return:
+        '''
+        return True
 
     def update_model(self,session):
         pass
@@ -659,11 +666,7 @@ class Process_Rate_Flex(Process_Rate):
         #really simple, but basically an adjustable score
         count =  self.current_number_evaluated
         score = self.current_score
-        print "EVALUTAIONT POINT "
-        print count
-        print score
-        print count
-        print score
+
         print len(self.get_content_produced_by_this_process() )
 
         if self.current_number_evaluated>=len(self.get_content_produced_by_this_process()): return True
@@ -694,14 +697,32 @@ class Process_Rate_Flex_Test_User(Process_Rate_Flex):
     __mapper_args__ = {'polymorphic_identity': 'Process_Rate_Flex_Test_User'}
 
     '''
-     accept user 
+     if normal tasks == 0 
+        if examples > Threshold:
+             check latest Example they did, if did not pass   
+                return 
+                    did pass examples 
+                        if no, stop experiment 
     '''
 
     expected_result_max=Column('high_score', Integer,default=5)
     expected_result_min=Column('low_score',Integer,default=-2)
 
+
+
+    def __init__(self, body_of_task=None, prompt=None, suggestion=None, context=None, displayed_result=None,
+                 expected_results=1, content_to_be_requested=3, subprocess_tuple=None):
+
+        super(Process_Rate_Flex_Test_User, self).__init__(body_of_task=body_of_task, prompt=prompt, suggestion=suggestion, context=context, displayed_result=displayed_result,
+                 expected_results=expected_results, content_to_be_requested=content_to_be_requested, subprocess_tuple=subprocess_tuple)
+
+        for i in self.get_content_produced_by_this_process():
+            i.content_type=Content_Types.Testing_Enum
+
     def is_user_content_acceptable(self,content):
-        score= float(content.results)
+        score=None
+        if content.results =="Issue": score=-2
+        else: score= float(content.results)
         if score > self.expected_result_max:return False
         if score <self.expected_result_min: return False
         return True
@@ -717,6 +738,7 @@ class Process_Rate_Flex_Test_User(Process_Rate_Flex):
            for i in xrange(self.current_number_evaluated):
 
                 new_content= Content()
+                new_content.content_type=Content_Types.Testing_Enum
                 cont_produced_here.append(new_content) #add new content to evaluate
 
 
@@ -897,7 +919,7 @@ class Process_Rewrite_Flex(Process_Rewrite):
 
 
     minimum_score = Column(Numeric,default=3.5)  # what is the minimum score I will typically accept for expansion
-    maximum_processes= Column(Integer,default=10)
+    maximum_processes= Column(Integer,default=6)
 
     def _expand_once(self,session):
         user_cont = Content()
@@ -953,10 +975,27 @@ class Process_Rewrite_Flex(Process_Rewrite):
             for i in xrange(expand_by):
                 self._expand_once(session)
 
+
+class Process_Rewrite_Flex_Modify_Results_And_View(Process_Rewrite_Flex):
+    __mapper_args__ = {'polymorphic_identity': 'process_rewrite_flex_modify_results_and_view'}
         #for each result that is less than corresponding ideal score
         #the sum of those that are either unknown or great than threshold expand
         #If amount > Maxium_processes: stop
 
+    def assign_result(self, session):
+        super(Process_Rewrite_Flex_Modify_Results_And_View, self).assign_result(session)
+        if len(self.get_final_results()) == len(self.get_final_results_complete(session).all()):
+            actually_done = self.get_final_results_complete(session)
+            for content in actually_done:
+                content.results = self.task_parameters_obj.body_of_task.results + " " + content.results
+
+    def prepare_view(self):
+        task_view = super(Process_Rewrite_Flex_Modify_Results_And_View, self).prepare_view()
+
+        task_view["Body_Of_Task"] = task_view["Body_Of_Task"] + task_view["Context"]
+        task_view["Context"] = ""
+
+        return task_view
 
 class Process_Modify_Results_And_View(Process_Rewrite): #assume i'm gonna rate the subprocesses
     __mapper_args__ = {'polymorphic_identity': 'process_modify_results'}
@@ -1026,9 +1065,9 @@ class Content(Base):
     user_id=Column(ForeignKey("user.name"))
     #user=relationship('User',foreign_keys=[user_id],uselist=False,back_populates="associated_content")
 
-    content_type=Column('content_type', String) #the content to be parsed
-    comments=Column('comments', String) # any notes
-    results=Column('results',String) #the actual content the user entered
+    content_type=Column('content_type', String,default="") #the content to be parsed
+    comments=Column('comments', String,default="") # any notes
+    results=Column('results',String,default="") #the actual content the user entered
 
     created_date = Column(DateTime, default=datetime.datetime.now)  # base this function to evaluate at run time
     assigned_date = Column(DateTime) #when was data actually assigned ot the user
@@ -1064,6 +1103,8 @@ class Content(Base):
     def __repr__(self):
         return "<ID {} Values {} isCompleted {}>".format(self.id,self.results,self.is_completed)
 
+
+
 class Content_Result(Content): #like content but is specifically when it is the results of a system
     __mapper_args__ = {'polymorphic_identity': 'content_result'}
 
@@ -1078,12 +1119,18 @@ class Content_Result(Content): #like content but is specifically when it is the 
         self.results=value
 
 
+
+
+
 class Content_Types(object):
     Rate="Rate"
     Summarize="Summarize"
     Rewrite="Rewrite"
     Merge="Merge"
-    Sugeest="Suggest"
+    Suggest="Suggest"
+
+    Testing_Enum="Testing"
+    Example_Enum="Example"
 
 if __name__ == '__main__':
 

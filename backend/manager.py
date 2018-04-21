@@ -3,12 +3,16 @@ import random
 class Manager(object):
     remove_enum="remove" #corresponding enum  must be changed in frontend
     promote_enum="promote" #corresponding enum must be changed in frontend
+
+    issue_enum="Flagged" #something is wrong with a particular content
+
+
     def __init__(self,session,max_time=7):
         # type: (object, object) -> object
         self.session=session
         self._session_time=max_time*60 #convert from minutes to seconds
         self._minimum_work_time=0 #seconds
-        self._task_timeout_max=10 #This is in MINUTES
+        self._task_timeout_max=.1 #This is in MINUTES
         self._effort_ratio=0
     #I hate that i have to make this function each time someone queries the db :(
 
@@ -143,6 +147,14 @@ class Manager(object):
         self.session.add(user)
         self.session.commit()
 
+
+
+    #assign new content
+    #check examples
+    #from new content - see if any examples DO those instead
+    #else do normal content
+    #
+
     def assign_new_content(self,user):
         session = self.session
 
@@ -163,17 +175,71 @@ class Manager(object):
                 raise Exception("assigning new content when current content is not complete")
 
 
-        optional_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).all()
+        all_content = user.get_content_where_user_was_uninvolved_and_is_not_part_of_rating_task(self.session).subquery()# .all()
+        #pick all content tat use r is not involved in
 
 
-        #select all content where it was the top content
-        results= self.session.query(Process_Object).all()
 
 
+        #pick out those that are relevant
+        relevant_ids=session.query(all_content.c.id).all()
+        relevant_ids=[i[0] for i in relevant_ids] #my lazy way to ensure that I don't do a full search, get all the relevant id's
+
+
+        #get by number completed
+        result = session.query(all_content.c.is_completed, all_content.c.id.label("relevant_id"),
+                               all_content.c.origin_process_id.label("relevant_process_id"), Process_Rate.id).join(
+            Process_Rate, Process_Rate.id == all_content.c.origin_process_id).subquery()
+
+        result2 = session.query(Content.origin_process_id, Content.is_completed).filter(
+            result.c.relevant_process_id == Content.origin_process_id).subquery()
+
+        result6 = session.query(result2.c.origin_process_id,
+                                func.count(1).filter(result2.c.is_completed).label("count")).group_by(
+            result2.c.origin_process_id).subquery()
+
+        result7 = session.query(all_content.c.id, result6.c.count).join(result6,
+                                                                        all_content.c.origin_process_id == result6.c.origin_process_id).order_by(
+            result6.c.count).subquery()
+
+
+
+        rate_options = session.query(Content).filter(result7.c.id==Content.id).all()
+        rewrite_options = session.query(all_content.c.id).filter(Process_Rewrite.id == all_content.c.origin_process_id).subquery()
+        rewrite_options = session.query(Content).filter(rewrite_options.c.id==Content.id).all()
+
+        '''            
+            result=session.query(all_content.c.origin_process_id,Process_Rate_Flex.task_parameters_id,Process_Rate_Flex.current_score).join(Process_Rate_Flex,Process_Rate_Flex.id == all_content.c.origin_process_id).distinct().subquery()
+            result2=session.query(Task_Parameters.result_id.label('result_id'),result).join(result,result.c.task_parameters_id==Task_Parameters.id).distinct().subquery()
+            result3=session.query(Content.id,result2.c.current_score).join(result2,Content.id==result2.c.result_id ).distinct().order_by(result2.c.current_score).all()
+        '''
+
+
+        optional_content = session.query(Content).filter(Content.id.in_(relevant_ids)).filter(
+            Content.content_type == "").all()
+        #Content which does not have a specified type, which should by default be NONE
+
+        testing_content=session.query(Content).filter(Content.id.in_(relevant_ids)).filter(Content.content_type==Content_Types.Testing_Enum).all() #Example content
+        #Content that is used for testing or is example content
+
+
+        problems_flagged=session.query(Content.comments).filter(Content.user_id ==user.name).filter(Content.comments==Manager.issue_enum ).all()
+        #Is there any content wher ethere are issues
+
+        if len(problems_flagged)>0: return Manager.issue_enum #If they have fucked up on content
 
         if len(optional_content)==0: return None
 
-        chosen=random.choice(optional_content) #pick one of them but make the order inconsistent it's a fuck you to slackers, they'll be stuck in
+        chosen=None
+
+        if len(testing_content)>0: #go through all the test contnet
+            chosen=testing_content[0]
+        else: #Lets look at cotnent
+            if len(rewrite_options)>0:
+                chosen=random.choice(rewrite_options) #pick one of them but make the order inconsistent it's a fuck you to slackers, they'll be stuck in
+            elif len(rate_options)>0: #choose the content that is closest to be finished
+                chosen=rate_options[-1]
+            else: return None
         #an endless loop of dealing with bs
 
 
@@ -185,9 +251,6 @@ class Manager(object):
 
         self.session.commit()
 
-        print user.name
-        print user.associated_content
-        print "THIS IS LINKED TO THIS USER"
         return chosen
 
     def prepare_results(self,id):
@@ -280,9 +343,10 @@ class Manager(object):
         if type(content)==type(None):
             return {"Project_State":"Finished"}
 
+        if content == Manager.issue_enum:
+            return {"Project_State":Manager.issue_enum}
 
-        print content
-        print content.origin_process
+
 
         view= content.origin_process.prepare_view()
         view["Project_State"]="Project" #we are still working on the proejct
@@ -311,6 +375,11 @@ class Manager(object):
             return Exception("Content completed when it shouldn't be completed already")
 
         current.results= results["value"]
+
+        if(current.origin_process.is_user_content_acceptable(current)==False):
+            current.comments =Manager.issue_enum #flag this content as unacceptable Or having a serious problem
+
+
         #This is a hack :/\/\/\:
         #TODO: This should be chagned and embedded, also the defualt for ratings should be different
 

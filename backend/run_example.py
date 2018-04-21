@@ -9,6 +9,11 @@ import os
 
 
 sess=None
+
+
+def produce_pairs (str_1,str_2):
+    return [Content_Result(str_1, is_completed=True), Content_Result(str_2, is_completed=True)]
+
 def build_process(Process_Type,prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub, expected_results=1):
 
     sub_process = {"prompt": prompts_ary[1],
@@ -43,16 +48,76 @@ def build_process_flex(Process_Type,prompts_ary,body,context,suggestions,amount_
     return build_process((Process_Type,Process_Rate_Flex),prompts_ary,body,context,suggestions,amount_to_be_request_main,amount_to_be_requested_sub, expected_results=expected_results)
 
 
-def test_rate_example(session):
+
+def evaluation_criteria(session,prompt,body,result, context,suggestion, min,max):
+
+
+
+    prompt = Content_Result(prompt, True)
+    result =Content_Result(result,True)
+    context = Content_Result(context,True)
+    suggestion = Content_Result(suggestion,True)
+    body=Content_Result(body,True)
+    pr = Process_Rate_Flex_Test_User(prompt=prompt, displayed_result=result, body_of_task=body, context=context,suggestion=suggestion,content_to_be_requested=1)
+    pr.expected_result_min = min
+    pr.expected_result_max = max
+    session.add(pr)
+
+
+def initial_test_criteria(session):
+    prompt = "Rate how well the text in 'Content To Be Evaluated' answers the question: What is an analogous HUMAN behavior or a close equivalent to the behavior below and emotion, w. I.E. EXAMPLES Bird doing mating call -> ANSWER: A boy trying to pick up a girl."
+    body = " The horses loved their mates and offspring."
+    result = "The mother and father loved each other as much as they loved their children. "
+    evaluation_criteria(session, prompt, body, result, None, None, 3, 10)
+
+
+    prompt="Rate how well the text in 'Content To Be Evaluated' answers the question: Where would you see the behavior below listed in 'Original Content'. I.E. EXAMPLES A boy picking up a girl -> ANSWER At a bar"
+    body=" A mother shielding their child from harm."
+    result="A mother will put the safety of her children before herself"
+    evaluation_criteria(session,prompt,body,result,None,None,-2,2)
+
+
+
+def test_evaluation_criteria_example(session):
     global sess
     sess = session
+    '''
+                4. Where would you see this behavior. I.E. EXAMPLES A boy picking up a girl -> ANSWER At a bar
+            
+            A mother shielding their chid from harm.
+            As a car mounted the pavement a mother frantically pulled her child out of its path. 
+            
+            Terrible answer: A mother will put the safety of her children before herself. 
+            
+            
+            
+            3. What is an analogous HUMAN behavior or a close equivalent to the behavior below and emotion, w. I.E. EXAMPLES Bird doing mating call -> ANSWER: A boy trying to pick up a girl.
 
+The horses loved their mates and offspring.
+The mother and father loved each other as much as they loved their children. 
+    '''
+    #A mother will put the safety of her children before herself.
     prompt = Content_Result("This is arbitrary, you should like it", True)
-    result = Content_Result("Fuck you human", True)
+    result = Content_Result("I love you human", True)
     Process_Object()
     pr = Process_Rate_Flex_Test_User(prompt=prompt, displayed_result=result, content_to_be_requested=1)
-    pr.expected_result_min = -3
-    pr.expected_result_max = 4
+    pr.expected_result_min = 4
+    pr.expected_result_max = 5
+
+    prompt = Content_Result("This is arbitrary, you should hate it", True)
+    result = Content_Result("I hate life :(", True)
+    Process_Object()
+    pr2 = Process_Rate_Flex_Test_User(prompt=prompt, displayed_result=result, content_to_be_requested=1)
+    pr2.expected_result_min = -2
+    pr2.expected_result_max = 2
+
+    test_write="Test fake content"
+    test_rate="Rate fake content"
+    test_process=build_process(Process_Rewrite,produce_pairs(test_write,test_rate),None,None,None,1,1,1)
+
+    session.add(pr2)
+    sess.add(pr)
+    sess.add(test_process)
 
 
 def test_flex(session):
@@ -267,6 +332,52 @@ def iterative(session,general_about,main_text):
         main_text_cr=process.get_final_results()[0]
 
 
+def line_by_line_rewrite_with_flex_and_testing(session,steps1,str1):
+    global sess
+    sess = session
+    produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
+    default_process_amount = 2
+    default_sub_process_amount = 4
+
+    if steps1 == None:
+        steps1 = [" [Provide/Google/Search for historical context]", " [Elaborate the purpose behind the action]",
+                  " [Clarify that action did not fully solve the underlying problem] "]
+    if str1 == None:
+        str1 = ["One hundred years ago the Emancipation Proclamation was signed by Abraham Lincoln",
+                "This decree was insturmental in freeing the slaves and giving them hope " \
+                "for a productive life free from chains. ", \
+                "Yet, even today, the negro is not completly free from oppression"]
+    str1_alt = []
+    for i in xrange(len(str1)):
+        str1_alt.append(". ".join(str1[0:i]) + " _EXAMPLE_RESULT_DIFFERENT_DOMAIN_ [" + str1[i:i + 1][0] + "]")
+
+    stepsCr = [Content_Result(" _INSTRUCTIONS_ " + stp, True) for stp in steps1]
+    exampleCr = [Content_Result(ex, True) for ex in str1_alt]
+
+    if len(stepsCr) != len(exampleCr): raise Exception("AHH this can't be happening")
+
+    prompt1 = "To best of your abilities write about the subject of the TREATMENT OF WOMEN using the instructions listed below in 'Main Text to Evaluate'. An example " \
+              "in a different subject/domain is shown in INFO. THIS IS AN EXAMPLE for stylstic purposes. You may google if neccesary "
+    rate1 = "Rate how well the content to be evaluated follows the instruction listed in Context to create a text appropriate to subject of the 'TREATMENT OF WOMEN' "
+    pr1 = produce_pairs(prompt1, rate1)
+
+    prompt2_with_work = "Listed below is text about the subject of the TREATMENT OF WOMEN, as well as instructions listed '[]'. Use those instructions to write the next " \
+                        "sentence as it relates to the subject of the TREATMENT OF WOMEN. An example of a different domain/subject is shown in INFO "
+    rate2 = "Rate how well the 'content to be evaluated' follows the instruction listed in Context to extend this piece of text in 'Original Content'"
+    pr2 = produce_pairs(prompt2_with_work, rate2)
+
+    rewrite1_full_process = build_process_flex(Process_Rewrite_Flex_Modify_Results_And_View, pr1, None, stepsCr[0], exampleCr[0]
+                                          , default_process_amount, default_sub_process_amount)
+
+    prev_step_result = rewrite1_full_process.get_final_results()[0]
+    for i in xrange(1, len(exampleCr)):
+        rewrite_rest_full_process = build_process_flex(Process_Rewrite_Flex_Modify_Results_And_View, pr2, prev_step_result
+                                                  , stepsCr[i], exampleCr[i]
+                                                  , default_process_amount, default_sub_process_amount)
+
+        prev_step_result = rewrite_rest_full_process.get_final_results()[0]
+
+
 def line_by_line_rewrite(session,steps1,str1):
     global sess
     sess=session
@@ -296,7 +407,8 @@ def line_by_line_rewrite(session,steps1,str1):
 
     prompt2_with_work="Listed below is text about the subject of the treatment of women, as well as instructions listed '[]'. Use those instructions to write the next " \
                       "sentence. An example of a different domain/subject is shown in INFO "
-    rate2 = "Rate how well the 'content to be evaluated' follows the instruction listed in Context to extend this piece of text in 'Original Content'"
+    rate2 = "Rate how well the 'content to be evaluated' follows the instruction listed in Context to extend this piece of text in 'Original Content' It should NOT have any of" \
+            "the information in INFO which is only meant as an example to aid in writing the style or format."
     pr2=produce_pairs(prompt2_with_work,rate2)
 
 
@@ -925,7 +1037,7 @@ def setup_malcom_summary(session):
     recurse_summary(session, malcom_batch_size_5, 0, None, malcom_batch_size_5)
     '''
 
-def setup_remapped_sedaris(session,text_name):
+def setup_remapped_linear_abstract(session,text_name):
     produce_pairs = lambda a, b: [Content_Result(a, is_completed=True), Content_Result(b, is_completed=True)]
     global sess
     sess = session

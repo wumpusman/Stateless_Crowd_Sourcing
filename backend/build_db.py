@@ -9,6 +9,32 @@ from sqlalchemy.orm import backref
 from sqlalchemy import func
 import pandas as pd
 import run_example
+
+
+
+'''
+
+Blueprint 
+
+Select Top Non-Blue Print Unlocked, And Selected, Go in Numeric order [0,1,2] 
+     Select First Process
+          Go Through Top 2 unlocked [Or Top 1 and One Random?]
+               If Like 
+                    Go To Another 'Selected Process'
+               Else Try Again
+          If No like twice
+               Create new content at that Node 
+          
+If No More in Selected, 
+     Select All Top level UnSelected
+          
+               
+     
+
+
+
+'''
+
 #pg_restore -h localhost -U username -W -F t -d new_database_name database_dump_file.tar
 if type(os.environ.get('DATABASE_URL')) != type(None):
      url = os.environ.get('DATABASE_URL')#urlparse.urlparse(os.environ.get('DATABASE_URL'))
@@ -62,13 +88,15 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      "[To provide soaring rhetoric to motivate his listeners]",
      "[Follow up on previous claim] ",
      "[Clarify that works still needs to be done]"]
-     #run_example.line_by_line_rewrite(the_session, None, None)
-     #run_example.line_by_line_rewrite(the_session,instruct,examples)
+     run_example.initial_test_criteria(session)
+     run_example.line_by_line_rewrite(the_session, None, None)
+     run_example.line_by_line_rewrite(the_session,instruct,examples)
 
     # run_example.iterative(the_session, None, None)
      #print the_session.query(Content).all()
      run_example.generate_shirt_design(the_session)
      the_session.commit()
+     the_session.close()
 else:
      conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
 
@@ -76,10 +104,14 @@ else:
      Base.metadata.create_all(conn)
      #
      #
+     #run_example.initial_test_criteria(session)
 
-     session.commit()
+     #run_example.line_by_line_rewrite_with_flex_and_testing()
+     #run_example.initial_test_criteria(session)
+     #run_example.line_by_line_rewrite_with_flex_and_testing(session,None,None)
+
      #run_example.setup_remapped_sedaris(session,"sedaris_2")
-     run_example.generate_shirt_design(session)
+     #run_example.setup_remapped_linear_abstract(session,"rec_template_1")
      #run_example.test_flex(session )
      #run_example.setup_general_summary(session,"sedaris_2")
      #run_example.setup_example(session)

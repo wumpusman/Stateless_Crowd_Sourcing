@@ -129,7 +129,7 @@ class Test_Queries(unittest.TestCase):
         pr.update_model(self.session)
         self.assertEquals(len(pr.get_content_produced_by_this_process()), 4)
 
-        pass
+
     def test_select_queries(self):
         #self.setUp() #initialize the whole set up
 

@@ -14,19 +14,20 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$quick_test_match_stick.coverage" NAME="quick_test_match_stick Coverage Results" MODIFIED="1515470633902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$manager.coverage" NAME="manager Coverage Results" MODIFIED="1524281414183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$test_extract_labels.coverage" NAME="test_extract_labels Coverage Results" MODIFIED="1514755382122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$db_connection2.coverage" NAME="db_connection2 Coverage Results" MODIFIED="1516930231371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_in_test_data_py.coverage" NAME="Nosetests in test_data.py Coverage Results" MODIFIED="1521652559395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$test_queries.coverage" NAME="test_queries Coverage Results" MODIFIED="1521655333103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Unittests_for_test_queries2_Test_Queries.coverage" NAME="Unittests for test_queries.Test_Queries.test_flex Coverage Results" MODIFIED="1521655584810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$app.coverage" NAME="app Coverage Results" MODIFIED="1522524453126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$app.coverage" NAME="app Coverage Results" MODIFIED="1524349405604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Story_Basic_Attempt_4$db_connection.coverage" NAME="db_connection Coverage Results" MODIFIED="1510612843137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Unnitest_test_queries_Test_Queries_test_rate_example.coverage" NAME="Unnitest test_queries.Test_Queries.test_rate_example Coverage Results" MODIFIED="1522372374529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_in_test_queries_py.coverage" NAME="Nosetests in test_queries.py Coverage Results" MODIFIED="1518042506489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$chicken_scratch.coverage" NAME="chicken_scratch Coverage Results" MODIFIED="1520201838801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_for_test_queries_Test_Queries_test_flex.coverage" NAME="Nosetests for test_queries.Test_Queries.test_flex Coverage Results" MODIFIED="1521654690000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$run_example.coverage" NAME="run_example Coverage Results" MODIFIED="1522439248295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$build_db.coverage" NAME="build_db Coverage Results" MODIFIED="1522523712279" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$build_db.coverage" NAME="build_db Coverage Results" MODIFIED="1524349393841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_for_test_queries_Test_Queries.coverage" NAME="Nosetests for test_queries.Test_Queries Coverage Results" MODIFIED="1518042529633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$luther_out_all_levels_breadth_first.coverage" NAME="luther_out_all_levels_breadth_first Coverage Results" MODIFIED="1519257926056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
   </component>
@@ -41,8 +42,8 @@
       <file leaf-file-name="manager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="72" column="11" lean-forward="true" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+            <state relative-caret-position="302">
+              <caret line="215" column="0" lean-forward="true" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -50,41 +51,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Show_Results.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/components/Show_Results.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="75" column="17" lean-forward="false" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="attributes.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="run_example.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/run_example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="172" column="119" lean-forward="false" selection-start-line="172" selection-start-column="119" selection-end-line="172" selection-end-column="119" />
+            <state relative-caret-position="359">
+              <caret line="334" column="46" lean-forward="false" selection-start-line="334" selection-start-column="4" selection-end-line="334" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Content_Rate_Element.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/components/Content_Rate_Element.vue">
+      <file leaf-file-name="Project_Container.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/components/Project_Container.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="26" />
+            <state relative-caret-position="1515">
+              <caret line="106" column="60" lean-forward="false" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/build_db.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="90" column="47" lean-forward="false" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rec_template_1" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/rec_template_1">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="54" lean-forward="false" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -93,28 +94,18 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="17" column="68" lean-forward="false" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+            <state relative-caret-position="1202">
+              <caret line="200" column="0" lean-forward="true" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_queries.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/test_queries.py">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flask/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="111" column="0" lean-forward="false" selection-start-line="105" selection-start-column="7" selection-end-line="111" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/build_db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="72" column="81" lean-forward="false" selection-start-line="72" selection-start-column="59" selection-end-line="72" selection-end-column="81" />
+            <state relative-caret-position="205">
+              <caret line="1597" column="0" lean-forward="false" selection-start-line="1597" selection-start-column="0" selection-end-line="1597" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -123,20 +114,28 @@
       <file leaf-file-name="db_connection2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="696" column="17" lean-forward="false" selection-start-line="696" selection-start-column="17" selection-end-line="696" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-2365">
+              <caret line="970" column="60" lean-forward="false" selection-start-line="970" selection-start-column="60" selection-end-line="970" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notes" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/notes">
+      <file leaf-file-name="pydevd_comm.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_comm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="76" column="1" lean-forward="false" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+            <state relative-caret-position="17205">
+              <caret line="1156" column="0" lean-forward="false" selection-start-line="1156" selection-start-column="0" selection-end-line="1156" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pydevd_vars.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_vars.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5085">
+              <caret line="344" column="0" lean-forward="false" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -154,19 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>time</find>
-      <find>time.time</find>
-      <find>hi</find>
-      <find>&quot;Hi</find>
-      <find>get_results</find>
-      <find>innerjoin</find>
-      <find>update</find>
-      <find>task_parameter</find>
-      <find>all_processes</find>
-      <find>1.3</find>
-      <find>-</find>
-      <find>rate</find>
-      <find>wtf</find>
       <find>process_rewrite_Flex</find>
       <find>final_result</find>
       <find>rate_fl</find>
@@ -179,11 +165,24 @@
       <find>what is an</find>
       <find>Rate the high</find>
       <find>assign_</find>
-      <find>brid</find>
-      <find>rate_ary</find>
-      <find>edit</find>
       <find>backup</find>
+      <find>rate_ary</find>
+      <find>brid</find>
+      <find>edit</find>
+      <find>assign_new_content</find>
+      <find>assign_new_content_to_user</find>
       <find>ini</find>
+      <find>==type(None</find>
+      <find>maximum</find>
+      <find>in</find>
+      <find>prepare_view</find>
+      <find>example</find>
+      <find>Testing_Enum</find>
+      <find>issue_enum</find>
+      <find>project</find>
+      <find>which_page</find>
+      <find>flagged</find>
+      <find>join</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,9 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/frontend/src/components/Transform_Text_Box.vue" />
-        <option value="$PROJECT_DIR$/frontend/src/components/Test.vue" />
-        <option value="$PROJECT_DIR$/frontend/src/components/Prompt.vue" />
         <option value="$PROJECT_DIR$/../vue_with_flask/model/manager.py" />
         <option value="$PROJECT_DIR$/backend/db_connection.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
@@ -222,7 +218,6 @@
         <option value="$PROJECT_DIR$/sedaris_2" />
         <option value="$PROJECT_DIR$/backend/chicken_scratch.py" />
         <option value="$PROJECT_DIR$/frontend/src/components/Login.vue" />
-        <option value="$PROJECT_DIR$/frontend/src/components/System_Container.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/text_block_redux.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/container_redux_elements/div_block.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/Content_Element_Redux_Input_Type.vue" />
@@ -236,18 +231,22 @@
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/container_redux_elements/Div_Block.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/Content_Element_Redux_Input_Type.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/container_redux_elements/input_text_block_redux.vue" />
-        <option value="$PROJECT_DIR$/frontend/src/components/Project_Container.vue" />
-        <option value="$PROJECT_DIR$/frontend/src/main.js" />
         <option value="$PROJECT_DIR$/backend/test_wtf.py" />
         <option value="$PROJECT_DIR$/backend/test_queries2.py" />
-        <option value="$PROJECT_DIR$/backend/build_db.py" />
-        <option value="$PROJECT_DIR$/backend/test_queries.py" />
         <option value="$PROJECT_DIR$/frontend/src/components/Show_Results.vue" />
+        <option value="$PROJECT_DIR$/notes" />
+        <option value="$PROJECT_DIR$/backend/test_queries.py" />
+        <option value="$PROJECT_DIR$/frontend/src/components/System_Container.vue" />
+        <option value="$PROJECT_DIR$/frontend/src/components/Finished.vue" />
+        <option value="$PROJECT_DIR$/backend/grad_essay_template" />
+        <option value="$PROJECT_DIR$/frontend/src/components/Project_Container.vue" />
+        <option value="$PROJECT_DIR$/frontend/src/main.js" />
+        <option value="$PROJECT_DIR$/backend/db_connection2.py" />
+        <option value="$PROJECT_DIR$/backend/rec_template_1" />
+        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/backend/manager.py" />
         <option value="$PROJECT_DIR$/backend/run_example.py" />
-        <option value="$PROJECT_DIR$/backend/db_connection2.py" />
-        <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/notes" />
+        <option value="$PROJECT_DIR$/backend/build_db.py" />
       </list>
     </option>
   </component>
@@ -260,9 +259,10 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/frontend/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="height" value="972" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -291,25 +291,6 @@
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="luther_out_all_levels_breadth_first.py" type="8704e2dd:PyFileNode" />
-            </path>
-            <path>
-              <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="minor_experiments" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
@@ -368,7 +349,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../boltzman_machine" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/computer/PycharmProjects/Stateless_Crowd_Sourcing/app.py" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="Apple JS" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="TEXT&#10;Apple JS" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -429,6 +410,25 @@
       <module name="Story_Basic_Attempt_4" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/build_db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="manager" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Story_Basic_Attempt_4" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/manager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -743,21 +743,23 @@
       <option name="_new_target" value="&quot;test_queries.Test_Queries.test_rate_example&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unnitest test_queries.Test_Queries.test_rate_example" />
-      <item index="1" class="java.lang.String" itemvalue="Python.build_db" />
-      <item index="2" class="java.lang.String" itemvalue="Python.app" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test_queries" />
-      <item index="4" class="java.lang.String" itemvalue="Python.run_example" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests for test_queries.Test_Queries.test_flex" />
+    <list size="8">
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unnitest test_queries.Test_Queries.test_rate_example" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_queries.Test_Queries.test_flex" />
+      <item index="3" class="java.lang.String" itemvalue="Python.build_db" />
+      <item index="4" class="java.lang.String" itemvalue="Python.app" />
+      <item index="5" class="java.lang.String" itemvalue="Python.test_queries" />
+      <item index="6" class="java.lang.String" itemvalue="Python.run_example" />
+      <item index="7" class="java.lang.String" itemvalue="Python.manager" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.app" />
         <item index="1" class="java.lang.String" itemvalue="Python.build_db" />
-        <item index="2" class="java.lang.String" itemvalue="Python.run_example" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_queries.Test_Queries.test_flex" />
-        <item index="4" class="java.lang.String" itemvalue="Python.test_queries" />
+        <item index="2" class="java.lang.String" itemvalue="Python.manager" />
+        <item index="3" class="java.lang.String" itemvalue="Python.run_example" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_queries.Test_Queries.test_flex" />
       </list>
     </recent_temporary>
   </component>
@@ -823,22 +825,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="971" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26714432" sideWeight="0.504884" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753327" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3879222" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26598173" sideWeight="0.495116" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22954823" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23199023" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23015873" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14163615" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.283521" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28310502" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -848,6 +850,29 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32548618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26714432" sideWeight="0.504884" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753327" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26598173" sideWeight="0.495116" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23199023" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32548618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14163615" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28310502" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -873,7 +898,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/db_connection2.py</url>
-          <line>489</line>
+          <line>496</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -883,23 +908,73 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/db_connection2.py</url>
-          <line>953</line>
+          <line>975</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/run_example.py</url>
-          <line>222</line>
+          <line>287</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/db_connection2.py</url>
-          <line>929</line>
+          <line>951</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/db_connection2.py</url>
-          <line>930</line>
+          <line>952</line>
           <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/manager.py</url>
+          <line>358</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>95</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/manager.py</url>
+          <line>362</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/manager.py</url>
+          <line>184</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/manager.py</url>
+          <line>245</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>162</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/manager.py</url>
+          <line>217</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/manager.py</url>
+          <line>206</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -909,351 +984,118 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="43" />
+      <option name="time" value="68" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>#get relevant information
-#processes and state
-start=time.time()
-session.rollback()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
-#get the count of associated child element
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (*cols ).all()
-is_ready_func=lambda ary: False if (False in ary[4:]) else True 
+        <expression-string>rewrite_options = session.query(all_content.c.id).filter(all_content.c.origin_process_id==Process_Rewrite.id).subquery()
 
-processes_and_state=[]
-for ary in ten:
-    ready=is_ready_func(ary) 
-    in_progress=True if ary[3]&gt;0 else False
-    is_locked=ary[2]
-    {&quot;is_finished&quot;:is_locked,
-     &quot;in_progress&quot;:in_progress,
-     &quot;process_id&quot;:ary[0]
-      
-     }
-    process_and_state.append(processes_and_state)
-    
-print time.time()-start</expression-string>
+bee = session.query(rewrite_options).filter(rewrite_options.c.id.in_(relevant_ids)).all()
+print session.query(Content).filter(rewrite_options.c.id.).all()
+print len(relevant_ids)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>#get relevant information
-#processes and state
-start=time.time()
-session.rollback()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
-#get the count of associated child element
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (*cols ).all()
-is_ready_func=lambda ary: False if (False in ary[4:]) else True 
+        <expression-string>rewrite_options = session.query(all_content.c.id).filter(all_content.c.origin_process_id==Process_Rewrite.id).subquery()
 
-processes_and_state=[]
-for ary in ten:
-    ready=is_ready_func(ary) 
-    in_progress=True if ary[3]&gt;0 else False
-    is_locked=ary[2]
-    {&quot;is_finished&quot;:is_locked,
-     &quot;in_progress&quot;:in_progress,
-     &quot;process_id&quot;:ary[0]
-      
-     }
-    
-print time.time()-start</expression-string>
+bee = session.query(rewrite_options).filter(rewrite_options.c.id.in_(relevant_ids)).all()
+print session.query(Content).filter(Content.id==rewrite_options.c.id).all()
+print len(relevant_ids)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>#get relevant information
-#processes and state
-start=time.time()
-session.rollback()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
-#get the count of associated child element
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (*cols ).all()
-is_ready_func=lambda ary: False if (False in ary[4:]) else True 
-for ary in ten:
-    ready=is_ready_func(ary) 
-    in_progress=True if ary[3]&gt;0 else False
-    is_locked=ary[2]
-print time.time()-start</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>#get relevant information
-#processes and state
-start=time.time()
-session.rollback()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
-#get the count of associated child element
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (*cols ).all()
+        <expression-string>rewrite_options = session.query(all_content.c.id).filter(all_content.c.origin_process_id==Process_Rewrite.id).subquery()
 
-is_ready=lambda ary: False if (False in ary[4:]) else True 
-in_progress=True if ten[3]&gt;0 else False
-is_locked=ten[2]
-print time.time()-start</expression-string>
+bee = session.query(rewrite_options).filter(rewrite_options.c.id.in_(relevant_ids)).all()
+print session.query(rewrite_options).all()
+print len(relevant_ids)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>#get relevant information
-#processes and state
-start=time.time()
-session.rollback()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
-#get the count of associated child element
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (*cols ).all()
+        <expression-string>rewrite_options = session.query(all_content.c.id).filter(all_content.c.origin_process_id==Process_Rewrite.id).subquery()
 
-in_progress=lambda ary: False if (False in ary[5:]) else True 
-print time.time()-start</expression-string>
+bee = session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all()
+print session.query(rewrite_options).all()
+print len(relevant_ids)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>#get relevant information
-#processes and state
-start=time.time()
-session.rollback()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
-#get the count of associated child element
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (*cols ).all()
-print time.time()-start</expression-string>
+        <expression-string>rewrite_options = session.query(all_content.c.id).filter(all_content.c.origin_process_id==Process_Rewrite.id).subquery()
+
+bee = session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all()
+
+print len(relevant_ids)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>#get relevant information
-#processes and state
-session.rollback()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_completed.label(&quot;p_complete&quot;), Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
-#get the count of associated child element
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-col_ids=[&quot;process_id&quot;,&quot;p_complete&quot;,&quot;p_locked&quot;,&quot;cont_comp&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (*cols ).all()</expression-string>
+        <expression-string>rewrite_options = session.query(all_content.c.id).filter(all_content.c.origin_process_id==Process_Rewrite.id).subquery()
+
+bee = session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all()
+
+len(relevant_ids)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>rewrite_options = session.query(all_content.c.id).filter(all_content.c.origin_process_id==Process_Rewrite.id).subquery()
+
+bee = session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
         <expression-string>session.rollback()
-start=time.time()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+rewrite_options = session.query(all_content.c.id).filter(
+                                                  Process_Rewrite.id == all_content.c.origin_process_id).subquery()
+#rewrite_options = session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all()
 
-#get the count of associated child element 
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+#print len(session.query(rewrite_options).all())
 
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+#alt_rewrite=session.query(all_content).filter(rewrite_options.c.id.in_(rewrite_options)).all()
 
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-
-col_ids=[&quot;process_id&quot;,&quot;cont_comp&quot;,&quot;p_locked&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (*cols ).all()
-
-
-#test=session.query(what.c.id, func.Count(
-   # what.c['c_completed']).filter(what.c['c_completed']==True).label('count')).group_by(what.c.id).order_by(what.c.id).all()</expression-string>
+print len(session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all())</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
         <expression-string>session.rollback()
-start=time.time()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+rewrite_options = session.query(all_content.c.id).filter(
+                                                  Process_Rewrite.id == all_content.c.origin_process_id).subquery()
+#rewrite_options = session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all()
 
-#get the count of associated child element 
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+#print len(session.query(rewrite_options).all())
 
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+#alt_rewrite=session.query(all_content).filter(rewrite_options.c.id.in_(rewrite_options)).all()
 
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-
-col_ids=[&quot;process_id&quot;,&quot;cont_comp&quot;,&quot;p_locked&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (cols ).all()
-
-
-#test=session.query(what.c.id, func.Count(
-   # what.c['c_completed']).filter(what.c['c_completed']==True).label('count')).group_by(what.c.id).order_by(what.c.id).all()</expression-string>
+print session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
         <expression-string>session.rollback()
-start=time.time()
-zero=session.query(Task_Parameters).subquery('zero')
-first=session.query(zero,Content.is_completed.label('body_completed')).join(Content,Content.id==zero.c.body_of_task_id).subquery('first')
-second=session.query(first,Content.is_completed.label('result_completed')).join(Content,Content.id==first.c['result_id']).subquery('second')
-third=session.query(second,Content.is_completed.label('context_completed')).join(Content,Content.id==second.c['context_id']).subquery('third')
-fourth=session.query(third,Content.is_completed.label('prompt_completed')).join(Content,Content.id==third.c['prompt_id']).subquery('fourth')
-fifth=session.query(fourth,Content.is_completed.label('suggestion_completed')).join(Content,Content.id==fourth.c['suggestion_id']).subquery('fifth')
-sixth=session.query(fifth,Process_Rewrite.id.label(&quot;process_id&quot;),Process_Rewrite.is_locked.label(&quot;p_locked&quot;),
-                    Process_Rewrite.is_completed.label('p_completed')).join(Process_Rewrite,Process_Rewrite.id==fifth.c.id).subquery('sixth')
+rewrite_options = session.query(all_content.c.id).filter(
+                                                  Process_Rewrite.id == all_content.c.origin_process_id).subquery()
+#rewrite_options = session.query(Content).filter(rewrite_options.c.id.in_(relevant_ids)).all()
 
-#get the count of associated child element 
-seventh=session.query(sixth,Content.is_completed.label('c_completed')).join(Content, Content.origin_process_id ==sixth.c['process_id']).subquery('seventh')
+#print len(session.query(rewrite_options).all())
 
-eight=session.query(seventh.c.process_id, func.count(seventh.c.c_completed).filter(seventh.c.c_completed==True).label('cont_comp')).group_by(seventh.c.process_id).order_by(seventh.c.process_id).subquery('eight')
+#alt_rewrite=session.query(all_content).filter(rewrite_options.c.id.in_(rewrite_options)).all()
 
-nine=session.query(sixth,eight.c.cont_comp).join(eight,sixth.c.process_id==eight.c.process_id).order_by(eight.c.process_id).subquery(&quot;nine&quot;)
-
-col_ids=[&quot;process_id&quot;,&quot;count_com&quot;,&quot;p_locked&quot;,&quot;body_completed&quot;,&quot;result_completed&quot;,&quot;context_completed&quot;,&quot;prompt_completed&quot;,&quot;suggestion_completed&quot;]
-
-cols=[nine.c[col_id] for col_id in col_ids]
-ten=session.query (cols ).all()
-
-
-#test=session.query(what.c.id, func.Count(
-   # what.c['c_completed']).filter(what.c['c_completed']==True).label('count')).group_by(what.c.id).order_by(what.c.id).all()</expression-string>
+print session.query(Content).filter(Content.id==rewrite_options.c.id).all()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/psycopg2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/radio_button_list/radio_list.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/radio_button_list/radio_button.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/little_match_girl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="59" lean-forward="false" selection-start-line="6" selection-start-column="59" selection-end-line="6" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/_jb_nosetest_runner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1279,13 +1121,6 @@ ten=session.query (cols ).all()
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/sedaris">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="108" lean-forward="false" selection-start-line="7" selection-start-column="108" selection-end-line="7" selection-end-column="108" />
         </state>
       </provider>
     </entry>
@@ -1330,13 +1165,6 @@ ten=session.query (cols ).all()
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/Finished.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1410,14 +1238,6 @@ ten=session.query (cols ).all()
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/text_block.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/SuggestionList.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -1432,41 +1252,10 @@ ten=session.query (cols ).all()
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/System_Container.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-695">
-          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/Project_Container.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-894">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/Content_Element.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1230">
           <caret line="83" column="46" lean-forward="false" selection-start-line="83" selection-start-column="46" selection-end-line="83" selection-end-column="46" />
-          <folding>
-            <element signature="e#906#965#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2085">
-          <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="238" column="26" lean-forward="true" selection-start-line="238" selection-start-column="26" selection-end-line="238" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1482,31 +1271,15 @@ ten=session.query (cols ).all()
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2625">
           <caret line="188" column="0" lean-forward="false" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/test_wtf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/test_queries2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/test_wtf.py" />
+    <entry file="file://$PROJECT_DIR$/backend/test_queries2.py" />
     <entry file="file://$PROJECT_DIR$/frontend/src/components/Content_Rate_Element.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1514,54 +1287,138 @@ ten=session.query (cols ).all()
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/test_queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="111" column="0" lean-forward="false" selection-start-line="105" selection-start-column="7" selection-end-line="111" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
+        <state relative-caret-position="3270">
           <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="302" column="28" lean-forward="true" selection-start-line="302" selection-start-column="28" selection-end-line="302" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/Show_Results.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="15">
           <caret line="75" column="17" lean-forward="false" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/System_Container.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="95" lean-forward="false" selection-start-line="7" selection-start-column="95" selection-end-line="7" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/test_queries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1965">
+          <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/Finished.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/sedaris">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="108" lean-forward="false" selection-start-line="7" selection-start-column="108" selection-end-line="7" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/grad_essay_template">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="91" column="28" lean-forward="false" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/text_block.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="115" column="122" lean-forward="false" selection-start-line="115" selection-start-column="122" selection-end-line="115" selection-end-column="122" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/build_db.py">
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/Project_Container.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="72" column="81" lean-forward="false" selection-start-line="72" selection-start-column="59" selection-end-line="72" selection-end-column="81" />
+        <state relative-caret-position="1515">
+          <caret line="106" column="60" lean-forward="false" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/run_example.py">
+    <entry file="file://$PROJECT_DIR$/backend/rec_template_1">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="172" column="119" lean-forward="false" selection-start-line="172" selection-start-column="119" selection-end-line="172" selection-end-column="119" />
+        <state relative-caret-position="270">
+          <caret line="18" column="54" lean-forward="false" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_comm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17205">
+          <caret line="1156" column="0" lean-forward="false" selection-start-line="1156" selection-start-column="0" selection-end-line="1156" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_vars.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5085">
+          <caret line="344" column="0" lean-forward="false" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="1597" column="0" lean-forward="false" selection-start-line="1597" selection-start-column="0" selection-end-line="1597" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="72" column="11" lean-forward="true" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+        <state relative-caret-position="302">
+          <caret line="215" column="0" lean-forward="true" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -1570,26 +1427,32 @@ ten=session.query (cols ).all()
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="696" column="17" lean-forward="false" selection-start-line="696" selection-start-column="17" selection-end-line="696" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2365">
+          <caret line="970" column="60" lean-forward="false" selection-start-line="970" selection-start-column="60" selection-end-line="970" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="17" column="68" lean-forward="false" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+        <state relative-caret-position="1202">
+          <caret line="200" column="0" lean-forward="true" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
+    <entry file="file://$PROJECT_DIR$/backend/run_example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="76" column="1" lean-forward="false" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+        <state relative-caret-position="359">
+          <caret line="334" column="46" lean-forward="false" selection-start-line="334" selection-start-column="4" selection-end-line="334" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/build_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="90" column="47" lean-forward="false" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="47" />
           <folding />
         </state>
       </provider>

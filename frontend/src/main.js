@@ -113,7 +113,7 @@ new Vue({
       },
       set_result(value){
         value=keepAscii(value);
-        console.log("UPDATING" + value)
+        value=value.replace(/[^a-zA-Z0-9!?.-]/g, ""); //Clean any of the results of symbols that might cause parsing issus
         this.state.current_result = value;
       },
       set_rating(value){
