@@ -37,7 +37,12 @@ If No More in Selected,
 import pandas
 
 def user_list_to_db(the_session,txt_list):
-     elements = pandas.read_csv(os.path.join("user_list_dir", "user_efficacy_luther.csv"))
+
+     elements=None
+     if txt_list ==None:
+          elements = pandas.read_csv(os.path.join("user_list_dir", "user_efficacy_luther.csv"))
+     else:
+          elements = pandas.read_csv(txt_list)
      #'0'
      #'1'
      for j in xrange(len(elements)):
@@ -120,7 +125,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      user_list_to_db(the_session, None)
      run_example.initial_test_criteria(the_session)
 
-     run_example.rewrite_continuously(the_session, "little_match_girl")
+     run_example.rewrite_continuously(the_session, os.path.join("backend/user_list_dir","little_match_girl"))
 
      the_session.commit()
      the_session.close()
