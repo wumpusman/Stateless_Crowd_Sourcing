@@ -109,13 +109,19 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      "[To provide soaring rhetoric to motivate his listeners]",
      "[Follow up on previous claim] ",
      "[Clarify that works still needs to be done]"]
-     run_example.initial_test_criteria(the_session)
-     run_example.line_by_line_rewrite_with_flex_and_testing(the_session, None, None)
-     run_example.line_by_line_rewrite_with_flex_and_testing(the_session,instruct,examples)
+    # run_example.initial_test_criteria(the_session)
+     #run_example.line_by_line_rewrite_with_flex_and_testing(the_session, None, None)
+     #run_example.line_by_line_rewrite_with_flex_and_testing(the_session,instruct,examples)
 
     # run_example.iterative(the_session, None, None)
      #print the_session.query(Content).all()
      #run_example.generate_shirt_design(the_session)
+
+     user_list_to_db(session, None)
+     run_example.initial_test_criteria(session)
+
+     run_example.rewrite_continuously(session, "little_match_girl")
+
      the_session.commit()
      the_session.close()
 else:
