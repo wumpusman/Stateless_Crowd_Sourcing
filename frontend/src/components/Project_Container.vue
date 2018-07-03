@@ -107,7 +107,7 @@ export default {
           var results=this.$root.$data.stored_state.state.current_result;
           var session_expired=this.Has_Session_Expired();
 
-          results=results.replace(/[^a-zA-Z0-9!?.-]/g, ""); //Clean any of the results
+          results=results.replace(/[^a-zA-Z0-9!?.\s\r-]/g, ""); //Clean any of the results
           jquery.ajax({
               url: '/api/submit',
               data: "jsonData=" + JSON.stringify({"name":name,"password":password,"results":results,"session_expired":session_expired}),

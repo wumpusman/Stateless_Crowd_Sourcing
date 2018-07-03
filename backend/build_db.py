@@ -34,6 +34,27 @@ If No More in Selected,
 
 
 '''
+import pandas
+
+def user_list_to_db(the_session,txt_list):
+     elements = pandas.read_csv(os.path.join("user_list_dir", "user_efficacy_luther.csv"))
+     #'0'
+     #'1'
+     for j in xrange(len(elements)):
+          print j
+          user_name = elements.iloc[j][1]
+          effective = Manager.user_good_enum if elements.iloc[j][2] else Manager.user_bad
+          print user_name, effective
+          User1 = User(session)
+          User1.name = user_name
+          User1.alias = effective
+          User1.password = ''
+          the_session.add(User1)
+
+
+
+#user_list_to_db(None,None)
+
 
 #pg_restore -h localhost -U username -W -F t -d new_database_name database_dump_file.tar
 if type(os.environ.get('DATABASE_URL')) != type(None):
@@ -105,12 +126,16 @@ else:
      #
      #
      #run_example.initial_test_criteria(session)
-
+     from manager import Manager
      #run_example.line_by_line_rewrite_with_flex_and_testing()
      #run_example.initial_test_criteria(session)
      #run_example.line_by_line_rewrite_with_flex_and_testing(session,None,None)
 
-     #run_example.setup_remapped_sedaris(session,"sedaris_2")
+     user_list_to_db(session,None)
+     run_example.initial_test_criteria(session)
+
+     run_example.rewrite_continuously(session,"little_match_girl")
+     #run_example.setup_business_advice(session)
      #run_example.setup_remapped_linear_abstract(session,"rec_template_1")
      #run_example.test_flex(session )
      #run_example.setup_general_summary(session,"sedaris_2")

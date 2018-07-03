@@ -6,7 +6,8 @@ class Manager(object):
 
     issue_enum="Flagged" #something is wrong with a particular content
 
-
+    user_good_enum="acceptable"
+    user_bad="Bad_User"
     def __init__(self,session,max_time=7):
         # type: (object, object) -> object
         self.session=session
@@ -40,6 +41,7 @@ class Manager(object):
         relevant_content.associated_user = None  # that user will no longer have that content associated with them
         relevant_content.is_completed = False
         relevant_content.results=""
+        relevant_content.comments=""
 
     def edit_process(self,process,content,edit_msg,result_msg):
         '''
@@ -53,6 +55,7 @@ class Manager(object):
         was_effective=True
         if process.is_locked == False: #if the process can still be modified
             if edit_msg==Manager.remove_enum: #if we want to clear the work of one person because it sucked so hard
+                content.associated_user.alias = Manager.user_bad
                 self._unassign_content(content)
 
                 sub_task_param=self.session.query(Task_Parameters).filter(Task_Parameters.result_id==content.id).all() #if this content was being evaluated in someway
@@ -123,6 +126,9 @@ class Manager(object):
             self.update_global_state(current_user,results)  #Update user state, update all the content
 
 
+        if current_user.alias==Manager.user_bad:
+            return self.prepare_view(current_user.alias) #pass the bad alias
+
         content=self.assign_new_content(current_user)
         view_dictionary=self.prepare_view(content)
 
@@ -156,6 +162,8 @@ class Manager(object):
     #
 
     def assign_new_content(self,user):
+
+
         session = self.session
 
 
@@ -226,19 +234,31 @@ class Manager(object):
         problems_flagged=session.query(Content.comments).filter(Content.user_id ==user.name).filter(Content.comments==Manager.issue_enum ).all()
         #Is there any content wher ethere are issues
 
-        if len(problems_flagged)>0: return Manager.issue_enum #If they have fucked up on content
+
+
+
+
+        if len(problems_flagged)>0:
+            #bad form but eh
+            return Manager.issue_enum #If they have fucked up on content
 
         if len(optional_content)==0: return None
 
         chosen=None
 
-        if len(testing_content)>0: #go through all the test contnet
+
+
+        is_good_user = True if user.alias==Manager.user_good_enum else False
+
+        if len(testing_content)>0 and (is_good_user==False): #go through all the test contnet
             chosen=testing_content[0]
         else: #Lets look at cotnent
             if len(rewrite_options)>0:
+                user.alias=Manager.user_good_enum #to make it here they have to be a good user
                 chosen=random.choice(rewrite_options) #pick one of them but make the order inconsistent it's a fuck you to slackers, they'll be stuck in
             elif len(rate_options)>0: #choose the content that is closest to be finished
                 chosen=rate_options[-1]
+                user.alias=Manager.user_good_enum  #to make it here they have to be a good user
             else: return None
         #an endless loop of dealing with bs
 
@@ -346,6 +366,8 @@ class Manager(object):
         if content == Manager.issue_enum:
             return {"Project_State":Manager.issue_enum}
 
+        if content==Manager.user_bad:
+            return {"Project_State": Manager.user_bad}
 
 
         view= content.origin_process.prepare_view()
@@ -353,12 +375,16 @@ class Manager(object):
         view["Session_Time"]=self._session_time
 #
         return view
+
     def update_global_state(self,user,results):
         session=self.session
 
         current=user.get_current_content_in_progress(session)
         #Todo: This is sort of telling the system if person barely wrote anything to ignore it, need a better place to hold this code
 
+
+        if current ==None: #another hack
+            return False
 
         if isinstance(current.origin_process, Process_Rewrite): #
             if current.assigned_date !=None: #todo change this so that all values have an assigned date!
@@ -376,8 +402,6 @@ class Manager(object):
 
         current.results= results["value"]
 
-        if(current.origin_process.is_user_content_acceptable(current)==False):
-            current.comments =Manager.issue_enum #flag this content as unacceptable Or having a serious problem
 
 
         #This is a hack :/\/\/\:
@@ -397,7 +421,9 @@ class Manager(object):
                       self.unassign_content(current)
                       return False
 
-
+        if (current.origin_process.is_user_content_acceptable(current) == False):
+            current.comments = Manager.issue_enum  # flag this content as unacceptable Or having a serious problem
+            user.alias=Manager.user_bad                                 #THIS IS SUCH BAD FORM BUT WHATEVER AT THIS POITN
         print "AND HERE"
         #ToDO:ANother HACK
         if current.results.replace(" ","") =="": #If user wrote nothign

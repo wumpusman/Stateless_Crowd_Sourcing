@@ -89,7 +89,7 @@ export default {
     },
 
     compute_text_area_input_value:function(){
-      this.Text;
+      console.log("WTF");
       console.log(this.$refs.Text_Result.value);
       return this.$refs.Text_Result.value;
     }

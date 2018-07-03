@@ -6,7 +6,7 @@
     <Project v-if="which_page('Project')" :Has_Session_Expired="has_session_expired_function"></Project>
     <Finished v-if="which_page('Finished')" :Tasks_Completed="compute_submission_count" :Code="computed_name" ></Finished>
     <Finished v-if="which_page('Flagged')" :Tasks_Completed="compute_submission_count" Code="Flagged" ></Finished>
-
+    <Finished v-if="which_page('Bad_User')" :Tasks_Completed="compute_submission_count" Code="Bad_User" ></Finished>
   </div>
 </template>
 

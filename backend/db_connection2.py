@@ -721,6 +721,10 @@ class Process_Rate_Flex_Test_User(Process_Rate_Flex):
 
     def is_user_content_acceptable(self,content):
         score=None
+        print content
+        print "WTF"
+        print content.results==""
+        if content.results =="": return False
         if content.results =="Issue": score=-2
         else: score= float(content.results)
         if score > self.expected_result_max:return False

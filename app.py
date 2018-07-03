@@ -15,7 +15,9 @@ app = Flask(__name__,
 
 
 #Task_Crowd_Source_Test
+#conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #temp2
 conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #temp2
+
 #meta.drop_all(bind=conn)  # clear everything
 #Base.metadata.create_all(conn)
 manager = Manager(session,max_time=6) #in minutes
@@ -92,7 +94,8 @@ def submit():
 
 
     if user==None: return json.dumps(manager.prepare_view(None))
-
+    if user.alias==Manager.user_bad:
+        return json.dumps(manager.prepare_view(Manager.user_bad))
     did_they_do_it=manager.update_global_state(user, {"value": result}) #This is where the magic happens
 
     assigned_content=None
@@ -147,21 +150,22 @@ def login(): #For logging in
 
     #conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
     #manager.session=session
-    print "BUT WE MAKE IT HERE???"
+
     userData = request.form['jsonData'];
     userData = json.loads(userData)
-    print "WTF DO WE MAKE IT HERE"
+
     if manager.does_user_exist(userData["name"])==False:
 
         manager.create_user(userData["name"],userData["password"])
-        print "khan?"
+
         user = manager.select_user(userData["name"], userData["password"])
-        print "no khantext"
+
         manager.assign_new_content(user)
 
 
     user=manager.select_user(userData["name"], userData["password"])
-
+    if manager.user_bad==user.alias:
+        return json.dumps({"task": manager.prepare_view(manager.user_bad)}) #this means this user sucks
 
     print session.query(Content).filter(Content.user_id==user.name).all()
 
@@ -183,8 +187,10 @@ def login(): #For logging in
         new_content.assigned_date=datetime.datetime.now()
         session.add(new_content)
         session.commit()
+
     #htis is redundnant
     print "did i make ith ere htouhg?"
+
     if len(user.associated_content)==0:
         return json.dumps({"task":manager.prepare_view(None)})
     print "MADE I HERE????"
