@@ -10,7 +10,7 @@ from sqlalchemy import func
 import pandas as pd
 import run_example
 
-
+from manager import Manager
 
 '''
 
@@ -137,7 +137,7 @@ else:
      #
      #
      #run_example.initial_test_criteria(session)
-     from manager import Manager
+
      #run_example.line_by_line_rewrite_with_flex_and_testing()
      #run_example.initial_test_criteria(session)
      #run_example.line_by_line_rewrite_with_flex_and_testing(session,None,None)
