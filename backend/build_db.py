@@ -50,7 +50,7 @@ def user_list_to_db(the_session,txt_list):
           user_name = elements.iloc[j][1]
           effective = Manager.user_good_enum if elements.iloc[j][2] else Manager.user_bad
           print user_name, effective
-          User1 = User(session)
+          User1 = User(the_session)
           User1.name = user_name
           User1.alias = effective
           User1.password = ''
