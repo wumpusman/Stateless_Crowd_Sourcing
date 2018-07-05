@@ -53,8 +53,8 @@
       <file leaf-file-name="build_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/build_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="127" column="72" lean-forward="false" selection-start-line="127" selection-start-column="72" selection-end-line="127" selection-end-column="72" />
+            <state relative-caret-position="295">
+              <caret line="124" column="96" lean-forward="false" selection-start-line="124" selection-start-column="96" selection-end-line="124" selection-end-column="96" />
               <folding />
             </state>
           </provider>
@@ -290,6 +290,12 @@
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="user_list_dir" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
@@ -1537,8 +1543,8 @@ filter(lambda x: x in printable, b)</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/build_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="127" column="72" lean-forward="false" selection-start-line="127" selection-start-column="72" selection-end-line="127" selection-end-column="72" />
+        <state relative-caret-position="295">
+          <caret line="124" column="96" lean-forward="false" selection-start-line="124" selection-start-column="96" selection-end-line="124" selection-end-column="96" />
           <folding />
         </state>
       </provider>

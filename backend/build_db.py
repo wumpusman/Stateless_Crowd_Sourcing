@@ -122,7 +122,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      #print the_session.query(Content).all()
      #run_example.generate_shirt_design(the_session)
 
-     user_list_to_db(the_session, os.path.join("backend/user_list_dir","little_match_girl"))
+     user_list_to_db(the_session, os.path.join("backend/user_list_dir","user_efficacy_luther.csv"))
      run_example.initial_test_criteria(the_session)
 
      run_example.rewrite_continuously(the_session, os.path.join("backend","little_match_girl"))
