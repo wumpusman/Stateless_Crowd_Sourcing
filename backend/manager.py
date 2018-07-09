@@ -212,9 +212,9 @@ class Manager(object):
 
 
 
-        rate_options = session.query(Content).filter(result7.c.id==Content.id).all()
+        rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type=="").all()
         rewrite_options = session.query(all_content.c.id).filter(Process_Rewrite.id == all_content.c.origin_process_id).subquery()
-        rewrite_options = session.query(Content).filter(rewrite_options.c.id==Content.id).all()
+        rewrite_options = session.query(Content).filter(rewrite_options.c.id==Content.id).filter(Content.content_type=="").all()
 
         '''            
             result=session.query(all_content.c.origin_process_id,Process_Rate_Flex.task_parameters_id,Process_Rate_Flex.current_score).join(Process_Rate_Flex,Process_Rate_Flex.id == all_content.c.origin_process_id).distinct().subquery()
@@ -248,21 +248,29 @@ class Manager(object):
 
 
 
+
         is_good_user = True if user.alias==Manager.user_good_enum else False
 
         if len(testing_content)>0 and (is_good_user==False): #go through all the test contnet
             chosen=testing_content[0]
+            print "THIS IS IMPOSSIBLE?"
         else: #Lets look at cotnent
+            print 'and here instead?'
+
             if len(rewrite_options)>0:
                 user.alias=Manager.user_good_enum #to make it here they have to be a good user
                 chosen=random.choice(rewrite_options) #pick one of them but make the order inconsistent it's a fuck you to slackers, they'll be stuck in
+                print chosen
+                print "AND HERE"
             elif len(rate_options)>0: #choose the content that is closest to be finished
+                print "OR HERE?"
                 chosen=rate_options[-1]
+
                 user.alias=Manager.user_good_enum  #to make it here they have to be a good user
             else: return None
         #an endless loop of dealing with bs
 
-
+        print "WHAT IN THE FUCK IS GOING ON"
         chosen.associated_user=user
         chosen.assigned_date=datetime.datetime.now()
 

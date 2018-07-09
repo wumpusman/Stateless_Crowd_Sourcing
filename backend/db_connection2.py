@@ -694,7 +694,7 @@ class Process_Rate_Flex_Test_User(Process_Rate_Flex):
     '''
     Basically process used to help evaluate user's ability
     '''
-    __mapper_args__ = {'polymorphic_identity': 'Process_Rate_Flex_Test_User'}
+    __mapper_args__ = {'polymorphic_identity': 'process_rate_flex_test_user'}
 
     '''
      if normal tasks == 0 
@@ -1000,6 +1000,23 @@ class Process_Rewrite_Flex_Modify_Results_And_View(Process_Rewrite_Flex):
         task_view["Context"] = ""
 
         return task_view
+
+class Process_Rewrite_Flex_Modify_View(Process_Rewrite_Flex):
+
+        __mapper_args__ = {'polymorphic_identity': 'process_rewrite_flex_modify_view'}
+
+        def prepare_view(self):
+            task_view = super(Process_Rewrite_Flex_Modify_View, self).prepare_view()
+
+            n_minus_one = task_view["Context"]
+            task_view["Context"] = ""
+            task_view["Body_Of_Task"] = "____________PREVIOUS PART__________ " + n_minus_one + "" \
+                                                                                               " ________________CURRENT PART_________" \
+                                                                                               "" + task_view[
+                                            "Body_Of_Task"] + " ."
+
+            return task_view
+
 
 class Process_Modify_Results_And_View(Process_Rewrite): #assume i'm gonna rate the subprocesses
     __mapper_args__ = {'polymorphic_identity': 'process_modify_results'}

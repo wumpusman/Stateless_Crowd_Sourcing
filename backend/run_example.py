@@ -932,14 +932,14 @@ def rewrite_continuously(session,text_name):
     root_prompt1="What ideas, details and concepts would make this story feel more like this was taking place in modern times. Briefly explain why."
     root_rate1="Rate how well you feel the ideas and concepts suggested would make the story below feel more modern and engaging."
     root_p_r1=produce_pairs(root_prompt1,root_rate1)
-    root_process1=build_process_flex(Process_Rewrite, root_p_r1, cr_root_body, None, None, default_process_amount,
+    root_process1=build_process_flex(Process_Rewrite_Flex_Modify_View, root_p_r1, cr_root_body, None, None, default_process_amount,
                   default_sub_process_amount)
 
     rewrite_prompt2="Rewrite the text below using the ideas and concepts suggested on the left. You should try to keep the same number of sentences as well as " \
                     "well as the general placement of nouns, adjcetives and other parts of speech."
     rewrite_rate2="Rate how well you feel the rewrite of the text captures the ideas and concepts suggested in context. "
     rewrite_p_r2=produce_pairs(rewrite_prompt2,rewrite_rate2)
-    rewrite_process2=build_process_flex(Process_Rewrite, rewrite_p_r2, cr_root_body, root_process1.get_final_results()[0], None, default_process_amount,
+    rewrite_process2=build_process_flex(Process_Rewrite_Flex_Modify_View, rewrite_p_r2, cr_root_body, root_process1.get_final_results()[0], None, default_process_amount,
                   default_sub_process_amount)
 
     relevant_text=break_up_text(text_name,5)
@@ -956,7 +956,7 @@ def rewrite_continuously(session,text_name):
     previous_time_step=Content_Result("",True)
     for text_block in relevant_text:
         relevant_block=Content_Result(text_block,True)
-        rewrite_segments_process=build_process_flex(Process_Merge_Alt_View,rewrite_p_rN,relevant_block,previous_time_step,rewrite_process2.get_final_results()[0],
+        rewrite_segments_process=build_process_flex(Process_Rewrite_Flex_Modify_View,rewrite_p_rN,relevant_block,previous_time_step,rewrite_process2.get_final_results()[0],
                                            default_process_amount,default_sub_process_amount
          )
 

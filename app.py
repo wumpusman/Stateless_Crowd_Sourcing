@@ -178,10 +178,11 @@ def login(): #For logging in
 
     new_content=None
 
+
     if (user.get_current_content_in_progress(session))==None:
         new_content= manager.assign_new_content(user)
     else:
-
+        print "HERE THOUGH?"
         new_content= user.get_current_content_in_progress(session)
         #reset the time, since they are coming back to it, this should be changed though
         new_content.assigned_date=datetime.datetime.now()
