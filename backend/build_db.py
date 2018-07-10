@@ -37,10 +37,10 @@ If No More in Selected,
 import pandas
 
 def user_list_to_db(the_session,txt_list):
-
+     seen=set()
      elements=None
      if txt_list ==None:
-          elements = pandas.read_csv(os.path.join("user_list_dir", "user_efficacy_luther.csv"))
+          elements = pandas.read_csv(os.path.join("user_list_dir", "exceptional_and_luther"))
      else:
           elements = pandas.read_csv(txt_list)
      #'0'
@@ -50,12 +50,15 @@ def user_list_to_db(the_session,txt_list):
           user_name = elements.iloc[j][1]
           effective = Manager.user_good_enum if elements.iloc[j][2] else Manager.user_bad
           print user_name, effective
-          User1 = User(the_session)
-          User1.name = user_name
-          User1.alias = effective
-          User1.password = ''
-          the_session.add(User1)
+          if (user_name in seen) ==False:
+          
+               User1 = User(the_session)
+               User1.name = user_name
+               User1.alias = effective
+               User1.password = ''
+               the_session.add(User1)
 
+               seen.add(user_name)
 
 
 #user_list_to_db(None,None)
@@ -122,7 +125,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      #print the_session.query(Content).all()
      #run_example.generate_shirt_design(the_session)
 
-     user_list_to_db(the_session, os.path.join("backend/user_list_dir","user_efficacy_luther.csv"))
+     user_list_to_db(the_session, os.path.join("backend/user_list_dir","exceptional_and_luther"))
      run_example.initial_test_criteria(the_session)
 
      run_example.rewrite_continuously(the_session, os.path.join("backend","little_match_girl"))
@@ -130,6 +133,7 @@ if type(os.environ.get('DATABASE_URL')) != type(None):
      the_session.commit()
      the_session.close()
 else:
+
      conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test")
 
      meta.drop_all(bind=conn)  # clear everything
