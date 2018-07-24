@@ -932,23 +932,24 @@ def rewrite_continuously(session,text_name):
     root_prompt1="What ideas, details and concepts would make this story feel more like this was taking place in modern times. Briefly explain why."
     root_rate1="Rate how well you feel the ideas and concepts suggested would make the story below feel more modern and engaging."
     root_p_r1=produce_pairs(root_prompt1,root_rate1)
-    root_process1=build_process_flex(Process_Rewrite_Flex_Modify_View, root_p_r1, cr_root_body, None, None, default_process_amount,
+    root_process1=build_process_flex(Process_Rewrite_Flex_Modify_View, root_p_r1, cr_root_body,None , None, default_process_amount,
                   default_sub_process_amount)
 
     rewrite_prompt2="Rewrite the text below using the ideas and concepts suggested on the left. You should try to keep the same number of sentences as well as " \
                     "well as the general placement of nouns, adjcetives and other parts of speech."
     rewrite_rate2="Rate how well you feel the rewrite of the text captures the ideas and concepts suggested in context. "
     rewrite_p_r2=produce_pairs(rewrite_prompt2,rewrite_rate2)
-    rewrite_process2=build_process_flex(Process_Rewrite_Flex_Modify_View, rewrite_p_r2, cr_root_body, root_process1.get_final_results()[0], None, default_process_amount,
+    rewrite_process2=build_process_flex(Process_Rewrite_Flex_Modify_View, rewrite_p_r2, cr_root_body, None,root_process1.get_final_results()[0], default_process_amount,
                   default_sub_process_amount)
 
     relevant_text=break_up_text(text_name,5)
 
-    rewrite_segment_prompt_N="Rewrite the text listed in  'CURRENT PART' to better fit the ideas and concepts listed in INFO. " \
+    rewrite_segment_prompt_N="Rewrite the text listed in  'CURRENT PART' to make it feel more modern, the themes and vibe described in INFO are meant to provide" \
+                             "context for what the entire story is about. " \
             "You should try to keep the same number of sentences as well as well as the general placement of nouns, adjectives and other parts of speech in " \
                              "'CURRENT PART'. " \
                     "The text in 'Preceeding Text' describes what happened right before "
-    rewrite_segment_rate_N="Rate how well you feel the text betters captures the concepts and ideas from the text on the left. The text should still have a similar flow to the " \
+    rewrite_segment_rate_N="Rate how well you feel the text feels like it is a more contemporary story. The text should still have a similar flow to the " \
                            "version listed below" \
                      ""
     rewrite_p_rN=produce_pairs(rewrite_segment_prompt_N,rewrite_segment_rate_N)
