@@ -22,8 +22,8 @@ conn, meta, session = connect("postgres", "1234", db="match_girl_suggestions") #
 #Base.metadata.create_all(conn)
 manager = Manager(session,max_time=6) #in minutes
 if type(os.environ.get('DATABASE_URL')) != type(None):
-    manager._minimum_work_time=10
-    manager._effort_ratio=1
+    manager._minimum_work_time=5
+    manager._effort_ratio=0
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
