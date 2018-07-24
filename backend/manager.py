@@ -210,11 +210,19 @@ class Manager(object):
                                                                         all_content.c.origin_process_id == result6.c.origin_process_id).order_by(
             result6.c.count).subquery()
 
+        rate_option_sub_query= session.query(Content).filter(result7.c.id == Content.id).filter(
+            Content.content_type == "").subquery('temp')
 
 
         rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type=="").all()
-        rewrite_options = session.query(all_content.c.id).filter(Process_Rewrite.id == all_content.c.origin_process_id).subquery()
-        rewrite_options = session.query(Content).filter(rewrite_options.c.id==Content.id).filter(Content.content_type=="").all()
+        rewrite_options = session.query(all_content.c.id, all_content.c.origin_process_id).filter(
+            Process_Rewrite.id == all_content.c.origin_process_id).subquery()
+
+        rewrite_processes = session.query(Process_Rewrite.id).filter(Process_Rewrite.is_locked == False).all()
+
+        rewrite_options = session.query(Content).filter(rewrite_options.c.id == Content.id).filter(
+            rewrite_options.c.origin_process_id.in_(rewrite_processes)).filter(
+            Content.content_type == "").all()
 
         '''            
             result=session.query(all_content.c.origin_process_id,Process_Rate_Flex.task_parameters_id,Process_Rate_Flex.current_score).join(Process_Rate_Flex,Process_Rate_Flex.id == all_content.c.origin_process_id).distinct().subquery()
@@ -253,18 +261,19 @@ class Manager(object):
 
         if len(testing_content)>0 and (is_good_user==False): #go through all the test contnet
             chosen=testing_content[0]
-            print "THIS IS IMPOSSIBLE?"
+
         else: #Lets look at cotnent
-            print 'and here instead?'
+
 
             if len(rewrite_options)>0:
                 user.alias=Manager.user_good_enum #to make it here they have to be a good user
                 chosen=random.choice(rewrite_options) #pick one of them but make the order inconsistent it's a fuck you to slackers, they'll be stuck in
-                print chosen
-                print "AND HERE"
+
             elif len(rate_options)>0: #choose the content that is closest to be finished
-                print "OR HERE?"
-                chosen=rate_options[-1]
+
+                chosen=self._select_content_on_score(session,rate_option_sub_query)
+                if chosen ==None:
+                    chosen=rate_options[-1]
 
                 user.alias=Manager.user_good_enum  #to make it here they have to be a good user
             else: return None
@@ -280,6 +289,21 @@ class Manager(object):
         self.session.commit()
 
         return chosen
+
+
+
+
+    def _select_content_on_score(self,session,rate_option_sub_query):
+        #assign contnet that are not locked that have highest score
+        #select a unassigned content form that one
+
+
+        sub_process=session.query(Process_Rate_Flex).filter(rate_option_sub_query.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1]
+        front_running_process_to_evaluate_content=session.query(Content).filter_by(origin_process_id=sub_process.id,is_completed=False).all()
+        if len(front_running_process_to_evaluate_content) >0:
+
+            return front_running_process_to_evaluate_content[0]
+        return None
 
     def prepare_results(self,id):
 
