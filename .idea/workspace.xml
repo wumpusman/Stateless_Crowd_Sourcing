@@ -13,47 +13,75 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$quick_test_match_stick.coverage" NAME="quick_test_match_stick Coverage Results" MODIFIED="1515470633902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$manager.coverage" NAME="manager Coverage Results" MODIFIED="1530223375418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$script_handle_performance.coverage" NAME="script_handle_performance Coverage Results" MODIFIED="1533246797628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_query_aws/handle_turk_performance" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$test_extract_labels.coverage" NAME="test_extract_labels Coverage Results" MODIFIED="1514755382122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$db_connection2.coverage" NAME="db_connection2 Coverage Results" MODIFIED="1516930231371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_in_test_data_py.coverage" NAME="Nosetests in test_data.py Coverage Results" MODIFIED="1521652559395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$script_turk_performance.coverage" NAME="script_turk_performance Coverage Results" MODIFIED="1533244126314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$test_queries.coverage" NAME="test_queries Coverage Results" MODIFIED="1521655333103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Unittests_for_test_queries2_Test_Queries.coverage" NAME="Unittests for test_queries.Test_Queries.test_flex Coverage Results" MODIFIED="1521655584810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$app.coverage" NAME="app Coverage Results" MODIFIED="1532467532365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Story_Basic_Attempt_4$db_connection.coverage" NAME="db_connection Coverage Results" MODIFIED="1510612843137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Unnitest_test_queries_Test_Queries_test_rate_example.coverage" NAME="Unnitest test_queries.Test_Queries.test_rate_example Coverage Results" MODIFIED="1522372374529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_in_test_queries_py.coverage" NAME="Nosetests in test_queries.py Coverage Results" MODIFIED="1518042506489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$chicken_scratch.coverage" NAME="chicken_scratch Coverage Results" MODIFIED="1520201838801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$class_turk_performance_default.coverage" NAME="class_turk_performance_default Coverage Results" MODIFIED="1533243952761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_query_aws/handle_turk_performance" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_for_test_queries_Test_Queries_test_flex.coverage" NAME="Nosetests for test_queries.Test_Queries.test_flex Coverage Results" MODIFIED="1521654690000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_for_test_queries_Test_Queries.coverage" NAME="Nosetests for test_queries.Test_Queries Coverage Results" MODIFIED="1518042529633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$class_turk_performance_prototype.coverage" NAME="class_turk_performance_prototype Coverage Results" MODIFIED="1533241874192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_query_aws/handle_turk_performance" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$luther_out_all_levels_breadth_first.coverage" NAME="luther_out_all_levels_breadth_first Coverage Results" MODIFIED="1519257926056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$view_user_work.coverage" NAME="view_user_work Coverage Results" MODIFIED="1532743039392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$script_current_task_results.coverage" NAME="script_current_task_results Coverage Results" MODIFIED="1532979700069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_query_aws" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$quick_test_match_stick.coverage" NAME="quick_test_match_stick Coverage Results" MODIFIED="1515470633902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$script_notify_users.coverage" NAME="script_notify_users Coverage Results" MODIFIED="1533247007113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_query_aws" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$db_connection2.coverage" NAME="db_connection2 Coverage Results" MODIFIED="1516930231371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_in_test_data_py.coverage" NAME="Nosetests in test_data.py Coverage Results" MODIFIED="1521652559395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$app.coverage" NAME="app Coverage Results" MODIFIED="1533322439563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$CreateHitSample.coverage" NAME="CreateHitSample Coverage Results" MODIFIED="1533068408074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_query_aws" />
+    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$chicken_scratch.coverage" NAME="chicken_scratch Coverage Results" MODIFIED="1520201838801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$run_example.coverage" NAME="run_example Coverage Results" MODIFIED="1522439248295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$build_db.coverage" NAME="build_db Coverage Results" MODIFIED="1532467443561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$Nosetests_for_test_queries_Test_Queries.coverage" NAME="Nosetests for test_queries.Test_Queries Coverage Results" MODIFIED="1518042529633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
-    <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$luther_out_all_levels_breadth_first.coverage" NAME="luther_out_all_levels_breadth_first Coverage Results" MODIFIED="1519257926056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
     <SUITE FILE_PATH="coverage/Stateless_Crowd_Sourcing$luther_query_surveys.coverage" NAME="luther_query_surveys Coverage Results" MODIFIED="1529948793367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/Analysis" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+            <file leaf-file-name="Control_Turk_State.vue" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/frontend/src/components/Control_Turk_State.vue">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="446">
+                    <caret line="82" column="40" lean-forward="false" selection-start-line="82" selection-start-column="40" selection-end-line="82" selection-end-column="40" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Story_Basic_Attempt_4" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="build_db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/build_db.py">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="153" column="74" lean-forward="true" selection-start-line="153" selection-start-column="74" selection-end-line="153" selection-end-column="74" />
+            <state relative-caret-position="561">
+              <caret line="134" column="115" lean-forward="false" selection-start-line="134" selection-start-column="115" selection-end-line="134" selection-end-column="115" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unique_user_list" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/user_list_dir/unique_user_list">
+      <file leaf-file-name="manage_hits.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/manage_hits.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -62,61 +90,87 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exceptional_and_luther" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/user_list_dir/exceptional_and_luther">
+      <file leaf-file-name="script_current_task_results.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/script_current_task_results.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+            <state relative-caret-position="165">
+              <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script_assign_qualifications.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/script_assign_qualifications.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/manager.py">
+      <file leaf-file-name="script_notify_users.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/script_notify_users.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            <state relative-caret-position="165">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run_example.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/run_example.py">
+      <file leaf-file-name="RetrieveAndApproveHitSample.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/RetrieveAndApproveHitSample.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="946" column="83" lean-forward="true" selection-start-line="946" selection-start-column="83" selection-end-line="946" selection-end-column="83" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.py">
+      <file leaf-file-name="script_turk_performance.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/script_turk_performance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+            <state relative-caret-position="-393">
+              <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script_handle_performance.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/handle_turk_performance/script_handle_performance.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class_turk_performance_prototype.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/handle_turk_performance/class_turk_performance_prototype.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_connection2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
+      <file leaf-file-name="class_turk_performance_default.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_query_aws/handle_turk_performance/class_turk_performance_default.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="1003" column="6" lean-forward="false" selection-start-line="1003" selection-start-column="6" selection-end-line="1003" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notes" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notes">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="22" />
+            <state relative-caret-position="462">
+              <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -134,17 +188,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>remapped</find>
-      <find>user_good</find>
-      <find>manager.user_bad</find>
-      <find>prepare_view</find>
-      <find>Manager.user_bad</find>
-      <find>MADE I HERE</find>
-      <find>MADE I</find>
-      <find>user_bad</find>
-      <find>user.alias</find>
-      <find>Manager.</find>
-      <find>assign</find>
       <find>=Manager.user</find>
       <find>assign_new_content</find>
       <find>manager.user</find>
@@ -164,6 +207,17 @@
       <find>.in</find>
       <find>in_</find>
       <find>effort_r</find>
+      <find>assign</find>
+      <find>manager</find>
+      <find>user_bad</find>
+      <find>.alias</find>
+      <find>A1NT8BT94ME6F5</find>
+      <find>A30RLMU6S57XR0</find>
+      <find>textarea</find>
+      <find>Text_Result</find>
+      <find>$ref</find>
+      <find>text_result</find>
+      <find>Text</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -177,18 +231,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/backend/Analysis/test_extract_labels.py" />
-        <option value="$PROJECT_DIR$/frontend/src/components/Content_Element.vue" />
-        <option value="$PROJECT_DIR$/backend/Analysis/estimate_quality_based_on_completion.ipynb" />
-        <option value="$PROJECT_DIR$/dist/index.html" />
-        <option value="$PROJECT_DIR$/backend/dating_profile" />
-        <option value="$PROJECT_DIR$/backend/Analysis/quick_test_match_stick.py" />
-        <option value="$PROJECT_DIR$/frontend/src/components/SuggestionList.vue" />
-        <option value="$PROJECT_DIR$/backend/malcom_speech" />
-        <option value="$PROJECT_DIR$/backend/modify_summary_for_whole" />
-        <option value="$PROJECT_DIR$/backend/luther_speech" />
-        <option value="$PROJECT_DIR$/backend/dad_letter" />
         <option value="$PROJECT_DIR$/sedaris" />
         <option value="$PROJECT_DIR$/frontend/src/App.vue" />
         <option value="$PROJECT_DIR$/backend/sedaris" />
@@ -200,7 +242,6 @@
         <option value="$PROJECT_DIR$/frontend/src/components/container_redux_elements/div_block.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/Content_Element_Redux_Input_Type.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/Content_Element_Redux.vue" />
-        <option value="$PROJECT_DIR$/frontend/src/router/index.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/container_redux_elements/div_block.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/container_redux_elements/text_block_redux.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/container_redux_elements/Text_Block_Redux.vue" />
@@ -211,7 +252,6 @@
         <option value="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder/container_redux_elements/input_text_block_redux.vue" />
         <option value="$PROJECT_DIR$/backend/test_wtf.py" />
         <option value="$PROJECT_DIR$/backend/test_queries2.py" />
-        <option value="$PROJECT_DIR$/frontend/src/components/Show_Results.vue" />
         <option value="$PROJECT_DIR$/backend/test_queries.py" />
         <option value="$PROJECT_DIR$/backend/grad_essay_template" />
         <option value="$PROJECT_DIR$/backend/rec_template_1" />
@@ -223,11 +263,25 @@
         <option value="$PROJECT_DIR$/frontend/src/main.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/Project_Container.vue" />
         <option value="$PROJECT_DIR$/backend/build_db.py" />
-        <option value="$PROJECT_DIR$/notes" />
         <option value="$PROJECT_DIR$/backend/manager.py" />
         <option value="$PROJECT_DIR$/backend/db_connection2.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/backend/run_example.py" />
+        <option value="$PROJECT_DIR$/notes" />
+        <option value="$PROJECT_DIR$/backend/Analysis/view_user_work.py" />
+        <option value="$PROJECT_DIR$/frontend/src/components/Show_Results.vue" />
+        <option value="$PROJECT_DIR$/backend/Analysis/test_turk_performance.py" />
+        <option value="$PROJECT_DIR$/python_query_aws/env_info.py" />
+        <option value="$PROJECT_DIR$/backend/Analysis/script_turk_performance.py" />
+        <option value="$PROJECT_DIR$/frontend/src/router/index.js" />
+        <option value="$PROJECT_DIR$/python_query_aws/user_qualification_groups/exceptional_users" />
+        <option value="$PROJECT_DIR$/frontend/src/components/Control_Turk_State.vue" />
+        <option value="$PROJECT_DIR$/python_query_aws/script_current_task_results.py" />
+        <option value="$PROJECT_DIR$/python_query_aws/script_turk_performance.py" />
+        <option value="$PROJECT_DIR$/python_query_aws/handle_turk_performance/class_turk_performance_prototype.py" />
+        <option value="$PROJECT_DIR$/python_query_aws/handle_turk_performance/class_turk_performance_default.py" />
+        <option value="$PROJECT_DIR$/python_query_aws/handle_turk_performance/script_handle_performance.py" />
+        <option value="$PROJECT_DIR$/python_query_aws/script_notify_users.py" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -241,8 +295,9 @@
     <handled-path value="$PROJECT_DIR$/frontend/node_modules" />
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="573" />
-    <option name="height" value="1050" />
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="964" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -260,6 +315,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,45 +331,33 @@
             <path>
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="user_list_dir" type="462c0819:PsiDirectoryNode" />
+              <item name="python_query_aws" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="python_query_aws" type="462c0819:PsiDirectoryNode" />
+              <item name="handle_turk_performance" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
               <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="python_query_aws" type="462c0819:PsiDirectoryNode" />
+              <item name="user_qualification_groups" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="aws_mturk_query" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Stateless_Crowd_Sourcing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stateless_Crowd_Sourcing" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="aws_mturk_query" type="462c0819:PsiDirectoryNode" />
+              <item name="mturk_samples" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -322,22 +366,22 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="editor.config.accepted" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/computer/PycharmProjects/Stateless_Crowd_Sourcing/app.py" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="TEXT&#10;Apple JS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/backend/user_list_dir" />
-      <recent name="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder" />
-      <recent name="$PROJECT_DIR$/frontend/src/components" />
-      <recent name="$PROJECT_DIR$/frontend/src/components/container_redux_elements" />
-      <recent name="$PROJECT_DIR$/backend" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/user_list_dir" />
       <recent name="$PROJECT_DIR$/dist" />
       <recent name="C:\Users\Michael\PycharmProjects\Story_Basic_Attempt_4\frontend\src\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/python_query_aws" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/backend/user_list_dir" />
+      <recent name="$PROJECT_DIR$/frontend/src/components/container_content_redux_folder" />
+      <recent name="$PROJECT_DIR$/frontend/src/components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -359,9 +403,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="/usr/local/bin/python2.7" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Story_Basic_Attempt_4" />
@@ -372,26 +416,64 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="build_db" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="class_turk_performance_default" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="/usr/local/bin/python2.7" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_query_aws/handle_turk_performance" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Story_Basic_Attempt_4" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/build_db.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_query_aws/handle_turk_performance/class_turk_performance_default.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="luther_query_surveys" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="script_handle_performance" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_query_aws/handle_turk_performance" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Story_Basic_Attempt_4" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_query_aws/handle_turk_performance/script_handle_performance.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="script_notify_users" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_query_aws" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Story_Basic_Attempt_4" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_query_aws/script_notify_users.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="script_turk_performance" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -404,45 +486,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Story_Basic_Attempt_4" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/Analysis/luther_query_surveys.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="manager" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Story_Basic_Attempt_4" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/manager.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="run_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Story_Basic_Attempt_4" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/run_example.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_query_aws/script_turk_performance.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -723,19 +767,19 @@
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unnamed" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unnitest test_queries.Test_Queries.test_rate_example" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_queries.Test_Queries.test_flex" />
-      <item index="3" class="java.lang.String" itemvalue="Python.build_db" />
+      <item index="3" class="java.lang.String" itemvalue="Python.script_turk_performance" />
       <item index="4" class="java.lang.String" itemvalue="Python.app" />
-      <item index="5" class="java.lang.String" itemvalue="Python.run_example" />
-      <item index="6" class="java.lang.String" itemvalue="Python.manager" />
-      <item index="7" class="java.lang.String" itemvalue="Python.luther_query_surveys" />
+      <item index="5" class="java.lang.String" itemvalue="Python.class_turk_performance_default" />
+      <item index="6" class="java.lang.String" itemvalue="Python.script_handle_performance" />
+      <item index="7" class="java.lang.String" itemvalue="Python.script_notify_users" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.app" />
-        <item index="1" class="java.lang.String" itemvalue="Python.build_db" />
-        <item index="2" class="java.lang.String" itemvalue="Python.manager" />
-        <item index="3" class="java.lang.String" itemvalue="Python.luther_query_surveys" />
-        <item index="4" class="java.lang.String" itemvalue="Python.run_example" />
+        <item index="1" class="java.lang.String" itemvalue="Python.script_notify_users" />
+        <item index="2" class="java.lang.String" itemvalue="Python.script_handle_performance" />
+        <item index="3" class="java.lang.String" itemvalue="Python.script_turk_performance" />
+        <item index="4" class="java.lang.String" itemvalue="Python.class_turk_performance_default" />
       </list>
     </recent_temporary>
   </component>
@@ -805,17 +849,17 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.497" sideWeight="0.5339286" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.497" sideWeight="0.46607143" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19959058" sideWeight="0.5653236" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19959058" sideWeight="0.43467644" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32641292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32548618" sideWeight="0.48779" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29940477" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13614164" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2008547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.370522" sideWeight="0.83150184" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37871033" sideWeight="0.7985348" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -912,12 +956,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>98</line>
+          <line>100</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>90</line>
+          <line>92</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -927,7 +971,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>79</line>
+          <line>81</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -937,12 +981,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>165</line>
+          <line>181</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>114</line>
+          <line>116</line>
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -992,12 +1036,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>166</line>
+          <line>182</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>167</line>
+          <line>183</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1012,12 +1056,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>182</line>
+          <line>198</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>192</line>
+          <line>208</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1059,6 +1103,27 @@
           <line>264</line>
           <option name="timeStamp" value="114" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/Analysis/view_user_work.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/python_query_aws/handle_turk_performance/script_handle_performance.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/python_query_aws/script_turk_performance.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/src/components/Control_Turk_State.vue</url>
+          <line>37</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -1067,303 +1132,120 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="115" />
+      <option name="time" value="129" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
+        <expression-string>user=&quot;test_me&quot;#i[enum_workerID]
+completion_time=i[enum_completedTime]
 
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1]
-front_running_process_to_evaluate_content=session.query(Content).filter_by(origin_process_id=sub_process.id,is_completed=False)[0:100]
-print front_running_process_to_evaluate_content
-#last=sub_proess[-1]
+session.query
+result=session.query(db.Content).filter(db.Content.user_id==user).order_by(db.Content.completed_date)[-1]
 
-#session.query(Content).filter()</expression-string>
+print &quot;OK&quot;
+
+result=session.query(db.Content).filter(db.Content.user_id==user).order_by(db.Content.completed_date)[-1]
+currentTimeTaskFinished= result.completed_date.replace(tzinfo=completion_time.tzinfo)
+
+time_diff=completion_time-currentTimeTaskFinished
+
+print time_diff.total_seconds()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
+        <expression-string>user=&quot;test_me&quot;#i[enum_workerID]
+completion_time=i[enum_completedTime]
 
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1]
-front_running_process_to_evaluate_content=session.query(Content).filter_by(origin_process_id=sub_process.id,is_completed=False)[0]
-#last=sub_proess[-1]
+session.query
+result=session.query(db.Content).filter(db.Content.user_id==user).order_by(db.Content.completed_date)[-1]
 
-#session.query(Content).filter()</expression-string>
+print &quot;OK&quot;
+
+result=session.query(db.Content).filter(db.Content.user_id==user).order_by(db.Content.completed_date)[-1]
+currentTimeTaskFinished= result.completed_date.replace(tzinfo=completion_time.tzinfo)
+
+time_diff=completion_time-currentTimeTaskFinished
+
+print time_diff</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
+        <expression-string>result=session.query(db.Content).filter(db.Content.user_id==user).order_by(db.Content.completed_date)[-1]
+currentTimeTaskFinished= result.completed_date.replace(tzinfo=completion_time.tzinfo)
 
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1]
-front_running_process_to_evaluate_content=session.query(Content).filter_by(origin_process_id=sub_process.c.id,is_completed=False)[0]
-#last=sub_proess[-1]
-
-#session.query(Content).filter()</expression-string>
+time_diff=completion_time-currentTimeTaskFinished</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
+        <expression-string>result=session.query(db.Content).filter(db.Content.user_id==user).order_by(db.Content.completed_date)[-1]
+currentTimeTaskFinished= result.completed_date.replace(tzinfo=completion_time.tzinfo)
 
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1]
-front_running_process_to_evaluate_content=session.query(Content).filter_by(origin_process_id==sub_process.c.id,is_completed==False)[0]
-#last=sub_proess[-1]
-
-#session.query(Content).filter()</expression-string>
+time_diff=completion_time-currentTimeTaskFinished
+#currentTime = datetime.datetime.now()
+#currentTime = currentTime.replace(tzinfo=creationTime.tzinfo)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
-
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1]
-front_running_process_to_evaluate_content=session.query(Content).filter_by(sub_process.id==Content.origin_process_id,Content.is_completed==False)[0]
-#last=sub_proess[-1]
-
-#session.query(Content).filter()</expression-string>
+        <expression-string>result=session.query(db.Content).filter(db.Content.user_id==user).order_by(db.Content.completed_date)[-1]
+currentTimeTaskFinished= result.completed_date.replace(tzinfo=None)
+completion_time=completion_time.replace(tzinfo=None)
+time_diff=completion_time-currentTimeTaskFinished
+#currentTime = datetime.datetime.now()
+#currentTime = currentTime.replace(tzinfo=creationTime.tzinfo)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
-
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1]
-#last=sub_proess[-1]
-print sub_process.current_score
-#session.query(Content).filter()</expression-string>
+        <expression-string>users=session.query(db.User).all()
+for i in users:
+    if &quot;test&quot; in i.name:
+        print i.name</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
-
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1]
-#last=sub_proess[-1]
-print sub_process.score
-#session.query(Content).filter()</expression-string>
+        <expression-string>for i in users:
+    if &quot;test&quot; in i.name:
+        print i.name</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
+        <expression-string>result=session.query(db.Content).filter(db.Content.user_id==user).order_by(db.Content.completed_date)[0]
 
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1].subquery()
-#last=sub_proess[-1]
+currentTimeTaskFinished= result.completed_date.replace(tzinfo=None)
 
-#session.query(Content).filter()</expression-string>
+completion_time=completion_time.replace(tzinfo=None)
+time_diff=completion_time-currentTimeTaskFinished
+#currentTime = datetime.datetime.now()
+#currentTime = currentTime.replace(tzinfo=creationTime.tzinfo)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>rate_options = session.query(Content).filter(result7.c.id==Content.id).filter(Content.content_type==&quot;&quot;).subquery('temp')
+        <expression-string>currentTimeTaskFinished= result.completed_date.replace(tzinfo=None)
 
-sub_process=session.query(Process_Rate_Flex).filter(rate_options.c.origin_process_id==Process_Rate_Flex.id).order_by(Process_Rate_Flex.current_score)[-1].all()
-last=sub_proess[-1]
-
-session.query(Content).filter()</expression-string>
+completion_time=completion_time.replace(tzinfo=None)
+time_diff=completion_time-currentTimeTaskFinished
+#currentTime = datetime.datetime.now()
+#currentTime = currentTime.replace(tzinfo=creationTime.tzinfo)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/backend/sedaris">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="108" lean-forward="false" selection-start-line="7" selection-start-column="108" selection-end-line="7" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/grad_essay_template">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="91" column="28" lean-forward="false" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/rec_template_1">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="54" lean-forward="false" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_comm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17205">
-          <caret line="1156" column="0" lean-forward="false" selection-start-line="1156" selection-start-column="0" selection-end-line="1156" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_vars.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5085">
-          <caret line="344" column="0" lean-forward="false" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/minor_experiments/chicken_scratch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/sqlalchemy/orm/attributes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3345">
-          <caret line="234" column="0" lean-forward="false" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Analysis/Good_Users">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/build/vue-loader.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/build/dev-server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/build/check-versions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/build/dev-client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/build/build.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/build/webpack.base.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/build/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Analysis/luther_out_all_levels_breadth_first.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Analysis/estimate_quality_based_on_completion.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Analysis/test_extract_labels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Analysis/test_add_decent_users.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Analysis/quick_test_match_stick.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/db_connection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#17#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/notes">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/Show_Results.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="75" column="17" lean-forward="false" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1409,13 +1291,6 @@ session.query(Content).filter()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/text_block.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="109" column="6" lean-forward="false" selection-start-line="109" selection-start-column="6" selection-end-line="109" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
@@ -1427,14 +1302,6 @@ session.query(Content).filter()</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/Analysis/luther_query_surveys.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="71" column="26" lean-forward="false" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1452,30 +1319,6 @@ session.query(Content).filter()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/user_list_dir/exceptional_users">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/user_list_dir/unique_user_list">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/user_list_dir/exceptional_and_luther">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/sqlalchemy/sql/selectable.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
@@ -1483,69 +1326,331 @@ session.query(Content).filter()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/testing/nosetester.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="109" column="6" lean-forward="false" selection-start-line="109" selection-start-column="6" selection-end-line="109" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.3/python_stubs/-1199944087/_ast.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
           <caret line="831" column="6" lean-forward="false" selection-start-line="831" selection-start-column="6" selection-end-line="831" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/testing/nosetester.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/build_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="153" column="74" lean-forward="false" selection-start-line="153" selection-start-column="74" selection-end-line="153" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/user_list_dir/unique_user_list">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/user_list_dir/exceptional_and_luther">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/run_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14085">
+          <caret line="942" column="45" lean-forward="false" selection-start-line="942" selection-start-column="45" selection-end-line="942" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
+    <entry file="file://$PROJECT_DIR$/backend/minor_experiments/chicken_scratch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/Analysis/quick_test_match_stick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/A_Place_For_Testing.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/Analysis/test_add_decent_users.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/Analysis/luther_query_surveys.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="71" column="26" lean-forward="false" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/Analysis/view_user_work.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/env_info.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/CreateHitSample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="53" column="50" lean-forward="true" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        <state relative-caret-position="193">
+          <caret line="457" column="22" lean-forward="false" selection-start-line="457" selection-start-column="16" selection-end-line="457" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/db_connection2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="1003" column="6" lean-forward="false" selection-start-line="1003" selection-start-column="6" selection-end-line="1003" selection-end-column="6" />
+        <state relative-caret-position="144">
+          <caret line="52" column="6" lean-forward="false" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/user_list_dir/exceptional_users">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-628">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="10" lean-forward="false" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/minor_experiments/Notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#21#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="323" column="26" lean-forward="true" selection-start-line="323" selection-start-column="26" selection-end-line="323" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/Show_Results.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding>
+            <element signature="e#1168#1195#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/user_qualification_groups/acceptable_users">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="81" column="14" lean-forward="true" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/user_qualification_groups/bad_users">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2788">
+          <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/user_qualification_groups/exceptional_users">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="36" column="14" lean-forward="true" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="56" column="18" lean-forward="true" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/text_block.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-417">
+          <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/script_assign_qualifications.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/manage_hits.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/RetrieveAndApproveHitSample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/script_current_task_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/handle_turk_performance/class_turk_performance_prototype.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/handle_turk_performance/class_turk_performance_default.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/script_turk_performance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-393">
+          <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/handle_turk_performance/script_handle_performance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_query_aws/script_notify_users.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/Control_Turk_State.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="82" column="40" lean-forward="false" selection-start-line="82" selection-start-column="40" selection-end-line="82" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/build_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="153" column="74" lean-forward="true" selection-start-line="153" selection-start-column="74" selection-end-line="153" selection-end-column="74" />
+        <state relative-caret-position="561">
+          <caret line="134" column="115" lean-forward="false" selection-start-line="134" selection-start-column="115" selection-end-line="134" selection-end-column="115" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/run_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="946" column="83" lean-forward="true" selection-start-line="946" selection-start-column="83" selection-end-line="946" selection-end-column="83" />
-          <folding />
         </state>
       </provider>
     </entry>

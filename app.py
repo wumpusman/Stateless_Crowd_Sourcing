@@ -7,6 +7,8 @@ from flask import request
 from backend import run_example
 from backend.db_connection2 import *
 from backend.manager import Manager
+from python_query_aws import script_turk_performance
+from python_query_aws import script_current_task_results
 
 app = Flask(__name__,
             static_folder = "./dist/static",
@@ -15,8 +17,8 @@ app = Flask(__name__,
 
 
 #Task_Crowd_Source_Test
+#conn, meta, session = connect("postgres", "1234", db="match_girl_suggestions") #temp2
 conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #temp2
-#conn, meta, session = connect("postgres", "1234", db="Task_Crowd_Source_Test") #temp2
 
 #meta.drop_all(bind=conn)  # clear everything
 #Base.metadata.create_all(conn)
@@ -120,6 +122,20 @@ def submit():
 
     else:
         return json.dumps({"task":manager.prepare_view(None)})
+
+
+@app.route('/api/user_performance',methods=['Post'])
+def query_recent_user_performance():
+
+
+    userData = request.form['jsonData'];
+    userData = json.loads(userData)
+
+    turk_results = script_current_task_results.get_active_users_in_latest_task(0, "live")
+    performance_results=script_turk_performance.get_recently_submitted_results(session, turk_results, max_results=4, time_offset=14395.592572)
+    print performance_results
+    return json.dumps({"results":performance_results})
+
 
 
 @app.route ('/api/edit',methods=['Post'])

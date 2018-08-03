@@ -10,6 +10,7 @@ const routerOptions = [
   {path:'/Finished',component:"Finished"},
   {path:'/Content_Element',component:"Content_Element"},
   {path:'/Show_Results',component:"Show_Results"},
+  {path:'/User_Results',component:"Control_Turk_State"},
   {path:'/System_Container',component:"System_Container"},
   {path:'/text_block',component:"text_block"},
   {path:'/A_Place_For_Testing',component:"A_Place_For_Testing"}

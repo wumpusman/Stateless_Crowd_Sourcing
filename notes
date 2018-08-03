@@ -110,3 +110,30 @@ then build_db (which sets up the experiment)
 then call main code
 
 
+ heroku config:set test_config=42
+ import os
+ os.environ.get('test_config')
+
+
+
+down vote
+accepted
+
+You can filter all characters from the string that are not printable using string.printable, like this:
+
+>>> s = "some\x00string. with\x15 funny characters"
+>>> import string
+>>> printable = set(string.printable)
+>>> filter(lambda x: x in printable, s)
+'somestring. with funny characters'
+
+ idea
+
+ view users
+ view latest mturk users
+    show scores, show rating, show submission
+
+
+
+
+
